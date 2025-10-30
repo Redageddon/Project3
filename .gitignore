@@ -45,7 +45,6 @@ dlldata.c
 project.lock.json
 project.fragment.lock.json
 artifacts/
-**/Properties/launchSettings.json
 
 # VS Code
 .vscode/
@@ -304,10 +303,10 @@ appsettings.*.json  # If you have environment-specific configs with secrets
 Migrations/  # Optional - some teams prefer to commit migrations
 
 # Static files (if generated)
-wwwroot/lib/
-wwwroot/dist/
-wwwroot/css/*.min.css
-wwwroot/js/*.min.js
+#wwwroot/lib/
+#wwwroot/dist/
+#wwwroot/css/*.min.css
+#wwwroot/js/*.min.js
 
 # .NET 5/6/7/8+
 .dotnet/
