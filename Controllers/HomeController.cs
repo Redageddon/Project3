@@ -20,10 +20,12 @@ public class HomeController(ILogger<HomeController> logger) : Controller
     {
         return this.View();
     }
+
     public IActionResult Meals()
     {
         return this.View();
     }
+
     public IActionResult Login()
     {
         return this.View();
