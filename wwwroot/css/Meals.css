@@ -1,0 +1,9 @@
+h1 {
+  color: black;
+}
+h1:hover {
+  color: #333333;
+  text-shadow: 2px 2px;
+}
+
+/*# sourceMappingURL=Meals.css.map */

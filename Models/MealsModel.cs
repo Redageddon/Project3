@@ -1,6 +1,6 @@
 namespace Project3.Models;
 
-public class MealModel
+public class MealsModel
 {
     public int Type { get; set; } = 1;
 }
