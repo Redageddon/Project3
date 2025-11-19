@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Project3.API;
 using Project3.Models;
 
 namespace Project3.Controllers;
@@ -8,7 +9,7 @@ public class MealsController(ILogger<MealsController> logger) : Controller
 {
     public IActionResult Meals()
     {
-        MealsModel meals = new();
+        MealsModel meals = BasicAPI.GetRecipes();
 
         return this.View(meals);
     }

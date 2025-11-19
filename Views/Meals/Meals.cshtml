@@ -2,10 +2,42 @@
 
 @{
     ViewData["Title"] = "Meals";
+    RecipeModel recipe = Model.Recipes[0];
 }
+
 <head>
     <link rel="stylesheet" href="~/css/Meals.css"/>
 </head>
+
 <div class="text-center">
-    <h1 class="display-4">Prep your Meals @Model.Type</h1>
+    <h1 class="display-4">Prep your Meals</h1>
+</div>
+
+<div class="text-center">
+    <br/>
+    <h3>Meal: @recipe.Name (@recipe.Rating⭐, @recipe.ReviewCount reviews)</h3>
+    <h3>Difficulty: @recipe.Difficulty</h3>
+    <h3>Servings: @recipe.Servings (CaloriesPerServing: @recipe.CaloriesPerServing)</h3>
+    <h3>Minutes: @recipe.CookTimeMinutes (Prep time: @recipe.PrepTimeMinutes)</h3>
+    <h3>Meal Type: @string.Join(", ", recipe.MealType)</h3>
+    <h3>Tags: @string.Join(", ", recipe.Tags)</h3>
+    <h3>Cuisine: @recipe.Cuisine</h3>
+    <img src="@recipe.Image" alt="@recipe.Name"/>
+</div>
+
+<div>
+    <h4>Ingredients:</h4>
+    @foreach (string ingredient in recipe.Ingredients)
+    {
+        <h4>@ingredient,</h4>
+    }
+
+    <br/>
+
+    <h4>Instructions:</h4>
+    @for (int i = 0; i < recipe.Instructions.Count; i++)
+    {
+        string instruction = recipe.Instructions[i];
+        <h4>@(i + 1). @instruction</h4>
+    }
 </div>
