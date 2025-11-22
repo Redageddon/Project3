@@ -1,0 +1,226 @@
+<script>
+    // =====================================================
+    // Planner Page Script
+    // =====================================================
+
+    const MEAL_KEYS = ["breakfast", "lunch", "dinner", "dessert"];
+    const MAX_RECIPES_PER_MEAL = 3;
+
+    // ---------- DOM Helpers ----------
+    function GetElement(id) { return document.getElementById(id); }
+    function Query(root, sel) { return root.querySelector(sel); }
+    function QueryAll(root, sel) { return Array.from(root.querySelectorAll(sel)); }
+
+    // ---------- Selection State (by meal) ----------
+    function GetSelectedNames(mealKey) {
+        const hidden = GetElement(`meal-${mealKey}-selected`).value.trim();
+        return hidden ? hidden.split(",") : [];
+    }
+    function SaveSelectedNames(mealKey, names) {
+        GetElement(`meal-${mealKey}-selected`).value = names.join(",");
+        GetElement(`meal-${mealKey}-count`).textContent = `${names.length} / ${MAX_RECIPES_PER_MEAL} selected`;
+    }
+
+    // ---------- UI Builders ----------
+    function BuildRecipeThumbButton(recipeName, imageUrl) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "recipe-thumb";
+        btn.dataset.name = recipeName;
+        btn.dataset.img = imageUrl || "";
+        btn.title = recipeName;
+        btn.setAttribute("aria-pressed", "false");
+
+        // background set here (no inline style in markup)
+        if (imageUrl) {
+            btn.style.backgroundImage = `url('${imageUrl}')`;
+            btn.style.backgroundPosition = "center";
+            btn.style.backgroundRepeat = "no-repeat";
+            btn.style.backgroundSize = "cover";
+        }
+
+        const label = document.createElement("span");
+        label.className = "label text-truncate";
+        label.textContent = recipeName;
+        btn.appendChild(label);
+
+        return btn;
+    }
+
+    function BuildSelectedChip(recipeName, imageUrl) {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "selected-chip";
+        chip.dataset.name = recipeName;
+        chip.title = recipeName;
+
+        if (imageUrl) chip.style.backgroundImage = `url('${imageUrl}')`;
+
+        const label = document.createElement("span");
+        label.className = "chip-label";
+        label.textContent = recipeName;
+
+        const remove = document.createElement("span");
+        remove.className = "chip-remove";
+        remove.setAttribute("aria-hidden", "true");
+        remove.textContent = "×";
+
+        chip.appendChild(label);
+        chip.appendChild(remove);
+        return chip;
+    }
+
+    // ---------- Renderers ----------
+    function RenderSelectedStrip(mealKey) {
+        const strip = GetElement(`meal-${mealKey}-selected-strip`);
+        strip.innerHTML = "";
+
+        const names = GetSelectedNames(mealKey);
+        names.forEach(name => {
+            // image from a cached map (we’ll keep a data store on the grid)
+            const grid = GetElement(`meal-${mealKey}-grid`);
+            const imageMap = grid._imageMap || {};
+            const chip = BuildSelectedChip(name, imageMap[name] || "");
+            // remove from selected: chip click
+            chip.addEventListener("click", () => {
+                UnselectRecipeForMeal(mealKey, name);
+            });
+            strip.appendChild(chip);
+        });
+    }
+
+    function UpdateAvailableGridScrollMode(mealKey) {
+        const grid = GetElement(`meal-${mealKey}-grid`);
+        const selectedCount = GetSelectedNames(mealKey).length;
+        grid.classList.toggle("multi", selectedCount > 1);
+    }
+
+    // ---------- Selection Actions ----------
+    function SelectRecipeForMeal(mealKey, recipeName, imageUrl) {
+        const names = GetSelectedNames(mealKey);
+        if (names.includes(recipeName)) return; // already selected
+        if (names.length >= MAX_RECIPES_PER_MEAL) {
+            FlashMaxSelection(GetElement(`meal-${mealKey}-grid`));
+            return;
+        }
+
+        // add to state
+        names.push(recipeName);
+        SaveSelectedNames(mealKey, names);
+
+        // remove from available list
+        const grid = GetElement(`meal-${mealKey}-grid`);
+        const thumb = Query(grid, `.recipe-thumb[data-name="${CSS.escape(recipeName)}"]`);
+        if (thumb) thumb.remove();
+
+        // cache image for chips (and for re-adding later)
+        grid._imageMap = grid._imageMap || {};
+        grid._imageMap[recipeName] = imageUrl || "";
+
+        // refresh UI
+        UpdateAvailableGridScrollMode(mealKey);
+        RenderSelectedStrip(mealKey);
+    }
+
+    function UnselectRecipeForMeal(mealKey, recipeName) {
+        // remove from state
+        const names = GetSelectedNames(mealKey).filter(n => n !== recipeName);
+        SaveSelectedNames(mealKey, names);
+
+        // add back into available grid
+        const grid = GetElement(`meal-${mealKey}-grid`);
+        const imageUrl = (grid._imageMap && grid._imageMap[recipeName]) || "";
+
+        const thumb = BuildRecipeThumbButton(recipeName, imageUrl);
+        // click on thumb selects again
+        thumb.addEventListener("click", () => {
+            SelectRecipeForMeal(mealKey, recipeName, imageUrl);
+        });
+        grid.appendChild(thumb);
+
+        // refresh UI
+        UpdateAvailableGridScrollMode(mealKey);
+        RenderSelectedStrip(mealKey);
+    }
+
+    // ---------- Effects ----------
+    function FlashMaxSelection(grid) {
+        if (grid.dataset.flashActive === "1") return;
+        grid.dataset.flashActive = "1";
+        const prev = grid.style.outline;
+        grid.style.outline = "2px solid #dc3545";
+        setTimeout(() => { grid.style.outline = prev; grid.dataset.flashActive = "0"; }, 450);
+    }
+
+    // ---------- Initialization ----------
+    function InitializeMealPicker(mealKey) {
+        const grid = GetElement(`meal-${mealKey}-grid`);
+        const allThumbs = QueryAll(grid, ".recipe-thumb");
+
+        // Build an image cache (name -> img) and apply backgrounds
+        grid._imageMap = grid._imageMap || {};
+        allThumbs.forEach(btn => {
+            const name = btn.dataset.name;
+            const img = btn.dataset.img || "";
+            grid._imageMap[name] = img;
+
+            if (img) {
+                btn.style.backgroundImage = `url('${img}')`;
+                btn.style.backgroundPosition = "center";
+                btn.style.backgroundRepeat = "no-repeat";
+                btn.style.backgroundSize = "cover";
+            }
+
+            // clicking a thumb selects it and removes from the grid
+            btn.addEventListener("click", () => {
+                SelectRecipeForMeal(mealKey, name, img);
+            });
+        });
+
+        // start with nothing selected
+        SaveSelectedNames(mealKey, []);
+        UpdateAvailableGridScrollMode(mealKey);
+        RenderSelectedStrip(mealKey);
+    }
+
+    // ---------- Editor Visibility ----------
+    function ShowPlannerEditorOrWarn() {
+        const dateInput = GetElement("plan-date");
+        const warning = GetElement("date-required-warning");
+        const editorPanel = GetElement("planner-editor-panel");
+
+        const missing = !dateInput.value;
+        warning.style.display = missing ? "inline" : "none";
+        editorPanel.style.display = missing ? "none" : "block";
+    }
+
+    // ---------- Submit (Placeholder) ----------
+    async function SubmitPlannerChanges() {
+        const payload = {
+            date: GetElement("plan-date").value || null,
+            breakfast: GetSelectedNames("breakfast"),
+            lunch:     GetSelectedNames("lunch"),
+            dinner:    GetSelectedNames("dinner"),
+            dessert:   GetSelectedNames("dessert")
+        };
+
+        console.log("Planner submit payload (names only):", payload);
+
+        try {
+            await fetch("/api/planner/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+        } catch (_) { /* placeholder ignore */ }
+
+        alert("Submitted (placeholder). Check console for payload.");
+    }
+
+    // ---------- Page Wiring ----------
+    (function WireUpPlannerPage() {
+        GetElement("show-editor-button").addEventListener("click", ShowPlannerEditorOrWarn);
+        MEAL_KEYS.forEach(InitializeMealPicker);
+        GetElement("submit-planner-button").addEventListener("click", SubmitPlannerChanges);
+    })();
+</script>

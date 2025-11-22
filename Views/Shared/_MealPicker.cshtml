@@ -1,0 +1,33 @@
+@using Project3.Models
+@model (string MealTitle, string MealKey, IEnumerable<RecipeModel> MealRecipes)
+
+<div id="meal-@Model.MealKey" class="card shadow-sm h-100 meal-picker">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">@Model.MealTitle</h5>
+            <small id="meal-@Model.MealKey-count" class="text-muted">0 / 3 selected</small>
+        </div>
+
+        <!-- Selected (scrollable strip) -->
+        <div class="selected-strip mt-3" id="meal-@Model.MealKey-selected-strip" aria-live="polite"></div>
+
+        <!-- Available recipes (scrollable grid) -->
+        <div id="meal-@Model.MealKey-grid" class="thumb-grid mt-3">
+            @foreach (var recipe in Model.MealRecipes)
+            {
+                var imageUrl = string.IsNullOrWhiteSpace(recipe.Image) ? "" : recipe.Image;
+                <button type="button"
+                        class="recipe-thumb"
+                        data-name="@recipe.Name"
+                        data-img="@imageUrl"
+                        title="@recipe.Name"
+                        aria-pressed="false">
+                    <span class="label text-truncate">@recipe.Name</span>
+                </button>
+            }
+        </div>
+
+        <!-- Hidden: comma-separated RECIPE NAMES for this meal -->
+        <input type="hidden" id="meal-@Model.MealKey-selected" value="" />
+    </div>
+</div>

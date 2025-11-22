@@ -1,7 +1,69 @@
+@using Project3.API
 @{
-    ViewData["Title"] = "Planner";
+    Layout = "_Layout";
+
+    var mealsModel = BasicAPI.GetRecipes();
+    var allRecipes = mealsModel.Recipes ?? new List<RecipeModel>();
+
+    List<RecipeModel> breakfastRecipes = allRecipes
+        .Where(r => r.MealType != null && r.MealType.Contains("Breakfast"))
+        .OrderBy(r => r.Name).ToList();
+
+    List<RecipeModel> lunchRecipes = allRecipes
+        .Where(r => r.MealType != null && r.MealType.Contains("Lunch"))
+        .OrderBy(r => r.Name).ToList();
+
+    List<RecipeModel> dinnerRecipes = allRecipes
+        .Where(r => r.MealType != null && r.MealType.Contains("Dinner"))
+        .OrderBy(r => r.Name).ToList();
+
+    List<RecipeModel> dessertRecipes = allRecipes
+        .Where(r => r.MealType != null && r.MealType.Contains("Dessert"))
+        .OrderBy(r => r.Name).ToList();
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to the Meal Planner</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/planner.css" />
+}
+
+<div class="container py-4">
+    <h2 class="mb-3">Planner</h2>
+
+    <div class="d-flex gap-2 align-items-end mb-4 flex-wrap">
+        <div>
+            <label for="plan-date" class="form-label mb-1">Select a date</label>
+            <input id="plan-date" type="date" class="form-control" />
+        </div>
+
+        <button id="show-editor-button" class="btn btn-primary">Edit meal plan</button>
+
+        <div id="date-required-warning" class="text-danger ms-2" style="display:none;">
+            Please pick a date first.
+        </div>
+    </div>
+
+    <div id="planner-editor-panel" style="display:none;">
+        <div class="row g-3">
+            <div class="col-12 col-md-6 col-lg-3">
+                @await Html.PartialAsync("_MealPicker", ("Breakfast", "breakfast", breakfastRecipes.AsEnumerable()))
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                @await Html.PartialAsync("_MealPicker", ("Lunch", "lunch", lunchRecipes.AsEnumerable()))
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                @await Html.PartialAsync("_MealPicker", ("Dinner", "dinner", dinnerRecipes.AsEnumerable()))
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                @await Html.PartialAsync("_MealPicker", ("Dessert", "dessert", dessertRecipes.AsEnumerable()))
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+            <button id="submit-planner-button" class="btn btn-success">Submit (placeholder)</button>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    @await Html.PartialAsync("_PlannerScripts")
+}

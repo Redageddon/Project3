@@ -1,0 +1,148 @@
+// Variables
+$gap: .5rem;
+$thumb-height: 160px;
+$thumb-height-compact: 90px;
+$label-bg: rgba(0,0,0,.55);
+$label-color: #fff;
+$radius: 12px;
+$shadow: 0 1px 4px rgba(0,0,0,.08);
+$shadow-hover: 0 6px 18px rgba(0,0,0,.15);
+$shadow-selected: 0 6px 18px rgba(0,0,0,.18);
+$lg: 992px;
+
+// Mixins
+@mixin smooth-ease {
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+
+// Meal Picker
+.meal-picker {
+  // Horizontal strip showing the selected items
+  .selected-strip {
+    display: flex;
+    gap: .5rem;
+    overflow-x: auto;
+    padding-bottom: .25rem;
+
+    .selected-chip {
+      position: relative;
+      flex: 0 0 auto;
+      width: 64px;
+      height: 64px;
+      border: 0;
+      border-radius: 10px;
+      background-color: #f5f5f5;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: $shadow;
+      @include smooth-ease;
+      cursor: pointer;
+
+      &:hover { transform: scale(1.05); box-shadow: $shadow-hover; }
+
+      .chip-label {
+        position: absolute;
+        left: 4px; right: 4px; bottom: 4px;
+        padding: 0 .25rem;
+        border-radius: 6px;
+        background: rgba(0,0,0,.55);
+        color: #fff;
+        font-size: .65rem;
+        line-height: 1.2;
+        max-width: 100%;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .chip-remove {
+        position: absolute;
+        top: 2px; right: 6px;
+        font-size: 1rem;
+        color: #fff;
+        text-shadow: 0 1px 3px rgba(0,0,0,.6);
+        line-height: 1;
+      }
+    }
+  }
+
+  // Scrollable grid of available recipes
+  .thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $gap;
+
+    // prevent page from getting too long; internal scroll
+    max-height: 340px;
+    overflow-y: auto;
+  }
+
+  .recipe-thumb {
+    position: relative;
+    width: 100%;
+    height: $thumb-height;
+    border: 0;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    @include smooth-ease;
+    cursor: pointer;
+    outline: none;
+    background-color: #f5f5f5; // fallback; real image set via JS
+
+    .label {
+      position: absolute;
+      left: 8px; right: 8px; bottom: 8px;
+      padding: .25rem .5rem;
+      background: $label-bg;
+      color: $label-color;
+      border-radius: 8px;
+      font-size: .85rem;
+      max-width: 100%;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      transform: scale(1.04);
+      box-shadow: $shadow-hover;
+      z-index: 2;
+    }
+
+    &.selected {
+      box-shadow: $shadow-selected;
+      transform: scale(1.02);
+    }
+  }
+
+  // When multiple are selected, shrink thumbs slightly for overview
+  .thumb-grid.multi {
+    .recipe-thumb { height: $thumb-height-compact; }
+    .recipe-thumb:not(.selected):not(:hover) { opacity: .9; }
+  }
+}
+
+// Responsive tweaks
+@media (min-width: $lg) {
+  .meal-picker {
+    .thumb-grid {
+      grid-template-columns: 1fr; // 1 column for taller thumbs on large screens
+      max-height: 420px;          // a bit more height available on desktop
+    }
+  }
+}
+
+/* Optional: nicer scrollbars (WebKit/Chromium) */
+.meal-picker .thumb-grid::-webkit-scrollbar,
+.meal-picker .selected-strip::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.meal-picker .thumb-grid::-webkit-scrollbar-thumb,
+.meal-picker .selected-strip::-webkit-scrollbar-thumb {
+  background: #cfcfcf;
+  border-radius: 8px;
+}
