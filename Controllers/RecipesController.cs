@@ -6,11 +6,13 @@ namespace Project3.Controllers;
 
 public class RecipesController(ILogger<RecipesController> logger) : Controller
 {
-    public IActionResult Recipes()
-    {
-        return this.View();
-    }   
-    
+    // RecipesController.cs
+    public IActionResult Recipes() {
+        var meals = Project3.API.BasicAPI.GetRecipes();
+
+        return this.View(meals); // passes MealsModel to Recipes.cshtml
+    }
+ 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

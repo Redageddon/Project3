@@ -1,0 +1,33 @@
+@model Project3.Models.RecipeModel
+@{ Layout = null; }
+
+<div class="card dark" href="#">
+    @if (!string.IsNullOrWhiteSpace(Model?.Image))
+    {
+        <img src="@Model.Image" alt="@Model.Name" />
+    }
+    else
+    {
+        <div class="recipe-card__placeholder d-flex align-items-center justify-content-center">
+            <span class="text-muted small">No image</span>
+        </div>
+    }
+    
+    <section>
+        <h2 class="recipe-card__title m-0">
+            @if (Model != null)
+            {
+                @Model.Name
+            }
+        </h2>
+        <p>@Model.Rating⭐</p>
+        <div>
+            <div class="tag">
+                <i class="bi bi-card-heading"></i> @Model.ReviewCount reviews
+            </div>
+            <button onclick="_blank">
+                View Recipe
+            </button>
+        </div>
+    </section>
+</div>

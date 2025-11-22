@@ -1,0 +1,13 @@
+.card-container{
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    overflow: scroll;
+    background: linear-gradient(#eee, #ddd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem;
+    flex-wrap: wrap;
+}

@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="~/css/Meals.css"/>
 </head>
 
+
+<h2 class="mb-3">Browse by Meal</h2>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+    @foreach (var mt in new[] { "Breakfast", "Lunch", "Dinner", "Dessert" })
+    {
+        <div class="col">
+            <a class="card h-100 p-4 text-center" asp-controller="Recipes" asp-action="Recipes" asp-route-mealType="@mt">
+                <h5 class="mb-1">@mt</h5>
+                <span class="text-muted small">View @mt recipes</span>
+            </a>
+        </div>
+    }
+</div>
+
 <div class="text-center">
     <h1 class="display-4">Prep your Meals</h1>
 </div>
