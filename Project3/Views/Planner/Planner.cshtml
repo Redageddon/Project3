@@ -1,10 +1,8 @@
-@using Project3.TempAPI
+@model MealsModel
 @{
     Layout = "_Layout";
 
-    var mealsModel = BasicApi.GetRecipes();
-    var allRecipes = mealsModel.Recipes ?? new List<RecipeModel>();
-
+    List<RecipeModel> allRecipes = Model.Recipes;
     List<RecipeModel> breakfastRecipes = allRecipes
         .Where(r => r.MealType != null && r.MealType.Contains("Breakfast"))
         .OrderBy(r => r.Name).ToList();

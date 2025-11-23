@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Project3.Models;
 using Project3.Services;
-using Project3.TempAPI;
 
 namespace Project3.Controllers;
 

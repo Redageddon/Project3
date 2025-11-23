@@ -1,15 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-
 using Project3.Models;
+using Project3.Services;
 
 namespace Project3.Controllers;
 
-public class PlannerController(ILogger<PlannerController> logger) : Controller
+public class PlannerController(ILogger<PlannerController> logger, RecipeApiService recipeApiService) : Controller
 {
-    public IActionResult Planner()
+    public async Task<IActionResult> Planner()
     {
-        return this.View();
+        MealsModel meals = await recipeApiService.GetRecipes();
+
+        return this.View(meals);
     }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
