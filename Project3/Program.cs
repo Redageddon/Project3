@@ -1,3 +1,5 @@
+using Project3.Services;
+
 namespace Project3;
 
 public class Program
@@ -8,6 +10,15 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        // Register HttpClient for API calls
+        builder.Services.AddHttpClient("RecipeAPI", client =>
+        {
+            client.BaseAddress = new Uri("http://localhost:5000");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+        });
+
+        builder.Services.AddScoped<RecipeApiService>();
 
         WebApplication app = builder.Build();
 

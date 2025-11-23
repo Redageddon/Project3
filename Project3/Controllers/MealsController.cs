@@ -1,15 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Project3.Models;
+using Project3.Services;
 using Project3.TempAPI;
 
 namespace Project3.Controllers;
 
-public class MealsController(ILogger<MealsController> logger) : Controller
+public class MealsController(ILogger<MealsController> logger, RecipeApiService recipeApiService) : Controller
 {
-    public IActionResult Meals()
+    public async Task<IActionResult> Meals()
     {
-        MealsModel meals = BasicApi.GetRecipes();
+        MealsModel meals = await recipeApiService.GetRecipes();
 
         return this.View(meals);
     }

@@ -21,4 +21,8 @@
       <None Include="Data\recipes.json" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\API\API.csproj" />
+    </ItemGroup>
+
 </Project>
