@@ -1,8 +1,104 @@
 @{
     ViewData["Title"] = "Login";
 }
+@section Styles {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@1.13.12/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="~/css/Login.css" />
+}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<section>
+        <div class="container">
+            <div class="row full-screen align-items-center">
+                <div class="left">
+                    <span class="line"></span>
+                    <h2>This is <br /><span>Food Planner portal</span></h2>
+                    <div class="social-media">
+                        <a href="https://github.com/Redageddon/Project3">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="form">
+                        <div class="text-center">
+                            <h6><span>Log In</span> <span>Sign Up</span></h6>
+                            <input type="checkbox" class="checkbox" id="reg-log" />
+                            <label for="reg-log"></label>
+    
+                            <div class="card-3d-wrap">
+                                <div class="card-3d-wrapper">
+                                    <!-- LOGIN -->
+                                    <div class="card-front">
+                                        <div class="center-wrap">
+                                            <form method="POST">
+                                                <h4 class="heading">Log In</h4>
+                                                <div class="form-group">
+                                                    <input name="email" type="email" class="form-style"
+                                                        placeholder="Your Email" required />
+                                                    <i class="input-icon material-icons">alternate_email</i>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="password" type="password" class="form-style"
+                                                        placeholder="Your Password" required />
+                                                    <i class="input-icon material-icons">lock</i>
+                                                </div>
+                                                <button type="submit" value="Login" name="Login" class="btn">Submit</button>
+                                                <!-- <p class="text-center"><a href="./reset.php" class="link">Forgot your
+                                                            password?</a></p> -->
+                                            </form>
+                                        </div>
+                                    </div>
+    
+                                    <!-- SIGNUP -->
+                                    <div class="card-back">
+                                        <div class="center-wrap">
+                                            <form method="POST">
+                                                <h4 class="heading">Sign Up</h4>
+                                                <div class="form-group">
+                                                    <input name="fname" type="text" class="form-style"
+                                                        placeholder="First Name" required />
+                                                    <i class="input-icon material-icons">person</i>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="lname" type="text" class="form-style"
+                                                        placeholder="Last Name" required />
+                                                    <i class="input-icon material-icons">person_outline</i>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="email" type="email" class="form-style"
+                                                        placeholder="Your Email" required />
+                                                    <i class="input-icon material-icons">alternate_email</i>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="password" type="password" class="form-style"
+                                                        placeholder="Your Password" required />
+                                                    <i class="input-icon material-icons">lock</i>
+                                                </div>
+                                                <button type="submit" name="SignUp" value="SignUp"
+                                                    class="btn">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* @{ *@
+                    @*     if ($error) { *@
+                    @*         <p class="text-center text-danger mt-1"> *@
+                    @*             $error *@
+                    @*         </p> *@
+                    @*     } *@
+                    @*      *@
+                    @*     elseif ($success) { *@
+                    @*         <p class="text-center text-success mt-1"> *@
+                    @*             $success *@
+                    @*         </p> *@
+                    @*     } *@
+                    @* }                         *@
+                </div>
+            </div>
+        </div>
+    </section>
