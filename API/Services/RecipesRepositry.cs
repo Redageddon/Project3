@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace API.Services;
 
-public abstract class RecipeRepository
+public class RecipeRepository
 {
     private const string DataPath = "Data/recipes.json";
     private readonly Lock recipesLock = new();

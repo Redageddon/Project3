@@ -2,7 +2,7 @@ using API.DataModels;
 
 namespace API.Services;
 
-public abstract class UserAuth(UserRepository userRepository, PasswordHasher passwordHasher)
+public class UserAuth(UserRepository userRepository, PasswordHasher passwordHasher)
 {
     public LoginResponse Register(RegisterRequest request)
     {
