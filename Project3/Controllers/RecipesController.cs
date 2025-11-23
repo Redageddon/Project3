@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Project3.Models;
+using Project3.TempAPI;
 
 namespace Project3.Controllers;
 
@@ -8,7 +9,7 @@ public class RecipesController(ILogger<RecipesController> logger) : Controller
 {
     // RecipesController.cs
     public IActionResult Recipes() {
-        var meals = Project3.API.BasicAPI.GetRecipes();
+        var meals = BasicApi.GetRecipes();
 
         return this.View(meals); // passes MealsModel to Recipes.cshtml
     }

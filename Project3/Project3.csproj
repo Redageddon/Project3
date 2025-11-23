@@ -11,14 +11,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Data\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Content Update="Data\recipes.json">
           <Link>Data\recipes.json</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Data\recipes.json" />
     </ItemGroup>
 
 </Project>

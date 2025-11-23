@@ -1,8 +1,8 @@
-@using Project3.API
+@using Project3.TempAPI
 @{
     Layout = "_Layout";
 
-    var mealsModel = BasicAPI.GetRecipes();
+    var mealsModel = BasicApi.GetRecipes();
     var allRecipes = mealsModel.Recipes ?? new List<RecipeModel>();
 
     List<RecipeModel> breakfastRecipes = allRecipes

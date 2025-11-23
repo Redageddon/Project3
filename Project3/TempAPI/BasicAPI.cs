@@ -1,9 +1,9 @@
 using Newtonsoft.Json;
 using Project3.Models;
 
-namespace Project3.API;
+namespace Project3.TempAPI;
 
-public static class BasicAPI
+public static class BasicApi
 {
     private const string Path = "Data/recipes.json";
 
