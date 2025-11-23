@@ -1,7 +1,7 @@
 ﻿using API.DataModels;
 using Newtonsoft.Json;
 
-namespace API;
+namespace API.Services;
 
 public abstract class RecipeRepository
 {
