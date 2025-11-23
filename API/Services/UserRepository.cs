@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace API.Services;
 
-public class UserRepository
+public abstract class UserRepository
 {
     private const string DataPath = "Data/users.json";
     private readonly Lock usersLock = new();

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace API.Services;
 
-public class PasswordHasher
+public abstract class PasswordHasher
 {
     public string HashPassword(string password)
     {

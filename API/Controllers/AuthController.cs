@@ -6,7 +6,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public class AuthController(AuthService authService) : ControllerBase
+public class AuthController(UserAuth userAuth) : ControllerBase
 {
     // POST: api/auth/register
     [HttpPost("register")]
@@ -17,7 +17,7 @@ public class AuthController(AuthService authService) : ControllerBase
             return this.BadRequest(this.ModelState);
         }
 
-        LoginResponse response = authService.Register(request);
+        LoginResponse response = userAuth.Register(request);
 
         if (!response.Success)
         {
@@ -37,7 +37,7 @@ public class AuthController(AuthService authService) : ControllerBase
             return this.BadRequest(this.ModelState);
         }
 
-        LoginResponse response = authService.Login(request);
+        LoginResponse response = userAuth.Login(request);
 
         return !response.Success 
             ? this.StatusCode(401, response) 
