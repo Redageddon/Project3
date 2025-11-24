@@ -19,3 +19,5 @@ public record RecipeModel(
     [Range(0, double.MaxValue)] double CaloriesPerServing,
     [Range(0, int.MaxValue)] int ReviewCount,
     [Range(0, 5)] double Rating);
+
+public record RecipesDataModel(List<RecipeModel> Recipes);

@@ -10,9 +10,9 @@ public class MealsController(ILogger<MealsController> logger, RecipeApiService r
 {
     public async Task<IActionResult> Meals()
     {
-        MealsModel meals = await recipeApiService.GetRecipes();
+        RecipesDataModel recipesData = await recipeApiService.GetRecipes();
 
-        return this.View(meals);
+        return this.View(recipesData);
     }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -8,11 +8,11 @@ public class RecipeRepository
     private const string DataPath = "Data/recipes.json";
     private readonly Lock recipesLock = new();
 
-    public MealsModel GetAllRecipes()
+    public RecipesDataModel GetAllRecipes()
     {
         lock (this.recipesLock)
         {
-            MealsModel emptyModel = new([]);
+            RecipesDataModel emptyModel = new([]);
             
             if (!File.Exists(DataPath))
             {
@@ -23,31 +23,31 @@ public class RecipeRepository
 
             string data = File.ReadAllText(DataPath);
 
-            return JsonConvert.DeserializeObject<MealsModel>(data) ?? emptyModel;
+            return JsonConvert.DeserializeObject<RecipesDataModel>(data) ?? emptyModel;
         }
     }
 
     public RecipeModel? GetRecipeById(int id)
     {
-        MealsModel meals = this.GetAllRecipes();
+        RecipesDataModel recipesData = this.GetAllRecipes();
         
-        return meals.Recipes.FirstOrDefault(r => r.Id == id);
+        return recipesData.Recipes.FirstOrDefault(r => r.Id == id);
     }
 
     public RecipeModel CreateRecipe(RecipeModel recipe)
     {
         lock (this.recipesLock)
         {
-            MealsModel meals = this.GetAllRecipes();
+            RecipesDataModel recipesData = this.GetAllRecipes();
             
-            int newId = meals.Recipes.Count != 0 
-                ? meals.Recipes.Max(r => r.Id) + 1 
+            int newId = recipesData.Recipes.Count != 0
+                ? recipesData.Recipes.Max(r => r.Id) + 1
                 : 1;
 
             RecipeModel newRecipe = recipe with { Id = newId };
-            List<RecipeModel> updatedRecipes = [..meals.Recipes, newRecipe];
+            List<RecipeModel> updatedRecipes = [..recipesData.Recipes, newRecipe];
 
-            this.SaveRecipes(new MealsModel(updatedRecipes));
+            this.SaveRecipes(new RecipesDataModel(updatedRecipes));
 
             return newRecipe;
         }
@@ -57,8 +57,8 @@ public class RecipeRepository
     {
         lock (this.recipesLock)
         {
-            MealsModel meals = this.GetAllRecipes();
-            int index = meals.Recipes.FindIndex(r => r.Id == id);
+            RecipesDataModel recipesData = this.GetAllRecipes();
+            int index = recipesData.Recipes.FindIndex(r => r.Id == id);
 
             if (index == -1)
             {
@@ -66,10 +66,10 @@ public class RecipeRepository
             }
 
             RecipeModel recipeToUpdate = updatedRecipe with { Id = id };
-            List<RecipeModel> updatedRecipes = meals.Recipes.ToList();
+            List<RecipeModel> updatedRecipes = recipesData.Recipes.ToList();
             updatedRecipes[index] = recipeToUpdate;
 
-            this.SaveRecipes(new MealsModel(updatedRecipes));
+            this.SaveRecipes(new RecipesDataModel(updatedRecipes));
 
             return recipeToUpdate;
         }
@@ -79,24 +79,24 @@ public class RecipeRepository
     {
         lock (this.recipesLock)
         {
-            MealsModel meals = this.GetAllRecipes();
-            RecipeModel? recipe = meals.Recipes.FirstOrDefault(r => r.Id == id);
+            RecipesDataModel recipesData = this.GetAllRecipes();
+            RecipeModel? recipe = recipesData.Recipes.FirstOrDefault(r => r.Id == id);
 
             if (recipe == null)
             {
                 return false;
             }
 
-            List<RecipeModel> updatedRecipes = meals.Recipes.Where(r => r.Id != id).ToList();
-            this.SaveRecipes(new MealsModel(updatedRecipes));
+            List<RecipeModel> updatedRecipes = recipesData.Recipes.Where(r => r.Id != id).ToList();
+            this.SaveRecipes(new RecipesDataModel(updatedRecipes));
 
             return true;
         }
     }
 
-    private void SaveRecipes(MealsModel meals)
+    private void SaveRecipes(RecipesDataModel recipesData)
     {
-        string json = JsonConvert.SerializeObject(meals, Formatting.Indented);
+        string json = JsonConvert.SerializeObject(recipesData, Formatting.Indented);
         File.WriteAllText(DataPath, json);
     }
 }

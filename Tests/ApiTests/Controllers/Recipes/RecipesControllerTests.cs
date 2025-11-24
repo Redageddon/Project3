@@ -14,7 +14,7 @@ public class RecipesGetTests : TestFixtureBase
         HttpResponseMessage response = await this.Client.GetAsync("/api/recipes");
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-        MealsModel? meals = await response.Content.ReadFromJsonAsync<MealsModel>();
+        RecipesDataModel? meals = await response.Content.ReadFromJsonAsync<RecipesDataModel>();
         Assert.That(meals, Is.Not.Null);
         Assert.That(meals!.Recipes, Is.Not.Null);
     }

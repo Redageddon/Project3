@@ -17,7 +17,7 @@ public class RecipeRepositoryTests
     [Test]
     public void GetAllRecipes_ReturnsNonNull()
     {
-        MealsModel result = this.repository.GetAllRecipes();
+        RecipesDataModel result = this.repository.GetAllRecipes();
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Recipes, Is.Not.Null);
@@ -29,7 +29,7 @@ public class RecipeRepositoryTests
         RecipeModel newRecipe = new(0, 1, "Test Recipe", "Easy", "Italian", ["ingredient"], ["step"], [], [], "", 10, 20, 2, 300, 0, 0);
         RecipeModel created = this.repository.CreateRecipe(newRecipe);
 
-        MealsModel result = this.repository.GetAllRecipes();
+        RecipesDataModel result = this.repository.GetAllRecipes();
 
         Assert.That(result.Recipes.Any(r => r.Id == created.Id), Is.True);
     }
@@ -37,7 +37,7 @@ public class RecipeRepositoryTests
     [Test]
     public void GetAllRecipes_ReturnsList()
     {
-        MealsModel result = this.repository.GetAllRecipes();
+        RecipesDataModel result = this.repository.GetAllRecipes();
 
         Assert.That(result.Recipes, Is.InstanceOf<List<RecipeModel>>());
     }
@@ -45,8 +45,8 @@ public class RecipeRepositoryTests
     [Test]
     public void GetAllRecipes_MultipleCalls_ReturnsConsistentData()
     {
-        MealsModel result1 = this.repository.GetAllRecipes();
-        MealsModel result2 = this.repository.GetAllRecipes();
+        RecipesDataModel result1 = this.repository.GetAllRecipes();
+        RecipesDataModel result2 = this.repository.GetAllRecipes();
 
         Assert.That(result1.Recipes.Count, Is.EqualTo(result2.Recipes.Count));
     }
@@ -58,7 +58,7 @@ public class RecipeRepositoryTests
         RecipeModel created = this.repository.CreateRecipe(newRecipe);
 
         this.repository.DeleteRecipe(created.Id);
-        MealsModel result = this.repository.GetAllRecipes();
+        RecipesDataModel result = this.repository.GetAllRecipes();
 
         Assert.That(result.Recipes.Any(r => r.Id == created.Id), Is.False);
     }
@@ -72,7 +72,7 @@ public class RecipeRepositoryTests
         RecipeModel updated = created with { Name = "Updated" };
         this.repository.UpdateRecipe(created.Id, updated);
 
-        MealsModel result = this.repository.GetAllRecipes();
+        RecipesDataModel result = this.repository.GetAllRecipes();
         RecipeModel? foundRecipe = result.Recipes.FirstOrDefault(r => r.Id == created.Id);
 
         Assert.That(foundRecipe, Is.Not.Null);
@@ -90,7 +90,7 @@ public class RecipeRepositoryTests
         this.repository.CreateRecipe(recipe1);
         this.repository.CreateRecipe(recipe2);
 
-        MealsModel result = this.repository.GetAllRecipes();
+        RecipesDataModel result = this.repository.GetAllRecipes();
 
         Assert.That(result.Recipes.Count, Is.EqualTo(initialCount + 2));
     }

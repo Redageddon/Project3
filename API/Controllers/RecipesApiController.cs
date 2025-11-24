@@ -10,7 +10,7 @@ public class RecipesApiController(RecipeRepository repository) : ControllerBase
 {
     // GET: api/recipes
     [HttpGet]
-    public ActionResult<MealsModel> GetAll()
+    public ActionResult<RecipesDataModel> GetAll()
     {
         return this.Ok(repository.GetAllRecipes());
     }

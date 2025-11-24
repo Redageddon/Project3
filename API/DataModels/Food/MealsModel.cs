@@ -1,3 +1,3 @@
 namespace API.DataModels.Food;
 
-public record MealsModel(List<RecipeModel> Recipes);
+public record MealsModel(); // Todo implement this later
