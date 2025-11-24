@@ -18,7 +18,11 @@ public class Program
             client.DefaultRequestHeaders.Add("Accept", "application/json");
         });
 
+        // Register API services
         builder.Services.AddScoped<RecipeApiService>();
+        builder.Services.AddScoped<UserApiService>();
+        builder.Services.AddScoped<PlannerApiService>();
+        builder.Services.AddScoped<AuthApiService>();
 
         WebApplication app = builder.Build();
 
