@@ -8,9 +8,16 @@ namespace Project3.Controllers;
 
 public class RecipesController(ILogger<RecipesController> logger, RecipeApiService recipeApiService) : Controller
 {
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string? mealType)
     {
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
+
+        if (!string.IsNullOrEmpty(mealType))
+        {
+            recipesData = new RecipesDataModel(recipesData.Recipes
+                                                          .Where(recipe => recipe.MealType.Any(type => type.Equals(mealType, StringComparison.OrdinalIgnoreCase)))
+                                                          .ToList());
+        }
 
         return this.View(recipesData);
     }
