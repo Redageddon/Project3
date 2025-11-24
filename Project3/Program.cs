@@ -15,6 +15,7 @@ public class Program
         builder.Services.AddHttpClient("RecipeAPI", client =>
         {
             client.BaseAddress = new Uri("http://localhost:5000");
+            //client.BaseAddress = new Uri("https://####.ngrok-free.app"); // ngrok here for presentation
             client.DefaultRequestHeaders.Add("Accept", "application/json");
         });
 
