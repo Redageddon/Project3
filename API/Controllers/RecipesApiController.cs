@@ -1,4 +1,3 @@
-using API.DataModels;
 using API.DataModels.Food;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;

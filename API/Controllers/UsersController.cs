@@ -1,4 +1,3 @@
-using API.DataModels;
 using API.DataModels.Users;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
