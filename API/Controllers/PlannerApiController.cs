@@ -18,14 +18,14 @@ public class PlannerApiController(PlannerRepository repository) : ControllerBase
     }
 
     // GET: api/planners/{id}
-    [HttpGet("{id:int}")]
-    public ActionResult<PlannerModel> GetById(int id)
+    [HttpGet("{plannerId:int}")]
+    public ActionResult<PlannerModel> GetById(int plannerId)
     {
-        PlannerModel? planner = repository.GetPlannerById(id);
+        PlannerModel? planner = repository.GetPlannerById(plannerId);
 
         if (planner == null)
         {
-            return this.NotFound(new { message = $"Planner with ID {id} not found" });
+            return this.NotFound(new { message = $"Planner with ID {plannerId} not found" });
         }
 
         return this.Ok(planner);
@@ -48,33 +48,33 @@ public class PlannerApiController(PlannerRepository repository) : ControllerBase
     }
 
     // PUT: api/planners/{id}
-    [HttpPut("{id:int}")]
-    public ActionResult<PlannerModel> Update(int id, [FromBody] PlannerModel planner)
+    [HttpPut("{plannerId:int}")]
+    public ActionResult<PlannerModel> Update(int plannerId, [FromBody] PlannerModel planner)
     {
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
         }
 
-        PlannerModel? updatedPlanner = repository.UpdatePlanner(id, planner);
+        PlannerModel? updatedPlanner = repository.UpdatePlanner(plannerId, planner);
 
         if (updatedPlanner == null)
         {
-            return this.NotFound(new { message = $"Planner with ID {id} not found" });
+            return this.NotFound(new { message = $"Planner with ID {plannerId} not found" });
         }
 
         return this.Ok(updatedPlanner);
     }
 
     // DELETE: api/planners/{id}
-    [HttpDelete("{id:int}")]
-    public ActionResult Delete(int id)
+    [HttpDelete("{plannerId:int}")]
+    public ActionResult Delete(int plannerId)
     {
-        bool success = repository.DeletePlanner(id);
+        bool success = repository.DeletePlanner(plannerId);
 
         if (!success)
         {
-            return this.NotFound(new { message = $"Planner with ID {id} not found" });
+            return this.NotFound(new { message = $"Planner with ID {plannerId} not found" });
         }
 
         return this.NoContent();

@@ -16,14 +16,14 @@ public class RecipesApiController(RecipeRepository repository) : ControllerBase
     }
 
     // GET: api/recipes/5
-    [HttpGet("{id:int}")]
-    public ActionResult<RecipeModel> GetById(int id)
+    [HttpGet("{recipeId:int}")]
+    public ActionResult<RecipeModel> GetById(int recipeId)
     {
-        RecipeModel? recipe = repository.GetRecipeById(id);
+        RecipeModel? recipe = repository.GetRecipeById(recipeId);
 
         if (recipe == null)
         {
-            return this.NotFound(new { message = $"Recipe with ID {id} not found" });
+            return this.NotFound(new { message = $"Recipe with ID {recipeId} not found" });
         }
 
         return this.Ok(recipe);
@@ -44,33 +44,33 @@ public class RecipesApiController(RecipeRepository repository) : ControllerBase
     }
 
     // PUT: api/recipes/5
-    [HttpPut("{id:int}")]
-    public ActionResult<RecipeModel> Update(int id, [FromBody] RecipeModel recipe)
+    [HttpPut("{recipeId:int}")]
+    public ActionResult<RecipeModel> Update(int recipeId, [FromBody] RecipeModel recipe)
     {
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
         }
 
-        RecipeModel? updatedRecipe = repository.UpdateRecipe(id, recipe);
+        RecipeModel? updatedRecipe = repository.UpdateRecipe(recipeId, recipe);
 
         if (updatedRecipe == null)
         {
-            return this.NotFound(new { message = $"Recipe with ID {id} not found" });
+            return this.NotFound(new { message = $"Recipe with ID {recipeId} not found" });
         }
 
         return this.Ok(updatedRecipe);
     }
 
     // DELETE: api/recipes/5
-    [HttpDelete("{id:int}")]
-    public ActionResult Delete(int id)
+    [HttpDelete("{recipeId:int}")]
+    public ActionResult Delete(int recipeId)
     {
-        bool success = repository.DeleteRecipe(id);
+        bool success = repository.DeleteRecipe(recipeId);
 
         if (!success)
         {
-            return this.NotFound(new { message = $"Recipe with ID {id} not found" });
+            return this.NotFound(new { message = $"Recipe with ID {recipeId} not found" });
         }
 
         return this.NoContent();
