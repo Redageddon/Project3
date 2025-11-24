@@ -26,13 +26,4 @@
         <Using Include="NUnit.Framework"/>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="ApiTests\Controllers\Auth\" />
-      <Folder Include="ApiTests\Controllers\Recipes\" />
-      <Folder Include="ApiTests\Controllers\Users\" />
-      <Folder Include="ApiTests\Integration\" />
-      <Folder Include="ApiTests\Repositories\" />
-      <Folder Include="ApiTests\ServiceTests\" />
-    </ItemGroup>
-
 </Project>

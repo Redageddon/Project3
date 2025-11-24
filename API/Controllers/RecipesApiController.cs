@@ -40,7 +40,7 @@ public class RecipesApiController(RecipeRepository repository) : ControllerBase
 
         RecipeModel createdRecipe = repository.CreateRecipe(recipe);
 
-        return this.CreatedAtAction(nameof(this.GetById), new { id = createdRecipe.RecipeId }, createdRecipe);
+        return this.CreatedAtAction(nameof(this.GetById), new { recipeId = createdRecipe.RecipeId }, createdRecipe);
     }
 
     // PUT: api/recipes/5
