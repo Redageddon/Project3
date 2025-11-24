@@ -7,7 +7,7 @@
     <h1 class="display-5 fw-bold">Cook. Sip. Repeat.</h1>
     <p class="lead mb-4">Browse food & drink recipes, then plan your week.</p>
 
-    <form asp-controller="Recipes" asp-action="Recipes" method="get" class="d-flex gap-2 justify-content-center">
+    <form asp-controller="Recipes" asp-action="Index" method="get" class="d-flex gap-2 justify-content-center">
         <input name="q" class="form-control form-control-lg w-50" placeholder="Search recipes…" />
         <button class="btn btn-lg btn-primary">Search</button>
     </form>
@@ -15,25 +15,25 @@
 
 <div class="row g-3">
     <div class="col-md-3">
-        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Recipes" asp-route-mealType="Breakfast">
+        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-mealType="Breakfast">
             <h5 class="mb-0">Breakfast</h5>
             <small class="text-muted">Pancakes, oats, smoothies</small>
         </a>
     </div>
     <div class="col-md-3">
-        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Recipes" asp-route-mealType="Lunch">
+        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-mealType="Lunch">
             <h5 class="mb-0">Lunch</h5>
             <small class="text-muted">Bowls & salads</small>
         </a>
     </div>
     <div class="col-md-3">
-        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Recipes" asp-route-mealType="Dinner">
+        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-mealType="Dinner">
             <h5 class="mb-0">Dinner</h5>
             <small class="text-muted">Pastas, grills</small>
         </a>
     </div>
     <div class="col-md-3">
-        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Recipes" asp-route-mealType="Dessert">
+        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-mealType="Dessert">
             <h5 class="mb-0">Desserts</h5>
             <small class="text-muted">Cakes & cookies</small>
         </a>
@@ -42,13 +42,13 @@
 
 <div class="row g-3 mt-1">
     <div class="col-md-6">
-        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Recipes" asp-route-tab="Drinks" asp-route-alcoholic="false">
+        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-tab="Drinks" asp-route-alcoholic="false">
             <h5 class="mb-0">Non-Alcoholic Drinks</h5>
             <small class="text-muted">Coffee, tea, mocktails</small>
         </a>
     </div>
     <div class="col-md-6">
-        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Recipes" asp-route-tab="Drinks" asp-route-alcoholic="true">
+        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-tab="Drinks" asp-route-alcoholic="true">
             <h5 class="mb-0">Cocktails</h5>
             <small class="text-muted">Classics & signatures</small>
         </a>

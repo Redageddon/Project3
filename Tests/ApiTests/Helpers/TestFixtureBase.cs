@@ -28,19 +28,21 @@ public abstract class TestFixtureBase
     {
         recipe ??= TestDataBuilder.CreateRecipe();
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/recipes", recipe);
+
         return (await response.Content.ReadFromJsonAsync<RecipeModel>())!;
     }
 
     protected async Task<UserDto> CreateUser(string? username = null, string? email = null, string? password = null)
     {
         RegisterRequest request = new(
-            username ?? $"user_{Guid.NewGuid():N}",
-            email ?? $"email_{Guid.NewGuid():N}@example.com",
-            password ?? "Password123!"
-        );
+                                      username ?? $"user_{Guid.NewGuid():N}",
+                                      email ?? $"email_{Guid.NewGuid():N}@example.com",
+                                      password ?? "Password123!"
+                                     );
 
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/auth/register", request);
         LoginResponse? loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
+
         return loginResponse!.User!;
     }
 }

@@ -1,3 +1,4 @@
+@using API.DataModels.Food
 @model (string MealTitle, string MealKey, IEnumerable<API.DataModels.Food.RecipeModel> MealRecipes)
 
 <div id="meal-@Model.MealKey" class="card shadow-sm h-100 meal-picker">
@@ -12,9 +13,9 @@
 
         <!-- Available recipes (scrollable grid) -->
         <div id="meal-@Model.MealKey-grid" class="thumb-grid mt-3">
-            @foreach (var recipe in Model.MealRecipes)
+            @foreach (RecipeModel recipe in Model.MealRecipes)
             {
-                var imageUrl = string.IsNullOrWhiteSpace(recipe.Image) ? "" : recipe.Image;
+                string imageUrl = string.IsNullOrWhiteSpace(recipe.Image) ? "" : recipe.Image;
                 <button type="button"
                         class="recipe-thumb"
                         data-name="@recipe.Name"

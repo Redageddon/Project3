@@ -5,19 +5,19 @@
 
     List<RecipeModel> allRecipes = Model.Recipes;
     List<RecipeModel> breakfastRecipes = allRecipes
-        .Where(r => r.MealType != null && r.MealType.Contains("Breakfast"))
+        .Where(r => r.MealType.Contains("Breakfast"))
         .OrderBy(r => r.Name).ToList();
 
     List<RecipeModel> lunchRecipes = allRecipes
-        .Where(r => r.MealType != null && r.MealType.Contains("Lunch"))
+        .Where(r => r.MealType.Contains("Lunch"))
         .OrderBy(r => r.Name).ToList();
 
     List<RecipeModel> dinnerRecipes = allRecipes
-        .Where(r => r.MealType != null && r.MealType.Contains("Dinner"))
+        .Where(r => r.MealType.Contains("Dinner"))
         .OrderBy(r => r.Name).ToList();
 
     List<RecipeModel> dessertRecipes = allRecipes
-        .Where(r => r.MealType != null && r.MealType.Contains("Dessert"))
+        .Where(r => r.MealType.Contains("Dessert"))
         .OrderBy(r => r.Name).ToList();
 }
 
