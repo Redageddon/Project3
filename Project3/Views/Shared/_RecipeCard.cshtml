@@ -1,8 +1,8 @@
-@model Project3.Models.RecipeModel
+@model API.DataModels.RecipeModel
 @{ Layout = null; }
 
 <div class="card dark" href="#">
-    @if (!string.IsNullOrWhiteSpace(Model?.Image))
+    @if (!string.IsNullOrWhiteSpace(Model.Image))
     {
         <img src="@Model.Image" alt="@Model.Name" />
     }

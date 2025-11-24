@@ -1,5 +1,4 @@
-@using Project3.Models
-@model (string MealTitle, string MealKey, IEnumerable<RecipeModel> MealRecipes)
+@model (string MealTitle, string MealKey, IEnumerable<API.DataModels.RecipeModel> MealRecipes)
 
 <div id="meal-@Model.MealKey" class="card shadow-sm h-100 meal-picker">
     <div class="card-body">
