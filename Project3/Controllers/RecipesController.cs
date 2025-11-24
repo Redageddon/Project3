@@ -8,7 +8,7 @@ namespace Project3.Controllers;
 
 public class RecipesController(ILogger<RecipesController> logger, RecipeApiService recipeApiService) : Controller
 {
-    public async Task<IActionResult> Recipes()
+    public async Task<IActionResult> Index()
     {
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
 

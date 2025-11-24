@@ -16,25 +16,6 @@ public class HomeController(ILogger<HomeController> logger) : Controller
         return this.View();
     }
 
-    public IActionResult Recipes()
-    {
-        return this.View();
-    }
-
-    // public IActionResult Meals()
-    // {
-    //     return this.View();
-    // }
-    //
-    // public IActionResult Login()
-    // {
-    //     return this.View();
-    // }
-    // public IActionResult Planner()
-    // {
-    //     return this.View();
-    // }
-
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

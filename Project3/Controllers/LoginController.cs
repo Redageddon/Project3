@@ -6,7 +6,7 @@ namespace Project3.Controllers;
 
 public class LoginController(ILogger<LoginController> logger) : Controller
 {
-    public IActionResult Login()
+    public IActionResult Index()
     {
         return this.View();
     }   
