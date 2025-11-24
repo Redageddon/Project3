@@ -1,4 +1,5 @@
 using API.DataModels;
+using API.DataModels.Users;
 using Newtonsoft.Json;
 
 namespace API.Services;

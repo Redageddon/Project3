@@ -1,4 +1,5 @@
 using API.DataModels;
+using API.DataModels.Users;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,6 +31,27 @@ public class UsersController(UserRepository userRepository) : ControllerBase
         }
 
         UserDto userDto = new(user.Uid, user.Username, user.Email);
+
+        return this.Ok(userDto);
+    }
+
+    // PUT: api/users/5
+    [HttpPut("{uid:int}")]
+    public ActionResult<UserDto> Update(int uid, [FromBody] UserUpdateRequest request)
+    {
+        if (!this.ModelState.IsValid)
+        {
+            return this.BadRequest(this.ModelState);
+        }
+
+        UserModel? updatedUser = userRepository.UpdateUser(uid, request.Username, request.Email, request.PasswordHash);
+
+        if (updatedUser == null)
+        {
+            return this.NotFound(new { message = $"User with ID {uid} not found" });
+        }
+
+        UserDto userDto = new(updatedUser.Uid, updatedUser.Username, updatedUser.Email);
 
         return this.Ok(userDto);
     }

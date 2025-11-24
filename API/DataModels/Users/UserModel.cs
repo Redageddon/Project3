@@ -1,4 +1,4 @@
-namespace API.DataModels;
+namespace API.DataModels.Users;
 
 public record UserModel(
     int Uid,

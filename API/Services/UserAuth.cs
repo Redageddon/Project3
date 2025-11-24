@@ -1,4 +1,5 @@
 using API.DataModels;
+using API.DataModels.Users;
 
 namespace API.Services;
 

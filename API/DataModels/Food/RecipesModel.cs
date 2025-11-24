@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace API.DataModels;
+namespace API.DataModels.Food;
 
 public record RecipeModel(
     int Id,

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace API.DataModels;
+namespace API.DataModels.Users;
 
 public record LoginRequest(
     [Required][EmailAddress] string Email,
