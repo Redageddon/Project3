@@ -1,6 +1,7 @@
 {
   "recipes": [
     {
+      "id": 1,
       "name": "Classic Margherita Pizza",
       "ingredients": [
         "Pizza dough",
@@ -36,6 +37,7 @@
       ]
     },
     {
+      "id": 2,
       "name": "Vegetarian Stir-Fry",
       "ingredients": [
         "Tofu, cubed",
@@ -75,6 +77,7 @@
       ]
     },
     {
+      "id": 3,
       "name": "Chocolate Chip Cookies",
       "ingredients": [
         "All-purpose flour",
@@ -117,6 +120,7 @@
       ]
     },
     {
+      "id": 4,
       "name": "Chicken Alfredo Pasta",
       "ingredients": [
         "Fettuccine pasta",
@@ -156,6 +160,7 @@
       ]
     },
     {
+      "id": 5,
       "name": "Mango Salsa Chicken",
       "ingredients": [
         "Chicken thighs",
@@ -192,6 +197,7 @@
       ]
     },
     {
+      "id": 6,
       "name": "Quinoa Salad with Avocado",
       "ingredients": [
         "Quinoa, cooked",
@@ -228,6 +234,7 @@
       ]
     },
     {
+      "id": 7,
       "name": "Tomato Basil Bruschetta",
       "ingredients": [
         "Baguette, sliced",
@@ -264,6 +271,7 @@
       ]
     },
     {
+      "id": 8,
       "name": "Beef and Broccoli Stir-Fry",
       "ingredients": [
         "Beef sirloin, thinly sliced",
@@ -303,6 +311,7 @@
       ]
     },
     {
+      "id": 9,
       "name": "Caprese Salad",
       "ingredients": [
         "Tomatoes, sliced",
@@ -337,6 +346,7 @@
       ]
     },
     {
+      "id": 10,
       "name": "Shrimp Scampi Pasta",
       "ingredients": [
         "Linguine pasta",
@@ -375,6 +385,7 @@
       ]
     },
     {
+      "id": 11,
       "name": "Chicken Biryani",
       "ingredients": [
         "Basmati rice",
@@ -421,6 +432,7 @@
       ]
     },
     {
+      "id": 12,
       "name": "Chicken Karahi",
       "ingredients": [
         "Chicken, cut into pieces",
@@ -466,6 +478,7 @@
       ]
     },
     {
+      "id": 13,
       "name": "Aloo Keema",
       "ingredients": [
         "Ground beef",
@@ -511,6 +524,7 @@
       ]
     },
     {
+      "id": 14,
       "name": "Chapli Kebabs",
       "ingredients": [
         "Ground beef",
@@ -557,6 +571,7 @@
       ]
     },
     {
+      "id": 15,
       "name": "Saag (Spinach) with Makki di Roti",
       "ingredients": [
         "Mustard greens, washed and chopped",
@@ -600,6 +615,7 @@
       ]
     },
     {
+      "id": 16,
       "name": "Japanese Ramen Soup",
       "ingredients": [
         "Ramen noodles",
@@ -642,6 +658,7 @@
       ]
     },
     {
+      "id": 17,
       "name": "Moroccan Chickpea Tagine",
       "ingredients": [
         "Chickpeas, cooked",
@@ -684,6 +701,7 @@
       ]
     },
     {
+      "id": 18,
       "name": "Korean Bibimbap",
       "ingredients": [
         "Cooked white rice",
@@ -724,6 +742,7 @@
       ]
     },
     {
+      "id": 19,
       "name": "Greek Moussaka",
       "ingredients": [
         "Eggplants, sliced",
@@ -770,6 +789,7 @@
       ]
     },
     {
+      "id": 20,
       "name": "Butter Chicken (Murgh Makhani)",
       "ingredients": [
         "Chicken thighs, boneless and skinless",
@@ -812,6 +832,7 @@
       ]
     },
     {
+      "id": 21,
       "name": "Thai Green Curry",
       "ingredients": [
         "Chicken thighs, boneless and skinless",
@@ -849,6 +870,7 @@
       ]
     },
     {
+      "id": 22,
       "name": "Mango Lassi",
       "ingredients": [
         "Ripe mango, peeled and diced",
@@ -886,6 +908,7 @@
       ]
     },
     {
+      "id": 23,
       "name": "Italian Tiramisu",
       "ingredients": [
         "Espresso, brewed and cooled",
@@ -923,6 +946,7 @@
       ]
     },
     {
+      "id": 24,
       "name": "Turkish Kebabs",
       "ingredients": [
         "Ground lamb or beef",
@@ -961,6 +985,7 @@
       ]
     },
     {
+      "id": 25,
       "name": "Blueberry Banana Smoothie",
       "ingredients": [
         "Blueberries, fresh or frozen",
@@ -996,6 +1021,7 @@
       ]
     },
     {
+      "id": 26,
       "name": "Mexican Street Corn (Elote)",
       "ingredients": [
         "Corn on the cob",
@@ -1030,6 +1056,7 @@
       ]
     },
     {
+      "id": 27,
       "name": "Russian Borscht",
       "ingredients": [
         "Beets, peeled and shredded",
@@ -1069,6 +1096,7 @@
       ]
     },
     {
+      "id": 28,
       "name": "South Indian Masala Dosa",
       "ingredients": [
         "Dosa batter (fermented rice and urad dal batter)",
@@ -1109,6 +1137,7 @@
       ]
     },
     {
+      "id": 29,
       "name": "Lebanese Falafel Wrap",
       "ingredients": [
         "Falafel balls",
@@ -1146,6 +1175,7 @@
       ]
     },
     {
+      "id": 30,
       "name": "Brazilian Caipirinha",
       "ingredients": [
         "Cachaça (Brazilian sugarcane spirit)",
@@ -1179,6 +1209,7 @@
       ]
     },
     {
+      "id": 31,
       "name": "Spanish Patatas Bravas",
       "ingredients": [
         "Potatoes, diced",
@@ -1215,6 +1246,7 @@
       ]
     },
     {
+      "id": 32,
       "name": "Vietnamese Fresh Spring Rolls",
       "ingredients": [
         "Rice paper wrappers",
@@ -1251,6 +1283,7 @@
       ]
     },
     {
+      "id": 33,
       "name": "Mediterranean Quinoa Salad",
       "ingredients": [
         "Quinoa, cooked",
@@ -1286,6 +1319,7 @@
       ]
     },
     {
+      "id": 34,
       "name": "Japanese Matcha Green Tea Ice Cream",
       "ingredients": [
         "Heavy cream",
@@ -1320,6 +1354,7 @@
       ]
     },
     {
+      "id": 35,
       "name": "Brazilian Chocolate Brigadeiros",
       "ingredients": [
         "Sweetened condensed milk",
@@ -1352,6 +1387,7 @@
       ]
     },
     {
+      "id": 36,
       "name": "Mexican Chicken Enchiladas",
       "ingredients": [
         "Chicken breasts, cooked and shredded",
@@ -1390,6 +1426,7 @@
       ]
     },
     {
+      "id": 37,
       "name": "Thai Coconut Shrimp Curry",
       "ingredients": [
         "Shrimp, peeled and deveined",
@@ -1428,6 +1465,7 @@
       ]
     },
     {
+      "id": 38,
       "name": "Greek Spanakopita",
       "ingredients": [
         "Phyllo dough",
@@ -1465,6 +1503,7 @@
       ]
     },
     {
+      "id": 39,
       "name": "Moroccan Couscous Salad",
       "ingredients": [
         "Couscous, cooked",
@@ -1500,6 +1539,7 @@
       ]
     },
     {
+      "id": 40,
       "name": "Classic Mojito",
       "ingredients": [
         "Fresh mint leaves",
@@ -1535,6 +1575,7 @@
       ]
     },
     {
+      "id": 41,
       "name": "Caprese Bruschetta",
       "ingredients": [
         "Baguette, sliced",
@@ -1572,6 +1613,7 @@
       ]
     },
     {
+      "id": 42,
       "name": "Teriyaki Chicken Stir-Fry",
       "ingredients": [
         "Chicken breast, thinly sliced",
@@ -1611,6 +1653,7 @@
       ]
     },
     {
+      "id": 43,
       "name": "Mango Avocado Salsa",
       "ingredients": [
         "Mango, diced",
@@ -1645,6 +1688,7 @@
       ]
     },
     {
+      "id": 44,
       "name": "Shrimp and Asparagus Stir-Fry",
       "ingredients": [
         "Shrimp, peeled and deveined",
@@ -1683,6 +1727,7 @@
       ]
     },
     {
+      "id": 45,
       "name": "Italian Margherita Pizza",
       "ingredients": [
         "Pizza dough",
@@ -1720,6 +1765,7 @@
       ]
     },
     {
+      "id": 46,
       "name": "Pesto Pasta with Cherry Tomatoes",
       "ingredients": [
         "Penne pasta",
@@ -1754,6 +1800,7 @@
       ]
     },
     {
+      "id": 47,
       "name": "Hawaiian Chicken Skewers",
       "ingredients": [
         "Chicken breasts, cut into chunks",
@@ -1793,6 +1840,7 @@
       ]
     },
     {
+      "id": 48,
       "name": "Cucumber Avocado Rolls",
       "ingredients": [
         "Sushi rice, seasoned",
@@ -1829,6 +1877,7 @@
       ]
     },
     {
+      "id": 49,
       "name": "Mediterranean Chickpea Salad",
       "ingredients": [
         "Canned chickpeas, drained and rinsed",
@@ -1868,6 +1917,7 @@
       ]
     },
     {
+      "id": 50,
       "name": "Pineapple Coconut Smoothie",
       "ingredients": [
         "Pineapple chunks, fresh or frozen",
@@ -1899,6 +1949,2694 @@
       "reviewCount": 45,
       "mealType": [
         "Breakfast",
+        "Beverage"
+      ]
+    }, 
+    {
+      "id": 51,
+      "name": "Chicken Tikka Masala",
+      "ingredients": [
+        "Chicken thighs",
+        "Plain yogurt",
+        "Garlic and ginger",
+        "Garam masala",
+        "Tomato puree",
+        "Heavy cream",
+        "Butter",
+        "Salt"
+      ],
+      "instructions": [
+        "Marinate chicken in yogurt, garlic, ginger, and spices 30 minutes or overnight.",
+        "Sear chicken until browned; set aside.",
+        "Simmer tomato puree with spices and butter 10 minutes.",
+        "Add cream and chicken; simmer until cooked through.",
+        "Serve with rice or naan."
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 35,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "caloriesPerServing": 520,
+      "tags": [
+        "Curry",
+        "Comfort Food"
+      ],
+      "image": "https://www.allrecipes.com/thmb/2vBc1hxVCvlVuMJcwqCh9eTqQkc=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/45736-chicken-tikka-masala-VAT-001-Beauty-4x3-0e74094106c74671b66b4906327a1e17.jpg",
+      "rating": 4.7,
+      "reviewCount": 872,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "Roasted Pepper Shakshuka",
+      "ingredients": [
+        "Red peppers",
+        "Onion",
+        "Garlic",
+        "Crushed tomatoes",
+        "Eggs",
+        "Paprika",
+        "Olive oil",
+        "Salt"
+      ],
+      "instructions": [
+        "Sauté peppers, onion, and garlic in olive oil until soft.",
+        "Stir in tomatoes and paprika; simmer 10 minutes.",
+        "Make wells and crack in eggs.",
+        "Cover and cook to desired doneness.",
+        "Serve with crusty bread."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 20,
+      "servings": 3,
+      "difficulty": "Easy",
+      "cuisine": "Middle Eastern",
+      "caloriesPerServing": 260,
+      "tags": [
+        "Eggs",
+        "One-Pan"
+      ],
+      "image": "https://images.immediate.co.uk/production/volatile/sites/30/2022/05/Roasted-pepper-shakshuka-2b2f8b3.jpg?quality=90&webp=true&resize=1060,962",
+      "rating": 4.6,
+      "reviewCount": 241,
+      "mealType": [
+        "Breakfast",
+        "Lunch"
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Beef Stroganoff",
+      "ingredients": [
+        "Beef sirloin",
+        "Mushrooms",
+        "Onion",
+        "Beef broth",
+        "Dijon mustard",
+        "Sour cream",
+        "Butter",
+        "Egg noodles"
+      ],
+      "instructions": [
+        "Brown beef strips; remove.",
+        "Sauté onions and mushrooms in butter.",
+        "Add broth and mustard; simmer.",
+        "Return beef and stir in sour cream off heat.",
+        "Serve over cooked egg noodles."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 30,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Russian",
+      "caloriesPerServing": 610,
+      "tags": [
+        "Pasta",
+        "Comfort Food"
+      ],
+      "image": "https://imgs.search.brave.com/DYNXeIUN514wOm6B8x7ZI82fKpfUPcrtLrrMVTqT0Ic/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vZWF0aGVh/bHRoeTM2NS5jb20v/d3AtY29udGVudC91/cGxvYWRzL2NsYXNz/aWMtYmV0dHktY3Jv/Y2tlci1iZWVmLXN0/cm9nYW5vZmYtcmVj/aXBlLndlYnA_dz0z/NjAmaD0yMDMmY3Jv/cD0xJnNzbD0x",
+      "rating": 4.5,
+      "reviewCount": 533,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 54,
+      "name": "Authentic Pad Thai",
+      "ingredients": [
+        "Rice noodles",
+        "Eggs",
+        "Chicken or shrimp",
+        "Tamarind paste",
+        "Fish sauce",
+        "Palm sugar",
+        "Bean sprouts",
+        "Peanuts"
+      ],
+      "instructions": [
+        "Soak noodles until pliable; drain.",
+        "Stir-fry protein; push to side and scramble eggs.",
+        "Add noodles, tamarind, fish sauce, and sugar; toss.",
+        "Add bean sprouts and scallions; cook 1-2 minutes.",
+        "Serve topped with peanuts and lime."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 10,
+      "servings": 3,
+      "difficulty": "Medium",
+      "cuisine": "Thai",
+      "caloriesPerServing": 480,
+      "tags": [
+        "Stir-Fry",
+        "Street Food"
+      ],
+      "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F1023388.jpg&q=60&c=sc&poi=auto&orient=true&h=512",
+      "rating": 4.4,
+      "reviewCount": 742,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 55,
+      "name": "Spiced Carrot & Lentil Soup",
+      "ingredients": [
+        "Red lentils",
+        "Carrots",
+        "Onion",
+        "Garlic",
+        "Cumin",
+        "Vegetable stock",
+        "Lemon",
+        "Olive oil"
+      ],
+      "instructions": [
+        "Sauté onion and garlic with cumin until fragrant.",
+        "Add carrots, lentils, and stock; simmer until tender.",
+        "Blend partially for a creamy texture.",
+        "Finish with lemon juice and olive oil.",
+        "Season and serve warm."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 25,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "British",
+      "caloriesPerServing": 290,
+      "tags": [
+        "Soup",
+        "Vegetarian"
+      ],
+      "image": "https://imgs.search.brave.com/E7NanmVqIyUco3qSTSGTMndyP5F7qgn6EI04GcqE9hQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aGVw/ZXNreXZlZ2FuLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NC8wMS9zcGljZWQt/Y2Fycm90LWxlbnRp/bC1zb3VwLXZlZ2Fu/LXJlY2lwZS1ib3ds/LXdpZGUuanBn",
+      "rating": 4.6,
+      "reviewCount": 187,
+      "mealType": [
+        "Lunch",
+        "Dinner"
+      ]
+    },
+    {
+      "id": 56,
+      "name": "Perfect Guacamole",
+      "ingredients": [
+        "Ripe avocados",
+        "Lime juice",
+        "Red onion",
+        "Jalapeño",
+        "Cilantro",
+        "Salt"
+      ],
+      "instructions": [
+        "Mash avocados with lime and salt.",
+        "Fold in onion, jalapeño, and cilantro.",
+        "Adjust seasoning to taste.",
+        "Serve immediately with chips or tacos."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 0,
+      "servings": 6,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 160,
+      "tags": [
+        "Dip",
+        "Party Food"
+      ],
+      "image": "https://www.seriouseats.com/thmb/qpofUarskfyssUIjwwovn1bYAn0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__2012__01__20210318_BasicGuacamole_LizClayman-9-96a19c7b8d6243709b27a44ec65f283b.jpg",
+      "rating": 4.8,
+      "reviewCount": 319,
+      "mealType": [
+        "Snack",
+        "Appetizer"
+      ]
+    },
+    {
+      "id": 57,
+      "name": "Chicken Parmesan",
+      "ingredients": [
+        "Chicken breasts",
+        "Flour, eggs, breadcrumbs",
+        "Parmesan",
+        "Mozzarella",
+        "Marinara sauce",
+        "Olive oil"
+      ],
+      "instructions": [
+        "Pound chicken thin; dredge in flour, egg, and crumbs mixed with Parmesan.",
+        "Pan-fry until golden.",
+        "Top with marinara and mozzarella.",
+        "Bake until cheese melts and chicken is cooked through.",
+        "Serve with spaghetti."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 25,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Italian-American",
+      "caloriesPerServing": 650,
+      "tags": [
+        "Baked",
+        "Family Friendly"
+      ],
+      "image": "https://imgs.search.brave.com/c_5BhIrXcfhoR6KYOe73XABg55QuT-hPz_wlUXmVpbY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/YnVkZ2V0Ynl0ZXMu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDI0LzA0L0NoaWNr/ZW4tUGFybWVzYW4t/VjEuanBn",
+      "rating": 4.7,
+      "reviewCount": 611,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 58,
+      "name": "Pani Puri (Golgappa)",
+      "ingredients": [
+        "Puri shells",
+        "Boiled potatoes",
+        "Cooked chickpeas",
+        "Mint-cilantro water",
+        "Tamarind chutney",
+        "Chaat masala"
+      ],
+      "instructions": [
+        "Mix potatoes and chickpeas; season with chaat masala.",
+        "Blend mint, cilantro, chilies, spices, and water for pani; chill.",
+        "Crack puri tops and fill with potato-chickpea mix.",
+        "Add tamarind chutney and pour in pani.",
+        "Serve immediately."
+      ],
+      "prepTimeMinutes": 30,
+      "cookTimeMinutes": 10,
+      "servings": 6,
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "caloriesPerServing": 220,
+      "tags": [
+        "Street Food",
+        "Vegetarian"
+      ],
+      "image": "https://www.seriouseats.com/thmb/xiEZXDBlKTTBXfyCOj_nLoCwq8E=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/20250307-PaniPuri-KanikaandJatinSharma-23-8d36bdf201864c0691b1c529ac05e6fe.jpg",
+      "rating": 4.5,
+      "reviewCount": 264,
+      "mealType": [
+        "Snack",
+        "Appetizer"
+      ]
+    },
+    {
+      "id": 59,
+      "name": "Green Shakshuka",
+      "ingredients": [
+        "Spinach and kale",
+        "Green bell pepper",
+        "Scallions",
+        "Garlic",
+        "Cumin",
+        "Eggs",
+        "Yogurt",
+        "Olive oil"
+      ],
+      "instructions": [
+        "Sauté green veg, scallions, and garlic with cumin.",
+        "Add a splash of water; simmer until tender.",
+        "Make wells and add eggs; cover until set.",
+        "Serve with dollops of yogurt and flatbread."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 15,
+      "servings": 3,
+      "difficulty": "Easy",
+      "cuisine": "Middle Eastern",
+      "caloriesPerServing": 280,
+      "tags": [
+        "Eggs",
+        "Vegetables"
+      ],
+      "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/green-shakshuka-d702c5c.jpg?quality=90&webp=true&resize=440,400",
+      "rating": 4.4,
+      "reviewCount": 155,
+      "mealType": [
+        "Breakfast",
+        "Brunch"
+      ]
+    },
+    {
+      "id": 60,
+      "name": "Chef John's Beef Stroganoff",
+      "ingredients": [
+        "Chuck roast",
+        "Mushrooms",
+        "Onion",
+        "White wine",
+        "Beef stock",
+        "Crème fraîche",
+        "Butter",
+        "Paprika"
+      ],
+      "instructions": [
+        "Brown beef and set aside.",
+        "Sauté onions and mushrooms in butter.",
+        "Deglaze with wine; add stock and simmer.",
+        "Return beef; finish with crème fraîche and paprika.",
+        "Serve over buttered noodles."
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 45,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Russian",
+      "caloriesPerServing": 640,
+      "tags": [
+        "Pasta",
+        "Comfort Food"
+      ],
+      "image": "https://www.allrecipes.com/thmb/Z1K9VI-GWRmVVLc0FTun0AGiLmU=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/220059-ChefJohnsClassicBeefStroganoff-mfs-2X3-0032-ee04ff133b334abd98040199454a137a.jpg",
+      "rating": 4.6,
+      "reviewCount": 398,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 61,
+      "name": "Classic Tiramisu",
+      "ingredients": [
+        "Ladyfingers",
+        "Espresso",
+        "Mascarpone",
+        "Egg yolks",
+        "Sugar",
+        "Cocoa powder",
+        "Marsala (optional)"
+      ],
+      "instructions": [
+        "Whisk yolks with sugar until pale; fold in mascarpone.",
+        "Dip ladyfingers in espresso (and Marsala if using).",
+        "Layer soaked cookies and mascarpone cream.",
+        "Chill at least 4 hours.",
+        "Dust with cocoa and serve."
+      ],
+      "prepTimeMinutes": 30,
+      "cookTimeMinutes": 0,
+      "servings": 8,
+      "difficulty": "Medium",
+      "cuisine": "Italian",
+      "caloriesPerServing": 420,
+      "tags": [
+        "No-Bake",
+        "Make-Ahead"
+      ],
+      "image": "https://www.allrecipes.com/thmb/XJBP9x0B67NTrjVAFsVxne9-RdE=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ALR-8490-classic-tiramisu-VAT-4x3-mainbowlwithportions-9952c255e653427084ffd23141b254c2.jpg",
+      "rating": 4.8,
+      "reviewCount": 773,
+      "mealType": [
+        "Dessert"
+      ]
+    },
+    {
+      "id": 62,
+      "name": "Banana Banana Bread",
+      "ingredients": [
+        "Ripe bananas",
+        "All-purpose flour",
+        "Sugar",
+        "Eggs",
+        "Butter",
+        "Baking soda",
+        "Salt",
+        "Vanilla"
+      ],
+      "instructions": [
+        "Mash bananas; whisk with sugar, eggs, butter, and vanilla.",
+        "Stir in flour, baking soda, and salt.",
+        "Pour into greased loaf pan.",
+        "Bake at 350°F (175°C) until a tester comes out clean.",
+        "Cool before slicing."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 60,
+      "servings": 12,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 240,
+      "tags": [
+        "Quick Bread",
+        "Baking"
+      ],
+      "image": "https://www.allrecipes.com/thmb/7ZFMvEiIZyH6Qs-YK-yaUemOuLc=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/20144-banana-banana-bread-VAT-008-3x2-B-d80284aa9ca94a1cb41b1b4b1af6d14b.jpg",
+      "rating": 4.7,
+      "reviewCount": 915,
+      "mealType": [
+        "Dessert",
+        "Snack"
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Sticky Toffee Pudding",
+      "ingredients": [
+        "Dates",
+        "Butter",
+        "Brown sugar",
+        "Eggs",
+        "Flour",
+        "Baking soda",
+        "Heavy cream",
+        "Golden syrup"
+      ],
+      "instructions": [
+        "Soften chopped dates in hot water with baking soda.",
+        "Cream butter and sugar; beat in eggs.",
+        "Fold in flour and dates; bake until risen.",
+        "Simmer cream, butter, and sugar for toffee sauce.",
+        "Drench warm pudding with sauce."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 50,
+      "servings": 8,
+      "difficulty": "Medium",
+      "cuisine": "British",
+      "caloriesPerServing": 480,
+      "tags": [
+        "Cake",
+        "Comfort Food"
+      ],
+      "image": "https://imgs.search.brave.com/v7eq8jpaG_iYhoACY1h8Jc2h2ge0-ft-sPbuGN4zn5g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aW1l/b2ZyZWNpcGVzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NS8xMS9DbGFzc2lj/LVN0aWNreS1Ub2Zm/ZWUtUHVkZGluZy0y/LndlYnA",
+      "rating": 4.6,
+      "reviewCount": 267,
+      "mealType": [
+        "Dessert"
+      ]
+    },
+    {
+      "id": 64,
+      "name": "BraveTart Chocolate Chip Cookies",
+      "ingredients": [
+        "All-purpose flour",
+        "Baking soda",
+        "Unsalted butter",
+        "Sugar and brown sugar",
+        "Egg",
+        "Vanilla",
+        "Chocolate"
+      ],
+      "instructions": [
+        "Whisk dry ingredients.",
+        "Cream butter and sugars; add egg and vanilla.",
+        "Fold in dry mix and chopped chocolate.",
+        "Scoop and chill briefly.",
+        "Bake until edges are set and centers soft."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 12,
+      "servings": 24,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 210,
+      "tags": [
+        "Cookies",
+        "Baking"
+      ],
+      "image": "https://www.seriouseats.com/thmb/9iiwngulaVn6RpWqf1kVcY5YpKQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2017__08__20170727-bravetart-chocolate-chip-cookies-vicky-wasik-13-fe97275bb3cc4fde86c4dffb141d0b69.jpg",
+      "rating": 4.7,
+      "reviewCount": 332,
+      "mealType": [
+        "Dessert",
+        "Snack"
+      ]
+    },
+    {
+      "id": 65,
+      "name": "Chef John's Chicken Tikka Masala",
+      "ingredients": [
+        "Chicken thighs",
+        "Curry powder",
+        "Garlic and ginger",
+        "Tomato sauce",
+        "Coconut milk",
+        "Cilantro"
+      ],
+      "instructions": [
+        "Marinate chicken with spices, garlic, and ginger.",
+        "Brown chicken; set aside.",
+        "Simmer tomato sauce with spices.",
+        "Add coconut milk and chicken; simmer to thicken.",
+        "Garnish with cilantro."
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 40,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "caloriesPerServing": 540,
+      "tags": [
+        "Curry",
+        "Gluten-Free"
+      ],
+      "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2023%2F01%2F31%2F239867chef-johns-chicken-tikka-masala-ddmfs-3X4-0572.jpg&q=60&c=sc&poi=auto&orient=true&h=512",
+      "rating": 4.6,
+      "reviewCount": 458,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 66,
+      "name": "Quick Baked Chicken Parmesan",
+      "ingredients": [
+        "Chicken cutlets",
+        "Breadcrumbs",
+        "Parmesan",
+        "Marinara",
+        "Mozzarella",
+        "Olive oil spray"
+      ],
+      "instructions": [
+        "Coat chicken with crumbs and Parmesan.",
+        "Bake until nearly cooked.",
+        "Top with marinara and mozzarella.",
+        "Bake until cheese melts and chicken is done.",
+        "Serve hot."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 20,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Italian-American",
+      "caloriesPerServing": 580,
+      "tags": [
+        "Baked",
+        "Weeknight"
+      ],
+      "image": "https://www.allrecipes.com/thmb/9GPFkQpu0rZEDj1FtbSVcM2oSC8=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/239507-quick-baked-chicken-parmesan-DDMFS-4x3-1811756bffbb4b02a9a6efbefde02423.jpg",
+      "rating": 4.4,
+      "reviewCount": 227,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 67,
+      "name": "Classic Pad Thai",
+      "ingredients": [
+        "Rice noodles",
+        "Shrimp or chicken",
+        "Eggs",
+        "Fish sauce",
+        "Tamarind",
+        "Brown sugar",
+        "Bean sprouts",
+        "Peanuts"
+      ],
+      "instructions": [
+        "Soak noodles; drain.",
+        "Stir-fry protein and eggs.",
+        "Add noodles and sauce (fish sauce, tamarind, sugar).",
+        "Toss in sprouts and scallions.",
+        "Serve with peanuts and lime."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 10,
+      "servings": 3,
+      "difficulty": "Medium",
+      "cuisine": "Thai",
+      "caloriesPerServing": 500,
+      "tags": [
+        "Stir-Fry",
+        "Noodles"
+      ],
+      "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7943545.jpg&q=60&c=sc&poi=auto&orient=true&h=512",
+      "rating": 4.5,
+      "reviewCount": 389,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 68,
+      "name": "Winter Vegetable & Lentil Soup",
+      "ingredients": [
+        "Red lentils",
+        "Leek",
+        "Carrot",
+        "Garlic",
+        "Vegetable stock",
+        "Bay leaf",
+        "Olive oil"
+      ],
+      "instructions": [
+        "Sauté leek, carrot, and garlic.",
+        "Add lentils, stock, and bay; simmer until tender.",
+        "Season to taste and serve warm."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 30,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "British",
+      "caloriesPerServing": 260,
+      "tags": [
+        "Soup",
+        "Healthy"
+      ],
+      "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/winter-soup-65c837b.jpg?quality=90&webp=true&resize=440,400",
+      "rating": 4.3,
+      "reviewCount": 168,
+      "mealType": [
+        "Lunch",
+        "Dinner"
+      ]
+    },
+    {
+      "id": 69,
+      "name": "Taquero-Style Guacamole",
+      "ingredients": [
+        "Avocados",
+        "Tomatillos",
+        "Jalapeños",
+        "Cilantro",
+        "Lime juice",
+        "Salt",
+        "Water"
+      ],
+      "instructions": [
+        "Blend tomatillos, jalapeños, cilantro, water, and salt.",
+        "Add avocados and lime; blend until pourable.",
+        "Adjust salt and serve with tacos."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 0,
+      "servings": 8,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 120,
+      "tags": [
+        "Sauce",
+        "Tacos"
+      ],
+      "image": "https://imgs.search.brave.com/rvhrzbOQ9XYPt5qZI9VVxGLgJPHoSLlunTvpPeVAO1M/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tdXli/dWVub2Jsb2cuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIy/LzA4L2NyZWFteS10/YXF1ZXJpYS1ndWFj/YW1vbGUtc2Fsc2Eu/anBlZw",
+      "rating": 4.6,
+      "reviewCount": 141,
+      "mealType": [
+        "Appetizer",
+        "Snack"
+      ]
+    },
+    {
+      "id": 70,
+      "name": "Authentic Tiramisu",
+      "ingredients": [
+        "Ladyfingers",
+        "Espresso",
+        "Mascarpone",
+        "Eggs",
+        "Sugar",
+        "Cocoa powder"
+      ],
+      "instructions": [
+        "Whip egg yolks with sugar; fold into mascarpone.",
+        "Dip ladyfingers quickly in espresso.",
+        "Layer cookies and cream; repeat.",
+        "Chill several hours; dust with cocoa."
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 0,
+      "servings": 8,
+      "difficulty": "Medium",
+      "cuisine": "Italian",
+      "caloriesPerServing": 410,
+      "tags": [
+        "No-Bake",
+        "Entertaining"
+      ],
+      "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2021%2F01%2F11%2FAuthentic-tiramisu-by-Renee-Paj-3416470_original.jpg&q=60&c=sc&poi=auto&orient=true&h=512",
+      "rating": 4.8,
+      "reviewCount": 562,
+      "mealType": [
+        "Dessert"
+      ]
+    },
+    {
+      "id": 71,
+      "name": "Joy's Easy Banana Bread",
+      "ingredients": [
+        "Ripe bananas",
+        "Flour",
+        "Sugar",
+        "Eggs",
+        "Melted butter",
+        "Baking soda",
+        "Salt"
+      ],
+      "instructions": [
+        "Combine mashed bananas with wet ingredients.",
+        "Stir in dry ingredients just to combine.",
+        "Bake in greased loaf pan until set.",
+        "Cool on rack and slice."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 55,
+      "servings": 10,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 230,
+      "tags": [
+        "Quick Bread",
+        "Beginner"
+      ],
+      "image": "https://www.allrecipes.com/thmb/6IFD84J_DieJQTAYJf72ORtCgZ8=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/241707-joys-easy-banana-bread-ddmfs-4x3-59ebd71876a046e6b485b38bf99a8c73.jpg",
+      "rating": 4.5,
+      "reviewCount": 357,
+      "mealType": [
+        "Dessert",
+        "Snack"
+      ]
+    },
+    {
+      "id": 72,
+      "name": "Self-Saucing Sticky Toffee Chocolate Pudding",
+      "ingredients": [
+        "Flour",
+        "Cocoa powder",
+        "Brown sugar",
+        "Dates",
+        "Milk",
+        "Butter",
+        "Baking powder",
+        "Boiling water"
+      ],
+      "instructions": [
+        "Mix dry ingredients and chopped dates.",
+        "Stir in milk and melted butter; spread in dish.",
+        "Sprinkle with brown sugar and cocoa.",
+        "Pour over boiling water to create sauce.",
+        "Bake until sponge rises and sauce forms."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 40,
+      "servings": 8,
+      "difficulty": "Easy",
+      "cuisine": "British",
+      "caloriesPerServing": 460,
+      "tags": [
+        "Pudding",
+        "Comfort Food"
+      ],
+      "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/12/Molten_chocolate_sticky_toffee_pudding-694940c.jpg?quality=90&webp=true&resize=900,817",
+      "rating": 4.4,
+      "reviewCount": 178,
+      "mealType": [
+        "Dessert"
+      ]
+    },
+    {
+      "id": 73,
+      "name": "Roasted Garlic Guacamole",
+      "ingredients": [
+        "Avocados",
+        "Roasted garlic",
+        "Lime juice",
+        "Cilantro",
+        "Red onion",
+        "Salt"
+      ],
+      "instructions": [
+        "Mash avocados with lime and salt.",
+        "Fold in roasted garlic, onion, and cilantro.",
+        "Adjust seasoning and serve."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 30,
+      "servings": 6,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 170,
+      "tags": [
+        "Dip",
+        "Game Day"
+      ],
+      "image": "https://www.seriouseats.com/thmb/W7F0RnVI-lNsLnz8nRPiUn1Jdx4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2012__01__20120115-guacamole-variations-17-72ce1c1b6b104451add38a6b2210f2a1.jpg",
+      "rating": 4.6,
+      "reviewCount": 129,
+      "mealType": [
+        "Appetizer",
+        "Snack"
+      ]
+    },
+    {
+      "id": 74,
+      "name": "Indian Chicken Tikka Masala (Weeknight)",
+      "ingredients": [
+        "Chicken breasts",
+        "Yogurt",
+        "Curry paste",
+        "Tomatoes",
+        "Cream",
+        "Garlic",
+        "Ginger"
+      ],
+      "instructions": [
+        "Marinate chicken briefly in yogurt and curry paste.",
+        "Brown chicken pieces.",
+        "Simmer tomatoes with garlic and ginger.",
+        "Add cream and chicken; cook until done.",
+        "Serve with rice."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 25,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Indian",
+      "caloriesPerServing": 500,
+      "tags": [
+        "Quick",
+        "Curry"
+      ],
+      "image": "https://www.allrecipes.com/thmb/_HOSHydeyK-7vsmaeG1HVOTt7qE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/5133952-indian-chicken-tikka-masala-geneviever-4x3-1-3bb9baaf0fbd4397b378dd74ae929d28.jpg",
+      "rating": 4.3,
+      "reviewCount": 221,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 75,
+      "name": "Green Shakshuka with Harissa & Crispy Shallots",
+      "ingredients": [
+        "Greens (spinach, kale, herbs)",
+        "Harissa",
+        "Shallots",
+        "Garlic",
+        "Eggs",
+        "Olive oil",
+        "Yogurt",
+        "Salt"
+      ],
+      "instructions": [
+        "Crisp shallots in oil; set aside.",
+        "Wilt greens with garlic and harissa; add splash of water.",
+        "Make wells; crack in eggs and cover to set.",
+        "Top with yogurt and crispy shallots."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 15,
+      "servings": 3,
+      "difficulty": "Easy",
+      "cuisine": "Middle Eastern",
+      "caloriesPerServing": 300,
+      "tags": [
+        "Eggs",
+        "Vegetables"
+      ],
+      "image": "https://images.immediate.co.uk/production/volatile/sites/30/2022/12/Green-shakshuka-7ec52b1.jpg?quality=90&webp=true&resize=900,817",
+      "rating": 4.5,
+      "reviewCount": 144,
+      "mealType": [
+        "Breakfast",
+        "Brunch"
+      ]
+    },
+    {
+      "id": 76,
+      "name": "Kimchi Fried Rice (Kimchi Bokkeumbap)",
+      "ingredients": [
+        "Day-old cooked rice",
+        "Kimchi, chopped",
+        "Kimchi juice",
+        "Gochujang",
+        "Scallions, sliced",
+        "Sesame oil",
+        "Soy sauce",
+        "Sugar",
+        "Neutral oil",
+        "Eggs (for topping)",
+        "Sesame seeds"
+      ],
+      "instructions": [
+        "Heat oil in a wok; sauté chopped kimchi until fragrant.",
+        "Stir in kimchi juice, gochujang, soy sauce, and a pinch of sugar.",
+        "Add rice; stir-fry until hot and evenly colored.",
+        "Finish with sesame oil and scallions.",
+        "Top with fried eggs and sesame seeds; serve."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 10,
+      "servings": 2,
+      "difficulty": "Easy",
+      "cuisine": "Korean",
+      "caloriesPerServing": 420,
+      "tags": [
+        "Rice",
+        "One-Pan",
+        "Spicy"
+      ],
+      "image": "https://www.seriouseats.com/thmb/TJLGtYBOwv3qc522dfNu-hYmi9A=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2011__10__20111012-127355-dinner-tonight-kimchi-fried-rice-primary-4740b52bd4ee43d490e1ea20c75d4d6c.jpg",
+      "rating": 4.6,
+      "reviewCount": 287,
+      "mealType": [
+        "Lunch",
+        "Dinner"
+      ]
+    },
+    {
+      "id": 77,
+      "name": "Okonomiyaki (Japanese Savory Pancake)",
+      "ingredients": [
+        "All-purpose flour",
+        "Dashi or water",
+        "Eggs",
+        "Cabbage, finely shredded",
+        "Scallions, sliced",
+        "Bacon or pork belly slices",
+        "Okonomiyaki sauce",
+        "Japanese mayo",
+        "Bonito flakes",
+        "Aonori (seaweed flakes)",
+        "Oil"
+      ],
+      "instructions": [
+        "Whisk flour with dashi and eggs to a smooth batter.",
+        "Fold in cabbage and scallions.",
+        "Pour batter in an oiled skillet; lay bacon on top.",
+        "Cook until golden on both sides and set.",
+        "Top with okonomiyaki sauce, mayo, bonito, and aonori."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 15,
+      "servings": 2,
+      "difficulty": "Medium",
+      "cuisine": "Japanese",
+      "caloriesPerServing": 520,
+      "tags": [
+        "Pancake",
+        "Street Food"
+      ],
+      "image": "https://imgs.search.brave.com/HclDfYvgfnEHk5YH8ozcxE3tuWmMlmLrxdpzdBY4AN4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9qYXBh/bi5yZWNpcGV0aW5l/YXRzLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAxNi8wOS9P/a29ub21peWFraV8y/Ni0xLmpwZw",
+      "rating": 4.5,
+      "reviewCount": 173,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 78,
+      "name": "Pho Ga (Vietnamese Chicken Noodle Soup)",
+      "ingredients": [
+        "Chicken",
+        "Onion and ginger, charred",
+        "Star anise",
+        "Cinnamon",
+        "Cloves",
+        "Fish sauce",
+        "Sugar",
+        "Rice noodles",
+        "Scallions",
+        "Cilantro",
+        "Thai basil",
+        "Lime",
+        "Bean sprouts",
+        "Chiles"
+      ],
+      "instructions": [
+        "Simmer chicken with charred onion, ginger, and spices until tender.",
+        "Shred chicken; strain broth and season with fish sauce and sugar.",
+        "Cook rice noodles per package.",
+        "Divide noodles and chicken in bowls; ladle hot broth.",
+        "Garnish with herbs, lime, sprouts, and chiles."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 60,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Vietnamese",
+      "caloriesPerServing": 410,
+      "tags": [
+        "Soup",
+        "Noodles",
+        "Comfort Food"
+      ],
+      "image": "https://imgs.search.brave.com/W15GeQEYt9OknWZUQW6N0si1gBauemO0gOkHlwbX1Bc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90YWtl/c3R3b2VnZ3MuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIy/LzExL1BobyVDQyU5/QiVDQyU4OS1HYS1W/aWV0bmFtZXNlLUNo/aWNrZW4tUGhvLVNv/dXAtVGFrZXN0d29l/Z2dzLUZpbmFsLVBo/b3RvZ3JhcGh5LTQu/anBn",
+      "rating": 4.7,
+      "reviewCount": 312,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 79,
+      "name": "Chiles Rellenos (Cheese-Stuffed Poblano Peppers)",
+      "ingredients": [
+        "Poblano peppers",
+        "Oaxaca or Monterey Jack cheese",
+        "Eggs",
+        "Flour",
+        "Salt",
+        "Neutral oil for frying",
+        "Tomato salsa or ranchero sauce"
+      ],
+      "instructions": [
+        "Roast poblanos, peel, and carefully remove seeds.",
+        "Stuff each with cheese.",
+        "Whip egg whites to stiff peaks; fold in yolks for batter.",
+        "Dust peppers with flour, dip in batter, and fry until golden.",
+        "Serve with warm tomato salsa."
+      ],
+      "prepTimeMinutes": 30,
+      "cookTimeMinutes": 20,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 430,
+      "tags": [
+        "Vegetarian",
+        "Fried",
+        "Cheesy"
+      ],
+      "image": "https://imgs.search.brave.com/lHVN1D1zkvhPZd1ZVFYc9mmdlg8wcNIAhcm_-RKmQRQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dGhlc3BydWNlZWF0/cy5jb20vdGhtYi83/NFJaRWZXN1R6dEwx/YkczVzZqaVpLblR3/c2c9LzE1MDB4MC9m/aWx0ZXJzOm5vX3Vw/c2NhbGUoKTptYXhf/Ynl0ZXMoMTUwMDAw/KTpzdHJpcF9pY2Mo/KS8xMjMtaGVyby1n/cmlsbGVkLWNoaWxl/LXJlbGxlbm9zLTU3/MmY2NTIxM2RmNzhj/MDM4ZTQxMDQ2MC5q/cGc",
+      "rating": 4.4,
+      "reviewCount": 158,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 80,
+      "name": "Paella Valenciana",
+      "ingredients": [
+        "Bomba or Calasparra rice",
+        "Chicken pieces",
+        "Rabbit (optional)",
+        "Green beans",
+        "Garrofó (lima beans)",
+        "Tomato, grated",
+        "Saffron",
+        "Paprika",
+        "Olive oil",
+        "Chicken stock",
+        "Rosemary",
+        "Salt"
+      ],
+      "instructions": [
+        "Brown meats in a wide paella pan with olive oil.",
+        "Add beans and sauté briefly; stir in grated tomato and paprika.",
+        "Pour in stock; season with saffron and salt; bring to a boil.",
+        "Add rice and distribute evenly; cook uncovered until rice is tender and socarrat forms.",
+        "Rest 5 minutes with rosemary sprig; serve."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 40,
+      "servings": 6,
+      "difficulty": "Hard",
+      "cuisine": "Spanish",
+      "caloriesPerServing": 560,
+      "tags": [
+        "Rice",
+        "One-Pan",
+        "Traditional"
+      ],
+      "image": "https://imgs.search.brave.com/2Gvdzg3EkTx3Nt6ZuEDbuzz96f3WZ1YgEK90EjbBsDs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/c3BhaW5mb29kc2hl/cnBhcy5jb20vc2Zz/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE2/LzExL3BhZWxsYS12/YWxlbmNpYW5hLXJl/Y2lwZS0xLmpwZw",
+      "rating": 4.6,
+      "reviewCount": 201,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 81,
+      "name": "Coq au Vin",
+      "ingredients": [
+        "Bone-in chicken pieces",
+        "Bacon, diced",
+        "Mushrooms, halved",
+        "Pearl onions",
+        "Red wine",
+        "Chicken stock",
+        "Tomato paste",
+        "Garlic",
+        "Thyme",
+        "Bay leaf",
+        "Butter",
+        "Flour",
+        "Salt and pepper"
+      ],
+      "instructions": [
+        "Brown bacon; remove. Brown chicken in rendered fat.",
+        "Add mushrooms, onions, garlic; sauté.",
+        "Stir in tomato paste, wine, stock, thyme, bay; simmer until chicken is tender.",
+        "Make a beurre manié (butter + flour) and whisk in to thicken.",
+        "Season and serve with mashed potatoes."
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 60,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "French",
+      "caloriesPerServing": 610,
+      "tags": [
+        "Braised",
+        "Comfort Food"
+      ],
+      "image": "https://www.simplyrecipes.com/thmb/GSdUAtAjWR5iVqNnsaNEY1OgcZU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2005__10__coq-au-vin-horiz-a-1800-sally-244e2d1176de4d808b46df9bbe449862.jpg",
+      "rating": 4.7,
+      "reviewCount": 193,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 82,
+      "name": "Doro Wat (Ethiopian Chicken Stew)",
+      "ingredients": [
+        "Chicken drumsticks or thighs",
+        "Niter kibbeh (spiced butter) or butter",
+        "Onions, finely chopped",
+        "Garlic and ginger",
+        "Berbere spice",
+        "Tomato paste",
+        "Chicken stock",
+        "Hard-boiled eggs",
+        "Lemon juice",
+        "Salt"
+      ],
+      "instructions": [
+        "Slowly cook onions in niter kibbeh until deeply caramelized.",
+        "Add garlic, ginger, berbere, and tomato paste; cook until fragrant.",
+        "Add chicken and stock; simmer until tender and thick.",
+        "Stir in lemon juice; nestle hard-boiled eggs to warm.",
+        "Serve with injera."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 70,
+      "servings": 6,
+      "difficulty": "Medium",
+      "cuisine": "Ethiopian",
+      "caloriesPerServing": 520,
+      "tags": [
+        "Stew",
+        "Spicy",
+        "Gluten-Free"
+      ],
+      "image": "https://imgs.search.brave.com/Wy4qljhvr10LDcQHdF1Se-or2jZaa5intP5aD0aXO54/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/cGljZWdpcmxraXRj/aGVuLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMy8xMC9E/b3JvLVdhdC1FdGhp/b3BpYW4tQ2hpY2tl/bi1TdGV3LndlYnA",
+      "rating": 4.5,
+      "reviewCount": 134,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 83,
+      "name": "Tabbouleh",
+      "ingredients": [
+        "Fine bulgur",
+        "Parsley, finely chopped",
+        "Mint, finely chopped",
+        "Tomatoes, diced",
+        "Cucumber, diced",
+        "Scallions, sliced",
+        "Lemon juice",
+        "Olive oil",
+        "Salt and pepper"
+      ],
+      "instructions": [
+        "Soak bulgur in boiling water until tender; drain well.",
+        "Mix with parsley, mint, tomatoes, cucumber, and scallions.",
+        "Dress with lemon juice, olive oil, salt, and pepper.",
+        "Chill 20 minutes; serve."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 0,
+      "servings": 6,
+      "difficulty": "Easy",
+      "cuisine": "Lebanese",
+      "caloriesPerServing": 180,
+      "tags": [
+        "Salad",
+        "Vegetarian",
+        "Herby"
+      ],
+      "image": "https://cookieandkate.com/images/2019/07/best-tabbouleh-recipe-3-1098x1650.jpg",
+      "rating": 4.4,
+      "reviewCount": 211,
+      "mealType": [
+        "Side Dish",
+        "Lunch"
+      ]
+    },
+    {
+      "id": 84,
+      "name": "Lomo Saltado",
+      "ingredients": [
+        "Beef sirloin, sliced",
+        "Red onion, wedges",
+        "Tomatoes, wedges",
+        "Aji amarillo paste",
+        "Soy sauce",
+        "Vinegar",
+        "Cilantro",
+        "French fries (for serving)",
+        "Cooked rice (for serving)",
+        "Oil",
+        "Salt and pepper"
+      ],
+      "instructions": [
+        "Stir-fry beef over high heat; season and remove.",
+        "Sauté onions and tomatoes briefly; return beef.",
+        "Add aji amarillo, soy sauce, and vinegar; toss quickly.",
+        "Finish with cilantro and serve with fries and rice."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 10,
+      "servings": 3,
+      "difficulty": "Easy",
+      "cuisine": "Peruvian",
+      "caloriesPerServing": 520,
+      "tags": [
+        "Stir-Fry",
+        "Fusion",
+        "Beef"
+      ],
+      "image": "https://imgs.search.brave.com/ZP0yylzLyiXYzEN1TXl2aXV8XllI1xs28Q9f858f3F8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZWNl/dGFzZGVjb2NpbmEu/ZWxtdW5kby5lcy93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNC8w/Mi9sb21vLXNhbHRh/ZG8tMTAyNHg2NTcu/anBn",
+      "rating": 4.6,
+      "reviewCount": 166,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 85,
+      "name": "Chicken Souvlaki with Tzatziki",
+      "ingredients": [
+        "Chicken thighs, cubed",
+        "Olive oil",
+        "Lemon juice",
+        "Garlic",
+        "Oregano",
+        "Salt and pepper",
+        "Skewers",
+        "Greek yogurt",
+        "Cucumber, grated",
+        "Dill",
+        "Red wine vinegar"
+      ],
+      "instructions": [
+        "Marinate chicken with oil, lemon, garlic, oregano, salt, and pepper 30 minutes.",
+        "Thread onto skewers and grill until cooked.",
+        "Mix yogurt, grated cucumber, dill, vinegar, salt for tzatziki.",
+        "Serve skewers with tzatziki and pita."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 12,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Greek",
+      "caloriesPerServing": 430,
+      "tags": [
+        "Grilling",
+        "Skewers",
+        "Yogurt Sauce"
+      ],
+      "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chicken_souvlaki-62e4d17.jpg?quality=90&webp=true&resize=440,400",
+      "rating": 4.5,
+      "reviewCount": 139,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 86,
+      "name": "Lahmacun (Turkish Flatbread with Spiced Lamb)",
+      "ingredients": [
+        "Pizza dough or flatbread dough",
+        "Ground lamb",
+        "Onion, grated",
+        "Tomato, finely chopped",
+        "Parsley, chopped",
+        "Tomato paste",
+        "Paprika",
+        "Cumin",
+        "Aleppo pepper or chili flakes",
+        "Olive oil",
+        "Salt"
+      ],
+      "instructions": [
+        "Heat a stone or baking sheet at 500°F (260°C).",
+        "Mix lamb with onion, tomato, parsley, tomato paste, spices, oil, and salt.",
+        "Roll dough very thin; spread a thin layer of topping.",
+        "Bake until edges crisp and topping cooked, 6-8 minutes.",
+        "Serve with lemon and herbs; roll and eat."
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 8,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Turkish",
+      "caloriesPerServing": 460,
+      "tags": [
+        "Flatbread",
+        "Street Food"
+      ],
+      "image": "https://images.immediate.co.uk/production/volatile/sites/30/2022/09/Lahmacun-1-c4dc646.jpg?quality=90&webp=true&resize=1060,962",
+      "rating": 4.4,
+      "reviewCount": 102,
+      "mealType": [
+        "Dinner",
+        "Lunch"
+      ]
+    },
+    {
+      "id": 87,
+      "name": "Chicken Pastilla (Bastilla)",
+      "ingredients": [
+        "Chicken thighs",
+        "Onions, sliced",
+        "Cinnamon",
+        "Ginger",
+        "Saffron",
+        "Sugar",
+        "Eggs",
+        "Almonds, toasted and chopped",
+        "Phyllo dough",
+        "Butter",
+        "Powdered sugar",
+        "Cinnamon (for dusting)"
+      ],
+      "instructions": [
+        "Stew chicken with onions and spices; shred meat.",
+        "Reduce cooking liquid; whisk in eggs to curdle slightly.",
+        "Layer buttered phyllo in a pan; add chicken, egg mixture, and almonds.",
+        "Fold and bake until golden.",
+        "Dust with powdered sugar and cinnamon; slice."
+      ],
+      "prepTimeMinutes": 40,
+      "cookTimeMinutes": 45,
+      "servings": 6,
+      "difficulty": "Hard",
+      "cuisine": "Moroccan",
+      "caloriesPerServing": 520,
+      "tags": [
+        "Pie",
+        "Sweet-Savory",
+        "Entertaining"
+      ],
+      "image": "https://www.thespruceeats.com/thmb/_xccfK3yLn6CAUkv95KNMGV4in0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/mrouzia---moroccan-tagine-with-raisins--almonds-and-honey-95509356-5a9b3c481f4e130036110111.jpg",
+      "rating": 4.3,
+      "reviewCount": 121,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 88,
+      "name": "Masoor Dal Tadka (Red Lentil Dal)",
+      "ingredients": [
+        "Red lentils (masoor dal)",
+        "Turmeric",
+        "Salt",
+        "Ghee or oil",
+        "Cumin seeds",
+        "Garlic, sliced",
+        "Onion, chopped",
+        "Tomato, chopped",
+        "Green chile",
+        "Cilantro",
+        "Lemon wedges"
+      ],
+      "instructions": [
+        "Simmer lentils with turmeric and salt until soft; whisk to creamy.",
+        "In ghee, bloom cumin; sauté garlic, onion, tomato, and chile.",
+        "Pour tadka over dal; simmer 2 minutes.",
+        "Garnish with cilantro and serve with rice or roti."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 25,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Indian",
+      "caloriesPerServing": 300,
+      "tags": [
+        "Vegan",
+        "Gluten-Free",
+        "Comfort Food"
+      ],
+      "image": "https://imgs.search.brave.com/rsFrviMvC-wafbHSp9TPMHlE9i5lc_AWuAvHORtHUks/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhlY3VyaW91c2No/aWNrcGVhLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxOS8w/NC9tYXNvb3ItdGFk/a2EtZGFsLTQuanBn",
+      "rating": 4.7,
+      "reviewCount": 244,
+      "mealType": [
+        "Dinner",
+        "Lunch"
+      ]
+    },
+    {
+      "id": 89,
+      "name": "Risotto alla Milanese",
+      "ingredients": [
+        "Arborio or Carnaroli rice",
+        "Butter",
+        "Onion, minced",
+        "White wine",
+        "Chicken or veal stock, hot",
+        "Saffron",
+        "Parmesan, grated",
+        "Salt"
+      ],
+      "instructions": [
+        "Sweat onion in butter; add rice and toast.",
+        "Deglaze with wine; stir until absorbed.",
+        "Add hot stock a ladle at a time, stirring often.",
+        "Bloom saffron in stock; add midway.",
+        "Finish with butter and Parmesan to all'onda; season."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 25,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Italian",
+      "caloriesPerServing": 460,
+      "tags": [
+        "Rice",
+        "Creamy",
+        "Vegetarian"
+      ],
+      "image": "https://imgs.search.brave.com/HHMaVSoqLtpnxiCSQTh6hoCC-ifiZuJegQJINDTaK-0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhlbWVkaXRlcnJh/bmVhbmRpc2guY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIz/LzEwL1Jpc290dG8t/YWxsYS1NaWxhbmVz/ZS0xMC5qcGc",
+      "rating": 4.6,
+      "reviewCount": 198,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 90,
+      "name": "New England Clam Chowder",
+      "ingredients": [
+        "Clams with juice",
+        "Bacon",
+        "Onion, diced",
+        "Celery, diced",
+        "Potatoes, diced",
+        "Butter",
+        "Flour",
+        "Milk or half-and-half",
+        "Bay leaf",
+        "Thyme",
+        "Salt and pepper"
+      ],
+      "instructions": [
+        "Cook bacon; reserve fat and crumble bacon.",
+        "Sauté onion and celery; add butter and flour for a roux.",
+        "Add clam juice, bay, thyme, and potatoes; simmer until tender.",
+        "Stir in milk and clams; heat gently.",
+        "Season and serve topped with bacon."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 30,
+      "servings": 6,
+      "difficulty": "Medium",
+      "cuisine": "American",
+      "caloriesPerServing": 460,
+      "tags": [
+        "Soup",
+        "Seafood",
+        "Creamy"
+      ],
+      "image": "https://www.seriouseats.com/thmb/PKeIZFYWvDz907_aQPGZ94GOFP0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2013__01__20130109-clam-chowder-36-369325ec69764006ac16d54450ba1222.jpg",
+      "rating": 4.5,
+      "reviewCount": 177,
+      "mealType": [
+        "Dinner",
+        "Lunch"
+      ]
+    },
+    {
+      "id": 91,
+      "name": "Mapo Tofu",
+      "ingredients": [
+        "Soft tofu, cubed",
+        "Ground pork",
+        "Doubanjiang (chili bean paste)",
+        "Douchi (fermented black beans)",
+        "Garlic and ginger",
+        "Sichuan peppercorns, ground",
+        "Chicken stock",
+        "Soy sauce",
+        "Shaoxing wine",
+        "Cornstarch slurry",
+        "Scallions",
+        "Oil"
+      ],
+      "instructions": [
+        "Bloom doubanjiang and douchi in oil until red and fragrant.",
+        "Add pork; cook through with garlic and ginger.",
+        "Pour in stock, soy, and wine; simmer.",
+        "Slide in tofu; gently heat.",
+        "Thicken with slurry; finish with Sichuan pepper and scallions."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 15,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Chinese",
+      "caloriesPerServing": 380,
+      "tags": [
+        "Spicy",
+        "Tofu",
+        "One-Pan"
+      ],
+      "image": "https://imgs.search.brave.com/sEgEj64L84nKLCZzLFu6B22DqB-NNOscVJQnReweeog/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGV3/b2tzb2ZsaWZlLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAx/OS8wNi9tYXBvLXRv/ZnUtMTMuanBn",
+      "rating": 4.7,
+      "reviewCount": 333,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 92,
+      "name": "Tonkatsu (Japanese Pork Cutlet)",
+      "ingredients": [
+        "Pork loin cutlets",
+        "Salt and pepper",
+        "Flour",
+        "Eggs, beaten",
+        "Panko breadcrumbs",
+        "Neutral oil for frying",
+        "Tonkatsu sauce",
+        "Shredded cabbage",
+        "Lemon wedges"
+      ],
+      "instructions": [
+        "Season cutlets; dredge in flour, dip in egg, and coat with panko.",
+        "Fry in 350°F (175°C) oil until golden and cooked through.",
+        "Drain on rack; slice.",
+        "Serve with tonkatsu sauce, cabbage, and lemon."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 10,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Japanese",
+      "caloriesPerServing": 540,
+      "tags": [
+        "Fried",
+        "Crispy"
+      ],
+      "image": "https://www.justonecookbook.com/wp-content/uploads/2024/09/Tonkatsu-Japanese-Pork-Cutlet-0030-II-1024x1536.jpg",
+      "rating": 4.6,
+      "reviewCount": 214,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 93,
+      "name": "Som Tam (Thai Green Papaya Salad)",
+      "ingredients": [
+        "Green papaya, shredded",
+        "Cherry tomatoes, halved",
+        "Green beans, cut",
+        "Garlic",
+        "Thai chiles",
+        "Palm sugar",
+        "Fish sauce",
+        "Lime juice",
+        "Roasted peanuts"
+      ],
+      "instructions": [
+        "Pound garlic and chiles with palm sugar in a mortar.",
+        "Add fish sauce and lime; mix.",
+        "Lightly bruise green beans and tomatoes; add papaya and toss.",
+        "Top with peanuts and serve immediately."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 0,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Thai",
+      "caloriesPerServing": 160,
+      "tags": [
+        "Salad",
+        "Spicy",
+        "No-Cook"
+      ],
+      "image": "https://imgs.search.brave.com/Ctk1_0o1iQ-I068zNb_yYjgr2flOqRz9obFQnUc3yng/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VyaW91c2VhdHMu/Y29tL3RobWIvLUhE/d3g2anFzN19yaXhf/RmZJaXhITzJkQTF3/PS8zNzV4MjUwL2Zp/bHRlcnM6bm9fdXBz/Y2FsZSgpOm1heF9i/eXRlcygxNTAwMDAp/OnN0cmlwX2ljYygp/LzIwMjEwOTI4LVNv/bS1UYW0tVGhhaS1n/cmVlbi1wYXBheWEt/c2FsYWQtdmlja3kt/d2FzaWstMjQtZjBk/NjY2ZmM2MDlmNDlh/MGI5ZjM0ODk3YmQy/YzYzMDMuanBn",
+      "rating": 4.4,
+      "reviewCount": 142,
+      "mealType": [
+        "Side Dish",
+        "Lunch"
+      ]
+    },
+    {
+      "id": 94,
+      "name": "Filipino Chicken Adobo",
+      "ingredients": [
+        "Chicken thighs",
+        "Soy sauce",
+        "Cane vinegar",
+        "Garlic, smashed",
+        "Bay leaves",
+        "Black peppercorns",
+        "Brown sugar",
+        "Water",
+        "Oil"
+      ],
+      "instructions": [
+        "Marinate chicken with soy, vinegar, garlic, bay, and pepper 30 minutes.",
+        "Sear chicken; add marinade, water, and sugar.",
+        "Simmer until tender and sauce reduces and glazes.",
+        "Serve with rice."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 35,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Filipino",
+      "caloriesPerServing": 480,
+      "tags": [
+        "Braised",
+        "Gluten-Free"
+      ],
+      "image": "https://imgs.search.brave.com/ywtAUdz-oKgwdf6nrLV4tB4vhJHl6wOzN6aX3qB7TQI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vcGhvdG9z/LnNtdWdtdWcuY29t/L0ZpbGlwaW5vLUNo/aWNrZW4tQWRvYm8v/aS01c3BKbkpSLzAv/ODU4ZWUwNGMvTS9D/aGlja2VuJTIwQWRv/Ym8lMjAwMy1NLmpw/Zz9yZXNpemU9NTk5/LDQwMCZzc2w9MQ",
+      "rating": 4.7,
+      "reviewCount": 256,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 95,
+      "name": "Jamaican Jerk Chicken",
+      "ingredients": [
+        "Chicken leg quarters",
+        "Scallions",
+        "Scotch bonnet peppers",
+        "Garlic and ginger",
+        "Thyme",
+        "Allspice",
+        "Brown sugar",
+        "Soy sauce",
+        "Lime juice",
+        "Oil",
+        "Salt"
+      ],
+      "instructions": [
+        "Blend marinade ingredients until smooth.",
+        "Marinate chicken at least 4 hours.",
+        "Grill over medium heat until charred and cooked through.",
+        "Rest and serve with lime."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 40,
+      "servings": 6,
+      "difficulty": "Medium",
+      "cuisine": "Jamaican",
+      "caloriesPerServing": 520,
+      "tags": [
+        "Grilling",
+        "Spicy",
+        "Caribbean"
+      ],
+      "image": "https://imgs.search.brave.com/qnvp_0c7AcsQ0Sy95SAU9zWrgV8sHwLXIjM7TYuIbY4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jYXJs/c2JhZGNyYXZpbmdz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyMS8wNy9qZXJr/LWNoaWNrZW4tNC5q/cGc",
+      "rating": 4.6,
+      "reviewCount": 189,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {
+      "id": 96,
+      "name": "Khachapuri (Georgian Cheese Bread, Adjaruli)",
+      "ingredients": [
+        "Bread flour",
+        "Yeast",
+        "Sugar",
+        "Salt",
+        "Warm water",
+        "Yogurt",
+        "Butter",
+        "Suluguni or mozzarella",
+        "Feta",
+        "Eggs"
+      ],
+      "instructions": [
+        "Make a soft dough; rise until doubled.",
+        "Mix cheeses.",
+        "Shape dough into boat; fill with cheese mixture.",
+        "Bake until golden; crack an egg on top and bake briefly to set.",
+        "Finish with butter and serve hot."
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 20,
+      "servings": 4,
+      "difficulty": "Medium",
+      "cuisine": "Georgian",
+      "caloriesPerServing": 600,
+      "tags": [
+        "Cheesy",
+        "Baking",
+        "Comfort Food"
+      ],
+      "image": "https://imgs.search.brave.com/2FysZHhw0O1MFOKKYyEapcpAgmOIO5ZFo4hSQT7KuGI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/a2luZ2FydGh1cmJh/a2luZy5jb20vc2l0/ZXMvZGVmYXVsdC9m/aWxlcy9zdHlsZXMv/ZmVhdHVyZWRfaW1h/Z2UvcHVibGljLzIw/MjEtMDIva2hhY2hh/cHVyaS5qcGc_aXRv/az1QR2pTWVNKaw",
+      "rating": 4.5,
+      "reviewCount": 131,
+      "mealType": [
+        "Dinner",
+        "Lunch"
+      ]
+    },
+    {
+      "id": 97,
+      "name": "Negroni",
+      "ingredients": [
+        "Gin",
+        "Campari",
+        "Sweet vermouth",
+        "Orange peel"
+      ],
+      "instructions": [
+        "Stir equal parts gin, Campari, and sweet vermouth with ice until chilled.",
+        "Strain over fresh ice in a rocks glass.",
+        "Express and garnish with an orange peel."
+      ],
+      "prepTimeMinutes": 3,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Italian",
+      "caloriesPerServing": 200,
+      "tags": [
+        "Cocktail",
+        "Aperitif",
+        "Classic"
+      ],
+      "image": "https://www.liquor.com/thmb/RaXwpOgNmF1_HklNLttj67_GMtA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/negroni-720x720-primary-535dee7b50914af1810b1927b69dbe46.jpg",
+      "rating": 4.8,
+      "reviewCount": 421,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 98,
+      "name": "Paloma",
+      "ingredients": [
+        "Blanco tequila",
+        "Grapefruit soda (or juice + club soda)",
+        "Lime juice",
+        "Salt for rim",
+        "Grapefruit wedge"
+      ],
+      "instructions": [
+        "Salt the rim of a highball glass if desired.",
+        "Add tequila and lime; fill with ice.",
+        "Top with grapefruit soda (or juice + soda); stir gently.",
+        "Garnish with grapefruit wedge."
+      ],
+      "prepTimeMinutes": 3,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 170,
+      "tags": [
+        "Cocktail",
+        "Citrus",
+        "Highball"
+      ],
+      "image": "https://www.liquor.com/thmb/GPPgcW0jtJh2iQeAUQaycKYYtbw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/paloma-1500x1500-hero-46383ed066d2400a8ddd7543261f36c2.jpg",
+      "rating": 4.7,
+      "reviewCount": 389,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 99,
+      "name": "Agua de Jamaica (Hibiscus Tea)",
+      "ingredients": [
+        "Dried hibiscus flowers",
+        "Water",
+        "Sugar",
+        "Lime juice (optional)"
+      ],
+      "instructions": [
+        "Boil water; steep hibiscus 10 minutes.",
+        "Strain; stir in sugar to taste.",
+        "Chill and add lime if desired; serve over ice."
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "servings": 6,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 90,
+      "tags": [
+        "Non-Alcoholic",
+        "Iced Tea",
+        "Refreshing"
+      ],
+      "image": "https://imgs.search.brave.com/BiG6mQzzylw0MooR5t0bJSMFc7hseWr3TTZZnmYMkg0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/Y2Fyb2xpbmVzY29v/a2luZy5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMTkvMDMv/YWd1YS1kZS1qYW1h/aWNhLWhpYmlzY3Vz/LXRlYS1waG90by5q/cGc",
+      "rating": 4.5,
+      "reviewCount": 147,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 100,
+      "name": "Iced Matcha Latte",
+      "ingredients": [
+        "Matcha powder",
+        "Hot water",
+        "Milk or non-dairy milk",
+        "Ice",
+        "Honey or simple syrup (optional)"
+      ],
+      "instructions": [
+        "Whisk matcha with hot water until smooth.",
+        "Fill a glass with ice; add milk.",
+        "Pour matcha over milk; sweeten to taste and stir."
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Japanese",
+      "caloriesPerServing": 120,
+      "tags": [
+        "Non-Alcoholic",
+        "Tea",
+        "Café"
+      ],
+      "image": "https://imgs.search.brave.com/-KjiacBr8fMHTcl-QwPxffC80WqAAN0TSnB8HNmBMrE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/bG92ZWFuZGxlbW9u/cy5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjMvMDYvaWNl/ZC1tYXRjaGEtbGF0/dGUtcmVjaXBlLmpw/Zw",
+      "rating": 4.4,
+      "reviewCount": 203,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 101,
+      "name": "Old Fashioned",
+      "ingredients": [
+        "Bourbon or rye whiskey",
+        "Simple syrup",
+        "Angostura bitters",
+        "Orange peel",
+        "Ice (large cube)"
+      ],
+      "instructions": [
+        "In a rocks glass, add simple syrup and bitters.",
+        "Add whiskey and a large ice cube.",
+        "Stir until chilled and slightly diluted.",
+        "Express orange peel over the glass and garnish."
+      ],
+      "prepTimeMinutes": 3,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 160,
+      "tags": [
+        "Cocktail",
+        "Classic",
+        "Whiskey"
+      ],
+      "image": "https://www.liquor.com/thmb/IgE3k1GbbNMWVCpmFI3-kKSx3eM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/bourbon-old-fashioned-4000x4000-primary-ig-f0ce04bec6754db187ab1e8a16fd45c3.jpg",
+      "rating": 4.8,
+      "reviewCount": 487,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Classic Margarita",
+      "ingredients": [
+        "Blanco tequila",
+        "Fresh lime juice",
+        "Cointreau or triple sec",
+        "Salt for rim",
+        "Lime wheel",
+        "Ice"
+      ],
+      "instructions": [
+        "Salt half the rim of a chilled rocks glass.",
+        "Shake tequila, lime juice, and Cointreau with ice.",
+        "Strain over fresh ice into the glass.",
+        "Garnish with a lime wheel."
+      ],
+      "prepTimeMinutes": 3,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 180,
+      "tags": [
+        "Cocktail",
+        "Citrus",
+        "Tequila"
+      ],
+      "image": "https://www.liquor.com/thmb/TNSRmlPvZbRnLAxTTYHMtag0oo0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/margarita-720x720-primary-f4a3b044e9a746d9b88890515c3a7328.jpg",
+      "rating": 4.7,
+      "reviewCount": 429,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 103,
+      "name": "Whiskey Sour",
+      "ingredients": [
+        "Bourbon",
+        "Fresh lemon juice",
+        "Simple syrup",
+        "Egg white (optional)",
+        "Angostura bitters (for garnish)",
+        "Ice"
+      ],
+      "instructions": [
+        "Dry shake bourbon, lemon, simple syrup, and egg white (if using).",
+        "Add ice and shake again until chilled.",
+        "Strain into a rocks glass over ice.",
+        "Dot with bitters to garnish."
+      ],
+      "prepTimeMinutes": 4,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 190,
+      "tags": [
+        "Cocktail",
+        "Sour",
+        "Whiskey"
+      ],
+      "image": "https://imgs.search.brave.com/SRhj5z425OVDnkdbHEjeaRGzlHpdwncactwQo_pXCkg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNTQv/NjEwLzkwNC9zbWFs/bC93aGlza2V5LXNv/dXItY29ja3RhaWwt/d2l0aC1sZW1vbi1h/bmQtY2hlcnJ5LW9u/LWJhci10b3AtcGhv/dG8uanBn",
+      "rating": 4.6,
+      "reviewCount": 312,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 104,
+      "name": "French 75",
+      "ingredients": [
+        "Gin",
+        "Fresh lemon juice",
+        "Simple syrup",
+        "Champagne",
+        "Lemon twist"
+      ],
+      "instructions": [
+        "Shake gin, lemon, and syrup with ice.",
+        "Strain into a flute and top with Champagne.",
+        "Garnish with a lemon twist."
+      ],
+      "prepTimeMinutes": 3,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "French",
+      "caloriesPerServing": 155,
+      "tags": [
+        "Cocktail",
+        "Sparkling",
+        "Gin"
+      ],
+      "image": "https://www.liquor.com/thmb/uuQZOeX-uGq4ayJhFR5D7tFxYvg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/french-75-4000x4000-primary-ig-861ae757fec64997a6136dbbf37da6f0.jpg",
+      "rating": 4.7,
+      "reviewCount": 221,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 105,
+      "name": "Espresso Martini",
+      "ingredients": [
+        "Vodka",
+        "Fresh espresso",
+        "Coffee liqueur",
+        "Simple syrup",
+        "Coffee beans (garnish)"
+      ],
+      "instructions": [
+        "Shake vodka, espresso, coffee liqueur, and syrup with ice.",
+        "Strain into a chilled coupe.",
+        "Garnish with three coffee beans."
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "British",
+      "caloriesPerServing": 190,
+      "tags": [
+        "Cocktail",
+        "Coffee",
+        "Dessert"
+      ],
+      "image": "https://www.liquor.com/thmb/cSbeCn34B68EJs6STAogw7mIwXM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/espresso-martini-4000x4000-primary-ig-3bf7e65d320b449085a2584fa70eb0d5.jpg",
+      "rating": 4.5,
+      "reviewCount": 268,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Manhattan",
+      "ingredients": [
+        "Rye whiskey",
+        "Sweet vermouth",
+        "Angostura bitters",
+        "Brandied cherry"
+      ],
+      "instructions": [
+        "Stir rye, vermouth, and bitters with ice until chilled.",
+        "Strain into a chilled coupe.",
+        "Garnish with a brandied cherry."
+      ],
+      "prepTimeMinutes": 3,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 165,
+      "tags": [
+        "Cocktail",
+        "Classic",
+        "Whiskey"
+      ],
+      "image": "https://www.liquor.com/thmb/GYAzfmYiAo4EZ38Ij_UrpgTPeNw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/manhattan-4000x4000-primary-ig-9c3d894510284e9d8fbd9c518d00790b.jpg",
+      "rating": 4.7,
+      "reviewCount": 301,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 107,
+      "name": "Moscow Mule",
+      "ingredients": [
+        "Vodka",
+        "Fresh lime juice",
+        "Ginger beer",
+        "Lime wedge",
+        "Mint (optional)"
+      ],
+      "instructions": [
+        "Fill a copper mug with ice.",
+        "Add vodka and lime juice.",
+        "Top with ginger beer and stir gently.",
+        "Garnish with lime and mint."
+      ],
+      "prepTimeMinutes": 2,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 150,
+      "tags": [
+        "Cocktail",
+        "Highball",
+        "Ginger"
+      ],
+      "image": "https://www.liquor.com/thmb/6f0GZ1oZjmvb0q00-5BsTJc1hNM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/moscow-mule-4000x4000-primary-ig-3a364d63e57b4a9b8cf82ec1dc54eb30.jpg",
+      "rating": 4.6,
+      "reviewCount": 354,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 108,
+      "name": "Mai Tai (Trader Vic-style)",
+      "ingredients": [
+        "Aged rum",
+        "Dark rum (float)",
+        "Orange curaçao",
+        "Orgeat syrup",
+        "Fresh lime juice",
+        "Mint sprig"
+      ],
+      "instructions": [
+        "Shake aged rum, curaçao, orgeat, and lime with ice.",
+        "Strain over crushed ice in a rocks glass.",
+        "Float dark rum and garnish with mint."
+      ],
+      "prepTimeMinutes": 4,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Medium",
+      "cuisine": "Polynesian",
+      "caloriesPerServing": 220,
+      "tags": [
+        "Cocktail",
+        "Tiki",
+        "Rum"
+      ],
+      "image": "https://www.liquor.com/thmb/GuhZOlPr6NJHUaou2ldlFWKylbU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__08__10101652__mai-tai-720x720-recipe-862a7d603e7e4e57a9ca95caee98a4a6.jpg",
+      "rating": 4.7,
+      "reviewCount": 276,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 109,
+      "name": "Pisco Sour",
+      "ingredients": [
+        "Pisco",
+        "Fresh lime juice",
+        "Simple syrup",
+        "Egg white",
+        "Angostura bitters"
+      ],
+      "instructions": [
+        "Dry shake all ingredients.",
+        "Add ice and shake again until frothy.",
+        "Strain into a coupe and dot with bitters."
+      ],
+      "prepTimeMinutes": 4,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Medium",
+      "cuisine": "Peruvian",
+      "caloriesPerServing": 190,
+      "tags": [
+        "Cocktail",
+        "Sour",
+        "Pisco"
+      ],
+      "image": "https://www.liquor.com/thmb/KYGy9ew2q16Otfj37mneK678gQA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__02__08143927__pisco-sour-720x720-recipe-9c46d52151e5445fa90bcf0394493060.jpg",
+      "rating": 4.6,
+      "reviewCount": 233,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 110,
+      "name": "Boulevardier",
+      "ingredients": [
+        "Bourbon or rye",
+        "Campari",
+        "Sweet vermouth",
+        "Orange twist"
+      ],
+      "instructions": [
+        "Stir whiskey, Campari, and sweet vermouth with ice.",
+        "Strain into a coupe or rocks glass over ice.",
+        "Garnish with an orange twist."
+      ],
+      "prepTimeMinutes": 3,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 190,
+      "tags": [
+        "Cocktail",
+        "Bitter",
+        "Whiskey"
+      ],
+      "image": "https://www.liquor.com/thmb/boQt-AytPVa9EOUN_tRTo7EcJsg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__09__12094720__Boulevardier-720x720-recipe-53da547e8cfc4bd79a393ac99891f5ba.jpg",
+      "rating": 4.5,
+      "reviewCount": 188,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 111,
+      "name": "Aperol Spritz",
+      "ingredients": [
+        "Aperol",
+        "Prosecco",
+        "Club soda",
+        "Orange slice",
+        "Ice"
+      ],
+      "instructions": [
+        "Fill a wine glass with ice.",
+        "Add Prosecco and Aperol (3:2).",
+        "Top with a splash of soda.",
+        "Garnish with an orange slice."
+      ],
+      "prepTimeMinutes": 2,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Italian",
+      "caloriesPerServing": 150,
+      "tags": [
+        "Cocktail",
+        "Spritz",
+        "Aperitif"
+      ],
+      "image": "https://www.liquor.com/thmb/IIIISme-EOH3vHQ1Os4EYz-sunM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/aperol-spritz-720x720-primary-985457b239d7427da2f8b4be17131caa.jpg",
+      "rating": 4.4,
+      "reviewCount": 319,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 112,
+      "name": "Dark 'n' Stormy",
+      "ingredients": [
+        "Goslings Black Seal rum",
+        "Ginger beer",
+        "Fresh lime juice",
+        "Lime wedge",
+        "Ice"
+      ],
+      "instructions": [
+        "Fill a highball with ice.",
+        "Add ginger beer and a squeeze of lime.",
+        "Float rum on top and garnish with lime."
+      ],
+      "prepTimeMinutes": 2,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Bermudian",
+      "caloriesPerServing": 170,
+      "tags": [
+        "Cocktail",
+        "Highball",
+        "Rum"
+      ],
+      "image": "https://www.liquor.com/thmb/m2RARXq2hVOM35HU4DdJ7iPD6FU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Dark_n_Stormy_Credit_Tim_Nusog_2500x2500_primary-57c1a6908c6d4da7a60dcaf66a342cc0.jpg",
+      "rating": 4.5,
+      "reviewCount": 211,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 113,
+      "name": "Spanish Red Sangria",
+      "ingredients": [
+        "Dry red wine",
+        "Brandy",
+        "Orange juice",
+        "Triple sec",
+        "Simple syrup",
+        "Orange, lemon, apple slices",
+        "Club soda"
+      ],
+      "instructions": [
+        "Combine wine, brandy, orange juice, triple sec, and syrup in a pitcher.",
+        "Add sliced fruit and chill at least 2 hours.",
+        "Top with club soda and serve over ice."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 0,
+      "servings": 6,
+      "difficulty": "Easy",
+      "cuisine": "Spanish",
+      "caloriesPerServing": 210,
+      "tags": [
+        "Cocktail",
+        "Pitcher",
+        "Fruit"
+      ],
+      "image": "https://imgs.search.brave.com/bCP_sB2pMVv2ULjmoeNVOs5Id4BwCsKdicfhjEKTlQc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcm9m/dXNpb25jdXJyeS5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MTgvMDYvUmVkLXdp/bmUtU2FuZ3JpYS1m/ZWF0dXJlLWltYWdl/LTMyMHgzMjAuanBn",
+      "rating": 4.6,
+      "reviewCount": 167,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 114,
+      "name": "Michelada",
+      "ingredients": [
+        "Light Mexican beer, chilled",
+        "Fresh lime juice",
+        "Hot sauce",
+        "Worcestershire sauce",
+        "Tomato or Clamato juice (optional)",
+        "Tajín or salt for rim",
+        "Ice"
+      ],
+      "instructions": [
+        "Rim a chilled pint glass with Tajín or salt.",
+        "Add lime juice, hot sauce, and Worcestershire (and tomato juice if using).",
+        "Fill with ice and top with beer; stir gently."
+      ],
+      "prepTimeMinutes": 3,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 140,
+      "tags": [
+        "Cocktail",
+        "Beer",
+        "Spicy"
+      ],
+      "image": "https://imgs.search.brave.com/QBm6lkxwjPSRe9XPlw3NawLFXSwRdJENqHClYkWL3iY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vY2hpY2Fu/b2VhdHMuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIyLzA3/L2NoaWNhbm8tZWF0/cy0xNjYwNi1FZGl0/LTgxOXgxMDI0Lmpw/Zz9yZXNpemU9ODE5/LDEwMjQmc3NsPTE",
+      "rating": 4.4,
+      "reviewCount": 142,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 115,
+      "name": "Thai Iced Tea",
+      "ingredients": [
+        "Thai tea mix",
+        "Hot water",
+        "Sugar",
+        "Sweetened condensed milk",
+        "Evaporated milk or half-and-half",
+        "Ice"
+      ],
+      "instructions": [
+        "Steep Thai tea in hot water 5 minutes; strain.",
+        "Stir in sugar and cool.",
+        "Pour over ice and top with condensed milk and evaporated milk."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 5,
+      "servings": 2,
+      "difficulty": "Easy",
+      "cuisine": "Thai",
+      "caloriesPerServing": 220,
+      "tags": [
+        "Non-Alcoholic",
+        "Iced Tea",
+        "Sweet"
+      ],
+      "image": "https://imgs.search.brave.com/MXNqTLaVojp6hrlbozvt0FhPF3LV3KmSimDDbLEyEP4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93aGl0/ZW9ucmljZWNvdXBs/ZS5jb20vcmVjaXBl/L2ltYWdlcy90aGFp/LWljZWQtdGVhLXJl/Y2lwZS0zLmpwZw",
+      "rating": 4.6,
+      "reviewCount": 198,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 116,
+      "name": "Horchata (Mexican Rice Drink)",
+      "ingredients": [
+        "Long-grain rice",
+        "Cinnamon sticks",
+        "Water",
+        "Evaporated milk",
+        "Sweetened condensed milk",
+        "Vanilla",
+        "Ice"
+      ],
+      "instructions": [
+        "Soak rice and cinnamon in water overnight; blend and strain.",
+        "Stir in evaporated milk, condensed milk, and vanilla.",
+        "Chill and serve over ice."
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 0,
+      "servings": 6,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 190,
+      "tags": [
+        "Non-Alcoholic",
+        "Rice Drink",
+        "Sweet"
+      ],
+      "image": "https://www.simplyrecipes.com/thmb/yW-CQhWbHcWr1vxtZ8qc4ewuy4o=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2020__04__Easy-Homemade-Horchata-LEAD-3-c861393234fa461d9bd14de39513ef74.jpg",
+      "rating": 4.5,
+      "reviewCount": 175,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 117,
+      "name": "Arnold Palmer",
+      "ingredients": [
+        "Unsweetened iced tea",
+        "Fresh lemonade",
+        "Lemon wheel",
+        "Ice"
+      ],
+      "instructions": [
+        "Fill a tall glass with ice.",
+        "Mix half iced tea and half lemonade.",
+        "Garnish with a lemon wheel."
+      ],
+      "prepTimeMinutes": 2,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 80,
+      "tags": [
+        "Non-Alcoholic",
+        "Iced Tea",
+        "Citrus"
+      ],
+      "image": "https://imgs.search.brave.com/MUIefV7MxZIvEAbX24oOeHdjpr5HckGPTUy5XVA9d6U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zLnlp/bWcuY29tL255L2Fw/aS9yZXMvMS4yL0NT/dVNBaXRIOGlTVkhD/N0QyYWNoSWctLS9Z/WEJ3YVdROWFHbG5h/R3hoYm1SbGNqdDNQ/VEV5TkRJN2FEMDJP/VGM3WTJZOWQyVmlj/QS0tL2h0dHBzOi8v/bWVkaWEuemVuZnMu/Y29tL2VuL21hc2hl/ZF82MDMvNzliYjE5/MDg3NjlmYmM2ZWM5/NmM0YjUwODU2Njdk/MTY",
+      "rating": 4.4,
+      "reviewCount": 129,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 118,
+      "name": "Shirley Temple",
+      "ingredients": [
+        "Ginger ale or lemon-lime soda",
+        "Grenadine",
+        "Maraschino cherry",
+        "Ice"
+      ],
+      "instructions": [
+        "Fill a glass with ice.",
+        "Add soda and a splash of grenadine.",
+        "Stir and garnish with a cherry."
+      ],
+      "prepTimeMinutes": 2,
+      "cookTimeMinutes": 0,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "caloriesPerServing": 120,
+      "tags": [
+        "Non-Alcoholic",
+        "Soda",
+        "Kids"
+      ],
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.LEm6nzHvunKLLbo-p6xWtgHaLH%3Fpid%3DApi&f=1&ipt=5c6f36f825c4c657ac84cb63a49ef840138fad65fae392431b4fde9b265dd3e6&ipo=images",
+      "rating": 4.3,
+      "reviewCount": 143,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 119,
+      "name": "Vietnamese Iced Coffee (Cà phê sữa đá)",
+      "ingredients": [
+        "Dark roast Vietnamese coffee",
+        "Hot water",
+        "Sweetened condensed milk",
+        "Ice"
+      ],
+      "instructions": [
+        "Brew strong coffee using a phin filter.",
+        "Stir in condensed milk to taste.",
+        "Pour over a tall glass filled with ice."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 5,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Vietnamese",
+      "caloriesPerServing": 180,
+      "tags": [
+        "Non-Alcoholic",
+        "Coffee",
+        "Iced"
+      ],
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.squarespace-cdn.com%2Fcontent%2Fv1%2F5ea5f3913b0ccf06d0ec2563%2F1654204754856-JP0QO8UG4WACJIKOPQ45%2FTSO_Iced%2BVietnamese%2BCoffee_4x5%2B(1).jpg&f=1&nofb=1&ipt=29a52e6746e763c37dca6addc0cf14d595c5501a2739e17a6f265e5904a1d68a",
+      "rating": 4.7,
+      "reviewCount": 214,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 120,
+      "name": "Watermelon Agua Fresca",
+      "ingredients": [
+        "Watermelon, cubed",
+        "Cold water",
+        "Lime juice",
+        "Sugar (to taste)",
+        "Ice"
+      ],
+      "instructions": [
+        "Blend watermelon with water until smooth.",
+        "Strain if desired; sweeten to taste with sugar and lime.",
+        "Serve over ice."
+      ],
+      "prepTimeMinutes": 7,
+      "cookTimeMinutes": 0,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "caloriesPerServing": 70,
+      "tags": [
+        "Non-Alcoholic",
+        "Fruit",
+        "Refreshing"
+      ],
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.explicit.bing.net%2Fth%2Fid%2FOIP.3nDMCjUKtmcxAhXtyxKHmgHaLH%3Fpid%3DApi&f=1&ipt=9169db1e42c544ccb76f669f82d89be85e971bba317b7af8ad4177fc3f48d5a2&ipo=images",
+      "rating": 4.5,
+      "reviewCount": 118,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 121,
+      "name": "Homemade Ginger Beer (Non-Alcoholic)",
+      "ingredients": [
+        "Fresh ginger, grated",
+        "Sugar",
+        "Lemon juice",
+        "Water",
+        "Club soda",
+        "Ice"
+      ],
+      "instructions": [
+        "Simmer ginger, sugar, and water 10 minutes; cool and strain.",
+        "Stir in lemon juice.",
+        "Pour syrup over ice and top with club soda."
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 10,
+      "servings": 6,
+      "difficulty": "Easy",
+      "cuisine": "International",
+      "caloriesPerServing": 110,
+      "tags": [
+        "Non-Alcoholic",
+        "Ginger",
+        "Soda"
+      ],
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.CjDyWZ4fUqhjubns-a6N_QHaJ4%3Fpid%3DApi&f=1&ipt=d7e3b307949dbab9a533b7de46c7e3cdacfa07a039125e34abda80fd1ed59762&ipo=images",
+      "rating": 4.4,
+      "reviewCount": 136,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 122,
+      "name": "Classic Hot Chocolate (Parisian-Style)",
+      "ingredients": [
+        "Whole milk",
+        "Heavy cream",
+        "Dark chocolate, chopped",
+        "Sugar (to taste)",
+        "Vanilla extract",
+        "Whipped cream (optional)"
+      ],
+      "instructions": [
+        "Heat milk and cream until steaming.",
+        "Whisk in chocolate until melted and smooth.",
+        "Sweeten to taste and add vanilla.",
+        "Serve hot with whipped cream."
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "servings": 2,
+      "difficulty": "Easy",
+      "cuisine": "French",
+      "caloriesPerServing": 280,
+      "tags": [
+        "Non-Alcoholic",
+        "Hot Drink",
+        "Chocolate"
+      ],
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sidechef.com%2Frecipe%2F1afb722b-f4fe-4efe-9ecb-6eb21cfd1c0d.jpg%3Fd%3D1408x1120&f=1&nofb=1&ipt=11ff12e609d8a7f29c477aa681618a17c1b8f1ef5ba81b740ba198ffc7bdc10a",
+      "rating": 4.7,
+      "reviewCount": 205,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 123,
+      "name": "Iced Chai Latte",
+      "ingredients": [
+        "Strong chai tea",
+        "Milk or non-dairy milk",
+        "Simple syrup or honey",
+        "Ice"
+      ],
+      "instructions": [
+        "Brew strong chai and cool.",
+        "Fill a glass with ice, add chai and milk.",
+        "Sweeten to taste and stir."
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 5,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Indian",
+      "caloriesPerServing": 140,
+      "tags": [
+        "Non-Alcoholic",
+        "Tea",
+        "Iced"
+      ],
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%2Fid%2FOIP.gQic7n--9J2rJng8yvapuwHaLH%3Fpid%3DApi&f=1&ipt=1960b055762908b30e13d81a609917bfab717011743f0d0dc35ad2f1c8073c15&ipo=images",
+      "rating": 4.4,
+      "reviewCount": 164,
+      "mealType": [
+        "Beverage"
+      ]
+    },
+    {
+      "id": 124,
+      "name": "Golden Milk (Turmeric Latte)",
+      "ingredients": [
+        "Milk or coconut milk",
+        "Ground turmeric",
+        "Ground ginger",
+        "Cinnamon",
+        "Honey or maple syrup",
+        "Black pepper"
+      ],
+      "instructions": [
+        "Warm milk with turmeric, ginger, and cinnamon.",
+        "Sweeten with honey and add a pinch of black pepper.",
+        "Whisk until frothy and serve warm."
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 5,
+      "servings": 1,
+      "difficulty": "Easy",
+      "cuisine": "Indian",
+      "caloriesPerServing": 160,
+      "tags": [
+        "Non-Alcoholic",
+        "Spiced",
+        "Comfort"
+      ],
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.p6pCHJoef0xvmzdsudThkQHaLH%3Fpid%3DApi&f=1&ipt=217ec1d5065428b24f80858a261f68a454c396176b573e10ae116643bbaefbda&ipo=images",
+      "rating": 4.5,
+      "reviewCount": 152,
+      "mealType": [
         "Beverage"
       ]
     }
