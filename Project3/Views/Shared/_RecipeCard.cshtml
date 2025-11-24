@@ -1,7 +1,7 @@
 @model API.DataModels.Food.RecipeModel
 @{ Layout = null; }
 
-<div class="card dark" href="#">
+<a href="/Recipes/@Model.Id" class="card dark text-decoration-none">
     @if (!string.IsNullOrWhiteSpace(Model.Image))
     {
         <img src="@Model.Image" alt="@Model.Name" />
@@ -12,7 +12,7 @@
             <span class="text-muted small">No image</span>
         </div>
     }
-    
+
     <section>
         <h2 class="recipe-card__title m-0">
             @if (Model != null)
@@ -25,9 +25,9 @@
             <div class="tag">
                 <i class="bi bi-card-heading"></i> @Model.ReviewCount reviews
             </div>
-            <button onclick="_blank">
+            <button onclick="event.stopPropagation()">
                 View Recipe
             </button>
         </div>
     </section>
-</div>
+</a>

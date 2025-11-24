@@ -15,6 +15,19 @@ public class RecipesController(ILogger<RecipesController> logger, RecipeApiServi
         return this.View(recipesData);
     }
 
+    [Route("Recipes/{id:int}")]
+    public async Task<IActionResult> RecipesIndividual(int id)
+    {
+        RecipeModel? recipe = await recipeApiService.GetRecipeById(id);
+        
+        if (recipe == null)
+        {
+            return this.NotFound();
+        }
+        
+        return this.View(recipe);
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

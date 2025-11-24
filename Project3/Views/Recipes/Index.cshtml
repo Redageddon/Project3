@@ -1,3 +1,4 @@
+@using API.DataModels.Food
 @model API.DataModels.Food.RecipesDataModel
 @{
     ViewData["Title"] = "Meals";
@@ -17,7 +18,7 @@
 
 <div class="card-container">
     <div class="row g-3">
-        @foreach (var recipe in Model.Recipes)
+        @foreach (RecipeModel recipe in Model.Recipes)
         {
             <div class="col-12 col-sm-6 col-lg-4">
                 @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
