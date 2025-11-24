@@ -1,10 +1,3 @@
 {
-  "Users": [
-    {
-      "Uid": 1,
-      "Username": "red",
-      "Email": "asd@gmail.com",
-      "PasswordHash": "ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8="
-    }
-  ]
+  "Users": []
 }

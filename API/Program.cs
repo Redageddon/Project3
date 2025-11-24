@@ -12,6 +12,7 @@ public partial class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddSingleton<RecipeRepository>();
+        builder.Services.AddSingleton<PlannerRepository>();
         builder.Services.AddSingleton<UserRepository>();
         builder.Services.AddSingleton<PasswordHasher>();
         builder.Services.AddScoped<UserAuth>();
