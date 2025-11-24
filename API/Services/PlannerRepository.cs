@@ -38,7 +38,7 @@ public class PlannerRepository
     {
         PlannersDataModel planners = this.GetAllPlanners();
 
-        return planners.Planners.FirstOrDefault(p => p.Id == id);
+        return planners.Planners.FirstOrDefault(p => p.PlannerId == id);
     }
 
     public PlannerModel CreatePlanner(PlannerModel planner)
@@ -48,12 +48,12 @@ public class PlannerRepository
             PlannersDataModel planners = this.GetAllPlanners();
 
             int newId = planners.Planners.Count != 0
-                ? planners.Planners.Max(p => p.Id) + 1
+                ? planners.Planners.Max(p => p.PlannerId) + 1
                 : 1;
 
             PlannerModel newPlanner = planner with
             {
-                Id = newId,
+                PlannerId = newId,
             };
 
             List<PlannerModel> updatedPlanners = [..planners.Planners, newPlanner];
@@ -68,7 +68,7 @@ public class PlannerRepository
         lock (this.plannersLock)
         {
             PlannersDataModel planners = this.GetAllPlanners();
-            int index = planners.Planners.FindIndex(p => p.Id == id);
+            int index = planners.Planners.FindIndex(p => p.PlannerId == id);
 
             if (index == -1)
             {
@@ -80,7 +80,7 @@ public class PlannerRepository
 
             PlannerModel plannerToUpdate = updatedPlanner with
             {
-                Id = id,
+                PlannerId = id,
                 UserId = original.UserId,
             };
 
@@ -98,14 +98,14 @@ public class PlannerRepository
         lock (this.plannersLock)
         {
             PlannersDataModel planners = this.GetAllPlanners();
-            PlannerModel? planner = planners.Planners.FirstOrDefault(p => p.Id == id);
+            PlannerModel? planner = planners.Planners.FirstOrDefault(p => p.PlannerId == id);
 
             if (planner == null)
             {
                 return false;
             }
 
-            List<PlannerModel> updatedPlanners = planners.Planners.Where(p => p.Id != id).ToList();
+            List<PlannerModel> updatedPlanners = planners.Planners.Where(p => p.PlannerId != id).ToList();
             this.SavePlanners(new PlannersDataModel(updatedPlanners));
 
             return true;

@@ -14,7 +14,7 @@ public class RecipesUpdateTests : TestFixtureBase
         RecipeModel created = await this.CreateRecipe();
         RecipeModel updated = created with { Name = "Updated Name", Cuisine = "French" };
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.Id}", updated);
+        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", updated);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         RecipeModel? result = await response.Content.ReadFromJsonAsync<RecipeModel>();
@@ -29,7 +29,7 @@ public class RecipesUpdateTests : TestFixtureBase
         string originalCuisine = created.Cuisine;
         RecipeModel updated = created with { Name = "New Name Only" };
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.Id}", updated);
+        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", updated);
 
         RecipeModel? result = await response.Content.ReadFromJsonAsync<RecipeModel>();
         Assert.That(result!.Name, Is.EqualTo("New Name Only"));
@@ -52,7 +52,7 @@ public class RecipesUpdateTests : TestFixtureBase
         RecipeModel created = await this.CreateRecipe();
         RecipeModel invalid = created with { Name = "" };
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.Id}", invalid);
+        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", invalid);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
@@ -62,7 +62,7 @@ public class RecipesUpdateTests : TestFixtureBase
     {
         RecipeModel created = await this.CreateRecipe();
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.Id}", (RecipeModel?)null);
+        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", (RecipeModel?)null);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
@@ -73,7 +73,7 @@ public class RecipesUpdateTests : TestFixtureBase
         RecipeModel created = await this.CreateRecipe();
         RecipeModel invalid = created with { Difficulty = "" };
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.Id}", invalid);
+        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", invalid);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
@@ -84,7 +84,7 @@ public class RecipesUpdateTests : TestFixtureBase
         RecipeModel created = await this.CreateRecipe();
         RecipeModel invalid = created with { Cuisine = "" };
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.Id}", invalid);
+        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", invalid);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
@@ -95,7 +95,7 @@ public class RecipesUpdateTests : TestFixtureBase
         RecipeModel created = await this.CreateRecipe();
         RecipeModel invalid = created with { CookTimeMinutes = -5 };
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.Id}", invalid);
+        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", invalid);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
@@ -106,7 +106,7 @@ public class RecipesUpdateTests : TestFixtureBase
         RecipeModel created = await this.CreateRecipe();
         RecipeModel invalid = created with { Rating = 10 };
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.Id}", invalid);
+        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", invalid);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }

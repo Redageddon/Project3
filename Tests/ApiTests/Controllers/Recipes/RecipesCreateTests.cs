@@ -17,10 +17,10 @@ public class RecipesCreateTests : TestFixtureBase
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Created));
         RecipeModel? created = await response.Content.ReadFromJsonAsync<RecipeModel>();
-        Assert.That(created!.Id, Is.GreaterThan(0));
+        Assert.That(created!.RecipeId, Is.GreaterThan(0));
         Assert.That(created.Name, Is.EqualTo(recipe.Name));
         Assert.That(created.Cuisine, Is.EqualTo(recipe.Cuisine));
-        Assert.That(response.Headers.Location!.ToString(), Does.Contain($"/api/recipes/{created.Id}"));
+        Assert.That(response.Headers.Location!.ToString(), Does.Contain($"/api/recipes/{created.RecipeId}"));
     }
 
     [Test]
@@ -53,7 +53,7 @@ public class RecipesCreateTests : TestFixtureBase
         RecipeModel? created1 = await response1.Content.ReadFromJsonAsync<RecipeModel>();
         RecipeModel? created2 = await response2.Content.ReadFromJsonAsync<RecipeModel>();
 
-        Assert.That(created1!.Id, Is.Not.EqualTo(created2!.Id));
+        Assert.That(created1!.RecipeId, Is.Not.EqualTo(created2!.RecipeId));
     }
 
     [Test]

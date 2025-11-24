@@ -57,10 +57,10 @@ public class RecipeRepositoryTests
         RecipeModel recipe = this.CreateTestRecipe("Pasta");
         RecipeModel created = this.repository.CreateRecipe(recipe);
 
-        RecipeModel? result = this.repository.GetRecipeById(created.Id);
+        RecipeModel? result = this.repository.GetRecipeById(created.RecipeId);
 
         Assert.That(result, Is.Not.Null);
-        Assert.That(result!.Id, Is.EqualTo(created.Id));
+        Assert.That(result!.RecipeId, Is.EqualTo(created.RecipeId));
         Assert.That(result.Name, Is.EqualTo("Pasta"));
     }
 
@@ -89,11 +89,11 @@ public class RecipeRepositoryTests
         RecipeModel created = this.repository.CreateRecipe(recipe);
         RecipeModel updated = created with { Name = "Updated" };
 
-        RecipeModel? result = this.repository.UpdateRecipe(created.Id, updated);
+        RecipeModel? result = this.repository.UpdateRecipe(created.RecipeId, updated);
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result!.Name, Is.EqualTo("Updated"));
-        Assert.That(result.Id, Is.EqualTo(created.Id));
+        Assert.That(result.RecipeId, Is.EqualTo(created.RecipeId));
     }
 
     [Test]
@@ -110,9 +110,9 @@ public class RecipeRepositoryTests
         RecipeModel recipe = this.CreateTestRecipe();
         RecipeModel created = this.repository.CreateRecipe(recipe);
 
-        bool result = this.repository.DeleteRecipe(created.Id);
+        bool result = this.repository.DeleteRecipe(created.RecipeId);
 
         Assert.That(result, Is.True);
-        Assert.That(this.repository.GetRecipeById(created.Id), Is.Null);
+        Assert.That(this.repository.GetRecipeById(created.RecipeId), Is.Null);
     }
 }

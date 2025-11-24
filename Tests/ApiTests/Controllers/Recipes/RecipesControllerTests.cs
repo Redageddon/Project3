@@ -24,11 +24,11 @@ public class RecipesGetTests : TestFixtureBase
     {
         RecipeModel created = await this.CreateRecipe();
 
-        HttpResponseMessage response = await this.Client.GetAsync($"/api/recipes/{created.Id}");
+        HttpResponseMessage response = await this.Client.GetAsync($"/api/recipes/{created.RecipeId}");
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         RecipeModel? result = await response.Content.ReadFromJsonAsync<RecipeModel>();
-        Assert.That(result!.Id, Is.EqualTo(created.Id));
+        Assert.That(result!.RecipeId, Is.EqualTo(created.RecipeId));
         Assert.That(result.Name, Is.EqualTo(created.Name));
     }
 

@@ -1,7 +1,7 @@
 namespace API.DataModels.Food;
 
 public record PlannerModel(
-    int Id,
+    int PlannerId,
     int UserId,
     DateTime PlannedDate,
     List<RecipeModel> Breakfast,

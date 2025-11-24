@@ -31,7 +31,7 @@ public class RecipeRepositoryTests
 
         RecipesDataModel result = this.repository.GetAllRecipes();
 
-        Assert.That(result.Recipes.Any(r => r.Id == created.Id), Is.True);
+        Assert.That(result.Recipes.Any(r => r.RecipeId == created.RecipeId), Is.True);
     }
 
     [Test]
@@ -57,10 +57,10 @@ public class RecipeRepositoryTests
         RecipeModel newRecipe = new(0, 1, "To Delete", "Easy", "Italian", ["ingredient"], ["step"], [], [], "", 10, 20, 2, 300, 0, 0);
         RecipeModel created = this.repository.CreateRecipe(newRecipe);
 
-        this.repository.DeleteRecipe(created.Id);
+        this.repository.DeleteRecipe(created.RecipeId);
         RecipesDataModel result = this.repository.GetAllRecipes();
 
-        Assert.That(result.Recipes.Any(r => r.Id == created.Id), Is.False);
+        Assert.That(result.Recipes.Any(r => r.RecipeId == created.RecipeId), Is.False);
     }
 
     [Test]
@@ -70,10 +70,10 @@ public class RecipeRepositoryTests
         RecipeModel created = this.repository.CreateRecipe(newRecipe);
 
         RecipeModel updated = created with { Name = "Updated" };
-        this.repository.UpdateRecipe(created.Id, updated);
+        this.repository.UpdateRecipe(created.RecipeId, updated);
 
         RecipesDataModel result = this.repository.GetAllRecipes();
-        RecipeModel? foundRecipe = result.Recipes.FirstOrDefault(r => r.Id == created.Id);
+        RecipeModel? foundRecipe = result.Recipes.FirstOrDefault(r => r.RecipeId == created.RecipeId);
 
         Assert.That(foundRecipe, Is.Not.Null);
         Assert.That(foundRecipe!.Name, Is.EqualTo("Updated"));

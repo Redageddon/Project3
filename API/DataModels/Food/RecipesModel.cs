@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace API.DataModels.Food;
 
 public record RecipeModel(
-    int Id,
+    int RecipeId,
     int UserId,
     [Required][MinLength(1)] string Name,
     [Required][MinLength(1)] string Difficulty,

@@ -31,7 +31,7 @@ public class RecipeRepository
     {
         RecipesDataModel recipesData = this.GetAllRecipes();
         
-        return recipesData.Recipes.FirstOrDefault(r => r.Id == id);
+        return recipesData.Recipes.FirstOrDefault(r => r.RecipeId == id);
     }
 
     public RecipeModel CreateRecipe(RecipeModel recipe)
@@ -41,10 +41,10 @@ public class RecipeRepository
             RecipesDataModel recipesData = this.GetAllRecipes();
             
             int newId = recipesData.Recipes.Count != 0
-                ? recipesData.Recipes.Max(r => r.Id) + 1
+                ? recipesData.Recipes.Max(r => r.RecipeId) + 1
                 : 1;
 
-            RecipeModel newRecipe = recipe with { Id = newId };
+            RecipeModel newRecipe = recipe with { RecipeId = newId };
             List<RecipeModel> updatedRecipes = [..recipesData.Recipes, newRecipe];
 
             this.SaveRecipes(new RecipesDataModel(updatedRecipes));
@@ -58,14 +58,14 @@ public class RecipeRepository
         lock (this.recipesLock)
         {
             RecipesDataModel recipesData = this.GetAllRecipes();
-            int index = recipesData.Recipes.FindIndex(r => r.Id == id);
+            int index = recipesData.Recipes.FindIndex(r => r.RecipeId == id);
 
             if (index == -1)
             {
                 return null;
             }
 
-            RecipeModel recipeToUpdate = updatedRecipe with { Id = id };
+            RecipeModel recipeToUpdate = updatedRecipe with { RecipeId = id };
             List<RecipeModel> updatedRecipes = recipesData.Recipes.ToList();
             updatedRecipes[index] = recipeToUpdate;
 
@@ -80,14 +80,14 @@ public class RecipeRepository
         lock (this.recipesLock)
         {
             RecipesDataModel recipesData = this.GetAllRecipes();
-            RecipeModel? recipe = recipesData.Recipes.FirstOrDefault(r => r.Id == id);
+            RecipeModel? recipe = recipesData.Recipes.FirstOrDefault(r => r.RecipeId == id);
 
             if (recipe == null)
             {
                 return false;
             }
 
-            List<RecipeModel> updatedRecipes = recipesData.Recipes.Where(r => r.Id != id).ToList();
+            List<RecipeModel> updatedRecipes = recipesData.Recipes.Where(r => r.RecipeId != id).ToList();
             this.SaveRecipes(new RecipesDataModel(updatedRecipes));
 
             return true;

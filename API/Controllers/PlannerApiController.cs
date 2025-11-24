@@ -43,7 +43,7 @@ public class PlannerApiController(PlannerRepository repository) : ControllerBase
         PlannerModel createdPlanner = repository.CreatePlanner(planner);
 
         return this.CreatedAtAction(nameof(this.GetById),
-                                    new { id = createdPlanner.Id },
+                                    new { id = createdPlanner.PlannerId },
                                     createdPlanner);
     }
 

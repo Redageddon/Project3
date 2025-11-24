@@ -13,11 +13,11 @@ public class RecipesDeleteTests : TestFixtureBase
     {
         RecipeModel created = await this.CreateRecipe();
 
-        HttpResponseMessage response = await this.Client.DeleteAsync($"/api/recipes/{created.Id}");
+        HttpResponseMessage response = await this.Client.DeleteAsync($"/api/recipes/{created.RecipeId}");
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
 
-        HttpResponseMessage getResponse = await this.Client.GetAsync($"/api/recipes/{created.Id}");
+        HttpResponseMessage getResponse = await this.Client.GetAsync($"/api/recipes/{created.RecipeId}");
         Assert.That(getResponse.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
     }
 

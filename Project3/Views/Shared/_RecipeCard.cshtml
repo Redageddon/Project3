@@ -1,7 +1,7 @@
 @model API.DataModels.Food.RecipeModel
 @{ Layout = null; }
 
-<a href="/Recipes/@Model.Id" class="card dark text-decoration-none">
+<a href="/Recipes/@Model.RecipeId" class="card dark text-decoration-none">
     @if (!string.IsNullOrWhiteSpace(Model.Image))
     {
         <img src="@Model.Image" alt="@Model.Name" />
