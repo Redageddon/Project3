@@ -12,17 +12,16 @@ public class RecipesController(ILogger<RecipesController> logger, RecipeApiServi
     {
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
 
-        List<RecipeModel> filteredRecipes = FilterRecipes(mealType, name, recipesData.Recipes, recipesData);
+        List<RecipeModel> filteredRecipes = FilterRecipes(recipesData.Recipes, mealType, name);
 
         recipesData = new RecipesDataModel(filteredRecipes);
         
         return this.View(recipesData);
     }
 
-    private static List<RecipeModel> FilterRecipes(string? mealType,
-                                                   string? name,
-                                                   IEnumerable<RecipeModel> recipeModels,
-                                                   RecipesDataModel recipesData)
+    private static List<RecipeModel> FilterRecipes(IEnumerable<RecipeModel> recipeModels,
+                                                   string? mealType,
+                                                   string? name)
     {
         if (!string.IsNullOrEmpty(mealType))
         {
@@ -31,7 +30,7 @@ public class RecipesController(ILogger<RecipesController> logger, RecipeApiServi
 
         if (!string.IsNullOrEmpty(name))
         {
-            recipeModels = recipesData.Recipes.Where(recipe => recipe.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            recipeModels = recipeModels.Where(recipe => recipe.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
         }
 
         return recipeModels.ToList();
