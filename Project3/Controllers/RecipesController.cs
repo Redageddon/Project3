@@ -8,18 +8,33 @@ namespace Project3.Controllers;
 
 public class RecipesController(ILogger<RecipesController> logger, RecipeApiService recipeApiService) : Controller
 {
-    public async Task<IActionResult> Index(string? mealType)
+    public async Task<IActionResult> Index(string? mealType, string? name)
     {
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
 
+        List<RecipeModel> filteredRecipes = FilterRecipes(mealType, name, recipesData.Recipes, recipesData);
+
+        recipesData = new RecipesDataModel(filteredRecipes);
+        
+        return this.View(recipesData);
+    }
+
+    private static List<RecipeModel> FilterRecipes(string? mealType,
+                                                   string? name,
+                                                   IEnumerable<RecipeModel> recipeModels,
+                                                   RecipesDataModel recipesData)
+    {
         if (!string.IsNullOrEmpty(mealType))
         {
-            recipesData = new RecipesDataModel(recipesData.Recipes
-                                                          .Where(recipe => recipe.MealType.Any(type => type.Equals(mealType, StringComparison.OrdinalIgnoreCase)))
-                                                          .ToList());
+            recipeModels = recipeModels.Where(recipe => recipe.MealType.Any(type => type.Equals(mealType, StringComparison.OrdinalIgnoreCase)));
         }
 
-        return this.View(recipesData);
+        if (!string.IsNullOrEmpty(name))
+        {
+            recipeModels = recipesData.Recipes.Where(recipe => recipe.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return recipeModels.ToList();
     }
 
     [Route("Recipes/{id:int}")]
