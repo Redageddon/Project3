@@ -15,6 +15,7 @@ public partial class Program
         builder.Services.AddSingleton<PlannerRepository>();
         builder.Services.AddSingleton<UserRepository>();
         builder.Services.AddSingleton<PasswordHasher>();
+        builder.Services.AddSingleton<SessionService>();
         builder.Services.AddScoped<UserAuth>();
 
         builder.Services.AddCors(options =>
