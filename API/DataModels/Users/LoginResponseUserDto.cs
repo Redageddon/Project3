@@ -3,7 +3,8 @@ namespace API.DataModels.Users;
 public record LoginResponse(
     bool Success,
     string Message,
-    UserDto? User = null
+    UserDto? User = null,
+    string? SessionId = null
 );
 
 public record UserDto(

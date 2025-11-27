@@ -7,6 +7,7 @@ public record PlannerModel(
     List<RecipeModel> Breakfast,
     List<RecipeModel> Lunch,
     List<RecipeModel> Dinner,
-    List<RecipeModel> Desert);
+    List<RecipeModel> Desert
+);
 
 public record PlannersDataModel(List<PlannerModel> Planners);

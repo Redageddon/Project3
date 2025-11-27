@@ -6,7 +6,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public class AuthController(UserAuth userAuth) : ControllerBase
+public class AuthController(UserAuth userAuth, SessionService sessionService) : ControllerBase
 {
     // POST: api/auth/register
     [HttpPost("register")]
@@ -39,8 +39,15 @@ public class AuthController(UserAuth userAuth) : ControllerBase
 
         LoginResponse response = userAuth.Login(request);
 
-        return !response.Success 
-            ? this.StatusCode(401, response) 
-            : this.Ok(response);
+        if (!response.Success || response.User is null)
+        {
+            return this.StatusCode(401, response);
+        }
+
+        string sessionId = sessionService.CreateSession(response.User.Uid);
+
+        response = response with { SessionId = sessionId };
+
+        return this.Ok(response);
     }
 }

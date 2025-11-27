@@ -6,7 +6,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/planners")]
-public class PlannerApiController(PlannerRepository repository) : ControllerBase
+public class PlannerApiController(PlannerRepository repository, SessionService sessionService) : ControllerBase
 {
     // GET: api/planners/user/{userId}
     [HttpGet("user/{userId:int}")]
@@ -33,16 +33,33 @@ public class PlannerApiController(PlannerRepository repository) : ControllerBase
 
     // POST: api/planners
     [HttpPost]
-    public ActionResult<PlannerModel> Create([FromBody] PlannerModel planner)
+    public ActionResult<PlannerModel> Create(
+        [FromHeader(Name = "X-Session-Id")] string sessionId,
+        [FromBody] PlannerModel planner)
     {
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
         }
 
-        PlannerModel createdPlanner = repository.CreatePlanner(planner);
+        int? userId = sessionService.GetUserId(sessionId);
 
-        return this.CreatedAtAction(nameof(this.GetById),
+        if (userId is null)
+        {
+            return this.Unauthorized(new { message = "Invalid or expired session" });
+        }
+
+        // Force planner to belong to the CURRENT user
+        PlannerModel plannerWithUser = planner with
+        {
+            UserId = userId.Value,
+        };
+
+        PlannerModel createdPlanner = repository.CreatePlanner(plannerWithUser);
+
+        // repository.CreatePlanner will assign PlannerId
+        return this.CreatedAtAction(
+                                    nameof(this.GetById),
                                     new { plannerId = createdPlanner.PlannerId },
                                     createdPlanner);
     }
