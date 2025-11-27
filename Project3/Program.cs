@@ -11,6 +11,20 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
+        // Session backing store (in-memory)
+        builder.Services.AddDistributedMemoryCache();
+
+        // Session configuration
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
+
+        // Allow services/controllers to access HttpContext/Session
+        builder.Services.AddHttpContextAccessor();
+
         // Register HttpClient for API calls
         builder.Services.AddHttpClient("RecipeAPI", client =>
         {
@@ -37,6 +51,9 @@ public class Program
 
         app.UseHttpsRedirection();
         app.UseRouting();
+
+        // 🔹 Enable Session middleware (must be before Authorization)
+        app.UseSession();
 
         app.UseAuthorization();
 
