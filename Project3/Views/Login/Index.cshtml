@@ -32,47 +32,61 @@
                                     <!-- LOGIN -->
                                     <div class="card-front">
                                         <div class="center-wrap">
-                                            <form method="POST">
+                                            <form asp-controller="Login" asp-action="Login" method="post">
+                                                @Html.AntiForgeryToken()
                                                 <h4 class="heading">Log In</h4>
                                                 <div class="form-group">
-                                                    <input name="email" type="email" class="form-style"
-                                                        placeholder="Your Email" required />
-                                                    <i class="input-icon material-icons">alternate_email</i>
+                                                    <input name="email"
+                                                           type="email"
+                                                           class="form-style"
+                                                           placeholder="Your Email"
+                                                           required />
+                                                    <i class="input-icon material-icons">email</i>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input name="password" type="password" class="form-style"
-                                                        placeholder="Your Password" required />
+                                                    <input name="password"
+                                                           type="password"
+                                                           class="form-style"
+                                                           placeholder="Your Password"
+                                                           required />
                                                     <i class="input-icon material-icons">lock</i>
                                                 </div>
-                                                <button type="submit" value="Login" name="Login" class="btn">Submit</button>
-                                                <!-- <p class="text-center"><a href="./reset.php" class="link">Forgot your
-                                                            password?</a></p> -->
+                                                <button type="submit" class="btn">Submit</button>
                                             </form>
                                         </div>
                                     </div>
-    
+
                                     <!-- SIGNUP -->
                                     <div class="card-back">
                                         <div class="center-wrap">
-                                            <form method="POST">
+                                            <form asp-controller="Login" asp-action="Register" method="post">
+                                                @Html.AntiForgeryToken()
                                                 <h4 class="heading">Sign Up</h4>
                                                 <div class="form-group">
-                                                    <input name="Username" type="text" class="form-style"
-                                                        placeholder="Username" required />
+                                                    <input name="username"
+                                                           type="text"
+                                                           class="form-style"
+                                                           placeholder="Username"
+                                                           required />
                                                     <i class="input-icon material-icons">person</i>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input name="email" type="email" class="form-style"
-                                                        placeholder="Your Email" required />
-                                                    <i class="input-icon material-icons">alternate_email</i>
+                                                    <input name="email"
+                                                           type="email"
+                                                           class="form-style"
+                                                           placeholder="Your Email"
+                                                           required />
+                                                    <i class="input-icon material-icons">email</i>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input name="password" type="password" class="form-style"
-                                                        placeholder="Your Password" required />
+                                                    <input name="password"
+                                                           type="password"
+                                                           class="form-style"
+                                                           placeholder="Your Password"
+                                                           required />
                                                     <i class="input-icon material-icons">lock</i>
                                                 </div>
-                                                <button name="SignUp" value="SignUp"
-                                                    class="btn">Submit</button>
+                                                <button type="submit" class="btn">Submit</button>
                                             </form>
                                         </div>
                                     </div>
@@ -80,19 +94,19 @@
                             </div>
                         </div>
                     </div>
-                    @* @{ *@
-                    @*     if ($error) { *@
-                    @*         <p class="text-center text-danger mt-1"> *@
-                    @*             $error *@
-                    @*         </p> *@
-                    @*     } *@
-                    @*      *@
-                    @*     elseif ($success) { *@
-                    @*         <p class="text-center text-success mt-1"> *@
-                    @*             $success *@
-                    @*         </p> *@
-                    @*     } *@
-                    @* }                         *@
+                    @if (TempData["RegisterSuccess"] is string msg)
+                    {
+                        <p class="text-success text-center mt-2">@msg</p>
+                    }
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <p class="text-danger text-center mt-2">@error.ErrorMessage</p>
+                        }
+                    }
+
                 </div>
             </div>
         </div>
