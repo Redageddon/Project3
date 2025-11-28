@@ -6,7 +6,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/recipes")]
-public class RecipesApiController(RecipeRepository repository) : ControllerBase
+public class RecipesApiController(RecipeRepository repository, SessionService sessionService) : ControllerBase
 {
     // GET: api/recipes
     [HttpGet]
@@ -31,11 +31,23 @@ public class RecipesApiController(RecipeRepository repository) : ControllerBase
 
     // POST: api/recipes
     [HttpPost]
-    public ActionResult<RecipeModel> Create([FromBody] RecipeModel recipe)
+    public ActionResult<RecipeModel> Create(
+        [FromHeader(Name = "X-Session-Id")] string sessionId,
+        [FromBody] RecipeModel recipe)
     {
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
+        }
+        
+        int? userId = sessionService.GetUserId(sessionId);
+
+        if (userId != null)
+        {
+            recipe = recipe with
+            {
+                UserId = userId.Value,
+            };
         }
 
         RecipeModel createdRecipe = repository.CreateRecipe(recipe);

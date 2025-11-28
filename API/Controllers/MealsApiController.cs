@@ -6,7 +6,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/meals")]
-public class MealsApiController(MealsRepository repository) : ControllerBase
+public class MealsApiController(MealsRepository repository, SessionService sessionService) : ControllerBase
 {
     // GET: api/meals
     [HttpGet]
@@ -33,11 +33,23 @@ public class MealsApiController(MealsRepository repository) : ControllerBase
 
     // POST: api/meals
     [HttpPost]
-    public ActionResult<MealsModel> Create([FromBody] MealsModel meal)
+    public ActionResult<MealsModel> Create(
+        [FromHeader(Name = "X-Session-Id")] string sessionId,
+        [FromBody] MealsModel meal)
     {
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
+        }
+        
+        int? userId = sessionService.GetUserId(sessionId);
+
+        if (userId != null)
+        {
+            meal = meal with
+            {
+                UserId = userId.Value,
+            };
         }
 
         MealsModel createdMeal = repository.CreateMeal(meal);
