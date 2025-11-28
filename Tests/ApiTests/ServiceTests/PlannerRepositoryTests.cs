@@ -34,14 +34,12 @@ public class PlannerRepositoryTests
 
     private static PlannerModel CreateEmptyPlannerForUser(int userId)
     {
-        return new PlannerModel(
-                                PlannerId: 0, // repository will assign
+        return new PlannerModel(PlannerId: 0, // repository will assign
                                 UserId: userId,
                                 PlannedDate: DateTime.UtcNow,
-                                Breakfast: new List<RecipeModel>(),
-                                Lunch: new List<RecipeModel>(),
-                                Dinner: new List<RecipeModel>(),
-                                Desert: new List<RecipeModel>());
+                                BreakfastId: 0,
+                                LunchId: 0,
+                                DinnerId: 0);
     }
 
     [Test]
