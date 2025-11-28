@@ -1,9 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace API.DataModels.Food;
 
 public record PlannerModel(
     int PlannerId,
-    int UserId,
-    DateTime PlannedDate,
+    [Required] int UserId,
+    [Required] DateTime PlannedDate,
     int? BreakfastId,
     int? LunchId,
     int? DinnerId
