@@ -1,0 +1,29 @@
+@* @model API.DataModels.Food.MealsModel *@
+@* @{ Layout = null; } *@
+@* *@
+@* <a href="/Meals/@MealId" class="card dark text-decoration-none"> *@
+@*     $1$ @if (!string.IsNullOrWhiteSpace(Model.Image)) #1# *@
+@*     $1$ { #1# *@
+@*     $1$     <img src="@Model.Image" alt="@Model.Name" /> #1# *@
+@*     $1$ } #1# *@
+@*     $1$ else #1# *@
+@*     $1$ { #1# *@
+@*     $1$     <div class="recipe-card__placeholder d-flex align-items-center justify-content-center"> #1# *@
+@*     $1$         <span class="text-muted small">No image</span> #1# *@
+@*     $1$     </div> #1# *@
+@*     $1$ } #1# *@
+@* *@
+@*     <section> *@
+@*         <h2 class="recipe-card__title m-0"> *@
+@* \        </h2> *@
+@*         <p></p> *@
+@*         <div> *@
+@*             <div class="tag"> *@
+@*                 <i class="bi bi-card-heading"></i>  *@
+@*             </div> *@
+@*             <button onclick="event.stopPropagation()"> *@
+@*                 View Recipe *@
+@*             </button> *@
+@*         </div> *@
+@*     </section> *@
+@* </a> *@
