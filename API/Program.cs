@@ -23,7 +23,7 @@ public partial class Program
         {
             options.AddPolicy("AllowMvcApp", policy =>
             {
-                policy.WithOrigins("http://localhost:5297")
+                policy.WithOrigins("http://localhost:7297", "http://localhost:5297")
                       .AllowAnyHeader()
                       .AllowAnyMethod();
             });
