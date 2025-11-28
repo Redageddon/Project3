@@ -25,4 +25,13 @@ public class AuthApiService(IHttpClientFactory httpClientFactory)
 
         return loginResponse ?? throw new Exception("Failed to deserialize login response");
     }
+
+    // POST: api/auth/logout
+    public async Task<bool> Logout(LogoutRequest logoutRequest)
+    {
+        HttpClient client = httpClientFactory.CreateClient("RecipeAPI");
+        HttpResponseMessage response = await client.PostAsJsonAsync("/api/auth/logout", logoutRequest);
+
+        return response.IsSuccessStatusCode;
+    }
 }
