@@ -50,4 +50,18 @@ public class AuthController(UserAuth userAuth, SessionService sessionService) : 
 
         return this.Ok(response);
     }
+
+    // POST: api/auth/logout
+    [HttpPost("logout")]
+    public ActionResult Logout([FromBody] LogoutRequest request)
+    {
+        if (string.IsNullOrEmpty(request.SessionId))
+        {
+            return this.BadRequest(new { message = "Session ID is required" });
+        }
+
+        sessionService.RemoveSession(request.SessionId);
+
+        return this.Ok(new { message = "Logged out successfully" });
+    }
 }
