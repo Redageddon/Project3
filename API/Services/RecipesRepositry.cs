@@ -44,6 +44,8 @@ public class RecipeRepository
                 ? recipesData.Recipes.Max(r => r.RecipeId) + 1
                 : 1;
 
+            // Need to attach userId here
+            
             RecipeModel newRecipe = recipe with { RecipeId = newId };
             List<RecipeModel> updatedRecipes = [..recipesData.Recipes, newRecipe];
 

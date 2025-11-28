@@ -35,6 +35,7 @@ public class Program
 
         // Register API services
         builder.Services.AddScoped<RecipeApiService>();
+        builder.Services.AddScoped<MealsApiService>();
         builder.Services.AddScoped<UserApiService>();
         builder.Services.AddScoped<PlannerApiService>();
         builder.Services.AddScoped<AuthApiService>();
