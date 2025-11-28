@@ -32,8 +32,9 @@
 
 /* Slightly different spacing on larger screens */
 @media (min-width: 768px) {
-
   .card-container .row {
     row-gap: 2rem;
   }
 }
+
+/*# sourceMappingURL=Recipes.css.map */

@@ -1,28 +1,35 @@
 @model API.DataModels.Food.RecipeModel
 @{ Layout = null; }
 
-<a href="/Recipes/@Model.RecipeId" class="card dark text-decoration-none">
+<a href="/Recipes/@Model.RecipeId" class="recipe-card text-decoration-none">
     @if (!string.IsNullOrWhiteSpace(Model.Image))
     {
-        <img src="@Model.Image" alt="@Model.Name" />
+        <img src="@Model.Image" alt="@Model.Name" class="recipe-card__image" />
     }
     else
     {
         <div class="recipe-card__placeholder d-flex align-items-center justify-content-center">
-            <span class="text-muted small">No image</span>
+            <span class="recipe-card__placeholder-text">No image</span>
         </div>
     }
 
-    <section>
-        <h2 class="recipe-card__title m-0">
+    <section class="recipe-card__body">
+        <h2 class="recipe-card__title">
             @Model.Name
         </h2>
-        <p>@Model.Rating⭐</p>
-        <div>
-            <div class="tag">
-                <i class="bi bi-card-heading"></i> @Model.ReviewCount reviews
-            </div>
-            <button onclick="event.stopPropagation()">
+
+        <p class="recipe-card__rating">
+            @Model.Rating⭐ · @Model.ReviewCount reviews
+        </p>
+
+        <div class="recipe-card__footer">
+            <span class="recipe-card__tag">
+                <i class="bi bi-card-heading"></i> View details
+            </span>
+
+            <button type="button"
+                    class="recipe-card__button"
+                    onclick="event.stopPropagation(); window.location.href='/Recipes/@Model.RecipeId';">
                 View Recipe
             </button>
         </div>
