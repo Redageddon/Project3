@@ -229,8 +229,9 @@
       "rating": 4.4,
       "reviewCount": 59,
       "mealType": [
-        "Lunch",
-        "Side Dish"
+        "Breakfast",
+        "Dinner",
+        "Lunch"
       ]
     },
     {
@@ -267,7 +268,9 @@
       "rating": 4.7,
       "reviewCount": 95,
       "mealType": [
-        "Appetizer"
+        "Breakfast",
+        "Lunch",
+        "Dinner"
       ]
     },
     {
@@ -898,7 +901,8 @@
         "Mango",
         "Indian",
         "Pakistani",
-        "Asian"
+        "Asian",
+        "Non-Alcoholic"
       ],
       "image": "https://cdn.dummyjson.com/recipe-images/22.webp",
       "rating": 4.7,
@@ -1010,7 +1014,8 @@
       "tags": [
         "Smoothie",
         "Blueberry",
-        "Banana"
+        "Banana",
+        "Non-Alcoholic"
       ],
       "image": "https://cdn.dummyjson.com/recipe-images/25.webp",
       "rating": 4.8,
@@ -1051,8 +1056,10 @@
       "rating": 4.6,
       "reviewCount": 2,
       "mealType": [
-        "Snack",
-        "Side Dish"
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack"
       ]
     },
     {
@@ -1199,7 +1206,8 @@
       "tags": [
         "Caipirinha",
         "Brazilian",
-        "Cocktail"
+        "Cocktail",
+        "Alcoholic"
       ],
       "image": "https://cdn.dummyjson.com/recipe-images/30.webp",
       "rating": 4.4,
@@ -1242,7 +1250,9 @@
       "rating": 4.5,
       "reviewCount": 21,
       "mealType": [
-        "Appetizer"
+        "Breakfast",
+        "Lunch",
+        "Dinner"
       ]
     },
     {
@@ -1279,7 +1289,9 @@
       "rating": 4.2,
       "reviewCount": 97,
       "mealType": [
-        "Appetizer"
+        "Breakfast",
+        "Lunch",
+        "Dinner"
       ]
     },
     {
@@ -1314,8 +1326,9 @@
       "rating": 4.8,
       "reviewCount": 83,
       "mealType": [
-        "Lunch",
-        "Side Dish"
+        "Breakfast",
+        "Dinner",
+        "Lunch"
       ]
     },
     {
@@ -1499,7 +1512,9 @@
       "rating": 4.6,
       "reviewCount": 19,
       "mealType": [
-        "Appetizer"
+        "Breakfast",
+        "Lunch",
+        "Dinner"
       ]
     },
     {
@@ -1534,8 +1549,9 @@
       "rating": 4.1,
       "reviewCount": 19,
       "mealType": [
-        "Lunch",
-        "Side Dish"
+        "Breakfast",
+        "Dinner",
+        "Lunch"
       ]
     },
     {
@@ -1565,7 +1581,8 @@
       "tags": [
         "Mojito",
         "Cuban",
-        "Cocktail"
+        "Cocktail",
+        "Alcoholic"
       ],
       "image": "https://cdn.dummyjson.com/recipe-images/40.webp",
       "rating": 4.7,
@@ -1609,7 +1626,9 @@
       "rating": 4.2,
       "reviewCount": 38,
       "mealType": [
-        "Appetizer"
+        "Breakfast",
+        "Lunch",
+        "Dinner"
       ]
     },
     {
@@ -1683,8 +1702,10 @@
       "rating": 4.1,
       "reviewCount": 78,
       "mealType": [
-        "Snack",
-        "Appetizer"
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack"
       ]
     },
     {
@@ -1872,7 +1893,8 @@
       "rating": 4.3,
       "reviewCount": 94,
       "mealType": [
-        "Appetizer",
+        "Breakfast",
+        "Dinner",
         "Lunch"
       ]
     },
@@ -1912,8 +1934,9 @@
       "rating": 4.7,
       "reviewCount": 70,
       "mealType": [
-        "Lunch",
-        "Side Dish"
+        "Breakfast",
+        "Dinner",
+        "Lunch"
       ]
     },
     {
@@ -1942,7 +1965,8 @@
       "tags": [
         "Smoothie",
         "Pineapple",
-        "Coconut"
+        "Coconut",
+        "Non-Alcoholic"
       ],
       "image": "https://cdn.dummyjson.com/recipe-images/50.webp",
       "rating": 4.4,
@@ -1951,7 +1975,7 @@
         "Breakfast",
         "Beverage"
       ]
-    }, 
+    },
     {
       "recipeId": 51,
       "name": "Chicken Tikka Masala",
@@ -2170,8 +2194,10 @@
       "rating": 4.8,
       "reviewCount": 319,
       "mealType": [
-        "Snack",
-        "Appetizer"
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack"
       ]
     },
     {
@@ -2241,8 +2267,10 @@
       "rating": 4.5,
       "reviewCount": 264,
       "mealType": [
-        "Snack",
-        "Appetizer"
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack"
       ]
     },
     {
@@ -2640,7 +2668,9 @@
       "rating": 4.6,
       "reviewCount": 141,
       "mealType": [
-        "Appetizer",
+        "Breakfast",
+        "Lunch",
+        "Dinner",
         "Snack"
       ]
     },
@@ -2781,7 +2811,9 @@
       "rating": 4.6,
       "reviewCount": 129,
       "mealType": [
-        "Appetizer",
+        "Breakfast",
+        "Lunch",
+        "Dinner",
         "Snack"
       ]
     },
@@ -3180,7 +3212,8 @@
       "rating": 4.4,
       "reviewCount": 211,
       "mealType": [
-        "Side Dish",
+        "Breakfast",
+        "Dinner",
         "Lunch"
       ]
     },
@@ -3582,7 +3615,8 @@
       "rating": 4.4,
       "reviewCount": 142,
       "mealType": [
-        "Side Dish",
+        "Breakfast",
+        "Dinner",
         "Lunch"
       ]
     },
@@ -3727,7 +3761,8 @@
       "tags": [
         "Cocktail",
         "Aperitif",
-        "Classic"
+        "Classic",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/RaXwpOgNmF1_HklNLttj67_GMtA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/negroni-720x720-primary-535dee7b50914af1810b1927b69dbe46.jpg",
       "rating": 4.8,
@@ -3761,7 +3796,8 @@
       "tags": [
         "Cocktail",
         "Citrus",
-        "Highball"
+        "Highball",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/GPPgcW0jtJh2iQeAUQaycKYYtbw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/paloma-1500x1500-hero-46383ed066d2400a8ddd7543261f36c2.jpg",
       "rating": 4.7,
@@ -3791,9 +3827,9 @@
       "cuisine": "Mexican",
       "caloriesPerServing": 90,
       "tags": [
-        "Non-Alcoholic",
         "Iced Tea",
-        "Refreshing"
+        "Refreshing",
+        "Non-Alcoholic"
       ],
       "image": "https://imgs.search.brave.com/BiG6mQzzylw0MooR5t0bJSMFc7hseWr3TTZZnmYMkg0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/Y2Fyb2xpbmVzY29v/a2luZy5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMTkvMDMv/YWd1YS1kZS1qYW1h/aWNhLWhpYmlzY3Vz/LXRlYS1waG90by5q/cGc",
       "rating": 4.5,
@@ -3824,9 +3860,9 @@
       "cuisine": "Japanese",
       "caloriesPerServing": 120,
       "tags": [
-        "Non-Alcoholic",
         "Tea",
-        "Café"
+        "Café",
+        "Non-Alcoholic"
       ],
       "image": "https://imgs.search.brave.com/-KjiacBr8fMHTcl-QwPxffC80WqAAN0TSnB8HNmBMrE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/bG92ZWFuZGxlbW9u/cy5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjMvMDYvaWNl/ZC1tYXRjaGEtbGF0/dGUtcmVjaXBlLmpw/Zw",
       "rating": 4.4,
@@ -3860,7 +3896,8 @@
       "tags": [
         "Cocktail",
         "Classic",
-        "Whiskey"
+        "Whiskey",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/IgE3k1GbbNMWVCpmFI3-kKSx3eM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/bourbon-old-fashioned-4000x4000-primary-ig-f0ce04bec6754db187ab1e8a16fd45c3.jpg",
       "rating": 4.8,
@@ -3895,7 +3932,8 @@
       "tags": [
         "Cocktail",
         "Citrus",
-        "Tequila"
+        "Tequila",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/TNSRmlPvZbRnLAxTTYHMtag0oo0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/margarita-720x720-primary-f4a3b044e9a746d9b88890515c3a7328.jpg",
       "rating": 4.7,
@@ -3930,7 +3968,8 @@
       "tags": [
         "Cocktail",
         "Sour",
-        "Whiskey"
+        "Whiskey",
+        "Alcoholic"
       ],
       "image": "https://imgs.search.brave.com/SRhj5z425OVDnkdbHEjeaRGzlHpdwncactwQo_pXCkg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNTQv/NjEwLzkwNC9zbWFs/bC93aGlza2V5LXNv/dXItY29ja3RhaWwt/d2l0aC1sZW1vbi1h/bmQtY2hlcnJ5LW9u/LWJhci10b3AtcGhv/dG8uanBn",
       "rating": 4.6,
@@ -3963,7 +4002,8 @@
       "tags": [
         "Cocktail",
         "Sparkling",
-        "Gin"
+        "Gin",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/uuQZOeX-uGq4ayJhFR5D7tFxYvg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/french-75-4000x4000-primary-ig-861ae757fec64997a6136dbbf37da6f0.jpg",
       "rating": 4.7,
@@ -3996,7 +4036,8 @@
       "tags": [
         "Cocktail",
         "Coffee",
-        "Dessert"
+        "Dessert",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/cSbeCn34B68EJs6STAogw7mIwXM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/espresso-martini-4000x4000-primary-ig-3bf7e65d320b449085a2584fa70eb0d5.jpg",
       "rating": 4.5,
@@ -4028,7 +4069,8 @@
       "tags": [
         "Cocktail",
         "Classic",
-        "Whiskey"
+        "Whiskey",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/GYAzfmYiAo4EZ38Ij_UrpgTPeNw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/manhattan-4000x4000-primary-ig-9c3d894510284e9d8fbd9c518d00790b.jpg",
       "rating": 4.7,
@@ -4062,7 +4104,8 @@
       "tags": [
         "Cocktail",
         "Highball",
-        "Ginger"
+        "Ginger",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/6f0GZ1oZjmvb0q00-5BsTJc1hNM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/moscow-mule-4000x4000-primary-ig-3a364d63e57b4a9b8cf82ec1dc54eb30.jpg",
       "rating": 4.6,
@@ -4096,7 +4139,8 @@
       "tags": [
         "Cocktail",
         "Tiki",
-        "Rum"
+        "Rum",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/GuhZOlPr6NJHUaou2ldlFWKylbU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__08__10101652__mai-tai-720x720-recipe-862a7d603e7e4e57a9ca95caee98a4a6.jpg",
       "rating": 4.7,
@@ -4129,7 +4173,8 @@
       "tags": [
         "Cocktail",
         "Sour",
-        "Pisco"
+        "Pisco",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/KYGy9ew2q16Otfj37mneK678gQA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__02__08143927__pisco-sour-720x720-recipe-9c46d52151e5445fa90bcf0394493060.jpg",
       "rating": 4.6,
@@ -4161,7 +4206,8 @@
       "tags": [
         "Cocktail",
         "Bitter",
-        "Whiskey"
+        "Whiskey",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/boQt-AytPVa9EOUN_tRTo7EcJsg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__09__12094720__Boulevardier-720x720-recipe-53da547e8cfc4bd79a393ac99891f5ba.jpg",
       "rating": 4.5,
@@ -4195,7 +4241,8 @@
       "tags": [
         "Cocktail",
         "Spritz",
-        "Aperitif"
+        "Aperitif",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/IIIISme-EOH3vHQ1Os4EYz-sunM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/aperol-spritz-720x720-primary-985457b239d7427da2f8b4be17131caa.jpg",
       "rating": 4.4,
@@ -4228,7 +4275,8 @@
       "tags": [
         "Cocktail",
         "Highball",
-        "Rum"
+        "Rum",
+        "Alcoholic"
       ],
       "image": "https://www.liquor.com/thmb/m2RARXq2hVOM35HU4DdJ7iPD6FU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Dark_n_Stormy_Credit_Tim_Nusog_2500x2500_primary-57c1a6908c6d4da7a60dcaf66a342cc0.jpg",
       "rating": 4.5,
@@ -4263,7 +4311,8 @@
       "tags": [
         "Cocktail",
         "Pitcher",
-        "Fruit"
+        "Fruit",
+        "Alcoholic"
       ],
       "image": "https://imgs.search.brave.com/bCP_sB2pMVv2ULjmoeNVOs5Id4BwCsKdicfhjEKTlQc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcm9m/dXNpb25jdXJyeS5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MTgvMDYvUmVkLXdp/bmUtU2FuZ3JpYS1m/ZWF0dXJlLWltYWdl/LTMyMHgzMjAuanBn",
       "rating": 4.6,
@@ -4298,7 +4347,8 @@
       "tags": [
         "Cocktail",
         "Beer",
-        "Spicy"
+        "Spicy",
+        "Alcoholic"
       ],
       "image": "https://imgs.search.brave.com/QBm6lkxwjPSRe9XPlw3NawLFXSwRdJENqHClYkWL3iY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vY2hpY2Fu/b2VhdHMuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIyLzA3/L2NoaWNhbm8tZWF0/cy0xNjYwNi1FZGl0/LTgxOXgxMDI0Lmpw/Zz9yZXNpemU9ODE5/LDEwMjQmc3NsPTE",
       "rating": 4.4,
@@ -4330,9 +4380,9 @@
       "cuisine": "Thai",
       "caloriesPerServing": 220,
       "tags": [
-        "Non-Alcoholic",
         "Iced Tea",
-        "Sweet"
+        "Sweet",
+        "Non-Alcoholic"
       ],
       "image": "https://imgs.search.brave.com/MXNqTLaVojp6hrlbozvt0FhPF3LV3KmSimDDbLEyEP4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93aGl0/ZW9ucmljZWNvdXBs/ZS5jb20vcmVjaXBl/L2ltYWdlcy90aGFp/LWljZWQtdGVhLXJl/Y2lwZS0zLmpwZw",
       "rating": 4.6,
@@ -4365,9 +4415,9 @@
       "cuisine": "Mexican",
       "caloriesPerServing": 190,
       "tags": [
-        "Non-Alcoholic",
         "Rice Drink",
-        "Sweet"
+        "Sweet",
+        "Non-Alcoholic"
       ],
       "image": "https://www.simplyrecipes.com/thmb/yW-CQhWbHcWr1vxtZ8qc4ewuy4o=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2020__04__Easy-Homemade-Horchata-LEAD-3-c861393234fa461d9bd14de39513ef74.jpg",
       "rating": 4.5,
@@ -4397,9 +4447,9 @@
       "cuisine": "American",
       "caloriesPerServing": 80,
       "tags": [
-        "Non-Alcoholic",
         "Iced Tea",
-        "Citrus"
+        "Citrus",
+        "Non-Alcoholic"
       ],
       "image": "https://imgs.search.brave.com/MUIefV7MxZIvEAbX24oOeHdjpr5HckGPTUy5XVA9d6U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zLnlp/bWcuY29tL255L2Fw/aS9yZXMvMS4yL0NT/dVNBaXRIOGlTVkhD/N0QyYWNoSWctLS9Z/WEJ3YVdROWFHbG5h/R3hoYm1SbGNqdDNQ/VEV5TkRJN2FEMDJP/VGM3WTJZOWQyVmlj/QS0tL2h0dHBzOi8v/bWVkaWEuemVuZnMu/Y29tL2VuL21hc2hl/ZF82MDMvNzliYjE5/MDg3NjlmYmM2ZWM5/NmM0YjUwODU2Njdk/MTY",
       "rating": 4.4,
@@ -4429,9 +4479,9 @@
       "cuisine": "American",
       "caloriesPerServing": 120,
       "tags": [
-        "Non-Alcoholic",
         "Soda",
-        "Kids"
+        "Kids",
+        "Non-Alcoholic"
       ],
       "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.LEm6nzHvunKLLbo-p6xWtgHaLH%3Fpid%3DApi&f=1&ipt=5c6f36f825c4c657ac84cb63a49ef840138fad65fae392431b4fde9b265dd3e6&ipo=images",
       "rating": 4.3,
@@ -4461,9 +4511,9 @@
       "cuisine": "Vietnamese",
       "caloriesPerServing": 180,
       "tags": [
-        "Non-Alcoholic",
         "Coffee",
-        "Iced"
+        "Iced",
+        "Non-Alcoholic"
       ],
       "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.squarespace-cdn.com%2Fcontent%2Fv1%2F5ea5f3913b0ccf06d0ec2563%2F1654204754856-JP0QO8UG4WACJIKOPQ45%2FTSO_Iced%2BVietnamese%2BCoffee_4x5%2B(1).jpg&f=1&nofb=1&ipt=29a52e6746e763c37dca6addc0cf14d595c5501a2739e17a6f265e5904a1d68a",
       "rating": 4.7,
@@ -4494,9 +4544,9 @@
       "cuisine": "Mexican",
       "caloriesPerServing": 70,
       "tags": [
-        "Non-Alcoholic",
         "Fruit",
-        "Refreshing"
+        "Refreshing",
+        "Non-Alcoholic"
       ],
       "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.explicit.bing.net%2Fth%2Fid%2FOIP.3nDMCjUKtmcxAhXtyxKHmgHaLH%3Fpid%3DApi&f=1&ipt=9169db1e42c544ccb76f669f82d89be85e971bba317b7af8ad4177fc3f48d5a2&ipo=images",
       "rating": 4.5,
@@ -4528,9 +4578,9 @@
       "cuisine": "International",
       "caloriesPerServing": 110,
       "tags": [
-        "Non-Alcoholic",
         "Ginger",
-        "Soda"
+        "Soda",
+        "Non-Alcoholic"
       ],
       "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.CjDyWZ4fUqhjubns-a6N_QHaJ4%3Fpid%3DApi&f=1&ipt=d7e3b307949dbab9a533b7de46c7e3cdacfa07a039125e34abda80fd1ed59762&ipo=images",
       "rating": 4.4,
@@ -4563,9 +4613,9 @@
       "cuisine": "French",
       "caloriesPerServing": 280,
       "tags": [
-        "Non-Alcoholic",
         "Hot Drink",
-        "Chocolate"
+        "Chocolate",
+        "Non-Alcoholic"
       ],
       "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sidechef.com%2Frecipe%2F1afb722b-f4fe-4efe-9ecb-6eb21cfd1c0d.jpg%3Fd%3D1408x1120&f=1&nofb=1&ipt=11ff12e609d8a7f29c477aa681618a17c1b8f1ef5ba81b740ba198ffc7bdc10a",
       "rating": 4.7,
@@ -4595,9 +4645,9 @@
       "cuisine": "Indian",
       "caloriesPerServing": 140,
       "tags": [
-        "Non-Alcoholic",
         "Tea",
-        "Iced"
+        "Iced",
+        "Non-Alcoholic"
       ],
       "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%2Fid%2FOIP.gQic7n--9J2rJng8yvapuwHaLH%3Fpid%3DApi&f=1&ipt=1960b055762908b30e13d81a609917bfab717011743f0d0dc35ad2f1c8073c15&ipo=images",
       "rating": 4.4,
@@ -4629,9 +4679,9 @@
       "cuisine": "Indian",
       "caloriesPerServing": 160,
       "tags": [
-        "Non-Alcoholic",
         "Spiced",
-        "Comfort"
+        "Comfort",
+        "Non-Alcoholic"
       ],
       "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.p6pCHJoef0xvmzdsudThkQHaLH%3Fpid%3DApi&f=1&ipt=217ec1d5065428b24f80858a261f68a454c396176b573e10ae116643bbaefbda&ipo=images",
       "rating": 4.5,
