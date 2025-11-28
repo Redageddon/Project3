@@ -5,14 +5,14 @@ namespace Project3.Services;
 public class MealsApiService(IHttpClientFactory httpClientFactory)
 {
     // GET: api/meals
-    public async Task<List<MealsModel>> GetAllMeals()
+    public async Task<MealsDataModel> GetAllMeals()
     {
         HttpClient client = httpClientFactory.CreateClient("RecipeAPI");
         HttpResponseMessage response = await client.GetAsync("/api/meals");
 
         response.EnsureSuccessStatusCode();
 
-        List<MealsModel>? meals = await response.Content.ReadFromJsonAsync<List<MealsModel>>();
+        MealsDataModel? meals = await response.Content.ReadFromJsonAsync<MealsDataModel>();
 
         return meals ?? throw new Exception("Failed to deserialize meals");
     }

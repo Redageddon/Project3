@@ -67,15 +67,15 @@ public class PlannerRepositoryTests
         this.plannerRepository.CreatePlanner(plannerUser1); // user 1 has 2 planners
 
         // Act
-        List<PlannerModel> user1Planners = this.plannerRepository.GetPlannersByUserId(1);
-        List<PlannerModel> user2Planners = this.plannerRepository.GetPlannersByUserId(2);
+        PlannersDataModel user1Planners = this.plannerRepository.GetPlannersByUserId(1);
+        PlannersDataModel user2Planners = this.plannerRepository.GetPlannersByUserId(2);
 
         // Assert
-        Assert.That(user1Planners.Count, Is.EqualTo(2));
-        Assert.That(user1Planners.All(p => p.UserId == 1), Is.True);
+        Assert.That(user1Planners.Planners.Count, Is.EqualTo(2));
+        Assert.That(user1Planners.Planners.All(p => p.UserId == 1), Is.True);
 
-        Assert.That(user2Planners.Count, Is.EqualTo(1));
-        Assert.That(user2Planners[0].UserId, Is.EqualTo(2));
+        Assert.That(user2Planners.Planners.Count, Is.EqualTo(1));
+        Assert.That(user2Planners.Planners[0].UserId, Is.EqualTo(2));
     }
 
     [Test]

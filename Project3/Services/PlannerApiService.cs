@@ -6,14 +6,14 @@ namespace Project3.Services;
 public class PlannerApiService(IHttpClientFactory httpClientFactory)
 {
     // GET: api/planners/user/{userId}
-    public async Task<List<PlannerModel>> GetPlannersByUserId(int userId)
+    public async Task<PlannersDataModel> GetPlannersByUserId(int userId)
     {
         HttpClient client = httpClientFactory.CreateClient("RecipeAPI");
         HttpResponseMessage response = await client.GetAsync($"/api/planners/user/{userId}");
 
         response.EnsureSuccessStatusCode();
 
-        List<PlannerModel>? planners = await response.Content.ReadFromJsonAsync<List<PlannerModel>>();
+        PlannersDataModel? planners = await response.Content.ReadFromJsonAsync<PlannersDataModel>();
 
         return planners ?? throw new Exception("Failed to deserialize planners");
     }

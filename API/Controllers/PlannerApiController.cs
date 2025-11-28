@@ -10,9 +10,9 @@ public class PlannerApiController(PlannerRepository repository, SessionService s
 {
     // GET: api/planners/user/{userId}
     [HttpGet("user/{userId:int}")]
-    public ActionResult<List<PlannerModel>> GetByUserId(int userId)
+    public ActionResult<PlannersDataModel> GetByUserId(int userId)
     {
-        List<PlannerModel> planners = repository.GetPlannersByUserId(userId);
+        PlannersDataModel planners = repository.GetPlannersByUserId(userId);
 
         return this.Ok(planners);
     }

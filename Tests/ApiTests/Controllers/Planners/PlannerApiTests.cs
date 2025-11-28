@@ -16,9 +16,9 @@ public class PlannerGetTests : TestFixtureBase
         HttpResponseMessage response = await this.Client.GetAsync($"/api/planners/user/{created.UserId}");
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-        List<PlannerModel>? planners = await response.Content.ReadFromJsonAsync<List<PlannerModel>>();
-        Assert.That(planners, Is.Not.Null);
-        Assert.That(planners!.Any(p => p.PlannerId == created.PlannerId), Is.True);
+        PlannersDataModel? planners = await response.Content.ReadFromJsonAsync<PlannersDataModel>();
+        Assert.That(planners?.Planners, Is.Not.Null);
+        Assert.That(planners.Planners!.Any(p => p.PlannerId == created.PlannerId), Is.True);
     }
 
     [Test]
@@ -47,7 +47,7 @@ public class PlannerGetTests : TestFixtureBase
         HttpResponseMessage response = await this.Client.GetAsync("/api/planners/user/999999");
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-        List<PlannerModel>? planners = await response.Content.ReadFromJsonAsync<List<PlannerModel>>();
-        Assert.That(planners, Is.Empty);
+        PlannersDataModel? planners = await response.Content.ReadFromJsonAsync<PlannersDataModel>();
+        Assert.That(planners?.Planners, Is.Empty);
     }
 }

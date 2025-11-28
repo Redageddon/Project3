@@ -27,11 +27,11 @@ public class PlannerRepository
         }
     }
 
-    public List<PlannerModel> GetPlannersByUserId(int userId)
+    public PlannersDataModel GetPlannersByUserId(int userId)
     {
         PlannersDataModel planners = this.GetAllPlanners();
 
-        return planners.Planners.Where(p => p.UserId == userId).ToList();
+        return new PlannersDataModel(Planners: planners.Planners.Where(p => p.UserId == userId).ToList());
     }
 
     public PlannerModel? GetPlannerById(int id)

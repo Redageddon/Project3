@@ -10,11 +10,11 @@ public class MealsApiController(MealsRepository repository, SessionService sessi
 {
     // GET: api/meals
     [HttpGet]
-    public ActionResult<List<MealsModel>> GetAll()
+    public ActionResult<MealsDataModel> GetAll()
     {
         MealsDataModel meals = repository.GetAllMeals();
         
-        return this.Ok(meals.Meals);
+        return this.Ok(meals);
     }
 
     // GET: api/meals/{id}
