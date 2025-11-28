@@ -44,15 +44,17 @@ public class MealsApiController(MealsRepository repository, SessionService sessi
         
         int? userId = sessionService.GetUserId(sessionId);
 
-        if (userId != null)
+        if (userId is null)
         {
-            meal = meal with
-            {
-                UserId = userId.Value,
-            };
+            return this.Unauthorized(new { message = "Invalid or expired session" });
         }
 
-        MealsModel createdMeal = repository.CreateMeal(meal);
+        MealsModel mealWithUser = meal with
+        {
+            UserId = userId.Value,
+        };
+
+        MealsModel createdMeal = repository.CreateMeal(mealWithUser);
 
         return this.CreatedAtAction(
                                     nameof(this.GetById),

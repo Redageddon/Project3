@@ -42,15 +42,17 @@ public class RecipesApiController(RecipeRepository repository, SessionService se
         
         int? userId = sessionService.GetUserId(sessionId);
 
-        if (userId != null)
+        if (userId is null)
         {
-            recipe = recipe with
-            {
-                UserId = userId.Value,
-            };
+            return this.Unauthorized(new { message = "Invalid or expired session" });
         }
 
-        RecipeModel createdRecipe = repository.CreateRecipe(recipe);
+        RecipeModel recipeWithUser = recipe with
+        {
+            UserId = userId.Value,
+        };
+
+        RecipeModel createdRecipe = repository.CreateRecipe(recipeWithUser);
 
         return this.CreatedAtAction(nameof(this.GetById), new { recipeId = createdRecipe.RecipeId }, createdRecipe);
     }
