@@ -4,7 +4,7 @@ namespace API.DataModels.Food;
 
 public record PlannerModel(
     int PlannerId,
-    [Required] int UserId,
+    [Required][Range(1, int.MaxValue)] int UserId,
     [Required] DateTime PlannedDate,
     int? BreakfastId,
     int? LunchId,

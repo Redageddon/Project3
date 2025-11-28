@@ -1,6 +1,5 @@
 using API.DataModels.Food;
 using API.Services;
-using NUnit.Framework;
 
 namespace Tests.ApiTests.ServiceTests;
 
@@ -37,9 +36,9 @@ public class PlannerRepositoryTests
         return new PlannerModel(PlannerId: 0, // repository will assign
                                 UserId: userId,
                                 PlannedDate: DateTime.UtcNow,
-                                BreakfastId: 0,
-                                LunchId: 0,
-                                DinnerId: 0);
+                                BreakfastId: null,
+                                LunchId: null,
+                                DinnerId: null);
     }
 
     [Test]
@@ -77,5 +76,113 @@ public class PlannerRepositoryTests
 
         Assert.That(user2Planners.Count, Is.EqualTo(1));
         Assert.That(user2Planners[0].UserId, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void GetPlannerById_ExistingPlanner_ReturnsPlanner()
+    {
+        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel created = this.plannerRepository.CreatePlanner(planner);
+
+        PlannerModel? result = this.plannerRepository.GetPlannerById(created.PlannerId);
+
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result!.PlannerId, Is.EqualTo(created.PlannerId));
+        Assert.That(result.UserId, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void GetPlannerById_NonExistentPlanner_ReturnsNull()
+    {
+        PlannerModel? result = this.plannerRepository.GetPlannerById(999);
+
+        Assert.That(result, Is.Null);
+    }
+
+    [Test]
+    public void UpdatePlanner_ExistingPlanner_UpdatesSuccessfully()
+    {
+        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel created = this.plannerRepository.CreatePlanner(planner);
+
+        PlannerModel updated = created with 
+        { 
+            BreakfastId = 10, 
+            LunchId = 20, 
+            DinnerId = 30,
+        };
+
+        PlannerModel? result = this.plannerRepository.UpdatePlanner(created.PlannerId, updated);
+
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result!.BreakfastId, Is.EqualTo(10));
+        Assert.That(result.LunchId, Is.EqualTo(20));
+        Assert.That(result.DinnerId, Is.EqualTo(30));
+        Assert.That(result.UserId, Is.EqualTo(1)); // UserId preserved
+    }
+
+    [Test]
+    public void UpdatePlanner_PreservesOriginalUserId()
+    {
+        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel created = this.plannerRepository.CreatePlanner(planner);
+
+        // Try to change userId (should be preserved)
+        PlannerModel updated = created with { UserId = 999 };
+
+        PlannerModel? result = this.plannerRepository.UpdatePlanner(created.PlannerId, updated);
+
+        Assert.That(result!.UserId, Is.EqualTo(1)); // Original userId preserved
+    }
+
+    [Test]
+    public void UpdatePlanner_NonExistentPlanner_ReturnsNull()
+    {
+        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+
+        PlannerModel? result = this.plannerRepository.UpdatePlanner(999, planner);
+
+        Assert.That(result, Is.Null);
+    }
+
+    [Test]
+    public void DeletePlanner_ExistingPlanner_ReturnsTrue()
+    {
+        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel created = this.plannerRepository.CreatePlanner(planner);
+
+        bool result = this.plannerRepository.DeletePlanner(created.PlannerId);
+
+        Assert.That(result, Is.True);
+        Assert.That(this.plannerRepository.GetPlannerById(created.PlannerId), Is.Null);
+    }
+
+    [Test]
+    public void DeletePlanner_NonExistentPlanner_ReturnsFalse()
+    {
+        bool result = this.plannerRepository.DeletePlanner(999);
+
+        Assert.That(result, Is.False);
+    }
+
+    [Test]
+    public void GetAllPlanners_ReturnsNonNull()
+    {
+        PlannersDataModel result = this.plannerRepository.GetAllPlanners();
+
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.Planners, Is.Not.Null);
+    }
+
+    [Test]
+    public void GetAllPlanners_AfterDelete_DoesNotContainDeletedPlanner()
+    {
+        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel created = this.plannerRepository.CreatePlanner(planner);
+
+        this.plannerRepository.DeletePlanner(created.PlannerId);
+        PlannersDataModel result = this.plannerRepository.GetAllPlanners();
+
+        Assert.That(result.Planners.Any(p => p.PlannerId == created.PlannerId), Is.False);
     }
 }

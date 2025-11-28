@@ -34,9 +34,14 @@ public class PlannerApiController(PlannerRepository repository, SessionService s
     // POST: api/planners
     [HttpPost]
     public ActionResult<PlannerModel> Create(
-        [FromHeader(Name = "X-Session-Id")] string sessionId,
+        [FromHeader(Name = "X-Session-Id")] string? sessionId,
         [FromBody] PlannerModel planner)
     {
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.Unauthorized(new { message = "Session is null or empty" });
+        }
+        
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
@@ -49,7 +54,6 @@ public class PlannerApiController(PlannerRepository repository, SessionService s
             return this.Unauthorized(new { message = "Invalid or expired session" });
         }
 
-        // Force planner to belong to the CURRENT user
         PlannerModel plannerWithUser = planner with
         {
             UserId = userId.Value,
@@ -57,7 +61,6 @@ public class PlannerApiController(PlannerRepository repository, SessionService s
 
         PlannerModel createdPlanner = repository.CreatePlanner(plannerWithUser);
 
-        // repository.CreatePlanner will assign PlannerId
         return this.CreatedAtAction(
                                     nameof(this.GetById),
                                     new { plannerId = createdPlanner.PlannerId },

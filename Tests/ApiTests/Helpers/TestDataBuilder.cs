@@ -31,6 +31,26 @@ public static class TestDataBuilder
         return new RecipeModel(0, 0, "", "", "", [], [], [], [], "", 0, 0, 0, 0, 0, 0);
     }
 
+    public static MealsModel CreateMeal(string? name = null)
+    {
+        return new MealsModel(0, 1, name ?? $"Meal_{Guid.NewGuid():N}", [], [], []);
+    }
+
+    public static MealsModel CreateInvalidMeal()
+    {
+        return new MealsModel(0, 0, null, null, null, null);
+    }
+
+    public static PlannerModel CreatePlanner()
+    {
+        return new PlannerModel(0, 1, DateTime.UtcNow.AddDays(1), null, null, null);
+    }
+
+    public static PlannerModel CreateInvalidPlanner()
+    {
+        return new PlannerModel(0, 0, default, null, null, null);
+    }
+
     public static RegisterRequest CreateRegisterRequest(string? username = null, string? email = null, string? password = null)
     {
         return new RegisterRequest(username ?? $"user_{Guid.NewGuid():N}",

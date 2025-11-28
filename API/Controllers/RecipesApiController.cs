@@ -32,9 +32,14 @@ public class RecipesApiController(RecipeRepository repository, SessionService se
     // POST: api/recipes
     [HttpPost]
     public ActionResult<RecipeModel> Create(
-        [FromHeader(Name = "X-Session-Id")] string sessionId,
+        [FromHeader(Name = "X-Session-Id")] string? sessionId,
         [FromBody] RecipeModel recipe)
     {
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.Unauthorized(new { message = "Session is null or empty" });
+        }
+        
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);

@@ -9,6 +9,7 @@ public abstract class TestFixtureBase
 {
     protected CustomWebApplicationFactory Factory = null!;
     protected HttpClient Client = null!;
+    private string? sessionId;
 
     [OneTimeSetUp]
     public void BaseSetUp()
@@ -24,12 +25,45 @@ public abstract class TestFixtureBase
         this.Factory.Dispose();
     }
 
+    [SetUp]
+    public async Task SetupSession()
+    {
+        if (this.sessionId == null)
+        {
+            RegisterRequest registerRequest = TestDataBuilder.CreateRegisterRequest();
+            await this.Client.PostAsJsonAsync("/api/auth/register", registerRequest);
+
+            LoginRequest loginRequest = TestDataBuilder.CreateLoginRequest(registerRequest.Email, registerRequest.Password);
+            HttpResponseMessage loginResponse = await this.Client.PostAsJsonAsync("/api/auth/login", loginRequest);
+            LoginResponse? result = await loginResponse.Content.ReadFromJsonAsync<LoginResponse>();
+
+            this.sessionId = result!.SessionId;
+            this.Client.DefaultRequestHeaders.Add("X-Session-Id", this.sessionId);
+        }
+    }
+
     protected async Task<RecipeModel> CreateRecipe(RecipeModel? recipe = null)
     {
         recipe ??= TestDataBuilder.CreateRecipe();
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/recipes", recipe);
 
         return (await response.Content.ReadFromJsonAsync<RecipeModel>())!;
+    }
+
+    protected async Task<MealsModel> CreateMeal(MealsModel? meal = null)
+    {
+        meal ??= TestDataBuilder.CreateMeal();
+        HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/meals", meal);
+
+        return (await response.Content.ReadFromJsonAsync<MealsModel>())!;
+    }
+
+    protected async Task<PlannerModel> CreatePlanner(PlannerModel? planner = null)
+    {
+        planner ??= TestDataBuilder.CreatePlanner();
+        HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/planners", planner);
+
+        return (await response.Content.ReadFromJsonAsync<PlannerModel>())!;
     }
 
     protected async Task<UserDto> CreateUser(string? username = null, string? email = null, string? password = null)

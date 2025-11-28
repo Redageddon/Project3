@@ -85,4 +85,49 @@ public class RecipesCreateTests : TestFixtureBase
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
+
+    [Test]
+    public async Task Create_WithoutSession_ReturnsUnauthorized()
+    {
+        RecipeModel recipe = TestDataBuilder.CreateRecipe();
+        HttpClient clientWithoutSession = this.Factory.CreateClient();
+
+        HttpResponseMessage response = await clientWithoutSession.PostAsJsonAsync("/api/recipes", recipe);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+    }
+
+    [Test]
+    public async Task Create_WithEmptySession_ReturnsUnauthorized()
+    {
+        RecipeModel recipe = TestDataBuilder.CreateRecipe();
+
+        HttpRequestMessage request = new(HttpMethod.Post, "/api/recipes")
+        {
+            Content = JsonContent.Create(recipe),
+        };
+
+        request.Headers.Add("X-Session-Id", "");
+
+        HttpResponseMessage response = await this.Client.SendAsync(request);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+    }
+
+    [Test]
+    public async Task Create_WithInvalidSession_ReturnsUnauthorized()
+    {
+        RecipeModel recipe = TestDataBuilder.CreateRecipe();
+
+        HttpRequestMessage request = new(HttpMethod.Post, "/api/recipes")
+        {
+            Content = JsonContent.Create(recipe),
+        };
+
+        request.Headers.Add("X-Session-Id", "invalid-session-id");
+
+        HttpResponseMessage response = await this.Client.SendAsync(request);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+    }
 }

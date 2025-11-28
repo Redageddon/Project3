@@ -34,12 +34,12 @@ public class MealsApiController(MealsRepository repository, SessionService sessi
     // POST: api/meals
     [HttpPost]
     public ActionResult<MealsModel> Create(
-        [FromHeader(Name = "X-Session-Id")] string sessionId,
+        [FromHeader(Name = "X-Session-Id")] string? sessionId,
         [FromBody] MealsModel meal)
     {
-        if (!this.ModelState.IsValid)
+        if (string.IsNullOrEmpty(sessionId))
         {
-            return this.BadRequest(this.ModelState);
+            return this.Unauthorized(new { message = "Session is null or empty" });
         }
         
         int? userId = sessionService.GetUserId(sessionId);
@@ -47,6 +47,11 @@ public class MealsApiController(MealsRepository repository, SessionService sessi
         if (userId is null)
         {
             return this.Unauthorized(new { message = "Invalid or expired session" });
+        }
+
+        if (!this.ModelState.IsValid)
+        {
+            return this.BadRequest(this.ModelState);
         }
 
         MealsModel mealWithUser = meal with

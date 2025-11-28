@@ -1,6 +1,5 @@
 using API.DataModels.Users;
 using API.Services;
-using NUnit.Framework;
 
 namespace Tests.ApiTests.ServiceTests;
 

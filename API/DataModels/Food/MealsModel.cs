@@ -4,7 +4,7 @@ namespace API.DataModels.Food;
 
 public record MealsModel(
     int MealId,
-    [Required] int UserId,
+    [Required][Range(1, int.MaxValue)] int UserId,
     string? Name,
     List<RecipeModel>? Dishes,
     List<RecipeModel>? Drinks,

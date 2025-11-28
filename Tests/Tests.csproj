@@ -26,4 +26,9 @@
         <Using Include="NUnit.Framework"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ApiTests\Controllers\Meals\" />
+      <Folder Include="ApiTests\Controllers\Planners\" />
+    </ItemGroup>
+
 </Project>
