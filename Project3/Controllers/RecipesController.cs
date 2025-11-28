@@ -8,33 +8,13 @@ namespace Project3.Controllers;
 
 public class RecipesController(ILogger<RecipesController> logger, RecipeApiService recipeApiService) : Controller
 {
-    public async Task<IActionResult> Index([FromQuery] RecipeFilter filter)
+    public async Task<IActionResult> Index([FromQuery] RecipeFilter recipeFilter)
     {
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
 
-        List<RecipeModel> filteredRecipes = FilterRecipes(recipesData.Recipes, filter);
-
-        recipesData = new RecipesDataModel(filteredRecipes);
+        recipesData = new RecipesDataModel(recipeFilter.Filter(recipesData.Recipes));
 
         return this.View(recipesData);
-    }
-
-    private static List<RecipeModel> FilterRecipes(IEnumerable<RecipeModel> recipes, RecipeFilter filter)
-    {
-        return recipes
-               .Where(r => r.Name.MatchesText(filter.Name))
-               .Where(r => r.MealType.MatchesAny(filter.MealType))
-               .Where(r => r.Tags.MatchesAll(filter.Tag))
-               .Where(r => r.Ingredients.ContainsSubstring(filter.Ingredients))
-               .Where(r => r.Difficulty.MatchesList(filter.Difficulty))
-               .Where(r => r.Cuisine.MatchesList(filter.Cuisine))
-               .Where(r => r.Servings.MatchesRange(filter.ServingsLower, filter.ServingsUpper))
-               .Where(r => r.Rating.MatchesRange(filter.RatingLower, filter.RatingUpper))
-               .Where(r => r.ReviewCount.MatchesRange(filter.ReviewCountLower, filter.ReviewCountUpper))
-               .Where(r => r.PrepTimeMinutes.MatchesRange(filter.PrepTimeMinutesLower, filter.PrepTimeMinutesUpper))
-               .Where(r => r.CookTimeMinutes.MatchesRange(filter.CookTimeMinutesLower, filter.CookTimeMinutesUpper))
-               .Where(r => r.CaloriesPerServing.MatchesRange(filter.CaloriesLower, filter.CaloriesUpper))
-               .ToList();
     }
 
     [Route("Recipes/{id:int}")]
