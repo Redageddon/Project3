@@ -1,0 +1,385 @@
+@model API.DataModels.Food.RecipeModel
+@{ Layout = null; }
+
+<form id="recipeForm" method="post">
+    @* MAIN MEAL TYPE SELECT (Breakfast, Lunch, Dinner, Dessert) *@
+    <div class="mb-3">
+        <label class="form-label">Main Meal Type</label>
+        <select id="mainMealType" class="form-select">
+            <option value="">-- Select a meal type --</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Dessert">Dessert</option>
+        </select>
+        <small class="text-muted">
+            This will be stored in <code>MealType[0]</code> when the form is submitted.
+        </small>
+    </div>
+
+    @* NAME OF RECIPE *@
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Recipe Name</label>
+        <input asp-for="Name" class="form-control" placeholder="e.g. Spaghetti Carbonara" />
+    </div>
+
+    @* CUISINE *@
+    <div class="mb-3">
+        <label asp-for="Cuisine" class="form-label">Cuisine</label>
+        <input asp-for="Cuisine" class="form-control" placeholder="e.g. Italian" />
+    </div>
+
+    @* INGREDIENTS: text + button -> clickable chips *@
+    <div class="mb-3">
+        <label class="form-label">Ingredients</label>
+        <div class="d-flex mb-2">
+            <input type="text"
+                   id="ingredientInput"
+                   class="form-control me-2"
+                   placeholder="e.g. 2 eggs" />
+            <button type="button" id="addIngredientBtn" class="btn btn-secondary">
+                Add Ingredient
+            </button>
+        </div>
+
+        <div id="ingredientList"
+             class="d-flex flex-wrap gap-2 border rounded p-2"
+             style="min-height: 40px;">
+            @* chips will appear here *@
+        </div>
+        <small class="text-muted d-block mt-1">
+            Click an ingredient to remove it.
+        </small>
+    </div>
+
+    @* DIFFICULTY RADIO BUTTONS *@
+    <div class="mb-3">
+        <label class="form-label d-block">Difficulty</label>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="radio"
+                   name="Difficulty"
+                   id="diffEasy"
+                   value="Easy" />
+            <label class="form-check-label" for="diffEasy">Easy</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="radio"
+                   name="Difficulty"
+                   id="diffMedium"
+                   value="Medium" />
+            <label class="form-check-label" for="diffMedium">Medium</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="radio"
+                   name="Difficulty"
+                   id="diffHard"
+                   value="Hard" />
+            <label class="form-check-label" for="diffHard">Hard</label>
+        </div>
+    </div>
+
+    @* TAGS: text + button -> clickable chips *@
+    <div class="mb-3">
+        <label class="form-label">Tags</label>
+        <div class="d-flex mb-2">
+            <input type="text"
+                   id="tagInput"
+                   class="form-control me-2"
+                   placeholder="e.g. Quick, Vegetarian" />
+            <button type="button" id="addTagBtn" class="btn btn-secondary">
+                Add Tag
+            </button>
+        </div>
+
+        <div id="tagList"
+             class="d-flex flex-wrap gap-2 border rounded p-2"
+             style="min-height: 40px;">
+            @* tag chips here *@
+        </div>
+        <small class="text-muted d-block mt-1">
+            Click a tag to remove it.
+        </small>
+    </div>
+
+    @* IMAGE SELECTION: radio + (file or URL) *@
+    <div class="mb-3">
+        <label class="form-label d-block">Image</label>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="radio"
+                   name="imageSource"
+                   id="imageSourceFile"
+                   value="file" />
+            <label class="form-check-label" for="imageSourceFile">Upload file</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="radio"
+                   name="imageSource"
+                   id="imageSourceUrl"
+                   value="url"
+                   checked />
+            <label class="form-check-label" for="imageSourceUrl">Image URL</label>
+        </div>
+
+        <div class="mt-2" id="imageFileWrapper" style="display:none;">
+            <input type="file" class="form-control" id="imageFileInput" />
+            <small class="text-muted">
+                File upload wiring will come later when you add backend support.
+            </small>
+        </div>
+
+        <div class="mt-2" id="imageUrlWrapper">
+            <input asp-for="Image"
+                   type="url"
+                   class="form-control"
+                   id="imageUrlInput"
+                   placeholder="https://example.com/image.jpg" />
+        </div>
+    </div>
+
+    @* INSTRUCTIONS: text input + add button + scrollable list *@
+    <div class="mb-3" id="instructions">
+        <label class="form-label">Instructions</label>
+
+        <div class="d-flex mb-2">
+            <input type="text"
+                   id="instructionInput"
+                   class="form-control me-2"
+                   placeholder="Type the next step..." />
+            <button type="button"
+                    id="addInstructionBtn"
+                    class="btn btn-secondary">
+                Add Step
+            </button>
+        </div>
+
+        <div id="steps"
+             class="border rounded p-2"
+             style="max-height: 200px; overflow-y: auto;">
+            @* step items will be added here *@
+        </div>
+
+        <small class="text-muted d-block mt-1">
+            Each step auto-increments. Use the X button next to a step to remove it.
+        </small>
+    </div>
+
+    @* TIMES *@
+    <div class="row mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <label asp-for="PrepTimeMinutes" class="form-label">Prep Time (minutes)</label>
+            <input asp-for="PrepTimeMinutes"
+                   type="number"
+                   min="1"
+                   step="1"
+                   class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="CookTimeMinutes" class="form-label">Cook Time (minutes)</label>
+            <input asp-for="CookTimeMinutes"
+                   type="number"
+                   min="1"
+                   step="1"
+                   class="form-control" />
+        </div>
+    </div>
+
+    @* SERVINGS & CALORIES *@
+    <div class="row mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <label asp-for="Servings" class="form-label">Servings</label>
+            <input asp-for="Servings"
+                   type="number"
+                   min="1"
+                   step="1"
+                   class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="CaloriesPerServing" class="form-label">Calories per Serving</label>
+            <input asp-for="CaloriesPerServing"
+                   type="number"
+                   min="1"
+                   step="1"
+                   class="form-control" />
+        </div>
+    </div>
+
+    @* You can set ReviewCount / Rating in the backend for a new recipe, so no inputs here *@
+
+    <button type="submit" class="btn btn-primary">
+        Save Recipe
+    </button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('recipeForm');
+
+    // INGREDIENTS
+    const ingredientInput = document.getElementById('ingredientInput');
+    const addIngredientBtn = document.getElementById('addIngredientBtn');
+    const ingredientList = document.getElementById('ingredientList');
+
+    addIngredientBtn.addEventListener('click', function () {
+        const value = ingredientInput.value.trim();
+        if (!value) return;
+
+        const span = document.createElement('span');
+        span.className = 'badge bg-light text-dark border ingredient-item';
+        span.style.cursor = 'pointer';
+        span.dataset.value = value;
+        span.textContent = value;
+
+        span.addEventListener('click', function () {
+            span.remove();
+        });
+
+        ingredientList.appendChild(span);
+        ingredientInput.value = '';
+        ingredientInput.focus();
+    });
+
+    // TAGS
+    const tagInput = document.getElementById('tagInput');
+    const addTagBtn = document.getElementById('addTagBtn');
+    const tagList = document.getElementById('tagList');
+
+    addTagBtn.addEventListener('click', function () {
+        const value = tagInput.value.trim();
+        if (!value) return;
+
+        const span = document.createElement('span');
+        span.className = 'badge bg-light text-dark border tag-item';
+        span.style.cursor = 'pointer';
+        span.dataset.value = value;
+        span.textContent = value;
+
+        span.addEventListener('click', function () {
+            span.remove();
+        });
+
+        tagList.appendChild(span);
+        tagInput.value = '';
+        tagInput.focus();
+    });
+
+    // IMAGE SOURCE TOGGLE
+    const imageSourceFile = document.getElementById('imageSourceFile');
+    const imageSourceUrl = document.getElementById('imageSourceUrl');
+    const imageFileWrapper = document.getElementById('imageFileWrapper');
+    const imageUrlWrapper = document.getElementById('imageUrlWrapper');
+
+    function updateImageSourceVisibility() {
+        if (imageSourceFile.checked) {
+            imageFileWrapper.style.display = '';
+            imageUrlWrapper.style.display = 'none';
+        } else {
+            imageFileWrapper.style.display = 'none';
+            imageUrlWrapper.style.display = '';
+        }
+    }
+
+    imageSourceFile.addEventListener('change', updateImageSourceVisibility);
+    imageSourceUrl.addEventListener('change', updateImageSourceVisibility);
+    updateImageSourceVisibility();
+
+    // INSTRUCTIONS
+    const instructionInput = document.getElementById('instructionInput');
+    const addInstructionBtn = document.getElementById('addInstructionBtn');
+    const stepsContainer = document.getElementById('steps');
+
+    let stepCounter = 1;
+
+    addInstructionBtn.addEventListener('click', function () {
+        const text = instructionInput.value.trim();
+        if (!text) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'd-flex align-items-start mb-2 step-item';
+        wrapper.dataset.text = text;
+
+        const label = document.createElement('strong');
+        label.textContent = (stepCounter++) + '. ';
+
+        const span = document.createElement('span');
+        span.textContent = text;
+        span.className = 'me-2';
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn btn-sm btn-outline-danger';
+        btn.textContent = 'X';
+        btn.addEventListener('click', function () {
+            wrapper.remove();
+        });
+
+        wrapper.appendChild(label);
+        wrapper.appendChild(span);
+        wrapper.appendChild(btn);
+
+        stepsContainer.appendChild(wrapper);
+        instructionInput.value = '';
+        instructionInput.focus();
+    });
+
+    // BEFORE SUBMIT: convert chips / steps into hidden inputs for:
+    // Ingredients[], Tags[], Instructions[], MealType[]
+    form.addEventListener('submit', function () {
+        // Remove old dynamic hidden inputs
+        form.querySelectorAll('.dynamic-hidden').forEach(e => e.remove());
+
+        // Ingredients
+        const ingredientChips = ingredientList.querySelectorAll('.ingredient-item');
+        ingredientChips.forEach((chip, index) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'Ingredients[' + index + ']';
+            input.value = chip.dataset.value;
+            input.classList.add('dynamic-hidden');
+            form.appendChild(input);
+        });
+
+        // Tags
+        const tagChips = tagList.querySelectorAll('.tag-item');
+        tagChips.forEach((chip, index) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'Tags[' + index + ']';
+            input.value = chip.dataset.value;
+            input.classList.add('dynamic-hidden');
+            form.appendChild(input);
+        });
+
+        // Instructions
+        const stepItems = stepsContainer.querySelectorAll('.step-item');
+        stepItems.forEach((step, index) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'Instructions[' + index + ']';
+            input.value = step.dataset.text;
+            input.classList.add('dynamic-hidden');
+            form.appendChild(input);
+        });
+
+        // MealType – just main meal type for now
+        const mainMealType = document.getElementById('mainMealType').value;
+        if (mainMealType) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'MealType[0]';
+            input.value = mainMealType;
+            input.classList.add('dynamic-hidden');
+            form.appendChild(input);
+        }
+    });
+});
+</script>
