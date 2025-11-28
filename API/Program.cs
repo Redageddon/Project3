@@ -14,6 +14,7 @@ public partial class Program
         builder.Services.AddSingleton<RecipeRepository>();
         builder.Services.AddSingleton<PlannerRepository>();
         builder.Services.AddSingleton<UserRepository>();
+        builder.Services.AddSingleton<MealsRepository>();
         builder.Services.AddSingleton<PasswordHasher>();
         builder.Services.AddSingleton<SessionService>();
         builder.Services.AddScoped<UserAuth>();

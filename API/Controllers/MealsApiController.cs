@@ -1,0 +1,83 @@
+using API.DataModels.Food;
+using API.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace API.Controllers;
+
+[ApiController]
+[Route("api/meals")]
+public class MealsApiController(MealsRepository repository) : ControllerBase
+{
+    // GET: api/meals
+    [HttpGet]
+    public ActionResult<List<MealsModel>> GetAll()
+    {
+        MealsDataModel meals = repository.GetAllMeals();
+        
+        return this.Ok(meals.Meals);
+    }
+
+    // GET: api/meals/{id}
+    [HttpGet("{mealId:int}")]
+    public ActionResult<MealsModel> GetById(int mealId)
+    {
+        MealsModel? meal = repository.GetMealById(mealId);
+
+        if (meal == null)
+        {
+            return this.NotFound(new { message = $"Meal with ID {mealId} not found" });
+        }
+
+        return this.Ok(meal);
+    }
+
+    // POST: api/meals
+    [HttpPost]
+    public ActionResult<MealsModel> Create([FromBody] MealsModel meal)
+    {
+        if (!this.ModelState.IsValid)
+        {
+            return this.BadRequest(this.ModelState);
+        }
+
+        MealsModel createdMeal = repository.CreateMeal(meal);
+
+        return this.CreatedAtAction(
+                                    nameof(this.GetById),
+                                    new { mealId = createdMeal.MealId },
+                                    createdMeal);
+    }
+
+    // PUT: api/meals/{id}
+    [HttpPut("{mealId:int}")]
+    public ActionResult<MealsModel> Update(int mealId, [FromBody] MealsModel meal)
+    {
+        if (!this.ModelState.IsValid)
+        {
+            return this.BadRequest(this.ModelState);
+        }
+
+        MealsModel? updatedMeal = repository.UpdateMeal(mealId, meal);
+
+        if (updatedMeal == null)
+        {
+            return this.NotFound(new { message = $"Meal with ID {mealId} not found" });
+        }
+
+        return this.Ok(updatedMeal);
+    }
+
+    // DELETE: api/meals/{id}
+    [HttpDelete("{mealId:int}")]
+    public ActionResult Delete(int mealId)
+    {
+        bool success = repository.DeleteMeal(mealId);
+
+        if (!success)
+        {
+            return this.NotFound(new { message = $"Meal with ID {mealId} not found" });
+        }
+
+        return this.NoContent();
+    }
+}

@@ -4,10 +4,9 @@ public record PlannerModel(
     int PlannerId,
     int UserId,
     DateTime PlannedDate,
-    List<RecipeModel> Breakfast,
-    List<RecipeModel> Lunch,
-    List<RecipeModel> Dinner,
-    List<RecipeModel> Desert
+    int? BreakfastId,
+    int? LunchId,
+    int? DinnerId
 );
 
 public record PlannersDataModel(List<PlannerModel> Planners);

@@ -75,7 +75,7 @@ public class PlannerRepository
                 return null;
             }
 
-            // Preserve original planned date and user id
+            // Preserve original user id
             PlannerModel original = planners.Planners[index];
 
             PlannerModel plannerToUpdate = updatedPlanner with
