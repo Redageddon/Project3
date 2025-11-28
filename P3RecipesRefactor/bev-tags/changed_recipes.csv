@@ -1,0 +1,34 @@
+index,name,before_tags,after_tags
+21,Mango Lassi,Lassi; Mango; Indian; Pakistani; Asian,Lassi; Mango; Indian; Pakistani; Asian; Non-Alcoholic
+24,Blueberry Banana Smoothie,Smoothie; Blueberry; Banana,Smoothie; Blueberry; Banana; Non-Alcoholic
+29,Brazilian Caipirinha,Caipirinha; Brazilian; Cocktail,Caipirinha; Brazilian; Cocktail; Alcoholic
+39,Classic Mojito,Mojito; Cuban; Cocktail,Mojito; Cuban; Cocktail; Alcoholic
+49,Pineapple Coconut Smoothie,Smoothie; Pineapple; Coconut,Smoothie; Pineapple; Coconut; Non-Alcoholic
+96,Negroni,Cocktail; Aperitif; Classic,Cocktail; Aperitif; Classic; Alcoholic
+97,Paloma,Cocktail; Citrus; Highball,Cocktail; Citrus; Highball; Alcoholic
+98,Agua de Jamaica (Hibiscus Tea),Non-Alcoholic; Iced Tea; Refreshing,Iced Tea; Refreshing; Non-Alcoholic
+99,Iced Matcha Latte,Non-Alcoholic; Tea; Café,Tea; Café; Non-Alcoholic
+100,Old Fashioned,Cocktail; Classic; Whiskey,Cocktail; Classic; Whiskey; Alcoholic
+101,Classic Margarita,Cocktail; Citrus; Tequila,Cocktail; Citrus; Tequila; Alcoholic
+102,Whiskey Sour,Cocktail; Sour; Whiskey,Cocktail; Sour; Whiskey; Alcoholic
+103,French 75,Cocktail; Sparkling; Gin,Cocktail; Sparkling; Gin; Alcoholic
+104,Espresso Martini,Cocktail; Coffee; Dessert,Cocktail; Coffee; Dessert; Alcoholic
+105,Manhattan,Cocktail; Classic; Whiskey,Cocktail; Classic; Whiskey; Alcoholic
+106,Moscow Mule,Cocktail; Highball; Ginger,Cocktail; Highball; Ginger; Alcoholic
+107,Mai Tai (Trader Vic-style),Cocktail; Tiki; Rum,Cocktail; Tiki; Rum; Alcoholic
+108,Pisco Sour,Cocktail; Sour; Pisco,Cocktail; Sour; Pisco; Alcoholic
+109,Boulevardier,Cocktail; Bitter; Whiskey,Cocktail; Bitter; Whiskey; Alcoholic
+110,Aperol Spritz,Cocktail; Spritz; Aperitif,Cocktail; Spritz; Aperitif; Alcoholic
+111,Dark 'n' Stormy,Cocktail; Highball; Rum,Cocktail; Highball; Rum; Alcoholic
+112,Spanish Red Sangria,Cocktail; Pitcher; Fruit,Cocktail; Pitcher; Fruit; Alcoholic
+113,Michelada,Cocktail; Beer; Spicy,Cocktail; Beer; Spicy; Alcoholic
+114,Thai Iced Tea,Non-Alcoholic; Iced Tea; Sweet,Iced Tea; Sweet; Non-Alcoholic
+115,Horchata (Mexican Rice Drink),Non-Alcoholic; Rice Drink; Sweet,Rice Drink; Sweet; Non-Alcoholic
+116,Arnold Palmer,Non-Alcoholic; Iced Tea; Citrus,Iced Tea; Citrus; Non-Alcoholic
+117,Shirley Temple,Non-Alcoholic; Soda; Kids,Soda; Kids; Non-Alcoholic
+118,Vietnamese Iced Coffee (Cà phê sữa đá),Non-Alcoholic; Coffee; Iced,Coffee; Iced; Non-Alcoholic
+119,Watermelon Agua Fresca,Non-Alcoholic; Fruit; Refreshing,Fruit; Refreshing; Non-Alcoholic
+120,Homemade Ginger Beer (Non-Alcoholic),Non-Alcoholic; Ginger; Soda,Ginger; Soda; Non-Alcoholic
+121,Classic Hot Chocolate (Parisian-Style),Non-Alcoholic; Hot Drink; Chocolate,Hot Drink; Chocolate; Non-Alcoholic
+122,Iced Chai Latte,Non-Alcoholic; Tea; Iced,Tea; Iced; Non-Alcoholic
+123,Golden Milk (Turmeric Latte),Non-Alcoholic; Spiced; Comfort,Spiced; Comfort; Non-Alcoholic
