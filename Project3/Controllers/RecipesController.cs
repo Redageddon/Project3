@@ -8,11 +8,11 @@ namespace Project3.Controllers;
 
 public class RecipesController(ILogger<RecipesController> logger, RecipeApiService recipeApiService) : Controller
 {
-    public async Task<IActionResult> Index(string? mealType, string? name)
+    public async Task<IActionResult> Index(string? mealType, string? name, List<string>? tags)
     {
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
 
-        List<RecipeModel> filteredRecipes = FilterRecipes(recipesData.Recipes, mealType, name);
+        List<RecipeModel> filteredRecipes = FilterRecipes(recipesData.Recipes, mealType, name, tags);
 
         recipesData = new RecipesDataModel(filteredRecipes);
         
@@ -21,7 +21,8 @@ public class RecipesController(ILogger<RecipesController> logger, RecipeApiServi
 
     private static List<RecipeModel> FilterRecipes(IEnumerable<RecipeModel> recipeModels,
                                                    string? mealType,
-                                                   string? name)
+                                                   string? name,
+                                                   List<string>? tags)
     {
         if (!string.IsNullOrEmpty(mealType))
         {
@@ -31,6 +32,11 @@ public class RecipesController(ILogger<RecipesController> logger, RecipeApiServi
         if (!string.IsNullOrEmpty(name))
         {
             recipeModels = recipeModels.Where(recipe => recipe.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+        }
+        
+        if (tags is { Count: > 0 })
+        {
+            recipeModels = recipeModels.Where(recipe => recipe.Tags.Any(tags.Contains));
         }
 
         return recipeModels.ToList();

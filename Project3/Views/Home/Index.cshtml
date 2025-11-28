@@ -42,13 +42,13 @@
 
 <div class="row g-3 mt-1">
     <div class="col-md-6">
-        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-tab="Drinks" asp-route-alcoholic="false">
+        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-mealType="Beverage" asp-route-tags="Non-Alcoholic">
             <h5 class="mb-0">Non-Alcoholic Drinks</h5>
             <small class="text-muted">Coffee, tea, mocktails</small>
         </a>
     </div>
     <div class="col-md-6">
-        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-tab="Drinks" asp-route-alcoholic="true">
+        <a class="card text-center p-4" asp-controller="Recipes" asp-action="Index" asp-route-mealType="Beverage" asp-route-tags="Alcoholic">
             <h5 class="mb-0">Cocktails</h5>
             <small class="text-muted">Classics & signatures</small>
         </a>
