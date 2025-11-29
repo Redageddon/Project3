@@ -21,9 +21,11 @@
     <div class="row">
         <!-- Sidebar -->
         <div class="col-lg-3 col-md-4 mb-4">
-            @await Html.PartialAsync("~/Views/Shared/_RecipeFilterSidebar.cshtml", filter)
+            <div class="sticky-top">
+                @await Html.PartialAsync("~/Views/Shared/_RecipeFilterSidebar.cshtml", filter)
+            </div>
         </div>
-        
+    
         <!-- Recipe Cards -->
         <div class="col-lg-9 col-md-8">
             <div class="card-container">
