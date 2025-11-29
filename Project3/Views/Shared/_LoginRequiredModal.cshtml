@@ -1,0 +1,47 @@
+<div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-labelledby="loginRequiredModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header border-0">
+                <h5 class="modal-title fw-semibold" id="loginRequiredModalLabel">
+                    Login Required
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <p class="mb-3">
+                    You must be logged in to create a recipe.
+                </p>
+                <p class="text-muted mb-0">
+                    Please log in (or create an account) to save and manage your recipes.
+                </p>
+            </div>
+
+            <div class="modal-footer border-0 d-flex justify-content-between">
+                <button type="button"
+                        class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">
+                    Cancel
+                </button>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Index", "Login")">
+                    Go to Login Page
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modalElement = document.getElementById('loginRequiredModal');
+            if (!modalElement) return;
+
+            // Requires Bootstrap JS loaded in your layout
+            var loginModal = new bootstrap.Modal(modalElement);
+            loginModal.show();
+        });
+    </script>
+}

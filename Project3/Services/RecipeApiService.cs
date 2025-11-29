@@ -36,10 +36,18 @@ public class RecipeApiService(IHttpClientFactory httpClientFactory)
     }
 
     // POST: api/recipes
-    public async Task<RecipeModel> CreateRecipe(RecipeModel recipe)
+    public async Task<RecipeModel> CreateRecipe(string sessionId, RecipeModel recipe)
     {
         HttpClient client = httpClientFactory.CreateClient("RecipeAPI");
-        HttpResponseMessage response = await client.PostAsJsonAsync("/api/recipes", recipe);
+
+        using HttpRequestMessage request = new(HttpMethod.Post, "/api/recipes");
+
+        request.Content = JsonContent.Create(recipe);
+
+        // This must match [FromHeader(Name = "X-Session-Id")] in RecipesApiController
+        request.Headers.Add("X-Session-Id", sessionId);
+
+        HttpResponseMessage response = await client.SendAsync(request);
 
         response.EnsureSuccessStatusCode();
 
@@ -47,7 +55,7 @@ public class RecipeApiService(IHttpClientFactory httpClientFactory)
 
         return createdRecipe ?? throw new Exception("Failed to deserialize created recipe");
     }
-
+    
     // PUT: api/recipes/{id}
     public async Task<RecipeModel?> UpdateRecipe(int id, RecipeModel recipe)
     {
