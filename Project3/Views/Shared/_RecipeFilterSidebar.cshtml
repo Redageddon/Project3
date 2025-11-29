@@ -209,19 +209,19 @@
                             <div id="@filter.LowerParam" class="accordion-collapse collapse"
                                  data-bs-parent="#filterAccordion">
                                 <div class="accordion-body">
-                                    <div class="row g-2">
-                                        <div class="col-6">
-                                            <input type="number" class="form-control form-control-sm"
-                                                   name="@filter.LowerParam"
-                                                   min="0" step="@filter.Step" placeholder="Min"/>
+                                        <div class="row g-2">
+                                            <div class="col-6">
+                                                <input type="number" class="form-control form-control-sm" name="@filter.LowerParam" 
+                                                       value="@Model?.GetType().GetProperty(filter.LowerParam)?.GetValue(Model)" 
+                                                       min="0" step="@filter.Step" placeholder="Min" />
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="number" class="form-control form-control-sm" name="@filter.UpperParam" 
+                                                       value="@Model?.GetType().GetProperty(filter.UpperParam)?.GetValue(Model)" 
+                                                       max="@(filter.UpperDefault != 0 ? filter.UpperDefault : filter.IsInt ? int.MaxValue : double.PositiveInfinity)"
+                                                       min="0" step="@filter.Step" placeholder="Max" />
+                                            </div>
                                         </div>
-                                        <div class="col-6">
-                                            <input type="number" class="form-control form-control-sm"
-                                                   name="@filter.UpperParam"
-                                                   max="@(filter.UpperDefault != 0 ? filter.UpperDefault : filter.IsInt ? int.MaxValue : double.PositiveInfinity)"
-                                                   min="0" step="@filter.Step" placeholder="Max"/>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
