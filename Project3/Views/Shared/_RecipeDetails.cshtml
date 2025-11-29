@@ -1,0 +1,133 @@
+@model API.DataModels.Food.RecipeModel
+@{ Layout = null; }
+
+@{
+    var totalTime = Model.PrepTimeMinutes + Model.CookTimeMinutes;
+}
+
+<div class="recipe-detail">
+    <!-- Header: title, meta, hero image -->
+    <header class="recipe-detail__header">
+        <div class="recipe-detail__header-main">
+            <p class="recipe-detail__eyebrow">
+                @Model.Cuisine
+                @if (Model.MealType is { Count: > 0 })
+                {
+                    <span class="recipe-detail__dot">&bull;</span>
+                    <span>@string.Join(", ", Model.MealType)</span>
+                }
+            </p>
+
+            <h1 class="recipe-detail__title">
+                @Model.Name
+            </h1>
+
+            <div class="recipe-detail__meta">
+                <span class="recipe-detail__rating">
+                    @Model.Rating.ToString("0.0")⭐
+                </span>
+                <span class="recipe-detail__reviews">
+                    @Model.ReviewCount @((Model.ReviewCount == 1) ? "review" : "reviews")
+                </span>
+                <span class="recipe-detail__difficulty badge rounded-pill text-bg-light">
+                    @Model.Difficulty
+                </span>
+            </div>
+
+            <div class="recipe-detail__time-grid">
+                <div class="recipe-detail__time-item">
+                    <span class="recipe-detail__time-label">Prep</span>
+                    <span class="recipe-detail__time-value">@Model.PrepTimeMinutes.ToString("0") min</span>
+                </div>
+                <div class="recipe-detail__time-item">
+                    <span class="recipe-detail__time-label">Cook</span>
+                    <span class="recipe-detail__time-value">@Model.CookTimeMinutes.ToString("0") min</span>
+                </div>
+                <div class="recipe-detail__time-item">
+                    <span class="recipe-detail__time-label">Total</span>
+                    <span class="recipe-detail__time-value">@totalTime.ToString("0") min</span>
+                </div>
+                <div class="recipe-detail__time-item">
+                    <span class="recipe-detail__time-label">Yield</span>
+                    <span class="recipe-detail__time-value">
+                        @Model.Servings.ToString("0") serving@((Model.Servings == 1) ? "" : "s")
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-detail__header-image-wrap">
+            @if (!string.IsNullOrWhiteSpace(Model.Image))
+            {
+                <img src="@Model.Image"
+                     alt="@Model.Name"
+                     class="recipe-detail__image" />
+            }
+            else
+            {
+                <div class="recipe-detail__image-placeholder">
+                    <span>No image</span>
+                </div>
+            }
+        </div>
+    </header>
+
+    <!-- Main layout: sidebar + instructions -->
+    <div class="recipe-detail__layout">
+        <!-- Sidebar: ingredients + tags / nutrition -->
+        <aside class="recipe-detail__sidebar">
+            <section class="recipe-detail__panel recipe-detail__panel--ingredients">
+                <h2 class="recipe-detail__section-title">Ingredients</h2>
+
+                <ul class="recipe-detail__ingredients-list">
+                    @foreach (string ingredient in Model.Ingredients)
+                    {
+                        <li class="recipe-detail__ingredients-item">
+                            @ingredient
+                        </li>
+                    }
+                </ul>
+            </section>
+
+            <section class="recipe-detail__panel recipe-detail__panel--tags">
+                <h3 class="recipe-detail__section-subtitle">Tags</h3>
+                <div class="recipe-detail__chips">
+                    @foreach (string tag in Model.Tags)
+                    {
+                        <span class="recipe-detail__chip">@tag</span>
+                    }
+                </div>
+
+                <div class="recipe-detail__stats mt-3">
+                    <div class="recipe-detail__stats-row">
+                        <span class="recipe-detail__stats-label">Calories per serving</span>
+                        <span class="recipe-detail__stats-value">
+                            @Model.CaloriesPerServing.ToString("0")
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Instructions -->
+        <section class="recipe-detail__instructions">
+            <h2 class="recipe-detail__section-title">Directions</h2>
+
+            <ol class="recipe-detail__steps">
+                @for (int i = 0; i < Model.Instructions.Count; i++)
+                {
+                    var instruction = Model.Instructions[i];
+
+                    <li class="recipe-detail__step">
+                        <div class="recipe-detail__step-number">
+                            @(i + 1)
+                        </div>
+                        <div class="recipe-detail__step-text">
+                            @instruction
+                        </div>
+                    </li>
+                }
+            </ol>
+        </section>
+    </div>
+</div>
