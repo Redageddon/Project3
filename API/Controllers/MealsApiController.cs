@@ -37,32 +37,34 @@ public class MealsApiController(MealsRepository repository, SessionService sessi
         [FromHeader(Name = "X-Session-Id")] string? sessionId,
         [FromBody] MealsModel meal)
     {
-        if (string.IsNullOrEmpty(sessionId))
-        {
-            return this.Unauthorized(new { message = "Session is null or empty" });
-        }
-        
-        int? userId = sessionService.GetUserId(sessionId);
-
-        if (userId is null)
-        {
-            return this.Unauthorized(new { message = "Invalid or expired session" });
-        }
-
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
         }
 
+        // Default: Guest
+        int userId = 999999;
+
+        if (!string.IsNullOrEmpty(sessionId))
+        {
+            int? sessionUserId = sessionService.GetUserId(sessionId);
+            
+            if (sessionUserId.HasValue)
+            {
+                userId = sessionUserId.Value;
+            }
+            // NOTE: if invalid session, we still continue as Guest instead of returning Unauthorized
+        }
+
         MealsModel mealWithUser = meal with
         {
-            UserId = userId.Value,
+            UserId = userId
         };
 
         MealsModel createdMeal = repository.CreateMeal(mealWithUser);
 
         return this.CreatedAtAction(
-                                    nameof(this.GetById),
+                                    nameof(this.GetById),    // assuming you have a GetById(int mealId) action
                                     new { mealId = createdMeal.MealId },
                                     createdMeal);
     }

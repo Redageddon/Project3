@@ -36,15 +36,24 @@ public class MealsApiService(IHttpClientFactory httpClientFactory)
     }
 
     // POST: api/meals
-    public async Task<MealsModel> CreateMeal(MealsModel meal)
+    public async Task<MealsModel> CreateMeal(MealsModel meal, string? sessionId)
     {
         HttpClient client = httpClientFactory.CreateClient("RecipeAPI");
-        HttpResponseMessage response = await client.PostAsJsonAsync("/api/meals", meal);
 
+        using HttpRequestMessage request = new(HttpMethod.Post, "/api/meals");
+
+        request.Content = JsonContent.Create(meal);
+
+        if (!string.IsNullOrEmpty(sessionId))
+        {
+            request.Headers.Add("X-Session-Id", sessionId);
+        }
+
+        HttpResponseMessage response = await client.SendAsync(request);
         response.EnsureSuccessStatusCode();
 
         MealsModel? createdMeal = await response.Content.ReadFromJsonAsync<MealsModel>();
-
+        
         return createdMeal ?? throw new Exception("Failed to deserialize created meal");
     }
 
