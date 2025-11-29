@@ -1,20 +1,176 @@
-@* @model API.DataModels.Food.RecipesDataModel *@
-@* @{ Layout = null; } *@
-@* *@
-@* <form asp-action="CreateMeals" method="post"> *@
-@*     <div class="mb-3"> *@
-@*         <label asp-for="Name" class="form-label"></label> *@
-@*         <input asp-for="Name" class="form-control" /> *@
-@*         <span asp-validation-for="Name" class="text-danger"></span> *@
-@*     </div> *@
-@* *@
-@*     <div class="mb-3"> *@
-@*         <label asp-for="Description" class="form-label"></label> *@
-@*         <textarea asp-for="Description" class="form-control"></textarea> *@
-@*         <span asp-validation-for="Description" class="text-danger"></span> *@
-@*     </div> *@
-@* *@
-@*     $1$ Later you can add a list of recipes that make up this meal #1# *@
-@* *@
-@*     <button type="submit" class="btn btn-primary">Save Meal</button> *@
-@* </form> *@
+@model Project3.Models.MealCreateViewModel
+@using API.DataModels.Food
+
+@{
+    var recipes = Model.AllRecipes ?? new List<RecipeModel>();
+
+    bool HasAnyMealType(RecipeModel recipe, params string[] types)
+    {
+        if (recipe.MealType == null)
+        {
+            return false;
+        }
+
+        foreach (var mt in recipe.MealType)
+        {
+            foreach (var t in types)
+            {
+                if (string.Equals(mt, t, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    bool IsDish(RecipeModel r)
+    {
+        // Dishes: must NOT contain Beverages, Dessert, or Snacks
+        return !HasAnyMealType(r, "Beverage", "Beverages", "Dessert", "Snack", "Snacks");
+    }
+
+    bool IsDrink(RecipeModel r)
+    {
+        // Drinks: MUST contain Beverages and MUST NOT contain Dessert or Snacks
+        return HasAnyMealType(r, "Beverage", "Beverages") &&
+               !HasAnyMealType(r, "Dessert", "Snack", "Snacks");
+    }
+
+    bool IsDessert(RecipeModel r)
+    {
+        // Desserts: MUST contain Dessert or Snacks and MUST NOT contain Beverages
+        return HasAnyMealType(r, "Dessert", "Snack", "Snacks") &&
+               !HasAnyMealType(r, "Beverage", "Beverages");
+    }
+
+    var dishOptions = recipes.Where(IsDish).ToList();
+    var drinkOptions = recipes.Where(IsDrink).ToList();
+    var dessertOptions = recipes.Where(IsDessert).ToList();
+}
+
+<form asp-action="CreateMeals"
+      asp-controller="Meals"
+      method="post"
+      id="mealForm"
+      novalidate>
+    @Html.AntiForgeryToken()
+
+    <!-- Meal Name -->
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Meal Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <!-- Dishes -->
+        <div class="col-md-4 mb-4">
+            <h5>Dishes (up to 2)</h5>
+
+            <div class="mb-2">
+                <label class="form-label" asp-for="Dish1Id">Dish 1</label>
+                <select asp-for="Dish1Id"
+                        class="form-select meal-recipe-select"
+                        id="Dish1Id">
+                    <option value="">-- Select a dish --</option>
+                    @foreach (RecipeModel r in dishOptions)
+                    {
+                        <option value="@r.RecipeId">@r.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Dish1Id" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label" asp-for="Dish2Id">Dish 2 (optional)</label>
+                <select asp-for="Dish2Id"
+                        class="form-select meal-recipe-select"
+                        id="Dish2Id">
+                    <option value="">-- None --</option>
+                    @foreach (RecipeModel r in dishOptions)
+                    {
+                        <option value="@r.RecipeId">@r.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Dish2Id" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Drinks -->
+        <div class="col-md-4 mb-4">
+            <h5>Drinks (up to 2)</h5>
+
+            <div class="mb-2">
+                <label class="form-label" asp-for="Drink1Id">Drink 1</label>
+                <select asp-for="Drink1Id"
+                        class="form-select meal-recipe-select"
+                        id="Drink1Id">
+                    <option value="">-- Select a drink --</option>
+                    @foreach (RecipeModel r in drinkOptions)
+                    {
+                        <option value="@r.RecipeId">@r.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Drink1Id" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label" asp-for="Drink2Id">Drink 2 (optional)</label>
+                <select asp-for="Drink2Id"
+                        class="form-select meal-recipe-select"
+                        id="Drink2Id">
+                    <option value="">-- None --</option>
+                    @foreach (RecipeModel r in drinkOptions)
+                    {
+                        <option value="@r.RecipeId">@r.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Drink2Id" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="col-md-4 mb-4">
+            <h5>Desserts (up to 2)</h5>
+
+            <div class="mb-2">
+                <label class="form-label" asp-for="Dessert1Id">Dessert 1</label>
+                <select asp-for="Dessert1Id"
+                        class="form-select meal-recipe-select"
+                        id="Dessert1Id">
+                    <option value="">-- Select a dessert --</option>
+                    @foreach (RecipeModel r in dessertOptions)
+                    {
+                        <option value="@r.RecipeId">@r.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Dessert1Id" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label" asp-for="Dessert2Id">Dessert 2 (optional)</label>
+                <select asp-for="Dessert2Id"
+                        class="form-select meal-recipe-select"
+                        id="Dessert2Id">
+                    <option value="">-- None --</option>
+                    @foreach (RecipeModel r in dessertOptions)
+                    {
+                        <option value="@r.RecipeId">@r.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Dessert2Id" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">
+            Save Meal
+        </button>
+        <a asp-action="Index" asp-controller="Meals" class="btn btn-outline-secondary ms-2">
+            Cancel
+        </a>
+    </div>
+</form>
