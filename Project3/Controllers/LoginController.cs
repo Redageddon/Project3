@@ -6,17 +6,8 @@ using Project3.Services;
 
 namespace Project3.Controllers;
 
-public class LoginController : Controller
+public class LoginController(ILogger<LoginController> logger, AuthApiService authApiService) : Controller
 {
-    private readonly ILogger<LoginController> logger;
-    private readonly AuthApiService authApiService;
-
-    public LoginController(ILogger<LoginController> logger, AuthApiService authApiService)
-    {
-        this.logger = logger;
-        this.authApiService = authApiService;
-    }
-
     [HttpGet]
     public IActionResult Index()
     {
@@ -29,21 +20,19 @@ public class LoginController : Controller
     // [ValidateAntiForgeryToken] makes sure a POST request really came from your own form (not a malicious site),
     //          protecting you from Cross-Site Request Forgery attacks.
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login([FromForm] string email, [FromForm] string password)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
-        LoginRequest request = new(email, password);
-
         if (!this.ModelState.IsValid)
         {
             return this.View("Index");
         }
 
-        LoginResponse response = await this.authApiService.Login(request);
+        LoginResponse response = await authApiService.Login(request);
 
         if (!response.Success || response.User is null || response.SessionId is null)
         {
             this.ModelState.AddModelError(string.Empty, response.Message);
-            
+    
             return this.View("Index");
         }
 
@@ -59,21 +48,19 @@ public class LoginController : Controller
     // REGISTER – create user ONLY, does NOT create a session here
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register([FromForm] string username, [FromForm] string email, [FromForm] string password)
+    public async Task<IActionResult> Register(RegisterRequest request)
     {
-        RegisterRequest request = new(username, email, password);
-
         if (!this.ModelState.IsValid)
         {
             return this.View("Index");
         }
 
-        LoginResponse response = await this.authApiService.Register(request);
+        LoginResponse response = await authApiService.Register(request);
 
         if (!response.Success)
         {
             this.ModelState.AddModelError(string.Empty, response.Message);
-            
+    
             return this.View("Index");
         }
 
@@ -91,7 +78,7 @@ public class LoginController : Controller
             RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier,
         };
 
-        this.logger.LogError("Error");
+        logger.LogError("Error");
 
         return this.View(errorViewModel);
     }
