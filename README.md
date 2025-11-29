@@ -49,11 +49,11 @@ CMPS3390-Project3 is a full-stack developer toolkit for building food and meal p
 
 This project aims to simplify the creation of scalable, maintainable food management systems. The core features include:
 
-- ** API Services:** Seamless CRUD operations for recipes, meals, users, and planners.
-- ** Extensive Testing:** Comprehensive unit and integration tests ensure reliability.
-- ** JSON Data Storage:** Easy management of recipes, meals, and user data.
-- ** Secure Authentication:** Robust session management and user login workflows.
-- ** Dynamic Web UI:** Razor views, CSS, and JavaScript for an engaging user experience.
+- **API Services:** Seamless CRUD operations for recipes, meals, users, and planners.
+- **Extensive Testing:** Comprehensive unit and integration tests ensure reliability.
+- **JSON Data Storage:** Easy management of recipes, meals, and user data.
+- **Secure Authentication:** Robust session management and user login workflows.
+- **Dynamic Web UI:** Razor views, CSS, and JavaScript for an engaging user experience.
 
 ---
 
