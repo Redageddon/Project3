@@ -6,11 +6,13 @@ using Project3.Services;
 
 namespace Project3.Controllers;
 
-public class PlannerController(ILogger<PlannerController> logger, RecipeApiService recipeApiService) : Controller
+public class PlannerController(ILogger<PlannerController> logger, RecipeApiService recipeApiService, MealsApiService mealsApiService) : Controller
 {
     public async Task<IActionResult> Index()
     {
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
+        MealsDataModel mealsData = await mealsApiService.GetAllMeals();
+        this.ViewBag.Meals = mealsData;
 
         return this.View(recipesData);
     }

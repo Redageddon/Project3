@@ -2,7 +2,8 @@
 @model API.DataModels.Food.RecipesDataModel
 @{
     Layout = "_Layout";
-
+    
+    MealsDataModel? meals = ViewBag.Meals as MealsDataModel;
     List<RecipeModel> allRecipes = Model.Recipes;
     List<RecipeModel> breakfastRecipes = allRecipes
         .Where(r => r.MealType.Contains("Breakfast"))
