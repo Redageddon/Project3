@@ -1,29 +1,33 @@
-@* @model API.DataModels.Food.MealsModel *@
-@* @{ Layout = null; } *@
-@* *@
-@* <a href="/Meals/@MealId" class="card dark text-decoration-none"> *@
-@*     $1$ @if (!string.IsNullOrWhiteSpace(Model.Image)) #1# *@
-@*     $1$ { #1# *@
-@*     $1$     <img src="@Model.Image" alt="@Model.Name" /> #1# *@
-@*     $1$ } #1# *@
-@*     $1$ else #1# *@
-@*     $1$ { #1# *@
-@*     $1$     <div class="recipe-card__placeholder d-flex align-items-center justify-content-center"> #1# *@
-@*     $1$         <span class="text-muted small">No image</span> #1# *@
-@*     $1$     </div> #1# *@
-@*     $1$ } #1# *@
-@* *@
-@*     <section> *@
-@*         <h2 class="recipe-card__title m-0"> *@
-@* \        </h2> *@
-@*         <p></p> *@
-@*         <div> *@
-@*             <div class="tag"> *@
-@*                 <i class="bi bi-card-heading"></i>  *@
-@*             </div> *@
-@*             <button onclick="event.stopPropagation()"> *@
-@*                 View Recipe *@
-@*             </button> *@
-@*         </div> *@
-@*     </section> *@
-@* </a> *@
+@model API.DataModels.Food.MealsModel
+@{ Layout = null; }
+
+<div class="recipe-card text-decoration-none">
+    @* @if (!string.IsNullOrWhiteSpace(Model.Image)) *@
+    @* { *@
+    @*     <img src="@Model.Image" alt="@Model.Name" class="recipe-card__image" /> *@
+    @* } *@
+    @* else *@
+    @* { *@
+        <div class="recipe-card__placeholder d-flex align-items-center justify-content-center">
+            <span class="recipe-card__placeholder-text">@Model.Name</span>
+        </div>
+    @* } *@
+
+    <section class="recipe-card__body">
+        <h2 class="recipe-card__title">
+            @Model.Name
+        </h2>
+
+        <span class="recipe-card__tag">
+            <i class="bi bi-card-heading"></i> Created by: @Model.UserId
+        </span>
+
+        <div class="recipe-card__footer">
+            <button type="button"
+                    class="recipe-card__button"
+                    onclick="event.stopPropagation(); window.location.href='/Meals/@Model.MealId';">
+                View Recipe
+            </button>
+        </div>
+    </section>
+</div>
