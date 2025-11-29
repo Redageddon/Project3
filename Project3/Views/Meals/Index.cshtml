@@ -22,11 +22,11 @@
 
 <div class="card-container">
     <div class="row g-3">
-        @* @foreach (MealsModel meal in Model.Meals) *@
-        @* { *@
-        @*     <div class="col-12 col-sm-6 col-lg-4"> *@
-        @*         @await Html.PartialAsync("~/Views/Shared/_MealsCard.cshtml", meal) *@
-        @*     </div> *@
-        @* } *@
+        @foreach (MealsModel meal in Model.Meals)
+        {
+            <div class="col-12 col-sm-6 col-lg-4">
+                @await Html.PartialAsync("~/Views/Shared/_MealsCard.cshtml", meal)
+            </div>
+        }
     </div>
 </div>
