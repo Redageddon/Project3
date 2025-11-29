@@ -1,0 +1,165 @@
+@model Project3.Models.RecipeFilter
+
+@{
+    string[] mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert", "Beverage"];
+    string[] difficulties = ["Easy", "Medium", "Hard"];
+    
+    var rangeFilters = new[]
+    {
+        new { Name = "Servings", LowerParam = "ServingsLower", UpperParam = "ServingsUpper", Step = "1", UpperDefault = 0, IsInt = true },
+        new { Name = "Review Count", LowerParam = "ReviewCountLower", UpperParam = "ReviewCountUpper", Step = "1", UpperDefault = 0, IsInt = true },
+        new { Name = "Rating", LowerParam = "RatingLower", UpperParam = "RatingUpper", Step = "0.1", UpperDefault = 5, IsInt = false },
+        new { Name = "Prep Time (min)", LowerParam = "PrepTimeMinutesLower", UpperParam = "PrepTimeMinutesUpper", Step = "0.1", UpperDefault = 0, IsInt = false },
+        new { Name = "Cook Time (min)", LowerParam = "CookTimeMinutesLower", UpperParam = "CookTimeMinutesUpper", Step = "0.1", UpperDefault = 0, IsInt = false },
+        new { Name = "Calories", LowerParam = "CaloriesLower", UpperParam = "CaloriesUpper", Step = "0.1", UpperDefault = 0, IsInt = false },
+    };
+}
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Filter Recipes</h5>
+    </div>
+    <div class="card-body p-0">
+        <form method="get" action="/Recipes" id="recipeFilterForm">
+            <div class="accordion" id="filterAccordion">
+                
+                <!-- Name Filter -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#nameFilter">
+                            Recipe Name
+                        </button>
+                    </h2>
+                    <div id="nameFilter" class="accordion-collapse collapse show" data-bs-parent="#filterAccordion">
+                        <div class="accordion-body">
+                            <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="Search by name..." />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meal Type -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mealTypeFilter">
+                            Meal Type
+                        </button>
+                    </h2>
+                    <div id="mealTypeFilter" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+                        <div class="accordion-body">
+                            @foreach (string mealType in mealTypes)
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="MealType" value="@mealType" 
+                                           id="mealType@mealType" @(Model?.MealType?.Contains(mealType) == true ? "checked" : "") />
+                                    <label class="form-check-label" for="mealType@mealType">@mealType</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Difficulty -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#difficultyFilter">
+                            Difficulty
+                        </button>
+                    </h2>
+                    <div id="difficultyFilter" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+                        <div class="accordion-body">
+                            @foreach (string difficulty in difficulties)
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="Difficulty" value="@difficulty" 
+                                           id="difficulty@difficulty" @(Model?.Difficulty?.Contains(difficulty) == true ? "checked" : "") />
+                                    <label class="form-check-label" for="difficulty@difficulty">@difficulty</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tags -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tagsFilter">
+                            Tags
+                        </button>
+                    </h2>
+                    <div id="tagsFilter" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+                        <div class="accordion-body">
+                            <input type="text" class="form-control" name="Tag" value="@(Model?.Tag?.FirstOrDefault())" 
+                                   placeholder="e.g., Vegetarian, Vegan..." />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuisine -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cuisineFilter">
+                            Cuisine
+                        </button>
+                    </h2>
+                    <div id="cuisineFilter" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+                        <div class="accordion-body">
+                            <input type="text" class="form-control" name="Cuisine" value="@(Model?.Cuisine?.FirstOrDefault())" 
+                                   placeholder="e.g., Italian, Mexican..." />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingredients -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ingredientsFilter">
+                            Ingredients
+                        </button>
+                    </h2>
+                    <div id="ingredientsFilter" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+                        <div class="accordion-body">
+                            <input type="text" class="form-control" name="Ingredients" value="@(Model?.Ingredients?.FirstOrDefault())" 
+                                   placeholder="e.g., chicken, tomato..." />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Range Filters -->
+                @foreach (var filter in rangeFilters)
+                {
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#@filter.LowerParam">
+                                @filter.Name
+                            </button>
+                        </h2>
+                        <div id="@filter.LowerParam" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <input type="number" class="form-control form-control-sm" name="@filter.LowerParam" 
+                                                   min="0" step="@filter.Step" placeholder="Min" />
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="number" class="form-control form-control-sm" name="@filter.UpperParam" 
+                                                   max="@(filter.UpperDefault != 0 ? filter.UpperDefault : filter.IsInt ? int.MaxValue : double.PositiveInfinity)"
+                                                   min="0" step="@filter.Step" placeholder="Max" />
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="card-footer">
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm">Apply Filters</button>
+                    <a href="/Recipes" class="btn btn-outline-secondary btn-sm">Clear All</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

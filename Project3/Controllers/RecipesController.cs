@@ -27,6 +27,7 @@ public class RecipesController(
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
 
         recipesData = new RecipesDataModel(recipeFilter.Filter(recipesData.Recipes));
+        this.ViewBag.RecipeFilter = recipeFilter;
 
         return this.View(recipesData);
     }

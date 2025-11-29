@@ -2,6 +2,7 @@
 @model API.DataModels.Food.RecipesDataModel
 @{
     ViewData["Title"] = "Meals";
+    RecipeFilter? filter = ViewBag.RecipeFilter as RecipeFilter;
 }
 
 @section Styles{
@@ -16,13 +17,25 @@
     </div>
 </div>
 
-<div class="card-container">
-    <div class="row g-3">
-        @foreach (RecipeModel recipe in Model.Recipes)
-        {
-            <div class="col-12 col-sm-6 col-lg-4">
-                @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-3 col-md-4 mb-4">
+            @await Html.PartialAsync("~/Views/Shared/_RecipeFilterSidebar.cshtml", filter)
+        </div>
+        
+        <!-- Recipe Cards -->
+        <div class="col-lg-9 col-md-8">
+            <div class="card-container">
+                <div class="row g-3">
+                    @foreach (RecipeModel recipe in Model.Recipes)
+                    {
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
+                        </div>
+                    }
+                </div>
             </div>
-        }
+        </div>
     </div>
 </div>
