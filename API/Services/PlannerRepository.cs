@@ -5,7 +5,7 @@ namespace API.Services;
 
 public class PlannerRepository
 {
-    private const string DataPath = "Data/planners.json";
+    private readonly string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "planners.json");
     private readonly Lock plannersLock = new();
 
     public PlannersDataModel GetAllPlanners()
@@ -14,14 +14,14 @@ public class PlannerRepository
         {
             PlannersDataModel emptyModel = new([]);
 
-            if (!File.Exists(DataPath))
+            if (!File.Exists(this.dataPath))
             {
                 this.SavePlanners(emptyModel);
 
                 return emptyModel;
             }
 
-            string data = File.ReadAllText(DataPath);
+            string data = File.ReadAllText(this.dataPath);
 
             return JsonConvert.DeserializeObject<PlannersDataModel>(data) ?? emptyModel;
         }
@@ -115,6 +115,6 @@ public class PlannerRepository
     private void SavePlanners(PlannersDataModel planners)
     {
         string json = JsonConvert.SerializeObject(planners, Formatting.Indented);
-        File.WriteAllText(DataPath, json);
+        File.WriteAllText(this.dataPath, json);
     }
 }

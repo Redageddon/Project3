@@ -5,28 +5,14 @@ namespace API.Services;
 
 public class UserRepository
 {
-    private const string DataPath = "Data/users.json";
+    private readonly string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "users.json");
     private readonly Lock usersLock = new();
-
-    public UserRepository()
-    {
-        this.EnsureDataFileExists();
-    }
-
-    private void EnsureDataFileExists()
-    {
-        if (!File.Exists(DataPath))
-        {
-            Directory.CreateDirectory(Path.GetDirectoryName(DataPath)!);
-            this.SaveUsers(new UsersData([]));
-        }
-    }
 
     public UsersData GetAllUsers()
     {
         lock (this.usersLock)
         {
-            string data = File.ReadAllText(DataPath);
+            string data = File.ReadAllText(this.dataPath);
 
             return JsonConvert.DeserializeObject<UsersData>(data) ?? new UsersData([]);
         }
@@ -126,6 +112,6 @@ public class UserRepository
     private void SaveUsers(UsersData users)
     {
         string? json = JsonConvert.SerializeObject(users, Formatting.Indented);
-        File.WriteAllText(DataPath, json);
+        File.WriteAllText(this.dataPath, json);
     }
 }

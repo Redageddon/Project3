@@ -5,7 +5,7 @@ namespace API.Services;
 
 public class MealsRepository
 {
-    private const string DataPath = "Data/meals.json";
+    private readonly string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "meals.json");
     private readonly Lock mealsLock = new();
 
     public MealsDataModel GetAllMeals()
@@ -14,14 +14,14 @@ public class MealsRepository
         {
             MealsDataModel emptyModel = new([]);
 
-            if (!File.Exists(DataPath))
+            if (!File.Exists(this.dataPath))
             {
                 this.SaveMeals(emptyModel);
 
                 return emptyModel;
             }
 
-            string data = File.ReadAllText(DataPath);
+            string data = File.ReadAllText(this.dataPath);
 
             return JsonConvert.DeserializeObject<MealsDataModel>(data) ?? emptyModel;
         }
@@ -105,6 +105,6 @@ public class MealsRepository
     private void SaveMeals(MealsDataModel meals)
     {
         string json = JsonConvert.SerializeObject(meals, Formatting.Indented);
-        File.WriteAllText(DataPath, json);
+        File.WriteAllText(this.dataPath, json);
     }
 }
