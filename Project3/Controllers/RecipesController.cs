@@ -16,6 +16,18 @@ public class RecipesController(
         
         return !string.IsNullOrEmpty(sessionId);
     }
+    
+    private int GetUserIdOrThrow()
+    {
+        int? userId = this.HttpContext.Session.GetInt32("UserId");
+        
+        if (!userId.HasValue)
+        {
+            throw new InvalidOperationException("User must be logged in to perform this action.");
+        }
+
+        return userId.Value;
+    }
 
     private string? GetSessionId()
     {
@@ -83,19 +95,12 @@ public class RecipesController(
         {
             // UX: same view, but show login-required modal instead of form
             this.ViewBag.IsUserLoggedIn = false;
-            
             this.ModelState.AddModelError(string.Empty, "You must be logged in to create a recipe.");
             
             return this.View(recipe);
         }
 
         this.ViewBag.IsUserLoggedIn = true;
-
-        if (!this.ModelState.IsValid)
-        {
-            // server-side validation errors: show the form again
-            return this.View(recipe);
-        }
 
         string? sessionId = this.GetSessionId();
         
@@ -112,10 +117,12 @@ public class RecipesController(
         RecipeModel recipeToSend = recipe with
         {
             RecipeId = 0,
-            UserId = 0,
+            UserId = this.GetUserIdOrThrow(),
             ReviewCount = 0,
             Rating = 0
         };
+
+        Console.WriteLine(recipeToSend.UserId + "------------------------------------------------------------------");
 
         RecipeModel created = await recipeApiService.CreateRecipe(sessionId, recipeToSend);
 

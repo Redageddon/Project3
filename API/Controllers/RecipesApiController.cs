@@ -39,16 +39,16 @@ public class RecipesApiController(RecipeRepository repository, SessionService se
             return this.Unauthorized(new { message = "Session is null or empty" });
         }
 
-        if (!this.ModelState.IsValid)
-        {
-            return this.BadRequest(this.ModelState);
-        }
-
         int? userId = sessionService.GetUserId(sessionId);
 
         if (userId is null)
         {
             return this.Unauthorized(new { message = "Invalid or expired session" });
+        }
+        
+        if (!this.ModelState.IsValid)
+        {
+            return this.BadRequest(this.ModelState);
         }
 
         RecipeModel recipeWithUser = recipe with
