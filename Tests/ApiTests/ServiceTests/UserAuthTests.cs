@@ -1,5 +1,6 @@
 using API.DataModels.Users;
 using API.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace Tests.ApiTests.ServiceTests;
 
@@ -17,7 +18,7 @@ public class UserAuthTests
         }
 
         this.userRepository = new UserRepository();
-        this.passwordHasher = new PasswordHasher();
+        this.passwordHasher = new PasswordHasher<UserModel>();
         this.userAuth = new UserAuth(this.userRepository, this.passwordHasher);
     }
 
@@ -33,7 +34,7 @@ public class UserAuthTests
     private const string UsersDataPath = "Data/users.json";
 
     private UserRepository userRepository = null!;
-    private PasswordHasher passwordHasher = null!;
+    private PasswordHasher<UserModel> passwordHasher = null!;
     private UserAuth userAuth = null!;
 
     [Test]

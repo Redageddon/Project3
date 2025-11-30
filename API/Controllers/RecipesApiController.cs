@@ -31,20 +31,19 @@ public class RecipesApiController(RecipeRepository repository, SessionService se
 
     // POST: api/recipes
     [HttpPost]
-    public ActionResult<RecipeModel> Create(
-        [FromHeader(Name = "X-Session-Id")] string? sessionId,
-        [FromBody] RecipeModel recipe)
+    public ActionResult<RecipeModel> Create([FromHeader(Name = "X-Session-Id")] string? sessionId,
+                                            [FromBody] RecipeModel recipe)
     {
         if (string.IsNullOrEmpty(sessionId))
         {
             return this.Unauthorized(new { message = "Session is null or empty" });
         }
-        
+
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
         }
-        
+
         int? userId = sessionService.GetUserId(sessionId);
 
         if (userId is null)
@@ -64,33 +63,74 @@ public class RecipesApiController(RecipeRepository repository, SessionService se
 
     // PUT: api/recipes/5
     [HttpPut("{recipeId:int}")]
-    public ActionResult<RecipeModel> Update(int recipeId, [FromBody] RecipeModel recipe)
+    public ActionResult<RecipeModel> Update([FromHeader(Name = "X-Session-Id")] string? sessionId,
+                                            int recipeId,
+                                            [FromBody] RecipeModel recipe)
     {
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.Unauthorized(new { message = "Session is required" });
+        }
+
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
         }
 
-        RecipeModel? updatedRecipe = repository.UpdateRecipe(recipeId, recipe);
+        int? userId = sessionService.GetUserId(sessionId);
 
-        if (updatedRecipe == null)
+        if (userId is null)
+        {
+            return this.Unauthorized(new { message = "Invalid or expired session" });
+        }
+
+        RecipeModel? existing = repository.GetRecipeById(recipeId);
+
+        if (existing == null)
         {
             return this.NotFound(new { message = $"Recipe with ID {recipeId} not found" });
         }
+
+        if (existing.UserId != userId.Value)
+        {
+            return this.Forbid();
+        }
+
+        RecipeModel? updatedRecipe = repository.UpdateRecipe(recipeId, recipe);
 
         return this.Ok(updatedRecipe);
     }
 
     // DELETE: api/recipes/5
     [HttpDelete("{recipeId:int}")]
-    public ActionResult Delete(int recipeId)
+    public ActionResult Delete([FromHeader(Name = "X-Session-Id")] string? sessionId,
+                               int recipeId)
     {
-        bool success = repository.DeleteRecipe(recipeId);
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.Unauthorized(new { message = "Session is required" });
+        }
 
-        if (!success)
+        int? userId = sessionService.GetUserId(sessionId);
+
+        if (userId is null)
+        {
+            return this.Unauthorized(new { message = "Invalid or expired session" });
+        }
+
+        RecipeModel? existing = repository.GetRecipeById(recipeId);
+
+        if (existing == null)
         {
             return this.NotFound(new { message = $"Recipe with ID {recipeId} not found" });
         }
+
+        if (existing.UserId != userId.Value)
+        {
+            return this.Forbid();
+        }
+
+        bool _ = repository.DeleteRecipe(recipeId);
 
         return this.NoContent();
     }

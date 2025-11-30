@@ -186,7 +186,7 @@ public class MealsController(
                                     Name: model.Name,
                                     Dishes: dishes,
                                     Drinks: drinks,
-                                    Deserts: desserts);
+                                    Desserts: desserts);
 
         MealsModel created = await mealsApiService.CreateMeal(mealToSend, sessionId);
 

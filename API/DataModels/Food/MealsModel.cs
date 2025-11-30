@@ -8,7 +8,7 @@ public record MealsModel(
     string? Name,
     List<RecipeModel>? Dishes,
     List<RecipeModel>? Drinks,
-    List<RecipeModel>? Deserts
+    List<RecipeModel>? Desserts
 );
 
 public record MealsDataModel(List<MealsModel> Meals);

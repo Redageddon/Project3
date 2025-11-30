@@ -1,6 +1,7 @@
 using API.DataModels.Food;
 using API.DataModels.Users;
 using API.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace Tests.ApiTests.ServiceTests;
 
@@ -55,7 +56,7 @@ public class AuthPlannerFlowTests
     {
         // Arrange – build real services
         UserRepository userRepository = new();
-        PasswordHasher passwordHasher = new();
+        PasswordHasher<UserModel> passwordHasher = new();
         UserAuth userAuth = new(userRepository, passwordHasher);
         SessionService sessionService = new();
         PlannerRepository plannerRepository = new();

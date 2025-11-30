@@ -73,7 +73,15 @@ public class RecipeRepository
                 return null;
             }
 
-            RecipeModel recipeToUpdate = updatedRecipe with { RecipeId = id };
+            // Preserve original user id
+            RecipeModel original = recipesData.Recipes[index];
+
+            RecipeModel recipeToUpdate = updatedRecipe with 
+            { 
+                RecipeId = id,
+                UserId = original.UserId,
+            };
+            
             List<RecipeModel> updatedRecipes = recipesData.Recipes.ToList();
             updatedRecipes[index] = recipeToUpdate;
 

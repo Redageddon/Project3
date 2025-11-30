@@ -1,8 +1,9 @@
 using API.DataModels.Users;
+using Microsoft.AspNetCore.Identity;
 
 namespace API.Services;
 
-public class UserAuth(UserRepository userRepository, PasswordHasher passwordHasher)
+public class UserAuth(UserRepository userRepository, PasswordHasher<UserModel> passwordHasher)
 {
     public LoginResponse Register(RegisterRequest request)
     {
@@ -16,7 +17,7 @@ public class UserAuth(UserRepository userRepository, PasswordHasher passwordHash
             return new LoginResponse(false, "Username already taken");
         }
 
-        string passwordHash = passwordHasher.HashPassword(request.Password);
+        string passwordHash = passwordHasher.HashPassword(null!, request.Password);
         UserModel user = userRepository.CreateUser(request.Username, request.Email, passwordHash);
 
         UserDto userDto = new(user.Uid, user.Username, user.Email);
@@ -28,7 +29,9 @@ public class UserAuth(UserRepository userRepository, PasswordHasher passwordHash
     {
         UserModel? user = userRepository.GetUserByEmail(request.Email);
 
-        if (user == null || !passwordHasher.VerifyPassword(request.Password, user.PasswordHash))
+        if (user == null
+         || passwordHasher.VerifyHashedPassword(null!, user.PasswordHash, request.Password)
+         != PasswordVerificationResult.Success)
         {
             return new LoginResponse(false, "Invalid email or password");
         }

@@ -1,4 +1,6 @@
+using API.DataModels.Users;
 using API.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace API;
 
@@ -15,7 +17,7 @@ public partial class Program
         builder.Services.AddSingleton<PlannerRepository>();
         builder.Services.AddSingleton<UserRepository>();
         builder.Services.AddSingleton<MealsRepository>();
-        builder.Services.AddSingleton<PasswordHasher>();
+        builder.Services.AddSingleton<PasswordHasher<UserModel>>();
         builder.Services.AddSingleton<SessionService>();
         builder.Services.AddScoped<UserAuth>();
 

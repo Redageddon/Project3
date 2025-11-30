@@ -78,7 +78,13 @@ public class MealsRepository
                 return null;
             }
 
-            MealsModel mealToUpdate = updatedMeal with { MealId = id };
+            MealsModel original = meals.Meals[index];
+
+            MealsModel mealToUpdate = updatedMeal with 
+            { 
+                MealId = id,
+                UserId = original.UserId,
+            };
 
             List<MealsModel> updatedMealsList = meals.Meals.ToList();
             updatedMealsList[index] = mealToUpdate;

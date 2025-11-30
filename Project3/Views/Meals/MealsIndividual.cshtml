@@ -49,12 +49,12 @@
             </section>
         }
 
-        @if (Model.Deserts is { Count: > 0 })
+        @if (Model.Desserts is { Count: > 0 })
         {
             <section class="meals-detail-section mb-4">
                 <h2 class="h5 mb-3">Desserts</h2>
                 <div class="row g-3">
-                    @foreach (var recipe in Model.Deserts!)
+                    @foreach (var recipe in Model.Desserts!)
                     {
                         <div class="col-md-6 col-lg-4">
                             @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
@@ -66,7 +66,7 @@
 
         @if ((Model.Dishes is null || Model.Dishes.Count == 0) &&
              (Model.Drinks is null || Model.Drinks.Count == 0) &&
-             (Model.Deserts is null || Model.Deserts.Count == 0))
+             (Model.Desserts is null || Model.Desserts.Count == 0))
         {
             <p class="text-muted">
                 This meal does not contain any recipes yet.

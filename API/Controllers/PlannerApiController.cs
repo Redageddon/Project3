@@ -33,15 +33,14 @@ public class PlannerApiController(PlannerRepository repository, SessionService s
 
     // POST: api/planners
     [HttpPost]
-    public ActionResult<PlannerModel> Create(
-        [FromHeader(Name = "X-Session-Id")] string? sessionId,
-        [FromBody] PlannerModel planner)
+    public ActionResult<PlannerModel> Create([FromHeader(Name = "X-Session-Id")] string? sessionId,
+                                             [FromBody] PlannerModel planner)
     {
         if (string.IsNullOrEmpty(sessionId))
         {
             return this.Unauthorized(new { message = "Session is null or empty" });
         }
-        
+
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
@@ -61,41 +60,81 @@ public class PlannerApiController(PlannerRepository repository, SessionService s
 
         PlannerModel createdPlanner = repository.CreatePlanner(plannerWithUser);
 
-        return this.CreatedAtAction(
-                                    nameof(this.GetById),
+        return this.CreatedAtAction(nameof(this.GetById),
                                     new { plannerId = createdPlanner.PlannerId },
                                     createdPlanner);
     }
 
     // PUT: api/planners/{id}
     [HttpPut("{plannerId:int}")]
-    public ActionResult<PlannerModel> Update(int plannerId, [FromBody] PlannerModel planner)
+    public ActionResult<PlannerModel> Update([FromHeader(Name = "X-Session-Id")] string? sessionId,
+                                             int plannerId, 
+                                             [FromBody] PlannerModel planner)
     {
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.Unauthorized(new { message = "Session is required" });
+        }
+        
         if (!this.ModelState.IsValid)
         {
             return this.BadRequest(this.ModelState);
         }
+        
+        int? userId = sessionService.GetUserId(sessionId);
 
-        PlannerModel? updatedPlanner = repository.UpdatePlanner(plannerId, planner);
+        if (userId is null)
+        {
+            return this.Unauthorized(new { message = "Invalid or expired session" });
+        }
 
-        if (updatedPlanner == null)
+        PlannerModel? existing = repository.GetPlannerById(plannerId);
+        
+        if (existing == null)
         {
             return this.NotFound(new { message = $"Planner with ID {plannerId} not found" });
         }
+        
+        if (existing.UserId != userId.Value)
+        {
+            return this.Forbid();
+        }
+
+        PlannerModel? updatedPlanner = repository.UpdatePlanner(plannerId, planner);
 
         return this.Ok(updatedPlanner);
     }
 
     // DELETE: api/planners/{id}
     [HttpDelete("{plannerId:int}")]
-    public ActionResult Delete(int plannerId)
+    public ActionResult Delete([FromHeader(Name = "X-Session-Id")] string? sessionId,
+                               int plannerId)
     {
-        bool success = repository.DeletePlanner(plannerId);
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.Unauthorized(new { message = "Session is required" });
+        }
 
-        if (!success)
+        int? userId = sessionService.GetUserId(sessionId);
+
+        if (userId is null)
+        {
+            return this.Unauthorized(new { message = "Invalid or expired session" });
+        }
+
+        PlannerModel? existing = repository.GetPlannerById(plannerId);
+
+        if (existing == null)
         {
             return this.NotFound(new { message = $"Planner with ID {plannerId} not found" });
         }
+
+        if (existing.UserId != userId.Value)
+        {
+            return this.Forbid();
+        }
+
+        bool _ = repository.DeletePlanner(plannerId);
 
         return this.NoContent();
     }

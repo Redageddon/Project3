@@ -3,43 +3,52 @@ namespace API.Services;
 public class SessionService
 {
     private readonly Dictionary<string, SessionInfo> sessions = new();
+    private readonly Lock sessionsLock = new();
 
     public string CreateSession(int userId, TimeSpan? lifetime = null)
     {
-        // SessionID lasts for 2 hours
         lifetime ??= TimeSpan.FromHours(2);
 
         string sessionId = Guid.NewGuid().ToString("N");
 
-        this.sessions[sessionId] = new SessionInfo
+        lock (this.sessionsLock)
         {
-            UserId = userId,
-            ExpiresAt = DateTime.UtcNow.Add(lifetime.Value),
-        };
+            this.sessions[sessionId] = new SessionInfo
+            {
+                UserId = userId,
+                ExpiresAt = DateTime.UtcNow.Add(lifetime.Value),
+            };
+        }
 
         return sessionId;
     }
 
     public int? GetUserId(string sessionId)
     {
-        if (!this.sessions.TryGetValue(sessionId, out SessionInfo? info))
+        lock (this.sessionsLock)
         {
-            return null;
+            if (!this.sessions.TryGetValue(sessionId, out SessionInfo? info))
+            {
+                return null;
+            }
+
+            if (info.ExpiresAt < DateTime.UtcNow)
+            {
+                this.sessions.Remove(sessionId);
+
+                return null;
+            }
+
+            return info.UserId;
         }
-
-        if (info.ExpiresAt < DateTime.UtcNow)
-        {
-            this.sessions.Remove(sessionId);
-
-            return null;
-        }
-
-        return info.UserId;
     }
 
     public void RemoveSession(string sessionId)
     {
-        this.sessions.Remove(sessionId);
+        lock (this.sessionsLock)
+        {
+            this.sessions.Remove(sessionId);
+        }
     }
 
     private class SessionInfo
