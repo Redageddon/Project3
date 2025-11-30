@@ -5,15 +5,21 @@ namespace API.Services;
 
 public class RecipeRepository
 {
-    private readonly string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "recipes.json");
+    private readonly string dataPath;
     private readonly Lock recipesLock = new();
+
+    public RecipeRepository(string? dataPath = null)
+    {
+        this.dataPath = dataPath ?? Path.Combine(AppContext.BaseDirectory, "Data", "recipes.json");
+        this.EnsureDataFileExists();
+    }
 
     public RecipesDataModel GetAllRecipes()
     {
         lock (this.recipesLock)
         {
             RecipesDataModel emptyModel = new([]);
-            
+
             if (!File.Exists(this.dataPath))
             {
                 this.SaveRecipes(emptyModel);
@@ -30,7 +36,7 @@ public class RecipeRepository
     public RecipeModel? GetRecipeById(int id)
     {
         RecipesDataModel recipesData = this.GetAllRecipes();
-        
+
         return recipesData.Recipes.FirstOrDefault(r => r.RecipeId == id);
     }
 
@@ -39,13 +45,13 @@ public class RecipeRepository
         lock (this.recipesLock)
         {
             RecipesDataModel recipesData = this.GetAllRecipes();
-            
+
             int newId = recipesData.Recipes.Count != 0
                 ? recipesData.Recipes.Max(r => r.RecipeId) + 1
                 : 1;
 
             // Need to attach userId here
-            
+
             RecipeModel newRecipe = recipe with { RecipeId = newId };
             List<RecipeModel> updatedRecipes = [..recipesData.Recipes, newRecipe];
 
@@ -96,8 +102,20 @@ public class RecipeRepository
         }
     }
 
+    private void EnsureDataFileExists()
+    {
+        string? directory = Path.GetDirectoryName(this.dataPath);
+
+        if (directory != null
+         && !Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+    }
+
     private void SaveRecipes(RecipesDataModel recipesData)
     {
+        this.EnsureDataFileExists();
         string json = JsonConvert.SerializeObject(recipesData, Formatting.Indented);
         File.WriteAllText(this.dataPath, json);
     }

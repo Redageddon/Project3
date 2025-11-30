@@ -1,4 +1,5 @@
 using System.Net;
+using API;
 using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace Tests.ApiTests.Integration;
@@ -9,7 +10,7 @@ public class ProgramTests
     [Test]
     public void Application_Starts_Successfully()
     {
-        using WebApplicationFactory<API.Program> factory = new CustomWebApplicationFactory();
+        using WebApplicationFactory<Program> factory = new CustomWebApplicationFactory();
         using HttpClient client = factory.CreateClient();
 
         Assert.That(client, Is.Not.Null);
@@ -18,7 +19,7 @@ public class ProgramTests
     [Test]
     public async Task Application_ServesSwagger()
     {
-        await using WebApplicationFactory<API.Program> factory = new CustomWebApplicationFactory();
+        await using WebApplicationFactory<Program> factory = new CustomWebApplicationFactory();
         using HttpClient client = factory.CreateClient();
 
         HttpResponseMessage response = await client.GetAsync("/swagger/index.html");
@@ -29,7 +30,7 @@ public class ProgramTests
     [Test]
     public async Task Application_EnablesCors()
     {
-        await using WebApplicationFactory<API.Program> factory = new CustomWebApplicationFactory();
+        await using WebApplicationFactory<Program> factory = new CustomWebApplicationFactory();
         using HttpClient client = factory.CreateClient();
 
         HttpRequestMessage request = new(HttpMethod.Options, "/api/recipes");
@@ -43,7 +44,7 @@ public class ProgramTests
     [Test]
     public async Task Application_MapsControllers()
     {
-        await using WebApplicationFactory<API.Program> factory = new CustomWebApplicationFactory();
+        await using WebApplicationFactory<Program> factory = new CustomWebApplicationFactory();
         using HttpClient client = factory.CreateClient();
 
         HttpResponseMessage response = await client.GetAsync("/api/recipes");

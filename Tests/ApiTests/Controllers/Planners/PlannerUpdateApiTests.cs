@@ -12,7 +12,12 @@ public class PlannerUpdateTests : TestFixtureBase
     public async Task Update_WithValidData_ReturnsOk()
     {
         PlannerModel created = await this.CreatePlanner();
-        PlannerModel updated = created with { BreakfastId = 100, LunchId = 200 };
+
+        PlannerModel updated = created with
+        {
+            BreakfastId = 100,
+            LunchId = 200,
+        };
 
         HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/planners/{created.PlannerId}", updated);
 

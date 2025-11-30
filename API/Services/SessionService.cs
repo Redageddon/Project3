@@ -2,13 +2,6 @@ namespace API.Services;
 
 public class SessionService
 {
-    private class SessionInfo
-    {
-        public int      UserId    { get; init; }
-        
-        public DateTime ExpiresAt { get; init; }
-    }
-
     private readonly Dictionary<string, SessionInfo> sessions = new();
 
     public string CreateSession(int userId, TimeSpan? lifetime = null)
@@ -37,7 +30,7 @@ public class SessionService
         if (info.ExpiresAt < DateTime.UtcNow)
         {
             this.sessions.Remove(sessionId);
-            
+
             return null;
         }
 
@@ -47,5 +40,12 @@ public class SessionService
     public void RemoveSession(string sessionId)
     {
         this.sessions.Remove(sessionId);
+    }
+
+    private class SessionInfo
+    {
+        public int UserId { get; init; }
+
+        public DateTime ExpiresAt { get; init; }
     }
 }

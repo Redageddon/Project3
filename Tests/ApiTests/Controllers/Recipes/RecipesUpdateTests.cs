@@ -12,7 +12,12 @@ public class RecipesUpdateTests : TestFixtureBase
     public async Task Update_WithValidData_ReturnsOk()
     {
         RecipeModel created = await this.CreateRecipe();
-        RecipeModel updated = created with { Name = "Updated Name", Cuisine = "French" };
+
+        RecipeModel updated = created with
+        {
+            Name = "Updated Name",
+            Cuisine = "French",
+        };
 
         HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", updated);
 
@@ -62,7 +67,8 @@ public class RecipesUpdateTests : TestFixtureBase
     {
         RecipeModel created = await this.CreateRecipe();
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", (RecipeModel?)null);
+        HttpResponseMessage response =
+            await this.Client.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", (RecipeModel?)null);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }

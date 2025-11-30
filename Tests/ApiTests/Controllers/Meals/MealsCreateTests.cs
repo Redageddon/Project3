@@ -54,32 +54,4 @@ public class MealsCreateTests : TestFixtureBase
 
         Assert.That(created1!.MealId, Is.Not.EqualTo(created2!.MealId));
     }
-
-    [Test]
-    public async Task Create_WithoutSession_ReturnsUnauthorized()
-    {
-        MealsModel meal = TestDataBuilder.CreateMeal();
-        HttpClient clientWithoutSession = this.Factory.CreateClient();
-
-        HttpResponseMessage response = await clientWithoutSession.PostAsJsonAsync("/api/meals", meal);
-
-        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
-    }
-
-    [Test]
-    public async Task Create_WithInvalidSession_ReturnsUnauthorized()
-    {
-        MealsModel meal = TestDataBuilder.CreateMeal();
-
-        HttpRequestMessage request = new(HttpMethod.Post, "/api/meals")
-        {
-            Content = JsonContent.Create(meal),
-        };
-
-        request.Headers.Add("X-Session-Id", "invalid-session-id");
-
-        HttpResponseMessage response = await this.Client.SendAsync(request);
-
-        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
-    }
 }

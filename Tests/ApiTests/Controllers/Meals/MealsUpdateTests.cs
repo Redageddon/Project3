@@ -47,7 +47,8 @@ public class MealsUpdateTests : TestFixtureBase
     {
         MealsModel created = await this.CreateMeal();
 
-        HttpResponseMessage response = await this.Client.PutAsJsonAsync($"/api/meals/{created.MealId}", (MealsModel?)null);
+        HttpResponseMessage response =
+            await this.Client.PutAsJsonAsync($"/api/meals/{created.MealId}", (MealsModel?)null);
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
@@ -57,10 +58,10 @@ public class MealsUpdateTests : TestFixtureBase
     {
         MealsModel created = await this.CreateMeal();
         RecipeModel dish = await this.CreateRecipe();
-        RecipeModel drink = await this.CreateRecipe(TestDataBuilder.CreateRecipe(name: "Coffee"));
-        
-        MealsModel updated = created with 
-        { 
+        RecipeModel drink = await this.CreateRecipe(TestDataBuilder.CreateRecipe("Coffee"));
+
+        MealsModel updated = created with
+        {
             Dishes = [dish],
             Drinks = [drink],
         };

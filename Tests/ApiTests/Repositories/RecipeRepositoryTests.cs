@@ -6,13 +6,24 @@ namespace Tests.ApiTests.Repositories;
 [TestFixture]
 public class RecipeRepositoryTests
 {
-    private RecipeRepository repository = null!;
-
     [SetUp]
     public void SetUp()
     {
-        this.repository = new RecipeRepository();
+        this.testDataPath = Path.Combine(Path.GetTempPath(), $"recipes_test_{Guid.NewGuid()}.json");
+        this.repository = new RecipeRepository(this.testDataPath);
     }
+
+    [TearDown]
+    public void TearDown()
+    {
+        if (File.Exists(this.testDataPath))
+        {
+            File.Delete(this.testDataPath);
+        }
+    }
+
+    private RecipeRepository repository = null!;
+    private string testDataPath = null!;
 
     [Test]
     public void GetAllRecipes_ReturnsNonNull()
@@ -26,7 +37,23 @@ public class RecipeRepositoryTests
     [Test]
     public void GetAllRecipes_AfterCreate_ContainsNewRecipe()
     {
-        RecipeModel newRecipe = new(0, 1, "Test Recipe", "Easy", "Italian", ["ingredient"], ["step"], [], [], "", 10, 20, 2, 300, 0, 0);
+        RecipeModel newRecipe = new(0,
+                                    1,
+                                    "Test Recipe",
+                                    "Easy",
+                                    "Italian",
+                                    ["ingredient"],
+                                    ["step"],
+                                    [],
+                                    [],
+                                    "",
+                                    10,
+                                    20,
+                                    2,
+                                    300,
+                                    0,
+                                    0);
+
         RecipeModel created = this.repository.CreateRecipe(newRecipe);
 
         RecipesDataModel result = this.repository.GetAllRecipes();
@@ -54,7 +81,23 @@ public class RecipeRepositoryTests
     [Test]
     public void GetAllRecipes_AfterDelete_DoesNotContainDeletedRecipe()
     {
-        RecipeModel newRecipe = new(0, 1, "To Delete", "Easy", "Italian", ["ingredient"], ["step"], [], [], "", 10, 20, 2, 300, 0, 0);
+        RecipeModel newRecipe = new(0,
+                                    1,
+                                    "To Delete",
+                                    "Easy",
+                                    "Italian",
+                                    ["ingredient"],
+                                    ["step"],
+                                    [],
+                                    [],
+                                    "",
+                                    10,
+                                    20,
+                                    2,
+                                    300,
+                                    0,
+                                    0);
+
         RecipeModel created = this.repository.CreateRecipe(newRecipe);
 
         this.repository.DeleteRecipe(created.RecipeId);
@@ -66,7 +109,23 @@ public class RecipeRepositoryTests
     [Test]
     public void GetAllRecipes_AfterUpdate_ContainsUpdatedRecipe()
     {
-        RecipeModel newRecipe = new(0, 1, "Original", "Easy", "Italian", ["ingredient"], ["step"], [], [], "", 10, 20, 2, 300, 0, 0);
+        RecipeModel newRecipe = new(0,
+                                    1,
+                                    "Original",
+                                    "Easy",
+                                    "Italian",
+                                    ["ingredient"],
+                                    ["step"],
+                                    [],
+                                    [],
+                                    "",
+                                    10,
+                                    20,
+                                    2,
+                                    300,
+                                    0,
+                                    0);
+
         RecipeModel created = this.repository.CreateRecipe(newRecipe);
 
         RecipeModel updated = created with { Name = "Updated" };
@@ -84,8 +143,39 @@ public class RecipeRepositoryTests
     {
         int initialCount = this.repository.GetAllRecipes().Recipes.Count;
 
-        RecipeModel recipe1 = new(0, 1, "Recipe 1", "Easy", "Italian", ["ingredient"], ["step"], [], [], "", 10, 20, 2, 300, 0, 0);
-        RecipeModel recipe2 = new(0, 1, "Recipe 2", "Medium", "French", ["ingredient"], ["step"], [], [], "", 15, 25, 3, 400, 0, 0);
+        RecipeModel recipe1 = new(0,
+                                  1,
+                                  "Recipe 1",
+                                  "Easy",
+                                  "Italian",
+                                  ["ingredient"],
+                                  ["step"],
+                                  [],
+                                  [],
+                                  "",
+                                  10,
+                                  20,
+                                  2,
+                                  300,
+                                  0,
+                                  0);
+
+        RecipeModel recipe2 = new(0,
+                                  1,
+                                  "Recipe 2",
+                                  "Medium",
+                                  "French",
+                                  ["ingredient"],
+                                  ["step"],
+                                  [],
+                                  [],
+                                  "",
+                                  15,
+                                  25,
+                                  3,
+                                  400,
+                                  0,
+                                  0);
 
         this.repository.CreateRecipe(recipe1);
         this.repository.CreateRecipe(recipe2);

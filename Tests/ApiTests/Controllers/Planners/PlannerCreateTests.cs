@@ -46,12 +46,12 @@ public class PlannerCreateTests : TestFixtureBase
     public async Task Create_WithInvalidSession_ReturnsUnauthorized()
     {
         PlannerModel planner = TestDataBuilder.CreatePlanner();
-        
+
         HttpRequestMessage request = new(HttpMethod.Post, "/api/planners")
         {
             Content = JsonContent.Create(planner),
         };
-        
+
         request.Headers.Add("X-Session-Id", "invalid-session-id");
 
         HttpResponseMessage response = await this.Client.SendAsync(request);

@@ -6,30 +6,25 @@ namespace Tests.ApiTests.ServiceTests;
 [TestFixture]
 public class RecipeRepositoryTests
 {
-    private RecipeRepository repository = null!;
-    private const string TestDataPath = "Data/recipes.json";
-
     [SetUp]
     public void Setup()
     {
-        // Clean up test data before each test
-        if (File.Exists(TestDataPath))
-        {
-            File.Delete(TestDataPath);
-        }
-
-        this.repository = new RecipeRepository();
+        this.testDataPath = Path.Combine(Path.GetTempPath(), $"recipes_test_{Guid.NewGuid()}.json");
+        this.repository = new RecipeRepository(this.testDataPath);
     }
 
     [TearDown]
     public void TearDown()
     {
         // Clean up after tests
-        if (File.Exists(TestDataPath))
+        if (File.Exists(this.testDataPath))
         {
-            File.Delete(TestDataPath);
+            File.Delete(this.testDataPath);
         }
     }
+
+    private RecipeRepository repository = null!;
+    private string testDataPath = null!;
 
     private RecipeModel CreateTestRecipe(string name = "Test Recipe")
     {
@@ -114,5 +109,79 @@ public class RecipeRepositoryTests
 
         Assert.That(result, Is.True);
         Assert.That(this.repository.GetRecipeById(created.RecipeId), Is.Null);
+    }
+
+    [Test]
+    public void EnsureDataFileExists_DoesNotOverwriteExistingFile()
+    {
+        RecipeModel recipe = this.CreateTestRecipe("Pasta");
+        RecipeModel created = this.repository.CreateRecipe(recipe);
+
+        // Create a new instance which will call EnsureDataFileExists again
+        RecipeRepository newRepo = new(this.testDataPath);
+
+        RecipesDataModel recipes = newRepo.GetAllRecipes();
+        Assert.That(recipes.Recipes.Any(r => r.RecipeId == created.RecipeId), Is.True);
+    }
+
+    [Test]
+    public void EnsureDataFileExists_CreatesDirectory_WhenItDoesNotExist()
+    {
+        // Arrange
+        string nestedPath = Path.Combine(Path.GetTempPath(), $"test_dir_{Guid.NewGuid()}", "nested", "recipes.json");
+
+        try
+        {
+            // Act
+            RecipeRepository repoWithNestedPath = new(nestedPath);
+            repoWithNestedPath.CreateRecipe(this.CreateTestRecipe());
+
+            // Assert
+            Assert.That(File.Exists(nestedPath), Is.True);
+            Assert.That(Directory.Exists(Path.GetDirectoryName(nestedPath)), Is.True);
+        }
+        finally
+        {
+            // Cleanup
+            if (File.Exists(nestedPath))
+            {
+                File.Delete(nestedPath);
+            }
+
+            string? directory = Path.GetDirectoryName(nestedPath);
+
+            if (directory != null
+             && Directory.Exists(directory))
+            {
+                Directory.Delete(directory, true);
+            }
+        }
+    }
+
+    [Test]
+    public void EnsureDataFileExists_HandlesExistingDirectory()
+    {
+        // Arrange
+        string tempDir = Path.Combine(Path.GetTempPath(), $"test_dir_{Guid.NewGuid()}");
+        Directory.CreateDirectory(tempDir);
+        string dataPath = Path.Combine(tempDir, "recipes.json");
+
+        try
+        {
+            // Act
+            RecipeRepository repoWithExistingDir = new(dataPath);
+            repoWithExistingDir.CreateRecipe(this.CreateTestRecipe());
+
+            // Assert
+            Assert.That(File.Exists(dataPath), Is.True);
+        }
+        finally
+        {
+            // Cleanup
+            if (Directory.Exists(tempDir))
+            {
+                Directory.Delete(tempDir, true);
+            }
+        }
     }
 }

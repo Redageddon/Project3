@@ -1,4 +1,3 @@
-
 using System.Net.Http.Json;
 using API.DataModels.Food;
 using API.DataModels.Users;
@@ -7,8 +6,8 @@ namespace Tests.ApiTests.Helpers;
 
 public abstract class TestFixtureBase
 {
-    protected CustomWebApplicationFactory Factory = null!;
     protected HttpClient Client = null!;
+    protected CustomWebApplicationFactory Factory = null!;
     private string? sessionId;
 
     [OneTimeSetUp]
@@ -33,7 +32,9 @@ public abstract class TestFixtureBase
             RegisterRequest registerRequest = TestDataBuilder.CreateRegisterRequest();
             await this.Client.PostAsJsonAsync("/api/auth/register", registerRequest);
 
-            LoginRequest loginRequest = TestDataBuilder.CreateLoginRequest(registerRequest.Email, registerRequest.Password);
+            LoginRequest loginRequest =
+                TestDataBuilder.CreateLoginRequest(registerRequest.Email, registerRequest.Password);
+
             HttpResponseMessage loginResponse = await this.Client.PostAsJsonAsync("/api/auth/login", loginRequest);
             LoginResponse? result = await loginResponse.Content.ReadFromJsonAsync<LoginResponse>();
 
@@ -68,11 +69,9 @@ public abstract class TestFixtureBase
 
     protected async Task<UserDto> CreateUser(string? username = null, string? email = null, string? password = null)
     {
-        RegisterRequest request = new(
-                                      username ?? $"user_{Guid.NewGuid():N}",
+        RegisterRequest request = new(username ?? $"user_{Guid.NewGuid():N}",
                                       email ?? $"email_{Guid.NewGuid():N}@example.com",
-                                      password ?? "Password123!"
-                                     );
+                                      password ?? "Password123!");
 
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/auth/register", request);
         LoginResponse? loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();

@@ -5,8 +5,14 @@ namespace API.Services;
 
 public class PlannerRepository
 {
-    private readonly string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "planners.json");
+    private readonly string dataPath;
     private readonly Lock plannersLock = new();
+
+    public PlannerRepository(string? dataPath = null)
+    {
+        this.dataPath = dataPath ?? Path.Combine(AppContext.BaseDirectory, "Data", "planners.json");
+        this.EnsureDataFileExists();
+    }
 
     public PlannersDataModel GetAllPlanners()
     {
@@ -31,7 +37,7 @@ public class PlannerRepository
     {
         PlannersDataModel planners = this.GetAllPlanners();
 
-        return new PlannersDataModel(Planners: planners.Planners.Where(p => p.UserId == userId).ToList());
+        return new PlannersDataModel(planners.Planners.Where(p => p.UserId == userId).ToList());
     }
 
     public PlannerModel? GetPlannerById(int id)
@@ -112,8 +118,20 @@ public class PlannerRepository
         }
     }
 
+    private void EnsureDataFileExists()
+    {
+        string? directory = Path.GetDirectoryName(this.dataPath);
+
+        if (directory != null
+         && !Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+    }
+
     private void SavePlanners(PlannersDataModel planners)
     {
+        this.EnsureDataFileExists();
         string json = JsonConvert.SerializeObject(planners, Formatting.Indented);
         File.WriteAllText(this.dataPath, json);
     }

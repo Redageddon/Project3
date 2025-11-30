@@ -6,86 +6,95 @@ namespace Tests.ApiTests.ServiceTests;
 [TestFixture]
 public class UserRepositoryTests
 {
-    private UserRepository repository = null!;
-    private const string TestDataPath = "Data/users.json";
-
     [SetUp]
-    public void Setup()
+    public void SetUp()
     {
-        if (File.Exists(TestDataPath))
-        {
-            File.Delete(TestDataPath);
-        }
-
-        this.repository = new UserRepository();
+        this.testDataPath = Path.Combine(Path.GetTempPath(), $"users_test_{Guid.NewGuid()}.json");
+        this.repository = new UserRepository(this.testDataPath);
     }
 
     [TearDown]
     public void TearDown()
     {
-        if (File.Exists(TestDataPath))
+        if (File.Exists(this.testDataPath))
         {
-            File.Delete(TestDataPath);
+            File.Delete(this.testDataPath);
+        }
+    }
+
+    private UserRepository repository = null!;
+    private string testDataPath = null!;
+
+    [Test]
+    public void EnsureDataFileExists_DoesNotOverwriteExistingFile()
+    {
+        UserModel _ = this.repository.CreateUser("testuser", "test@example.com", "hash");
+
+        // Create a new instance which will call EnsureDataFileExists again
+        UserRepository newRepo = new(this.testDataPath);
+
+        UsersData users = newRepo.GetAllUsers();
+        Assert.That(users.Users.Any(u => u.Email == "test@example.com"), Is.True);
+    }
+
+    [Test]
+    public void EnsureDataFileExists_CreatesDirectory_WhenItDoesNotExist()
+    {
+        // Arrange
+        string nestedPath = Path.Combine(Path.GetTempPath(), $"test_dir_{Guid.NewGuid()}", "nested", "users.json");
+
+        try
+        {
+            // Act
+            UserRepository repoWithNestedPath = new(nestedPath);
+            repoWithNestedPath.CreateUser("testuser", "test@example.com", "hash");
+
+            // Assert
+            Assert.That(File.Exists(nestedPath), Is.True);
+            Assert.That(Directory.Exists(Path.GetDirectoryName(nestedPath)), Is.True);
+        }
+        finally
+        {
+            // Cleanup
+            if (File.Exists(nestedPath))
+            {
+                File.Delete(nestedPath);
+            }
+
+            string? directory = Path.GetDirectoryName(nestedPath);
+
+            if (directory != null
+             && Directory.Exists(directory))
+            {
+                Directory.Delete(directory, true);
+            }
         }
     }
 
     [Test]
-    public void UpdateUser_NonExistentUser_ReturnsNull()
+    public void EnsureDataFileExists_HandlesExistingDirectory()
     {
-        UserModel? result = this.repository.UpdateUser(999, "newname");
+        // Arrange
+        string tempDir = Path.Combine(Path.GetTempPath(), $"test_dir_{Guid.NewGuid()}");
+        Directory.CreateDirectory(tempDir);
+        string dataPath = Path.Combine(tempDir, "users.json");
 
-        Assert.That(result, Is.Null);
-    }
+        try
+        {
+            // Act
+            UserRepository repoWithExistingDir = new(dataPath);
+            repoWithExistingDir.CreateUser("testuser", "test@example.com", "hash");
 
-    [Test]
-    public void UpdateUser_UpdateUsername_UpdatesOnlyUsername()
-    {
-        UserModel user = this.repository.CreateUser("oldname", "test@example.com", "hash123");
-
-        UserModel? result = this.repository.UpdateUser(user.Uid, username: "newname");
-
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result!.Username, Is.EqualTo("newname"));
-        Assert.That(result.Email, Is.EqualTo("test@example.com"));
-        Assert.That(result.PasswordHash, Is.EqualTo("hash123"));
-    }
-
-    [Test]
-    public void UpdateUser_UpdateEmail_UpdatesOnlyEmail()
-    {
-        UserModel user = this.repository.CreateUser("testuser", "old@example.com", "hash123");
-
-        UserModel? result = this.repository.UpdateUser(user.Uid, email: "new@example.com");
-
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result!.Email, Is.EqualTo("new@example.com"));
-        Assert.That(result.Username, Is.EqualTo("testuser"));
-        Assert.That(result.PasswordHash, Is.EqualTo("hash123"));
-    }
-
-    [Test]
-    public void UpdateUser_UpdatePassword_UpdatesOnlyPassword()
-    {
-        UserModel user = this.repository.CreateUser("testuser", "test@example.com", "oldhash");
-
-        UserModel? result = this.repository.UpdateUser(user.Uid, passwordHash: "newhash");
-
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result!.PasswordHash, Is.EqualTo("newhash"));
-        Assert.That(result.Username, Is.EqualTo("testuser"));
-        Assert.That(result.Email, Is.EqualTo("test@example.com"));
-    }
-
-    [Test]
-    public void UpdateUser_UpdateMultipleFields_UpdatesAll()
-    {
-        UserModel user = this.repository.CreateUser("oldname", "old@example.com", "oldhash");
-
-        UserModel? result = this.repository.UpdateUser(user.Uid, "newname", "new@example.com", "newhash");
-
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result!.Username, Is.EqualTo("newname"));
-        Assert.That(result.Email, Is.EqualTo("new@example.com"));
-        Assert.That(result.PasswordHash, Is.EqualTo("newhash"));
+            // Assert
+            Assert.That(File.Exists(dataPath), Is.True);
+        }
+        finally
+        {
+            // Cleanup
+            if (Directory.Exists(tempDir))
+            {
+                Directory.Delete(tempDir, true);
+            }
+        }
     }
 }

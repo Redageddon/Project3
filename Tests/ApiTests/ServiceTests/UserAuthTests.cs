@@ -8,12 +8,6 @@ namespace Tests.ApiTests.ServiceTests;
 [TestFixture]
 public class UserAuthTests
 {
-    private const string UsersDataPath = "Data/users.json";
-
-    private UserRepository userRepository = null!;
-    private PasswordHasher passwordHasher = null!;
-    private UserAuth userAuth = null!;
-
     [SetUp]
     public void SetUp()
     {
@@ -36,14 +30,19 @@ public class UserAuthTests
         }
     }
 
+    private const string UsersDataPath = "Data/users.json";
+
+    private UserRepository userRepository = null!;
+    private PasswordHasher passwordHasher = null!;
+    private UserAuth userAuth = null!;
+
     [Test]
     public void Register_ThenLogin_WithSameCredentials_Succeeds_AndReturnsSameUserId()
     {
         // Arrange
-        RegisterRequest registerRequest = new(
-                                              Username: "alice",
-                                              Email: "alice@example.com",
-                                              Password: "Password123!");
+        RegisterRequest registerRequest = new("alice",
+                                              "alice@example.com",
+                                              "Password123!");
 
         // Act – register
         LoginResponse registerResponse = this.userAuth.Register(registerRequest);
@@ -55,9 +54,8 @@ public class UserAuthTests
         Assert.That(registerResponse.User.Email, Is.EqualTo("alice@example.com"));
 
         // Act – login
-        LoginRequest loginRequest = new(
-                                        Email: "alice@example.com",
-                                        Password: "Password123!");
+        LoginRequest loginRequest = new("alice@example.com",
+                                        "Password123!");
 
         LoginResponse loginResponse = this.userAuth.Login(loginRequest);
 
@@ -71,16 +69,14 @@ public class UserAuthTests
     public void Login_WithWrongPassword_Fails()
     {
         // Arrange
-        RegisterRequest registerRequest = new(
-                                              Username: "bob",
-                                              Email: "bob@example.com",
-                                              Password: "CorrectPassword1!");
+        RegisterRequest registerRequest = new("bob",
+                                              "bob@example.com",
+                                              "CorrectPassword1!");
 
         this.userAuth.Register(registerRequest);
 
-        LoginRequest wrongPasswordLogin = new(
-                                              Email: "bob@example.com",
-                                              Password: "WrongPassword!");
+        LoginRequest wrongPasswordLogin = new("bob@example.com",
+                                              "WrongPassword!");
 
         // Act
         LoginResponse response = this.userAuth.Login(wrongPasswordLogin);

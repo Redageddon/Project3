@@ -5,16 +5,31 @@ namespace API.Services;
 
 public class UserRepository
 {
-    private readonly string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "users.json");
+    private readonly string dataPath;
     private readonly Lock usersLock = new();
+
+    public UserRepository(string? dataPath = null)
+    {
+        this.dataPath = dataPath ?? Path.Combine(AppContext.BaseDirectory, "Data", "users.json");
+        this.EnsureDataFileExists();
+    }
 
     public UsersData GetAllUsers()
     {
         lock (this.usersLock)
         {
+            UsersData emptyModel = new([]);
+
+            if (!File.Exists(this.dataPath))
+            {
+                this.SaveUsers(emptyModel);
+
+                return emptyModel;
+            }
+
             string data = File.ReadAllText(this.dataPath);
 
-            return JsonConvert.DeserializeObject<UsersData>(data) ?? new UsersData([]);
+            return JsonConvert.DeserializeObject<UsersData>(data) ?? emptyModel;
         }
     }
 
@@ -50,9 +65,9 @@ public class UserRepository
         lock (this.usersLock)
         {
             UsersData users = this.GetAllUsers();
-            
-            int newUid = users.Users.Count != 0 
-                ? users.Users.Max(u => u.Uid) + 1 
+
+            int newUid = users.Users.Count != 0
+                ? users.Users.Max(u => u.Uid) + 1
                 : 1;
 
             UserModel newUser = new(newUid, username, email, passwordHash);
@@ -109,8 +124,20 @@ public class UserRepository
         }
     }
 
+    private void EnsureDataFileExists()
+    {
+        string? directory = Path.GetDirectoryName(this.dataPath);
+
+        if (directory != null
+         && !Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+    }
+
     private void SaveUsers(UsersData users)
     {
+        this.EnsureDataFileExists();
         string? json = JsonConvert.SerializeObject(users, Formatting.Indented);
         File.WriteAllText(this.dataPath, json);
     }

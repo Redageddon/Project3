@@ -4,48 +4,44 @@ using API.Services;
 namespace Tests.ApiTests.ServiceTests;
 
 // PlannerRepositoryTests – PlannerId + UserId
-    
+
 [TestFixture]
 public class PlannerRepositoryTests
 {
-    private const string PlannersDataPath = "Data/planners.json";
-    private PlannerRepository plannerRepository = null!;
-
     [SetUp]
     public void SetUp()
     {
-        if (File.Exists(PlannersDataPath))
-        {
-            File.Delete(PlannersDataPath);
-        }
-
-        this.plannerRepository = new PlannerRepository();
+        this.testDataPath = Path.Combine(Path.GetTempPath(), $"planners_test_{Guid.NewGuid()}.json");
+        this.plannerRepository = new PlannerRepository(this.testDataPath);
     }
 
     [TearDown]
     public void TearDown()
     {
-        if (File.Exists(PlannersDataPath))
+        if (File.Exists(this.testDataPath))
         {
-            File.Delete(PlannersDataPath);
+            File.Delete(this.testDataPath);
         }
     }
 
+    private string testDataPath = null!;
+    private PlannerRepository plannerRepository = null!;
+
     private static PlannerModel CreateEmptyPlannerForUser(int userId)
     {
-        return new PlannerModel(PlannerId: 0, // repository will assign
-                                UserId: userId,
-                                PlannedDate: DateTime.UtcNow,
-                                BreakfastId: null,
-                                LunchId: null,
-                                DinnerId: null);
+        return new PlannerModel(0, // repository will assign
+                                userId,
+                                DateTime.UtcNow,
+                                null,
+                                null,
+                                null);
     }
 
     [Test]
     public void CreatePlanner_AssignsNewPlannerId_AndKeepsUserId()
     {
         // Arrange
-        PlannerModel planner = CreateEmptyPlannerForUser(userId: 42);
+        PlannerModel planner = CreateEmptyPlannerForUser(42);
 
         // Act
         PlannerModel created = this.plannerRepository.CreatePlanner(planner);
@@ -59,8 +55,8 @@ public class PlannerRepositoryTests
     public void GetPlannersByUserId_ReturnsOnlyThatUsersPlanners()
     {
         // Arrange
-        PlannerModel plannerUser1 = CreateEmptyPlannerForUser(userId: 1);
-        PlannerModel plannerUser2 = CreateEmptyPlannerForUser(userId: 2);
+        PlannerModel plannerUser1 = CreateEmptyPlannerForUser(1);
+        PlannerModel plannerUser2 = CreateEmptyPlannerForUser(2);
 
         this.plannerRepository.CreatePlanner(plannerUser1);
         this.plannerRepository.CreatePlanner(plannerUser2);
@@ -81,7 +77,7 @@ public class PlannerRepositoryTests
     [Test]
     public void GetPlannerById_ExistingPlanner_ReturnsPlanner()
     {
-        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel planner = CreateEmptyPlannerForUser(1);
         PlannerModel created = this.plannerRepository.CreatePlanner(planner);
 
         PlannerModel? result = this.plannerRepository.GetPlannerById(created.PlannerId);
@@ -102,13 +98,13 @@ public class PlannerRepositoryTests
     [Test]
     public void UpdatePlanner_ExistingPlanner_UpdatesSuccessfully()
     {
-        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel planner = CreateEmptyPlannerForUser(1);
         PlannerModel created = this.plannerRepository.CreatePlanner(planner);
 
-        PlannerModel updated = created with 
-        { 
-            BreakfastId = 10, 
-            LunchId = 20, 
+        PlannerModel updated = created with
+        {
+            BreakfastId = 10,
+            LunchId = 20,
             DinnerId = 30,
         };
 
@@ -124,7 +120,7 @@ public class PlannerRepositoryTests
     [Test]
     public void UpdatePlanner_PreservesOriginalUserId()
     {
-        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel planner = CreateEmptyPlannerForUser(1);
         PlannerModel created = this.plannerRepository.CreatePlanner(planner);
 
         // Try to change userId (should be preserved)
@@ -138,7 +134,7 @@ public class PlannerRepositoryTests
     [Test]
     public void UpdatePlanner_NonExistentPlanner_ReturnsNull()
     {
-        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel planner = CreateEmptyPlannerForUser(1);
 
         PlannerModel? result = this.plannerRepository.UpdatePlanner(999, planner);
 
@@ -148,7 +144,7 @@ public class PlannerRepositoryTests
     [Test]
     public void DeletePlanner_ExistingPlanner_ReturnsTrue()
     {
-        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel planner = CreateEmptyPlannerForUser(1);
         PlannerModel created = this.plannerRepository.CreatePlanner(planner);
 
         bool result = this.plannerRepository.DeletePlanner(created.PlannerId);
@@ -177,12 +173,86 @@ public class PlannerRepositoryTests
     [Test]
     public void GetAllPlanners_AfterDelete_DoesNotContainDeletedPlanner()
     {
-        PlannerModel planner = CreateEmptyPlannerForUser(userId: 1);
+        PlannerModel planner = CreateEmptyPlannerForUser(1);
         PlannerModel created = this.plannerRepository.CreatePlanner(planner);
 
         this.plannerRepository.DeletePlanner(created.PlannerId);
         PlannersDataModel result = this.plannerRepository.GetAllPlanners();
 
         Assert.That(result.Planners.Any(p => p.PlannerId == created.PlannerId), Is.False);
+    }
+
+    [Test]
+    public void EnsureDataFileExists_DoesNotOverwriteExistingFile()
+    {
+        PlannerModel planner = CreateEmptyPlannerForUser(1);
+        PlannerModel created = this.plannerRepository.CreatePlanner(planner);
+
+        // Create a new instance which will call EnsureDataFileExists again
+        PlannerRepository newRepo = new(this.testDataPath);
+
+        PlannersDataModel planners = newRepo.GetAllPlanners();
+        Assert.That(planners.Planners.Any(p => p.PlannerId == created.PlannerId), Is.True);
+    }
+
+    [Test]
+    public void EnsureDataFileExists_CreatesDirectory_WhenItDoesNotExist()
+    {
+        // Arrange
+        string nestedPath = Path.Combine(Path.GetTempPath(), $"test_dir_{Guid.NewGuid()}", "nested", "planners.json");
+
+        try
+        {
+            // Act
+            PlannerRepository repoWithNestedPath = new(nestedPath);
+            repoWithNestedPath.CreatePlanner(CreateEmptyPlannerForUser(1));
+
+            // Assert
+            Assert.That(File.Exists(nestedPath), Is.True);
+            Assert.That(Directory.Exists(Path.GetDirectoryName(nestedPath)), Is.True);
+        }
+        finally
+        {
+            // Cleanup
+            if (File.Exists(nestedPath))
+            {
+                File.Delete(nestedPath);
+            }
+
+            string? directory = Path.GetDirectoryName(nestedPath);
+
+            if (directory != null
+             && Directory.Exists(directory))
+            {
+                Directory.Delete(directory, true);
+            }
+        }
+    }
+
+    [Test]
+    public void EnsureDataFileExists_HandlesExistingDirectory()
+    {
+        // Arrange
+        string tempDir = Path.Combine(Path.GetTempPath(), $"test_dir_{Guid.NewGuid()}");
+        Directory.CreateDirectory(tempDir);
+        string dataPath = Path.Combine(tempDir, "planners.json");
+
+        try
+        {
+            // Act
+            PlannerRepository repoWithExistingDir = new(dataPath);
+            repoWithExistingDir.CreatePlanner(CreateEmptyPlannerForUser(1));
+
+            // Assert
+            Assert.That(File.Exists(dataPath), Is.True);
+        }
+        finally
+        {
+            // Cleanup
+            if (Directory.Exists(tempDir))
+            {
+                Directory.Delete(tempDir, true);
+            }
+        }
     }
 }

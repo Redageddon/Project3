@@ -6,28 +6,24 @@ namespace Tests.ApiTests.ServiceTests;
 [TestFixture]
 public class MealsRepositoryTests
 {
-    private MealsRepository repository = null!;
-    private const string TestDataPath = "Data/meals.json";
-
     [SetUp]
     public void Setup()
     {
-        if (File.Exists(TestDataPath))
-        {
-            File.Delete(TestDataPath);
-        }
-
-        this.repository = new MealsRepository();
+        this.testDataPath = Path.Combine(Path.GetTempPath(), $"meals_test_{Guid.NewGuid()}.json");
+        this.repository = new MealsRepository(this.testDataPath);
     }
 
     [TearDown]
     public void TearDown()
     {
-        if (File.Exists(TestDataPath))
+        if (File.Exists(this.testDataPath))
         {
-            File.Delete(TestDataPath);
+            File.Delete(this.testDataPath);
         }
     }
+
+    private MealsRepository repository = null!;
+    private string testDataPath = null!;
 
     private static MealsModel CreateTestMeal(string name = "Test Meal")
     {
@@ -154,5 +150,79 @@ public class MealsRepositoryTests
         MealsDataModel result = this.repository.GetAllMeals();
 
         Assert.That(result.Meals.Any(m => m.MealId == created.MealId), Is.False);
+    }
+
+    [Test]
+    public void EnsureDataFileExists_DoesNotOverwriteExistingFile()
+    {
+        MealsModel meal = CreateTestMeal("Breakfast");
+        MealsModel created = this.repository.CreateMeal(meal);
+
+        // Create a new instance which will call EnsureDataFileExists again
+        MealsRepository newRepo = new(this.testDataPath);
+
+        MealsDataModel meals = newRepo.GetAllMeals();
+        Assert.That(meals.Meals.Any(m => m.MealId == created.MealId), Is.True);
+    }
+
+    [Test]
+    public void EnsureDataFileExists_CreatesDirectory_WhenItDoesNotExist()
+    {
+        // Arrange
+        string nestedPath = Path.Combine(Path.GetTempPath(), $"test_dir_{Guid.NewGuid()}", "nested", "meals.json");
+
+        try
+        {
+            // Act
+            MealsRepository repoWithNestedPath = new(nestedPath);
+            repoWithNestedPath.CreateMeal(CreateTestMeal());
+
+            // Assert
+            Assert.That(File.Exists(nestedPath), Is.True);
+            Assert.That(Directory.Exists(Path.GetDirectoryName(nestedPath)), Is.True);
+        }
+        finally
+        {
+            // Cleanup
+            if (File.Exists(nestedPath))
+            {
+                File.Delete(nestedPath);
+            }
+
+            string? directory = Path.GetDirectoryName(nestedPath);
+
+            if (directory != null
+             && Directory.Exists(directory))
+            {
+                Directory.Delete(directory, true);
+            }
+        }
+    }
+
+    [Test]
+    public void EnsureDataFileExists_HandlesExistingDirectory()
+    {
+        // Arrange
+        string tempDir = Path.Combine(Path.GetTempPath(), $"test_dir_{Guid.NewGuid()}");
+        Directory.CreateDirectory(tempDir);
+        string dataPath = Path.Combine(tempDir, "meals.json");
+
+        try
+        {
+            // Act
+            MealsRepository repoWithExistingDir = new(dataPath);
+            repoWithExistingDir.CreateMeal(CreateTestMeal());
+
+            // Assert
+            Assert.That(File.Exists(dataPath), Is.True);
+        }
+        finally
+        {
+            // Cleanup
+            if (Directory.Exists(tempDir))
+            {
+                Directory.Delete(tempDir, true);
+            }
+        }
     }
 }

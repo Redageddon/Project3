@@ -18,7 +18,7 @@ public class PlannerGetTests : TestFixtureBase
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         PlannersDataModel? planners = await response.Content.ReadFromJsonAsync<PlannersDataModel>();
         Assert.That(planners?.Planners, Is.Not.Null);
-        Assert.That(planners.Planners!.Any(p => p.PlannerId == created.PlannerId), Is.True);
+        Assert.That(planners.Planners.Any(p => p.PlannerId == created.PlannerId), Is.True);
     }
 
     [Test]

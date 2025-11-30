@@ -5,8 +5,14 @@ namespace API.Services;
 
 public class MealsRepository
 {
-    private readonly string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "meals.json");
+    private readonly string dataPath;
     private readonly Lock mealsLock = new();
+
+    public MealsRepository(string? dataPath = null)
+    {
+        this.dataPath = dataPath ?? Path.Combine(AppContext.BaseDirectory, "Data", "meals.json");
+        this.EnsureDataFileExists();
+    }
 
     public MealsDataModel GetAllMeals()
     {
@@ -102,8 +108,20 @@ public class MealsRepository
         }
     }
 
+    private void EnsureDataFileExists()
+    {
+        string? directory = Path.GetDirectoryName(this.dataPath);
+
+        if (directory != null
+         && !Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+    }
+
     private void SaveMeals(MealsDataModel meals)
     {
+        this.EnsureDataFileExists();
         string json = JsonConvert.SerializeObject(meals, Formatting.Indented);
         File.WriteAllText(this.dataPath, json);
     }

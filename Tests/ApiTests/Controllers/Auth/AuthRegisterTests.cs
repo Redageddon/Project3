@@ -43,8 +43,8 @@ public class AuthRegisterTests : TestFixtureBase
     public async Task Register_WithDuplicateUsername_ReturnsBadRequest()
     {
         string username = $"duplicate_{Guid.NewGuid():N}";
-        RegisterRequest first = TestDataBuilder.CreateRegisterRequest(username: username);
-        RegisterRequest second = TestDataBuilder.CreateRegisterRequest(username: username);
+        RegisterRequest first = TestDataBuilder.CreateRegisterRequest(username);
+        RegisterRequest second = TestDataBuilder.CreateRegisterRequest(username);
 
         await this.Client.PostAsJsonAsync("/api/auth/register", first);
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/auth/register", second);
@@ -78,7 +78,7 @@ public class AuthRegisterTests : TestFixtureBase
     [Test]
     public async Task Register_WithShortUsername_ReturnsBadRequest()
     {
-        RegisterRequest request = TestDataBuilder.CreateRegisterRequest(username: "ab");
+        RegisterRequest request = TestDataBuilder.CreateRegisterRequest("ab");
 
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/auth/register", request);
 
@@ -88,7 +88,11 @@ public class AuthRegisterTests : TestFixtureBase
     [Test]
     public async Task Register_WithMissingEmail_ReturnsBadRequest()
     {
-        var request = new { Username = "testuser", Password = "Test123!" };
+        var request = new
+        {
+            Username = "testuser",
+            Password = "Test123!",
+        };
 
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/auth/register", request);
 
@@ -98,7 +102,11 @@ public class AuthRegisterTests : TestFixtureBase
     [Test]
     public async Task Register_WithMissingPassword_ReturnsBadRequest()
     {
-        var request = new { Username = "testuser", Email = "test@example.com" };
+        var request = new
+        {
+            Username = "testuser",
+            Email = "test@example.com",
+        };
 
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/auth/register", request);
 
@@ -108,7 +116,7 @@ public class AuthRegisterTests : TestFixtureBase
     [Test]
     public async Task Register_WithEmptyUsername_ReturnsBadRequest()
     {
-        RegisterRequest request = TestDataBuilder.CreateRegisterRequest(username: "");
+        RegisterRequest request = TestDataBuilder.CreateRegisterRequest("");
 
         HttpResponseMessage response = await this.Client.PostAsJsonAsync("/api/auth/register", request);
 
