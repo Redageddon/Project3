@@ -169,15 +169,21 @@ public class MealsController(
 
         List<RecipeModel>? dishes = dishIds.Count == 0
             ? null
-            : allRecipes.Where(r => dishIds.Contains(r.RecipeId)).ToList();
+            : allRecipes.Where(r => dishIds.Contains(r.RecipeId))
+                        .Select(r => r with { UserId = userId }) // Fix the UserId
+                        .ToList();
 
         List<RecipeModel>? drinks = drinkIds.Count == 0
             ? null
-            : allRecipes.Where(r => drinkIds.Contains(r.RecipeId)).ToList();
+            : allRecipes.Where(r => drinkIds.Contains(r.RecipeId))
+                        .Select(r => r with { UserId = userId }) // Fix the UserId
+                        .ToList();
 
         List<RecipeModel>? desserts = dessertIds.Count == 0
             ? null
-            : allRecipes.Where(r => dessertIds.Contains(r.RecipeId)).ToList();
+            : allRecipes.Where(r => dessertIds.Contains(r.RecipeId))
+                        .Select(r => r with { UserId = userId }) // Fix the UserId
+                        .ToList();
 
         // No guest: we always send the real userId from session
         MealsModel mealToSend = new(
