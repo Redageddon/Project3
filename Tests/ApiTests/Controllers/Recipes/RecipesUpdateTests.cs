@@ -116,4 +116,77 @@ public class RecipesUpdateTests : TestFixtureBase
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
+
+    // NEW: Authorization tests
+    [Test]
+    public async Task Update_WithoutSession_ReturnsUnauthorized()
+    {
+        RecipeModel created = await this.CreateRecipe();
+        HttpClient clientWithoutSession = this.Factory.CreateClient();
+        
+        RecipeModel updated = created with { Name = "Updated" };
+
+        HttpResponseMessage response = await clientWithoutSession.PutAsJsonAsync($"/api/recipes/{created.RecipeId}", updated);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+    }
+
+    [Test]
+    public async Task Update_WithEmptySession_ReturnsUnauthorized()
+    {
+        RecipeModel created = await this.CreateRecipe();
+        RecipeModel updated = created with { Name = "Updated" };
+
+        HttpRequestMessage request = new(HttpMethod.Put, $"/api/recipes/{created.RecipeId}")
+        {
+            Content = JsonContent.Create(updated),
+        };
+        
+        request.Headers.Add("X-Session-Id", "");
+
+        HttpResponseMessage response = await this.Client.SendAsync(request);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+    }
+
+    [Test]
+    public async Task Update_WithInvalidSession_ReturnsUnauthorized()
+    {
+        RecipeModel created = await this.CreateRecipe();
+        RecipeModel updated = created with { Name = "Updated" };
+
+        HttpRequestMessage request = new(HttpMethod.Put, $"/api/recipes/{created.RecipeId}")
+        {
+            Content = JsonContent.Create(updated),
+        };
+        
+        request.Headers.Add("X-Session-Id", "invalid-session-id");
+
+        HttpResponseMessage response = await this.Client.SendAsync(request);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+    }
+
+    [Test]
+    public async Task Update_RecipeOwnedByDifferentUser_ReturnsForbidden()
+    {
+        // Create recipe with first user
+        RecipeModel created = await this.CreateRecipe();
+
+        // Create and login as second user
+        string secondUserSessionId = await this.CreateAndLoginSecondUser();
+
+        RecipeModel updated = created with { Name = "Hacked Recipe" };
+
+        HttpRequestMessage request = new(HttpMethod.Put, $"/api/recipes/{created.RecipeId}")
+        {
+            Content = JsonContent.Create(updated),
+        };
+        
+        request.Headers.Add("X-Session-Id", secondUserSessionId);
+
+        HttpResponseMessage response = await this.Client.SendAsync(request);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
+    }
 }

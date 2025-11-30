@@ -58,4 +58,29 @@ public class PlannerCreateTests : TestFixtureBase
 
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
     }
+
+    [Test]
+    public async Task Create_WithEmptySession_ReturnsUnauthorized()
+    {
+        PlannerModel planner = TestDataBuilder.CreatePlanner();
+
+        HttpRequestMessage request = new(HttpMethod.Post, "/api/planners")
+        {
+            Content = JsonContent.Create(planner),
+        };
+        
+        request.Headers.Add("X-Session-Id", "");
+
+        HttpResponseMessage response = await this.Client.SendAsync(request);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+    }
+
+    [Test]
+    public async Task Create_WithNull_ReturnsBadRequest()
+    {
+        HttpResponseMessage response = await this.Client.PostAsJsonAsync<PlannerModel?>("/api/planners", null);
+
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
+    }
 }

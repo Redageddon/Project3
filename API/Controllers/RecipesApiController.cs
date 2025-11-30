@@ -93,7 +93,7 @@ public class RecipesApiController(RecipeRepository repository, SessionService se
 
         if (existing.UserId != userId.Value)
         {
-            return this.Forbid();
+            return this.StatusCode(403, new { message = "You do not have permission to update this recipe" });
         }
 
         RecipeModel? updatedRecipe = repository.UpdateRecipe(recipeId, recipe);
@@ -127,7 +127,7 @@ public class RecipesApiController(RecipeRepository repository, SessionService se
 
         if (existing.UserId != userId.Value)
         {
-            return this.Forbid();
+            return this.StatusCode(403, new { message = "You do not have permission to delete this recipe" });
         }
 
         bool _ = repository.DeleteRecipe(recipeId);

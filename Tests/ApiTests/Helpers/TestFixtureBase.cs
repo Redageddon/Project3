@@ -78,4 +78,24 @@ public abstract class TestFixtureBase
 
         return loginResponse!.User!;
     }
+
+    // NEW: Helper for multi-user authorization tests
+    protected async Task<string> CreateAndLoginSecondUser()
+    {
+        string email = $"seconduser_{Guid.NewGuid():N}@example.com";
+        string password = "SecondUser123!";
+        
+        RegisterRequest registerRequest = new($"seconduser_{Guid.NewGuid():N}",
+                                              email,
+                                              password);
+
+        HttpClient tempClient = this.Factory.CreateClient();
+        await tempClient.PostAsJsonAsync("/api/auth/register", registerRequest);
+
+        LoginRequest loginRequest = new(email, password);
+        HttpResponseMessage loginResponse = await tempClient.PostAsJsonAsync("/api/auth/login", loginRequest);
+        LoginResponse? result = await loginResponse.Content.ReadFromJsonAsync<LoginResponse>();
+
+        return result!.SessionId!;
+    }
 }

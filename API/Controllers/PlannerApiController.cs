@@ -97,7 +97,7 @@ public class PlannerApiController(PlannerRepository repository, SessionService s
         
         if (existing.UserId != userId.Value)
         {
-            return this.Forbid();
+            return this.StatusCode(403, new { message = "You do not have permission to update this planner" });
         }
 
         PlannerModel? updatedPlanner = repository.UpdatePlanner(plannerId, planner);
@@ -131,7 +131,7 @@ public class PlannerApiController(PlannerRepository repository, SessionService s
 
         if (existing.UserId != userId.Value)
         {
-            return this.Forbid();
+            return this.StatusCode(403, new { message = "You do not have permission to delete this planner" });
         }
 
         bool _ = repository.DeletePlanner(plannerId);

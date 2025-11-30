@@ -97,7 +97,7 @@ public class MealsApiController(MealsRepository repository, SessionService sessi
 
         if (existing.UserId != userId.Value)
         {
-            return this.Forbid();
+            return this.StatusCode(403, new { message = "You do not have permission to update this meal" });
         }
 
         MealsModel? updatedMeal = repository.UpdateMeal(mealId, meal);
@@ -131,7 +131,7 @@ public class MealsApiController(MealsRepository repository, SessionService sessi
 
         if (existing.UserId != userId.Value)
         {
-            return this.Forbid();
+            return this.StatusCode(403, new { message = "You do not have permission to delete this meal" });
         }
 
         bool _ = repository.DeleteMeal(mealId);
