@@ -63,11 +63,10 @@ public class LoginController(ILogger<LoginController> logger, AuthApiService aut
     
             return this.View("Index");
         }
-
-        // No session here – user must log in with their new account
-        this.TempData["RegisterSuccess"] = "Account created. Please log in.";
-
-        return this.RedirectToAction("Index");
+        
+        LoginRequest newUser = new(request.Email, request.Password);
+        
+        return await this.Login(newUser);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,3 +1,10 @@
 {
-  "Users": []
+  "Users": [
+    {
+      "Uid": 1,
+      "Username": "bako",
+      "Email": "bako@gmail.com",
+      "PasswordHash": "AQAAAAIAAYagAAAAEKKJaB8IhE10QnBXJnsL34lfh0cxVCBvRXWsC9OplDqy7vwafkErSEpoYxOkqJW1SA=="
+    }
+  ]
 }
