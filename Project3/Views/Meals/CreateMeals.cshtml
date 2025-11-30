@@ -2,19 +2,30 @@
 
 @{
     ViewData["Title"] = "Create Meal";
+    bool isUserLoggedIn = ViewBag.IsUserLoggedIn is bool b && b;
 }
 
 <h2 class="mb-4">Create Meal</h2>
 <hr />
 
 <div class="container mt-4">
-    <div class="row">
-        <div class="col-md-8">
-            @await Html.PartialAsync("_MealCreateForm", Model)
-        </div>
-    </div>
+    @if (!isUserLoggedIn)
+    {
+        @await Html.PartialAsync("_LoginRequiredModal")
+    }
+    else
+    {
+        @await Html.PartialAsync("_MealCreateForm", Model)
+    }
 </div>
 
 @section Scripts {
-    <script src="~/js/meal-validation.js"></script>
+    @if (!isUserLoggedIn)
+    {
+        <script src="~/js/Login-Modal.js"></script>
+    }
+    else {
+        <script src="~/js/recipe-create.js"></script>
+        <script src="~/js/recipe-validation.js"></script>
+    }
 }

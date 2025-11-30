@@ -1,47 +1,45 @@
-<div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-labelledby="loginRequiredModalLabel" aria-hidden="true">
+@* Views/Shared/_LoginRequiredModal.cshtml *@
+
+<div class="modal fade"
+     id="loginRequiredModal"
+     tabindex="-1"
+     aria-labelledby="loginRequiredModalLabel"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg">
             <div class="modal-header border-0">
                 <h5 class="modal-title fw-semibold" id="loginRequiredModalLabel">
                     Login Required
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                @* NOTE: no close "X" button here *@
             </div>
 
             <div class="modal-body">
                 <p class="mb-3">
-                    You must be logged in to create a recipe.
+                    You must be logged in to create a recipe or meal.
                 </p>
                 <p class="text-muted mb-0">
-                    Please log in (or create an account) to save and manage your recipes.
+                    Please log in (or create an account) to save and manage your recipes and meals.
                 </p>
             </div>
 
             <div class="modal-footer border-0 d-flex justify-content-between">
-                <button type="button"
-                        class="btn btn-outline-secondary"
-                        data-bs-dismiss="modal">
-                    Cancel
-                </button>
+                <a class="btn btn-outline-secondary"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    Return Home
+                </a>
 
                 <a class="btn btn-primary"
-                   href="@Url.Action("Index", "Login")">
+                   asp-area=""
+                   asp-controller="Login"
+                   asp-action="Index">
                     Go to Login Page
                 </a>
             </div>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var modalElement = document.getElementById('loginRequiredModal');
-            if (!modalElement) return;
-
-            // Requires Bootstrap JS loaded in your layout
-            var loginModal = new bootstrap.Modal(modalElement);
-            loginModal.show();
-        });
-    </script>
-}

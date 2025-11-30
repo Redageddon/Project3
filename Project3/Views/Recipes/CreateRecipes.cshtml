@@ -24,23 +24,9 @@
 @section Scripts {
     @if (!isUserLoggedIn)
     {
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var modalElement = document.getElementById('loginRequiredModal');
-                if (!modalElement) return;
-
-                // Requires Bootstrap JS loaded in your _Layout
-                if (window.bootstrap && bootstrap.Modal) {
-                    var loginModal = new bootstrap.Modal(modalElement);
-                    loginModal.show();
-                } else {
-                    console.warn("Bootstrap Modal is not available. Make sure bootstrap.bundle.js is loaded.");
-                }
-            });
-        </script>
+        <script src="~/js/Login-Modal.js"></script>
     }
-    else
-    {
+    else {
         <script src="~/js/recipe-create.js"></script>
         <script src="~/js/recipe-validation.js"></script>
     }

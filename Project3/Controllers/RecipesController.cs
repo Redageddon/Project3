@@ -45,7 +45,7 @@ public class RecipesController(
         return this.View(recipe);
     }
 
-        // GET: /Recipes/CreateRecipes
+    // GET: /Recipes/CreateRecipes
     [HttpGet]
     public IActionResult CreateRecipes()
     {

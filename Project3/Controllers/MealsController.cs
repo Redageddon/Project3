@@ -11,13 +11,41 @@ public class MealsController(
     MealsApiService mealsApiService,
     RecipeApiService recipeApiService) : Controller
 {
-    // Helper: get logged-in userId or guest
-    private int GetUserIdOrGuest()
+    // ==== Auth helpers ====
+
+    private bool IsUserLoggedIn()
+    {
+        string? sessionId = this.HttpContext.Session.GetString("SessionId");
+        int? userId = this.HttpContext.Session.GetInt32("UserId");
+
+        return !string.IsNullOrEmpty(sessionId) && userId.HasValue;
+    }
+
+    private string GetSessionIdOrThrow()
+    {
+        string? sessionId = this.HttpContext.Session.GetString("SessionId");
+        
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            throw new InvalidOperationException("User must be logged in to perform this action.");
+        }
+
+        return sessionId;
+    }
+
+    private int GetUserIdOrThrow()
     {
         int? userId = this.HttpContext.Session.GetInt32("UserId");
         
-        return userId ?? 999999; // Guest
+        if (!userId.HasValue)
+        {
+            throw new InvalidOperationException("User must be logged in to perform this action.");
+        }
+
+        return userId.Value;
     }
+
+    // ==== List & details ====
 
     // GET: /Meals
     public async Task<IActionResult> Index()
@@ -41,10 +69,16 @@ public class MealsController(
         return this.View(meal);
     }
 
+    // ==== Create ====
+
     // GET: /Meals/CreateMeals
     [HttpGet]
     public async Task<IActionResult> CreateMeals()
     {
+        bool isLoggedIn = this.IsUserLoggedIn();
+        this.ViewBag.IsUserLoggedIn = isLoggedIn;
+
+        // If not logged in, the view will just show the login modal (no form)
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
 
         MealCreateViewModel model = new()
@@ -52,8 +86,7 @@ public class MealsController(
             AllRecipes = recipesData.Recipes,
         };
 
-        // main view: Views/Meals/CreateMeals.cshtml
-        return this.View(model);
+        return this.View(model); // Views/Meals/CreateMeals.cshtml
     }
 
     // POST: /Meals/CreateMeals
@@ -61,12 +94,40 @@ public class MealsController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> CreateMeals(MealCreateViewModel model)
     {
+        if (!this.IsUserLoggedIn())
+        {
+            // UX: same as Recipes -> show login modal instead of redirect
+            this.ViewBag.IsUserLoggedIn = false;
+            this.ModelState.AddModelError(string.Empty, "You must be logged in to create a meal.");
+            
+            return this.View(model);
+        }
+
+        this.ViewBag.IsUserLoggedIn = true;
+
         // Re-fetch recipes so we can re-render the selects if validation fails
         RecipesDataModel recipesData = await recipeApiService.GetRecipes();
         model.AllRecipes = recipesData.Recipes;
 
         if (!this.ModelState.IsValid)
         {
+            return this.View(model);
+        }
+
+        // Hard requirement: logged in with real UserId + SessionId
+        int userId;
+        string sessionId;
+       
+        try
+        {
+            userId = this.GetUserIdOrThrow();
+            sessionId = this.GetSessionIdOrThrow();
+        }
+        catch
+        {
+            this.ViewBag.IsUserLoggedIn = false;
+            this.ModelState.AddModelError(string.Empty, "Your session has expired. Please log in again.");
+            
             return this.View(model);
         }
 
@@ -104,8 +165,6 @@ public class MealsController(
             return this.View(model);
         }
 
-        // We only have 2 slots per category in the UI, so "max 2" is already enforced structurally.
-
         List<RecipeModel> allRecipes = recipesData.Recipes;
 
         List<RecipeModel>? dishes = dishIds.Count == 0
@@ -120,9 +179,7 @@ public class MealsController(
             ? null
             : allRecipes.Where(r => dessertIds.Contains(r.RecipeId)).ToList();
 
-        int userId = this.GetUserIdOrGuest();
-        string? sessionId = this.HttpContext.Session.GetString("SessionId");
-        
+        // No guest: we always send the real userId from session
         MealsModel mealToSend = new(
                                     MealId: 0,
                                     UserId: userId,
@@ -130,11 +187,9 @@ public class MealsController(
                                     Dishes: dishes,
                                     Drinks: drinks,
                                     Deserts: desserts);
-        
-        //  pass sessionId as the second argument
+
         MealsModel created = await mealsApiService.CreateMeal(mealToSend, sessionId);
-        
-        // You can later create a dedicated Details view for Meals
+
         return this.RedirectToAction(nameof(this.MealsIndividual), new { id = created.MealId });
     }
 
@@ -147,7 +202,7 @@ public class MealsController(
         };
 
         logger.LogError("Error");
-        
+
         return this.View(errorViewModel);
     }
 }
