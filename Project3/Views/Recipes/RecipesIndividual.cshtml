@@ -4,13 +4,12 @@
     ViewData["Title"] = Model.Name;
 }
 
-@section Styles
-{
+@section Styles {
     <link rel="stylesheet" href="~/css/RecipeDetails.css" />
 }
 
-<div class="recipe-detail-page py-3">
-    <div class="container">
+<div class="recipe-details-page">
+    <div class="recipe-details-shell">
         @await Html.PartialAsync("_RecipeDetails", Model)
     </div>
 </div>
