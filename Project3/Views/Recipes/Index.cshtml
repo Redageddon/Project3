@@ -1,43 +1,45 @@
 @using API.DataModels.Food
 @model API.DataModels.Food.RecipesDataModel
+
 @{
-    ViewData["Title"] = "Meals";
+    ViewData["Title"] = "Recipes";
     RecipeFilter? filter = ViewBag.RecipeFilter as RecipeFilter;
 }
 
-@section Styles{
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/css/Recipes.css" />
+@section Styles {
+    <link rel="stylesheet" href="~/css/Recipes.css" />
     <link rel="stylesheet" href="/css/Cards.css" />
-}
-<div class="recipes-header py-3">
-    <div class="container">
-        <h1 class="title h3 mb-1">Recipes</h1>
-        <p class="subtitle mb-0">Browse your library</p>
-    </div>
-</div>
 
-<div class="container-fluid mt-4">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="sticky-top">
+}
+
+<div class="recipes-page">
+    <div class="recipes-page__shell">
+        <header class="recipes-page__header text-center">
+            <h2 class="recipes-page__title">Recipes Library</h2>
+            <p class="recipes-page__subtitle">
+                Browse, filter, and discover your meals.
+            </p>
+        </header>
+
+        <div class="recipes-page__layout">
+            <!-- LEFT: filter / sidebar -->
+            <aside class="recipes-page__sidebar sticky-top">
                 @await Html.PartialAsync("~/Views/Shared/_RecipeFilterSidebar.cshtml", filter)
-            </div>
-        </div>
-    
-        <!-- Recipe Cards -->
-        <div class="col-lg-9 col-md-8">
-            <div class="card-container">
-                <div class="row g-3">
-                    @foreach (RecipeModel recipe in Model.Recipes)
-                    {
-                        <div class="col-12 col-sm-6 col-lg-4">
-                            @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
-                        </div>
-                    }
+            </aside>
+
+            <!-- RIGHT: scrollable recipes -->
+            <section class="recipes-page__results">
+                <div class="recipes-page__results-scroll">
+                    <div class="recipes-page__grid">
+                        @foreach (RecipeModel recipe in Model.Recipes)
+                        {
+                            <div class="recipes-page__card-wrap">
+                                @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
+                            </div>
+                        }
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </div>

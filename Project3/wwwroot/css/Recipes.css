@@ -1,44 +1,161 @@
-/* Outer wrapper for the recipes page */
-.card-container {
-  background: linear-gradient(#f5f5f5, #e3e3e3);
-  padding: 10px;
+@charset "UTF-8";
+/* Recipes.scss */
+/* -----------------------------
+   General shell / readability
+------------------------------ */
+.recipes-page {
+  padding: 1.5rem 0 3rem;
 }
 
-/* Add some breathing room between rows of cards */
-.card-container .row {
-  row-gap: 1.5rem;
+.recipes-page__shell {
+  background-color: rgba(15, 23, 42, 0.9);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #f9fafb;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
 }
 
-.row {
-  padding: 10px;
+/* -----------------------------
+   Header
+------------------------------ */
+.recipes-page__header {
+  margin-bottom: 1rem;
 }
 
-/* Header at the top of the page */
-.recipes-header {
-  background: #f8f9fa;
-  border-bottom: 1px solid #e2e2e2;
-}
-
-.recipes-header .container {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.recipes-header h1 {
+.recipes-page__title {
+  font-size: 1.4rem;
+  font-weight: 700;
   margin: 0;
-  font-weight: 600;
 }
 
-.recipes-header p {
-  margin: 0.15rem 0 0;
-  color: #666;
-  font-size: 0.95rem;
+.recipes-page__subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
 }
 
-/* Slightly different spacing on larger screens */
-@media (min-width: 768px) {
-  .card-container .row {
-    row-gap: 2rem;
+/* -----------------------------
+   Layout: sidebar + results
+------------------------------ */
+.recipes-page__layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  column-gap: 1.5rem;
+  margin-top: 1rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .recipes-page__layout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1rem;
+  }
+}
+/* Sidebar (filters) */
+.recipes-page__sidebar {
+  background-color: rgba(15, 23, 42, 0.95);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  overflow-y: auto;
+}
+
+/* Results wrapper */
+.recipes-page__results {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Scrollable recipes area */
+.recipes-page__results-scroll {
+  flex: 1;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .recipes-page__results-scroll {
+    max-height: 70vh;
+  }
+}
+/* optional nice scrollbar */
+.recipes-page__results-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recipes-page__results-scroll::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.recipes-page__results-scroll::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.8);
+  border-radius: 999px;
+}
+
+.recipes-page__results-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(209, 213, 219, 0.9);
+}
+
+/* -----------------------------
+   Cards grid – responsive
+------------------------------ */
+.recipes-page__grid {
+  display: grid;
+  /* auto-fit = as many columns as will fit
+     minmax(220px, 1fr) keeps cards reasonable on all screens */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* Wrapper for each card */
+.recipes-page__card-wrap {
+  display: flex;
+}
+
+/* Ensure recipe cards are dark and readable */
+.recipes-page__card-wrap .card {
+  width: 100%;
+  background-color: #111827;
+  color: #e5e7eb;
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(31, 41, 55, 0.9);
+}
+
+/* Card typography */
+.recipes-page__card-wrap .card h3,
+.recipes-page__card-wrap .card h4,
+.recipes-page__card-wrap .card-title {
+  color: #f9fafb;
+}
+
+.recipes-page__card-wrap .card small,
+.recipes-page__card-wrap .card .text-muted {
+  color: #9ca3af !important;
+}
+
+/* -----------------------------
+   Mobile / small screens
+------------------------------ */
+@media (max-width: 768px) {
+  .recipes-page__shell {
+    padding: 1rem;
+  }
+  /* cards: slightly smaller typography + padding */
+  .recipes-page__card-wrap .card {
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  }
+  .recipes-page__card-wrap .card-title {
+    font-size: 1rem;
+  }
+  .recipes-page__card-wrap .card-body {
+    padding: 0.75rem 0.85rem;
   }
 }
 
