@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Mvc.ModelBinding
 @{
     ViewData["Title"] = "Login";
 }
@@ -9,7 +10,7 @@
 
 
 <section>
-        <div class="container">
+        <div class="login-container">
             <div class="row full-screen align-items-center">
                 <div class="left">
                     <span class="line"></span>
@@ -101,7 +102,7 @@
 
                     @if (!ViewData.ModelState.IsValid)
                     {
-                        foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        foreach (ModelError error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
                         {
                             <p class="text-danger text-center mt-2">@error.ErrorMessage</p>
                         }

@@ -1,11 +1,7 @@
 /* Google Fonts – Lato family (all weights) */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-/* =====================================================
-   THEME PALETTE + BACKGROUND
-   -----------------------------------------------------
-   Default  : grey ➜ purple gradient
-   ==================================================== */
+
 :root {
     /* brand + base colors */
     --mainColor: #7e3ff2;            /* accent purple              */
@@ -17,11 +13,11 @@
     --whiteSmoke: #c4c3ca;           /* light text                  */
 
     /* layout helpers */
-    --shadow: 0 4px 8px rgba(21, 21, 21, .2);
-    /* --maxWidth: 1080px; */
-    --gutter: 0.6rem;
-    --radius: 8px;
-
+    --shadow:  0 4px 8px rgba(21,21,21,.2);
+    --maxWidth: 1080px;
+    --gutter:   0.6rem;
+    --radius:   8px;
+    
     /* gradient endpoints */
     --bg-start: var(--grey-900);
     --bg-end: var(--mainColor);
@@ -30,190 +26,55 @@
 /* =====================================================
    CSS RESET & BASE STYLES
    ==================================================== */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* predictable sizing */
+    box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
-
-body {
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    line-height: 1.6;
-
-    /* app-wide gradient background */
-    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-    color: var(--whiteSmoke);
+html {
+    scroll-behavior: smooth;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-ul { list-style: none; }
-
-/* =====================================================
-   UTILITY HELPERS – small single-purpose classes
-   ==================================================== */
-
-/* layout */
-/* .container {
-  max-width: var(--maxWidth);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-} */
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.justify-content-between { justify-content: space-between; }
-.align-items-center { align-items: center; }
-.center-div { margin-inline: auto; }
-
-.full-screen {
-    min-height: 100vh;
-    padding-top: 120px;
-}
-/* reserve space for fixed nav */
-
-/* text */
-.text-center { text-align: center; }
-.mt-1 { margin-top: .5rem; }
-
-/* span helpers */
-.span-2 { grid-column: span 2; }
-.span-3 { grid-column: span 3; }
-
-/* =====================================================
-   COMPONENTS – buttons / utility positioning
-   ==================================================== */
-.btn {
-    display: inline-block;
-    padding: .6rem 1.2rem;
-    border: none;
-    border-radius: var(--radius);
-    font-weight: 600;
-    background: var(--mainColor);
-    color: var(--white);
-    cursor: pointer;
-    transition: background .25s ease;
-
-    &:hover { background: var(--mainColor-hover); }
-}
-
-/* absolute-center helper (e.g. loader) */
-.abs-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* =====================================================
-   NAVIGATION BAR – desktop first, collapses to menu
-   ==================================================== */
-
-/* hide default checkbox (menu toggle) */
-input[type="checkbox"]#click { display: none; }
-
-/* desktop nav */
-nav {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 25px;
-    background: rgba(0, 0, 0, .8);
-    z-index: 999;
-
-    .logo {
-        color: var(--white);
-        font-size: 32px;
-        font-weight: 600;
-        text-transform: capitalize;
-
-        span { color: var(--mainColor); }
-    }
-
-    .container { padding: 0 25px; }
-
-    .menu-btn {
-        i {
-            display: none;
-            color: var(--white);
-            font-size: 28px;
-            cursor: pointer;
-        }
-    }
-
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-
-        li {
-            margin: 0 5px;
-
-            a {
-                color: var(--white);
-                font-size: 16px;
-                font-weight: 600;
-                padding: 8px 15px;
-                border-radius: 5px;
-                transition: all .3s ease;
-
-                &:hover,
-                &.active {
-                    color: var(--mainColor);
-                    background: var(--white);
-                }
-            }
-        }
-    }
+.login-container{ 
+    max-width: var(--maxWidth);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
 }
 
 /* ---------- TWO-COLUMN HERO AREA ---------- */
-.left,
-.right {
-    /* halves of the hero layout */
+
+.left, .right {          /* halves of the hero layout                 */
     flex: 0 0 50%;
     max-width: 50%;
     padding: 20px;
 }
 
 /* Accent line before headline */
-.left {
-    .line {
-        width: 15%;
-        height: 2px;
-        background: var(--mainColor);
-        display: inline-block;
-    }
-
-    /* Hero headline */
-    h2 {
-        margin-top: 25px;
-        font-size: 50px;
-        line-height: 55px;
-        color: var(--white);
-
-        span {
-            color: var(--mainColor);
-            font-size: 52px;
-        }
-    }
+.left .line {
+    width: 15%;
+    height: 2px;
+    background: var(--mainColor);
+    display: inline-block;
 }
 
-/* ---------- GENERIC BUTTON (second definition, preserves cascade) ---------- */
+/* Hero headline */
+.left h2 {
+    margin-top: 25px;
+    font-size: 50px;
+    line-height: 55px;
+    color: var(--white);
+}
+.left h2 span { color: var(--mainColor); font-size: 52px; }
+
+/* Quick bio text */
+.left p {
+    color: var(--whiteSmoke);
+    margin: 20px 0 10px;
+    font-size: 16px;
+}
+
+/* ---------- GENERIC BUTTON ---------- */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -229,7 +90,7 @@ nav {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 15px;
-    box-shadow: 0 8px 24px 0 rgba(228, 10, 57, .2);
+    box-shadow: 0 8px 24px 0 rgba(228,10,57,.2);
     transition: all .2s linear;
 
     &:hover {
@@ -253,6 +114,7 @@ nav {
         &:hover { color: var(--mainColor); }
     }
 }
+.social-media a:hover { color: var(--mainColor); }
 
 /* ---------- 3-D FLIP CARD (LOGIN ↔ SIGN-UP) ---------- */
 .form {
@@ -355,30 +217,32 @@ input[type="checkbox"] { display: none; }
     transition: all .6s ease-out;
 }
 
-/* Front & back faces of card (kept un-nested to preserve selectors exactly) */
+/* Flip when checkbox is ticked */
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+    transform: rotateY(180deg);
+}
+
+/* Front & back faces of card */
 .card-front,
 .card-back {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #1B1B1B url('https://i.postimg.cc/4dnZCH03/background.png') bottom center / 300% no-repeat;
+    width: 100%; height: 100%;
+    background: #1B1B1B url('https://i.postimg.cc/4dnZCH03/background.png')
+    bottom center / 300% no-repeat;
     border-radius: 6px;
-    left: 0;
-    top: 0;
+    left: 0; top: 0;
     transform-style: preserve-3d;
 }
-
 .card-back { transform: rotateY(180deg); }
 
 /* Centers form vertically in each face */
 .center-wrap {
     position: absolute;
-    top: 50%;
-    left: 0;
+    top: 50%; left: 0;
     width: 100%;
     padding: 0 35px;
-    transform: translate3d(0, -50%, 35px) perspective(100px);
-    z-index: 20; /* keep inputs clickable */
+    transform: translate3d(0,-50%,35px) perspective(100px);
+    z-index: 20;  /* keep inputs clickable */
 }
 
 /* ---------- FORM ELEMENTS ---------- */
@@ -415,8 +279,6 @@ input[type="checkbox"] { display: none; }
     background: #242323;
     box-shadow: var(--shadow);
     outline: none;
-
-    &:focus { box-shadow: var(--shadow); }
 }
 
 .input-icon {
@@ -427,4 +289,58 @@ input[type="checkbox"] { display: none; }
     font-size: 24px;
     color: var(--mainColor);
     pointer-events: none; /* let clicks go to input */
+}
+
+/* ---------- RESPONSIVE BREAKPOINTS ---------- */
+
+/* Medium – show hamburger + vertical nav */
+@media (max-width: 992px) {
+    .menu-btn i { display: block; }
+    .login-container  { padding: 0; }
+    
+    /* Smaller hero text & card */
+    .left h2 { font-size: 40px; }
+    .left h2 span { font-size: 42px; }
+    .left p { font-size: 14px; }
+    .card-3d-wrap { width: 350px; }
+}
+
+/* Small – stack columns */
+@media (max-width: 768px) {
+    .left, .right { flex: 0 0 100%; max-width: 100%; }
+    .left { display: grid; place-items: center; order: 2; }
+    .right { order: 1; }
+    .left h2 { text-align: center; }
+}
+
+/* Extra-small – shrink headings & card */
+@media (max-width: 400px) {
+    .left h2 { font-size: 28px; }
+    .left h2 span { font-size: 30px; }
+    .card-3d-wrap { width: 300px; }
+}
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 992px) {
+    .menu-btn i { display: block; }
+    .login-container { padding: 0; }
+
+    .left h2 { font-size: 40px; }
+    .left h2 span { font-size: 42px; }
+    .left p { font-size: 14px; }
+    .card-3d-wrap { width: 350px; }
+}
+
+@media (max-width: 768px) {
+    .left, .right { flex: 0 0 100%; max-width: 100%; }
+    .left { display: grid; place-items: center; order: 2;}
+    .right { order: 1; }
+    .left h2 { text-align: center; }
+}
+
+@media (max-width: 400px) {
+    .left h2 { font-size: 28px; }
+    .left h2 span { font-size: 30px; }
+    .card-3d-wrap { width: 300px; }
 }
