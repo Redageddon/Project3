@@ -37,10 +37,19 @@ public class PlannerApiService(IHttpClientFactory httpClientFactory)
     }
 
     // POST: api/planners
-    public async Task<PlannerModel> CreatePlanner(PlannerModel planner)
+    public async Task<PlannerModel> CreatePlanner(PlannerModel planner, string? sessionId)
     {
         HttpClient client = httpClientFactory.CreateClient("RecipeAPI");
-        HttpResponseMessage response = await client.PostAsJsonAsync("/api/planners", planner);
+
+        using HttpRequestMessage request = new(HttpMethod.Post, "/api/planners");
+        request.Content = JsonContent.Create(planner);
+
+        if (!string.IsNullOrEmpty(sessionId))
+        {
+            request.Headers.Add("X-Session-Id", sessionId);
+        }
+
+        HttpResponseMessage response = await client.SendAsync(request);
 
         response.EnsureSuccessStatusCode();
 
