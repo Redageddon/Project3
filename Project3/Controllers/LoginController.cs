@@ -68,7 +68,45 @@ public class LoginController(ILogger<LoginController> logger, AuthApiService aut
         
         return await this.Login(newUser);
     }
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Logout()
+    {
+        string? sessionId = this.HttpContext.Session.GetString("SessionId");
 
+        if (!string.IsNullOrEmpty(sessionId))
+        {
+            LogoutRequest request = new(sessionId);
+
+            bool apiSuccess = false;
+
+            try
+            {
+                apiSuccess = await authApiService.Logout(request);
+            }
+            catch (Exception ex)
+            {
+                // Only thrown if something goes wrong calling the API (network, etc.)
+                logger.LogError("{Ex} : Error calling Auth API logout for session {SessionId}", ex, sessionId);
+            }
+
+            if (!apiSuccess)
+            {
+                // API responded but NOT with a success status code (e.g. 400, 401, 500)
+                logger.LogWarning("Auth API logout returned a non-success status for session {SessionId}", sessionId);
+            }
+            else
+            {
+                this.HttpContext.Session.Clear();
+                
+                return this.RedirectToAction("Index", "Home");
+            }
+        }
+        
+        return this.View("Index");
+    }
+    
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

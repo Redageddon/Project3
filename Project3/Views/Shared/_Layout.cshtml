@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -12,6 +15,13 @@
     @await RenderSectionAsync("Styles", false)
 </head>
 <body>
+@{
+    HttpContext? httpContext = HttpContextAccessor.HttpContext;
+    string? sessionId = httpContext?.Session.GetString("SessionId");
+    string? username  = httpContext?.Session.GetString("Username");
+
+    bool isLoggedIn = !string.IsNullOrEmpty(sessionId) && !string.IsNullOrEmpty(username);
+}
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
@@ -26,8 +36,8 @@
             </button>
 
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-
+                @* LEFT SIDE: main navigation *@
+                <ul class="navbar-nav">
                     @* RECIPES DROPDOWN *@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark"
@@ -97,16 +107,65 @@
                             Planner
                         </a>
                     </li>
+                </ul>
 
-                    @* LOGIN (normal link) *@
-                    <li class="nav-item">
-                        <a class="nav-link text-dark"
-                           asp-area=""
-                           asp-controller="Login"
-                           asp-action="Index">
-                            Login
-                        </a>
-                    </li>
+                @* RIGHT SIDE: login / user dropdown *@
+                <ul class="navbar-nav ms-auto">
+                    @if (isLoggedIn)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark"
+                               href="#"
+                               id="userDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Hi @username
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Recipes"
+                                       asp-action="Index">
+                                        My Recipes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Meals"
+                                       asp-action="Index">
+                                        My Meals
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <form
+                                          asp-controller="Login"
+                                          asp-action="Logout"
+                                          method="post"
+                                          class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" name="SessionId" value="@sessionId" class="dropdown-item">
+                                            Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"
+                               asp-area=""
+                               asp-controller="Login"
+                               asp-action="Index">
+                                Login
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -122,7 +181,10 @@
 <footer class="border-top footer text-muted">
     <div class="container">
         &copy; 2025 - Project3 -
-        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+        <a asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a>
+        <a asp-area="" asp-controller="Meals" asp-action="Index">Meals</a>
+        <a asp-area="" asp-controller="Planner" asp-action="Index">Planner</a>
     </div>
 </footer>
 
