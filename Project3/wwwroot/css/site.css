@@ -15,17 +15,50 @@ html {
 html {
     position: relative;
     min-height: 100%;
+    min-width: auto;
 }
 
 body {
     margin-bottom: 60px;
+    background-color: #020617;
+    background-image: url("./image1.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #f9fafb;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-    color: var(--bs-secondary-color);
-    text-align: end;
+
+/* Full-page background layers created by background-rotator.js */
+.bg-rotator-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;              /* above body background, behind all content */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    pointer-events: none;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-    text-align: start;
+.bg-rotator-layer-active { z-index: -2; }
+.bg-rotator-layer-idle   { z-index: -3; }
+
+.content-panel-dark {
+    background-color: rgba(0, 0, 0, 0.55);
+    color: #f9fafb;
+}
+
+footer {
+    background-color: rgba(80, 79, 79, 0.84);
+    >ul>li>a+p{
+        color: inherit;
+    }
+}
+div.recipes-header>.container 
+{
+    color: #040404;
 }

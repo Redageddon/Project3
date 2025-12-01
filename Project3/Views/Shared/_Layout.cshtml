@@ -9,9 +9,12 @@
     <title>@ViewData["Title"] - Project3</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Project3.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preload" as="image" href="~/js/Images/image1.jpg">
+    <link rel="preload" as="image" href="~/js/Images/image2.jpg">
+    <link rel="preload" as="image" href="~/js/Images/image3.jpg">
     @await RenderSectionAsync("Styles", false)
 </head>
 <body>
@@ -147,7 +150,7 @@
                                           method="post"
                                           class="d-inline">
                                         @Html.AntiForgeryToken()
-                                        <button type="submit" name="SessionId" value="@sessionId" class="dropdown-item">
+                                        <button type="submit" class="dropdown-item">
                                             Logout
                                         </button>
                                     </form>
@@ -178,14 +181,23 @@
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2025 - Project3 -
-        <a asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
-        <a asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a>
-        <a asp-area="" asp-controller="Meals" asp-action="Index">Meals</a>
-        <a asp-area="" asp-controller="Planner" asp-action="Index">Planner</a>
-    </div>
+
+<footer class="py-3 my-4"> <ul class="nav justify-content-center border-bottom pb-3 mb-3"> 
+        <li class="nav-item">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link px-2 ">Dashboard</a>
+        </li> 
+        <li class="nav-item">
+            <a asp-controller="Recipes" asp-action="Index" class="nav-link px-2 ">Recipes</a>
+        </li> 
+        <li class="nav-item">
+            <a asp-controller="Meals" asp-action="Index" class="nav-link px-2 ">Meals</a>
+        </li> 
+        <li class="nav-item">
+            <a asp-controller="Planner" asp-action="Index" class="nav-link px-2 ">Planner</a>
+        </li>
+        
+    </ul>
+    <p class="text-center">© 2025 - Project3</p>
 </footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
