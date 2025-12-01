@@ -1,0 +1,160 @@
+/* RecipeCreate.scss */
+
+/* ---------- Page shell ---------- */
+
+.recipe-create-page {
+  padding: 1.5rem 0 3rem;
+  display: flex;
+  justify-content: center;  // center the shell horizontally
+}
+
+.recipe-create-shell {
+  background-color: rgba(15, 23, 42, 0.95);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #f9fafb;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+
+  /* limit width on laptops/desktop so it doesn't feel huge */
+  width: 100%;
+  max-width: 1100px;   // tweak to taste (1000–1200px is a nice range)
+}
+
+/* ---------- Header ---------- */
+
+.recipe-create-header {
+  margin-bottom: 1rem;
+}
+
+.recipe-create-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.recipe-create-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* ---------- Form layout ---------- */
+
+.recipe-create-body {
+  margin-top: 0.75rem;
+}
+
+.recipe-create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Two-column grid:
+   - left main details wider
+   - right lists column narrower */
+.recipe-create-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .recipe-create-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .recipe-create-shell {
+    padding: 1.2rem;
+  }
+}
+
+/* Columns */
+
+.recipe-create-column {
+  background-color: #020617;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(31, 41, 55, 0.9);
+  padding: 1rem 1.25rem;
+}
+
+/* Field groups */
+
+.recipe-create-field {
+  margin-bottom: 0.75rem;
+}
+
+.recipe-create-field label {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 0.15rem;
+}
+
+/* Inputs on dark background */
+
+.recipe-create-field input[type="text"],
+.recipe-create-field input[type="number"],
+.recipe-create-field input[type="url"],
+.recipe-create-field select,
+.recipe-create-field textarea {
+  width: 100%;
+  background-color: #020617;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  color: #f9fafb;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  &::placeholder{
+    color: #f9fafb !important;
+  }
+}
+
+.recipe-create-field input:focus,
+.recipe-create-field select:focus,
+.recipe-create-field textarea:focus {
+  border-color: rgba(212, 175, 55, 0.85);
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.65);
+}
+
+input[placeholder] {
+  color: #f9fafb;
+}
+
+/* Lists (ingredients / tags / instructions) */
+
+.recipe-create-list {
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(75, 85, 99, 0.8);
+  padding: 0.4rem 0.5rem;
+  max-height: 220px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+/* Footer actions */
+
+.recipe-create-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+/* Small-screen tweaks */
+
+@media (max-width: 768px) {
+  .recipe-create-shell {
+    padding: 1rem;
+  }
+
+  .recipe-create-column {
+    padding: 0.9rem 1rem;
+  }
+}
+.text-muted {
+  color: #f9fafb !important;
+}

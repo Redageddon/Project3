@@ -6,237 +6,243 @@
 <form id="recipeForm"
       method="post"
       asp-controller="Recipes"
-      asp-action="CreateRecipes">
+      asp-action="CreateRecipes"
+      class="recipe-create-form">
     @Html.AntiForgeryToken()
 
-    @* MAIN MEAL TYPE SELECT *@
-    <div class="mb-3">
-        <label class="form-label" for="mainMealType">Main Meal Type</label>
-        <select id="mainMealType" class="form-select">
-            <option value="">-- Select a meal type --</option>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-            <option value="Dessert">Dessert</option>
-            <option value="Beverage">Beverage</option>
-        </select>
-        <small class="text-muted">
-            This will be stored in <code>MealType[0]</code> when the form is submitted.
-        </small>
+    <div class="recipe-create-grid">
+        <div class="recipe-create-column recipe-create-column-main">
+
+            <!-- Name, Ingredients, instructions, tags, Image lists -->
+
+            @* NAME OF RECIPE *@
+            <div class="recipe-create-field">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="e.g. Spaghetti Carbonara"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            
+            @* INGREDIENTS *@
+            <div class="recipe-create-list">
+                <label class="form-label" for="ingredientInput">Ingredients</label>
+                <div class="d-flex mb-2">
+                    <input type="text"
+                           id="ingredientInput"
+                           class="form-control me-2"
+                           placeholder="e.g. 2 eggs" />
+                    <button type="button" id="addIngredientBtn" class="btn btn-secondary">
+                        Add Ingredient
+                    </button>
+                </div>
+
+                <div id="ingredientList"
+                     class="d-flex flex-wrap gap-2 border rounded p-2"
+                     style="min-height: 40px;">
+                    @* Ingredient chips rendered by JS *@
+                </div>
+                <small class="text-muted d-block mt-1">
+                    Click an ingredient chip to remove it.
+                </small>
+            </div>
+
+            @* TAGS *@
+            <div class="recipe-create-list">
+                <label class="form-label" for="tagInput">Tags</label>
+                <div class="d-flex mb-2">
+                    <input type="text"
+                           id="tagInput"
+                           class="form-control me-2"
+                           placeholder="e.g. Quick, Vegetarian" />
+                    <button type="button" id="addTagBtn" class="btn btn-secondary">
+                        Add Tag
+                    </button>
+                </div>
+
+                <div id="tagList"
+                     class="d-flex flex-wrap gap-2 border rounded p-2"
+                     style="min-height: 40px;">
+                    @* Tag chips rendered by JS *@
+                </div>
+                <small class="text-muted d-block mt-1">
+                    Click a tag chip to remove it.
+                </small>
+            </div>
+
+            @* INSTRUCTIONS *@
+            <div class="recipe-create-list" id="instructions">
+                <label class="form-label" for="instructionInput">Instructions</label>
+
+                <div class="d-flex mb-2">
+                    <input type="text"
+                           id="instructionInput"
+                           class="form-control me-2"
+                           placeholder="Type the next step..." />
+                    <button type="button"
+                            id="addInstructionBtn"
+                            class="btn btn-secondary">
+                        Add Step
+                    </button>
+                </div>
+
+                <div id="steps"
+                     class="border rounded p-2"
+                     style="max-height: 200px; overflow-y: auto;">
+                    @* Step items rendered by JS *@
+                </div>
+
+                <small class="text-muted d-block mt-1">
+                    Press <kbd>Enter</kbd> or click <strong>Add Step</strong> to add a step.
+                    Click <strong>X</strong> to remove a step (remaining steps renumber automatically),
+                    or drag steps to reorder them
+                </small>
+            </div>
+
+            @* IMAGE *@
+            <div class="recipe-create-field">
+                <label asp-for="Image" class="form-label">Image URL</label>
+                <input asp-for="Image"
+                       type="url"
+                       class="form-control"
+                       id="imageUrlInput"
+                       placeholder="https://example.com/image.jpg" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+                <small class="text-muted d-block mt-1">
+                    Paste a direct URL to an image. This field is required.
+                </small>
+            </div>
+
+        </div>
+
+        <div class="recipe-create-column recipe-create-column-lists">
+            
+            <!-- Name, Meal/Beverage Type, Difficulty, cuisine, Times, Servings & Calories -->
+
+            @* MAIN MEAL TYPE SELECT *@
+            <div class="recipe-create-field">
+                <label class="form-label" for="mainMealType">Main Meal Type</label>
+                <select id="mainMealType" class="form-select">
+                    <option value="">-- Select a meal type --</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Beverage">Beverage</option>
+                </select>
+            </div>
+
+            @* BEVERAGE TYPE (only when Beverage is selected) *@
+            <div class="recipe-create-field d-none" id="beverageTypeWrapper">
+                <label class="form-label d-block">Beverage Type</label>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="BeverageAlcohol"
+                           id="beverageAlcoholic"
+                           value="Alcoholic"/>
+                    <label class="form-check-label" for="beverageAlcoholic">Alcoholic</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="BeverageAlcohol"
+                           id="beverageNonAlcoholic"
+                           value="Non-Alcoholic"/>
+                    <label class="form-check-label" for="beverageNonAlcoholic">Non-Alcoholic</label>
+                </div>
+
+                <small class="text-muted d-block mt-1">
+                    Required when <strong>Beverage</strong> is selected.
+                    The choice will also be added to the <strong>Tags</strong> list.
+                </small>
+            </div>
+
+            @* CUISINE *@
+            <div class="recipe-create-field">
+                <label asp-for="Cuisine" class="form-label"></label>
+                <input asp-for="Cuisine" class="form-control" placeholder="e.g. Italian"/>
+                <span asp-validation-for="Cuisine" class="text-danger"></span>
+            </div>
+
+            @* DIFFICULTY *@
+            <div class="recipe-create-field">
+                <label class="form-label d-block">Difficulty</label>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="Difficulty"
+                           id="diffEasy"
+                           value="Easy"/>
+                    <label class="form-check-label" for="diffEasy">Easy</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="Difficulty"
+                           id="diffMedium"
+                           value="Medium"/>
+                    <label class="form-check-label" for="diffMedium">Medium</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="Difficulty"
+                           id="diffHard"
+                           value="Hard"/>
+                    <label class="form-check-label" for="diffHard">Hard</label>
+                </div>
+            </div>
+
+            @* SERVINGS & CALORIES *@
+            <div class="row recipe-create-field">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <label asp-for="Servings" class="form-label"></label>
+                    <input asp-for="Servings"
+                           type="number"
+                           min="1"
+                           step="1"
+                           class="form-control"/>
+                    <span asp-validation-for="Servings" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="CaloriesPerServing" class="form-label">Calories Per Serving</label>
+                    <input asp-for="CaloriesPerServing"
+                           type="number"
+                           min="1"
+                           step="1"
+                           class="form-control"/>
+                    <span asp-validation-for="CaloriesPerServing" class="text-danger"></span>
+                </div>
+            </div>
+
+            @* TIMES *@
+            <div class="row recipe-create-field">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <label asp-for="PrepTimeMinutes" class="form-label">Prep Time Minutes</label>
+                    <input asp-for="PrepTimeMinutes"
+                           type="number"
+                           min="1"
+                           step="1"
+                           class="form-control"/>
+                    <span asp-validation-for="PrepTimeMinutes" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="CookTimeMinutes" class="form-label">Cook Time Minutes</label>
+                    <input asp-for="CookTimeMinutes"
+                           type="number"
+                           min="1"
+                           step="1"
+                           class="form-control"/>
+                    <span asp-validation-for="CookTimeMinutes" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
     </div>
-
-    @* BEVERAGE TYPE (only when Beverage is selected) *@
-    <div class="mb-3 d-none" id="beverageTypeWrapper">
-        <label class="form-label d-block">Beverage Type</label>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input"
-                   type="radio"
-                   name="BeverageAlcohol"
-                   id="beverageAlcoholic"
-                   value="Alcoholic" />
-            <label class="form-check-label" for="beverageAlcoholic">Alcoholic</label>
-        </div>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input"
-                   type="radio"
-                   name="BeverageAlcohol"
-                   id="beverageNonAlcoholic"
-                   value="Non-Alcoholic" />
-            <label class="form-check-label" for="beverageNonAlcoholic">Non-Alcoholic</label>
-        </div>
-
-        <small class="text-muted d-block mt-1">
-            Required when <strong>Beverage</strong> is selected.
-            The choice will also be added to the <strong>Tags</strong> list.
-        </small>
-    </div>
-
-    @* NAME OF RECIPE *@
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" placeholder="e.g. Spaghetti Carbonara" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-
-    @* CUISINE *@
-    <div class="mb-3">
-        <label asp-for="Cuisine" class="form-label"></label>
-        <input asp-for="Cuisine" class="form-control" placeholder="e.g. Italian" />
-        <span asp-validation-for="Cuisine" class="text-danger"></span>
-    </div>
-
-    @* INGREDIENTS *@
-    <div class="mb-3">
-        <label class="form-label" for="ingredientInput">Ingredients</label>
-        <div class="d-flex mb-2">
-            <input type="text"
-                   id="ingredientInput"
-                   class="form-control me-2"
-                   placeholder="e.g. 2 eggs" />
-            <button type="button" id="addIngredientBtn" class="btn btn-secondary">
-                Add Ingredient
-            </button>
-        </div>
-
-        <div id="ingredientList"
-             class="d-flex flex-wrap gap-2 border rounded p-2"
-             style="min-height: 40px;">
-            @* Ingredient chips rendered by JS *@
-        </div>
-        <small class="text-muted d-block mt-1">
-            Click an ingredient chip to remove it.
-        </small>
-    </div>
-
-    @* DIFFICULTY *@
-    <div class="mb-3">
-        <label class="form-label d-block">Difficulty</label>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input"
-                   type="radio"
-                   name="Difficulty"
-                   id="diffEasy"
-                   value="Easy" />
-            <label class="form-check-label" for="diffEasy">Easy</label>
-        </div>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input"
-                   type="radio"
-                   name="Difficulty"
-                   id="diffMedium"
-                   value="Medium" />
-            <label class="form-check-label" for="diffMedium">Medium</label>
-        </div>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input"
-                   type="radio"
-                   name="Difficulty"
-                   id="diffHard"
-                   value="Hard" />
-            <label class="form-check-label" for="diffHard">Hard</label>
-        </div>
-    </div>
-
-    @* TAGS *@
-    <div class="mb-3">
-        <label class="form-label" for="tagInput">Tags</label>
-        <div class="d-flex mb-2">
-            <input type="text"
-                   id="tagInput"
-                   class="form-control me-2"
-                   placeholder="e.g. Quick, Vegetarian" />
-            <button type="button" id="addTagBtn" class="btn btn-secondary">
-                Add Tag
-            </button>
-        </div>
-
-        <div id="tagList"
-             class="d-flex flex-wrap gap-2 border rounded p-2"
-             style="min-height: 40px;">
-            @* Tag chips rendered by JS *@
-        </div>
-        <small class="text-muted d-block mt-1">
-            Click a tag chip to remove it.
-        </small>
-    </div>
-
-    @* IMAGE – URL ONLY (file input commented out) *@
-    <div class="mb-3">
-        <label asp-for="Image" class="form-label">Image URL</label>
-        <input asp-for="Image"
-               type="url"
-               class="form-control"
-               id="imageUrlInput"
-               placeholder="https://example.com/image.jpg" />
-        <span asp-validation-for="Image" class="text-danger"></span>
-        <small class="text-muted d-block mt-1">
-            Paste a direct URL to an image. This field is required.
-        </small>
-
-        @* If you later want file upload, you can bring this back:
-        <div class="mt-2">
-            <input type="file" class="form-control" id="imageFileInput" />
-        </div>
-        *@
-    </div>
-
-    @* INSTRUCTIONS *@
-    <div class="mb-3" id="instructions">
-        <label class="form-label" for="instructionInput">Instructions</label>
-
-        <div class="d-flex mb-2">
-            <input type="text"
-                   id="instructionInput"
-                   class="form-control me-2"
-                   placeholder="Type the next step..." />
-            <button type="button"
-                    id="addInstructionBtn"
-                    class="btn btn-secondary">
-                Add Step
-            </button>
-        </div>
-
-        <div id="steps"
-             class="border rounded p-2"
-             style="max-height: 200px; overflow-y: auto;">
-            @* Step items rendered by JS *@
-        </div>
-
-        <small class="text-muted d-block mt-1">
-            Press <kbd>Enter</kbd> or click <strong>Add Step</strong> to add a step.
-            Click <strong>X</strong> to remove a step (remaining steps renumber automatically),
-            or drag steps to reorder them. Numbers are saved when you submit.
-        </small>
-    </div>
-
-    @* TIMES *@
-    <div class="row mb-3">
-        <div class="col-md-6 mb-3 mb-md-0">
-            <label asp-for="PrepTimeMinutes" class="form-label"></label>
-            <input asp-for="PrepTimeMinutes"
-                   type="number"
-                   min="1"
-                   step="1"
-                   class="form-control" />
-            <span asp-validation-for="PrepTimeMinutes" class="text-danger"></span>
-        </div>
-        <div class="col-md-6">
-            <label asp-for="CookTimeMinutes" class="form-label"></label>
-            <input asp-for="CookTimeMinutes"
-                   type="number"
-                   min="1"
-                   step="1"
-                   class="form-control" />
-            <span asp-validation-for="CookTimeMinutes" class="text-danger"></span>
-        </div>
-    </div>
-
-    @* SERVINGS & CALORIES *@
-    <div class="row mb-3">
-        <div class="col-md-6 mb-3 mb-md-0">
-            <label asp-for="Servings" class="form-label"></label>
-            <input asp-for="Servings"
-                   type="number"
-                   min="1"
-                   step="1"
-                   class="form-control" />
-            <span asp-validation-for="Servings" class="text-danger"></span>
-        </div>
-        <div class="col-md-6">
-            <label asp-for="CaloriesPerServing" class="form-label"></label>
-            <input asp-for="CaloriesPerServing"
-                   type="number"
-                   min="1"
-                   step="1"
-                   class="form-control" />
-            <span asp-validation-for="CaloriesPerServing" class="text-danger"></span>
-        </div>
-    </div>
+    
 
     <button type="submit" class="btn btn-primary">
         Save Recipe
