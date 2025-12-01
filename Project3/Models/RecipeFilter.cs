@@ -21,7 +21,8 @@ public record RecipeFilter(
     double? CookTimeMinutesLower,
     double? CookTimeMinutesUpper,
     double? CaloriesLower,
-    double? CaloriesUpper)
+    double? CaloriesUpper,
+    int? UserId)
 {
     public List<RecipeModel> Filter(IEnumerable<RecipeModel> recipes)
     {
@@ -38,6 +39,7 @@ public record RecipeFilter(
                .Where(r => r.PrepTimeMinutes.MatchesRange(this.PrepTimeMinutesLower, this.PrepTimeMinutesUpper))
                .Where(r => r.CookTimeMinutes.MatchesRange(this.CookTimeMinutesLower, this.CookTimeMinutesUpper))
                .Where(r => r.CaloriesPerServing.MatchesRange(this.CaloriesLower, this.CaloriesUpper))
+               .Where(r => !this.UserId.HasValue || r.UserId == this.UserId.Value)
                .ToList();
     }
 }
