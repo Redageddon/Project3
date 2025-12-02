@@ -2,18 +2,13 @@
 @using API.DataModels.Food
 
 @{
-    var recipes = Model.AllRecipes ?? new List<RecipeModel>();
+    var recipes = Model.AllRecipes;
 
     bool HasAnyMealType(RecipeModel recipe, params string[] types)
     {
-        if (recipe.MealType == null)
+        foreach (string mt in recipe.MealType)
         {
-            return false;
-        }
-
-        foreach (var mt in recipe.MealType)
-        {
-            foreach (var t in types)
+            foreach (string t in types)
             {
                 if (string.Equals(mt, t, StringComparison.OrdinalIgnoreCase))
                 {
@@ -45,9 +40,9 @@
                !HasAnyMealType(r, "Beverage", "Beverages");
     }
 
-    var dishOptions = recipes.Where(IsDish).ToList();
-    var drinkOptions = recipes.Where(IsDrink).ToList();
-    var dessertOptions = recipes.Where(IsDessert).ToList();
+    List<RecipeModel> dishOptions = recipes.Where(IsDish).ToList();
+    List<RecipeModel> drinkOptions = recipes.Where(IsDrink).ToList();
+    List<RecipeModel> dessertOptions = recipes.Where(IsDessert).ToList();
 }
 
 <form asp-action="CreateMeals"

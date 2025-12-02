@@ -80,9 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const stepItems = stepsContainer.querySelectorAll('.step-item');
         stepItems.forEach((step, index) => {
             const label = step.querySelector('strong');
-            if (label) {
-                label.textContent = (index + 1) + '. ';
-            }
         });
     }
 
