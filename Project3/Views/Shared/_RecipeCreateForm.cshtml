@@ -92,8 +92,8 @@
 
                 <small class="text-muted d-block mt-1">
                     Press <kbd>Enter</kbd> or click <strong>Add Step</strong> to add a step.
-                    Click <strong>X</strong> to remove a step (remaining steps renumber automatically),
-                    or drag steps to reorder them
+                    Click <strong>X</strong> to remove a step, or drag steps to reorder them.
+                    (List will be numbered top to bottom)
                 </small>
             </div>
 
@@ -204,6 +204,7 @@
                     <input asp-for="Servings"
                            type="number"
                            min="1"
+                           value="1"
                            step="1"
                            class="form-control"/>
                     <span asp-validation-for="Servings" class="text-danger"></span>
@@ -213,6 +214,7 @@
                     <input asp-for="CaloriesPerServing"
                            type="number"
                            min="1"
+                           value="1"
                            step="1"
                            class="form-control"/>
                     <span asp-validation-for="CaloriesPerServing" class="text-danger"></span>
@@ -226,6 +228,7 @@
                     <input asp-for="PrepTimeMinutes"
                            type="number"
                            min="1"
+                           value="1"
                            step="1"
                            class="form-control"/>
                     <span asp-validation-for="PrepTimeMinutes" class="text-danger"></span>
@@ -235,6 +238,7 @@
                     <input asp-for="CookTimeMinutes"
                            type="number"
                            min="1"
+                           value="1"
                            step="1"
                            class="form-control"/>
                     <span asp-validation-for="CookTimeMinutes" class="text-danger"></span>
@@ -243,7 +247,6 @@
         </div>
     </div>
     
-
     <button type="submit" class="btn btn-primary">
         Save Recipe
     </button>

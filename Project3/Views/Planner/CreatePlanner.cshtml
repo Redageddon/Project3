@@ -37,7 +37,7 @@
                             <option value="@m.MealId">@(!string.IsNullOrWhiteSpace(m.Name) ? m.Name : $"Meal #{@m.MealId}")</option>
                         }
                     </select>
-                    <span class="form-text">Choose at most one breakfast item.</span>
+                    <span class="form-text" id="plannertext">Choose at most one breakfast item.</span>
                 </div>
 
                 <div class="col-md-4 mb-3">
@@ -49,7 +49,7 @@
                             <option value="@m.MealId">@(!string.IsNullOrWhiteSpace(m.Name) ? m.Name : $"Meal #{@m.MealId}")</option>
                         }
                     </select>
-                    <span class="form-text">Choose at most one lunch item.</span>
+                    <span class="form-text" id="plannertext">Choose at most one lunch item.</span>
                 </div>
 
                 <div class="col-md-4 mb-3">
@@ -61,7 +61,7 @@
                             <option value="@m.MealId">@(!string.IsNullOrWhiteSpace(m.Name) ? m.Name : $"Meal #{@m.MealId}")</option>
                         }
                     </select>
-                    <span class="form-text">Choose at most one dinner item.</span>
+                    <span class="form-text" id="plannertext">Choose at most one dinner item.</span>
                 </div>
             </div>
 

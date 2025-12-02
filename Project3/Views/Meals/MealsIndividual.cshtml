@@ -1,76 +1,104 @@
+@using API.DataModels.Food
 @model API.DataModels.Food.MealsModel
 
 @{
-    ViewData["Title"] = Model.Name ?? "Meal";
+ViewData["Title"] = Model.Name ?? "Meal";
 }
 
-@section Styles
-{
-    <link rel="stylesheet" href="~/css/Meals.css" />
-    <link rel="stylesheet" href="/css/Cards.css" />
+@section Styles {
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/css/MealDetails.css" />
+    <link rel="stylesheet" href="~/css/Cards.css" />
 }
 
-<div class="meals-detail-page py-3">
-    <div class="container">
-        <header class="meals-detail-header mb-4">
-            <h1 class="h3 mb-1">@Model.Name</h1>
-            <p class="text-muted mb-0">
-                Created by user @Model.UserId
-            </p>
+<div class="meal-details-page">
+    <div class="meal-details-shell">
+        <header class="meal-details-header">
+            <div class="meal-details-heading">
+                <h1 class="meal-details-title">@Model.Name</h1>
+                <p class="meal-details-subtitle">
+                    Created by user @Model.UserId
+                </p>
+            </div>
+
+            <div class="meal-details-meta">
+                <div class="meal-details-meta-pill">
+                    <span class="meal-details-meta-label">Dishes</span>
+                    <span class="meal-details-meta-value">
+                        @(Model.Dishes?.Count ?? 0)
+                    </span>
+                </div>
+                <div class="meal-details-meta-pill">
+                    <span class="meal-details-meta-label">Drinks</span>
+                    <span class="meal-details-meta-value">
+                        @(Model.Drinks?.Count ?? 0)
+                    </span>
+                </div>
+                <div class="meal-details-meta-pill">
+                    <span class="meal-details-meta-label">Desserts</span>
+                    <span class="meal-details-meta-value">
+                        @(Model.Desserts?.Count ?? 0)
+                    </span>
+                </div>
+            </div>
         </header>
 
-        @if (Model.Dishes is { Count: > 0 })
-        {
-            <section class="meals-detail-section mb-4">
-                <h2 class="h5 mb-3">Dishes</h2>
-                <div class="row g-3">
-                    @foreach (var recipe in Model.Dishes!)
-                    {
-                        <div class="col-md-6 col-lg-4">
-                            @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
-                        </div>
-                    }
-                </div>
-            </section>
-        }
+        <div class="meal-details-body meal-details-body-grid">
+            @if (Model.Dishes is not null && Model.Dishes.Any())
+            {
+                <section class="meal-details-section meal-details-section--dishes">
+                    <h2 class="meal-details-section-title">Dishes</h2>
+                    <div class="meal-details-card-grid">
+                        @foreach (RecipeModel recipe in Model.Dishes)
+                        {
+                            <div class="meal-details-card-wrap">
+                                @await Html.PartialAsync("_RecipeCard", recipe)
+                            </div>
+                        }
+                    </div>
+                </section>
+            }
 
-        @if (Model.Drinks is { Count: > 0 })
-        {
-            <section class="meals-detail-section mb-4">
-                <h2 class="h5 mb-3">Drinks</h2>
-                <div class="row g-3">
-                    @foreach (var recipe in Model.Drinks!)
-                    {
-                        <div class="col-md-6 col-lg-4">
-                            @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
-                        </div>
-                    }
-                </div>
-            </section>
-        }
+            @if (Model.Drinks is not null && Model.Drinks.Any())
+            {
+                <section class="meal-details-section meal-details-section--drinks">
+                    <h2 class="meal-details-section-title">Drinks</h2>
+                    <div class="meal-details-card-grid">
+                        @foreach (RecipeModel recipe in Model.Drinks)
+                        {
+                            <div class="meal-details-card-wrap">
+                                @await Html.PartialAsync("_RecipeCard", recipe)
+                            </div>
+                        }
+                    </div>
+                </section>
+            }
 
-        @if (Model.Desserts is { Count: > 0 })
-        {
-            <section class="meals-detail-section mb-4">
-                <h2 class="h5 mb-3">Desserts</h2>
-                <div class="row g-3">
-                    @foreach (var recipe in Model.Desserts!)
-                    {
-                        <div class="col-md-6 col-lg-4">
-                            @await Html.PartialAsync("~/Views/Shared/_RecipeCard.cshtml", recipe)
-                        </div>
-                    }
-                </div>
-            </section>
-        }
+            @if (Model.Desserts is not null && Model.Desserts.Any())
+            {
+                <section class="meal-details-section meal-details-section--desserts">
+                    <h2 class="meal-details-section-title">Desserts</h2>
+                    <div class="meal-details-card-grid">
+                        @foreach (RecipeModel recipe in Model.Desserts)
+                        {
+                            <div class="meal-details-card-wrap">
+                                @await Html.PartialAsync("_RecipeCard", recipe)
+                            </div>
+                        }
+                    </div>
+                </section>
+            }
 
-        @if ((Model.Dishes is null || Model.Dishes.Count == 0) &&
-             (Model.Drinks is null || Model.Drinks.Count == 0) &&
-             (Model.Desserts is null || Model.Desserts.Count == 0))
-        {
-            <p class="text-muted">
-                This meal does not contain any recipes yet.
-            </p>
-        }
+            @if ((Model.Dishes is null || !Model.Dishes.Any())
+              && (Model.Drinks is null || !Model.Drinks.Any())
+              && (Model.Desserts is null || !Model.Desserts.Any()))
+            {
+                <section class="meal-details-section">
+                    <p class="meal-details-empty">
+                        This meal doesn’t have any recipes yet.
+                    </p>
+                </section>
+            }
+        </div>
     </div>
 </div>
