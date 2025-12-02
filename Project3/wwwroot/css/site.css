@@ -1,5 +1,30 @@
+/* Make the page a flex column */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #020617;
+    background-image: url("./image1.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content should fill the space between navbar and footer */
+main[role="main"] {
+    flex: 1 0 auto;
+}
 html {
     font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    min-width: auto;
 }
 
 @media (min-width: 768px) {
@@ -11,23 +36,6 @@ html {
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
-
-html {
-    position: relative;
-    min-height: 100%;
-    min-width: auto;
-}
-
-body {
-    margin-bottom: 60px;
-    background-color: #020617;
-    background-image: url("./image1.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    color: #f9fafb;
-}
-
 
 /* Full-page background layers created by background-rotator.js */
 .bg-rotator-layer {
@@ -51,14 +59,10 @@ body {
     background-color: rgba(0, 0, 0, 0.55);
     color: #f9fafb;
 }
-
-footer {
-    background-color: rgba(80, 79, 79, 0.84);
-    >ul>li>a+p{
-        color: inherit;
-    }
-}
 div.recipes-header>.container 
 {
     color: #040404;
+}
+#plannertext{
+    color: whitesmoke !important;
 }

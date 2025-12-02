@@ -1,11 +1,11 @@
 ﻿(function () {
     const images = [
-        "js/images/image1.jpg",
-        "js/images/image2.jpg",
-        "js/images/image3.jpg"
+        "js/Images/image1.jpg",
+        "js/Images/image2.jpg",
+        "js/Images/image3.jpg"
     ];
 
-    const ROTATION_INTERVAL_MS = 60_000; // 1 minute
+    const ROTATION_INTERVAL_MS = 30000;  // 30 seconds
     const FADE_DURATION_MS = 2000;       // 2 seconds fade
     const COOKIE_NAME = "bgIndex";
 
