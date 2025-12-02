@@ -6,3 +6,5 @@ public record UserModel(
     string Email,
     string PasswordHash
 );
+
+public record UsersData(List<UserModel> Users);
