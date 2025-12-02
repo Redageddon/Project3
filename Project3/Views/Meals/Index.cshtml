@@ -1,6 +1,5 @@
 @using API.DataModels.Food
 @model MealsDataModel
-@* @model List<MealsModel> *@
 
 @{
     ViewData["Title"] = "Meals";
@@ -8,25 +7,36 @@
 
 @section Styles
 {
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="~/css/Meals.css"/>
+    <link rel="stylesheet" href="/css/Meals.css"/>
     <link rel="stylesheet" href="/css/Cards.css" />
 }
 
-<div class="recipes-header py-3">
-    <div class="container">
-        <h1 class="title h3 mb-1">Meals</h1>
-        <p class="subtitle mb-0">Browse the Meals</p>
-    </div>
-</div>
+<div class="meals-page">
+    <div class="meals-page__shell">
+        <header class="meals-page__header">
+            <h2 class="meals-page__title">Meals Library</h2>
+            <p class="meals-page__subtitle">
+                Browse your saved meals – each one a combination of recipes.
+            </p>
+        </header>
 
-<div class="card-container">
-    <div class="row g-3">
-        @foreach (MealsModel meal in Model.Meals)
-        {
-            <div class="col-12 col-sm-6 col-lg-4">
-                @await Html.PartialAsync("~/Views/Shared/_MealsCard.cshtml", meal)
-            </div>
-        }
+        <section class="meals-page__grid">
+            @if (!Model.Meals.Any())
+            {
+                <div class="meals-page__empty">
+                    <p>You don't have any meals yet.</p>
+                    <p>Create one by combining your favourite recipes.</p>
+                </div>
+            }
+            else
+            {
+                @foreach (MealsModel meal in Model.Meals)
+                {
+                    <div class="meals-page__card-wrap">
+                        @await Html.PartialAsync("_MealsCard", meal)
+                    </div>
+                }
+            }
+        </section>
     </div>
 </div>
