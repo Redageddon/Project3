@@ -3,25 +3,29 @@
 
 
 :root {
-    /* brand + base colors */
-    --mainColor: #7e3ff2;            /* accent purple              */
-    --mainColor-hover: #6532c1;      /* darker purple on hover      */
+    /* brand + base colors – match app theme */
+    --mainColor: #d4af37;           /* soft gold accent (borders, buttons)   */
+    --mainColor-hover: #b5891e;     /* darker gold on hover                  */
+
     --black: #000000;
     --white: #ffffff;
-    --grey-900: #121212;             /* near-black background       */
-    --grey-100: #e5e5e5;             /* light grey cards            */
-    --whiteSmoke: #c4c3ca;           /* light text                  */
+
+    /* dark slate background + light text, like the other pages */
+    --grey-900: #020617;            /* near-black / slate page background    */
+    --grey-100: #e5e7eb;            /* light grey for subtle borders/text    */
+    --whiteSmoke: #9ca3af;          /* muted light text (helper / labels)    */
 
     /* layout helpers */
-    --shadow:  0 4px 8px rgba(21,21,21,.2);
+    --shadow: 0 4px 8px rgba(0, 0, 0, .35);
     --maxWidth: 1080px;
-    --gutter:   0.6rem;
-    --radius:   8px;
-    
-    /* gradient endpoints */
-    --bg-start: var(--grey-900);
-    --bg-end: var(--mainColor);
+    --gutter: 0.6rem;
+    --radius: 8px;
+
+    /* gradient endpoints – dark slate → deep navy */
+    --bg-start: #020617;            /* same as other pages                   */
+    --bg-end: #0b1120;              /* deep navy edge                        */
 }
+
 
 /* =====================================================
    CSS RESET & BASE STYLES
@@ -106,7 +110,7 @@ html {
     margin-top: 60px;
 
     a {
-        font-size: 22px;
+        font-size: 70px;
         color: var(--white);
         margin-right: 22px;
         transition: all .2s linear;
@@ -186,15 +190,6 @@ input[type="checkbox"] { display: none; }
     }
 }
 
-/* Forgot-password link */
-.link {
-    color: var(--whiteSmoke);
-    margin-top: 20px;
-    display: block;
-
-    &:hover { color: var(--mainColor); }
-}
-
 /* Outer wrapper that enables 3-D perspective */
 .card-3d-wrap {
     position: relative;
@@ -227,8 +222,9 @@ input[type="checkbox"] { display: none; }
 .card-back {
     position: absolute;
     width: 100%; height: 100%;
-    background: #1B1B1B url('https://i.postimg.cc/4dnZCH03/background.png')
-    bottom center / 300% no-repeat;
+    background: 
+        linear-gradient(135deg, #020617 0%, #0b1120 60%, #020617 100%), 
+        url('https://i.postimg.cc/4dnZCH03/background.png') bottom center / 300% no-repeat;
     border-radius: 6px;
     left: 0; top: 0;
     transform-style: preserve-3d;
@@ -276,7 +272,7 @@ input[type="checkbox"] { display: none; }
     font-weight: 500;
     letter-spacing: .5px;
     color: var(--whiteSmoke);
-    background: #242323;
+    background: #020617;
     box-shadow: var(--shadow);
     outline: none;
 }

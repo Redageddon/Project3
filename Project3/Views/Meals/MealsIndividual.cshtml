@@ -35,7 +35,7 @@ ViewData["Title"] = Model.Name ?? "Meal";
                     </span>
                 </div>
                 <div class="meal-details-meta-pill">
-                    <span class="meal-details-meta-label">Desserts</span>
+                    <span class="meal-details-meta-label">Desserts/Snacks</span>
                     <span class="meal-details-meta-value">
                         @(Model.Desserts?.Count ?? 0)
                     </span>
@@ -77,7 +77,7 @@ ViewData["Title"] = Model.Name ?? "Meal";
             @if (Model.Desserts is not null && Model.Desserts.Any())
             {
                 <section class="meal-details-section meal-details-section--desserts">
-                    <h2 class="meal-details-section-title">Desserts</h2>
+                    <h2 class="meal-details-section-title">Desserts/Snacks</h2>
                     <div class="meal-details-card-grid">
                         @foreach (RecipeModel recipe in Model.Desserts)
                         {
