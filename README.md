@@ -1338,7 +1338,8 @@ Run the project with:
 **Using [nuget](https://docs.microsoft.com/en-us/dotnet/csharp/):**
 
 ```sh
-dotnet run
+dotnet run --project API
+dotnet run --project Project3
 ```
 
 ### Testing
